@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Key | Moondiety Scripts</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #8b5cf6;
+      --secondary: #ec4899;
+      --accent-blue: #6366f1;
+      --accent-pink: #ec4899;
+      --dark: #0f0f15;
+      --darker: #080811;
+      --light: #f3f4f6;
+      --nav-height: 80px;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('https://raw.githubusercontent.com/adauser-gg/Idk/refs/heads/main/New_Project_2_Copy_2_3C4630B.gif') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--light);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(8, 8, 17, 0.85);
+      z-index: -1;
+    }
+    
+    h1, h2, h3, h4, h5 {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 600;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(99, 102, 241, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    @keyframes shine {
+      to {
+        background-position: 200% center;
+      }
+    }
+    
+    @keyframes terminalTyping {
+      0% { width: 0; }
+      100% { width: 100%; }
+    }
+    
+    @keyframes terminalCursor {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+    
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #8b5cf6, 0 0 10px #8b5cf6; }
+      50% { text-shadow: 0 0 20px #8b5cf6, 0 0 30px #8b5cf6; }
+      100% { text-shadow: 0 0 5px #8b5cf6, 0 0 10px #8b5cf6; }
+    }
+    
+    .float { 
+      animation: float 4s ease-in-out infinite;
+      filter: drop-shadow(0 10px 15px rgba(99, 102, 241, 0.3));
+    }
+    
+    .glow {
+      animation: glow 2s infinite;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .section-bg {
+      background: rgba(15, 15, 25, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      margin: 20px auto;
+      max-width: 1400px;
+    }
+    
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(10, 10, 20, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+      height: var(--nav-height);
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      padding: 0 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .nav-logo img {
+      height: 45px;
+      animation: float 4s ease-in-out infinite;
+    }
+    
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .nav-logo-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: 'Share Tech Mono', monospace;
+      text-shadow: 0 0 10px rgba(139, 92, 246, 0.7);
+    }
+    
+    .nav-logo-subtitle {
+      font-size: 0.7rem;
+      color: #d1d5db;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: -5px;
+      font-family: 'Share Tech Mono', monospace;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-link {
+      position: relative;
+      padding: 0.5rem 0;
+      color: #e0e0e0;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+    
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
+      border-radius: 3px;
+      transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    
+    .nav-link:hover {
+      color: white;
+    }
+    
+    .nav-link:hover::before {
+      width: 100%;
+    }
+    
+    .nav-link.active {
+      color: white;
+    }
+    
+    .nav-link.active::before {
+      width: 100%;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
+    }
+    
+    .nav-actions {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .nav-btn {
+      padding: 0.6rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .nav-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .nav-btn:hover::before {
+      left: 100%;
+    }
+    
+    .nav-btn-primary {
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
+      color: white;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    }
+    
+    .nav-btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    .mobile-menu {
+      position: fixed;
+      top: var(--nav-height);
+      left: 0;
+      width: 100%;
+      background: rgba(15, 15, 25, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      transform: translateY(-100%);
+      transition: transform 0.4s ease;
+      z-index: 999;
+    }
+    
+    .mobile-menu.active {
+      transform: translateY(0);
+    }
+    
+    .mobile-menu a {
+      display: block;
+      padding: 1rem 2rem;
+      color: #e0e0e0;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+    }
+    
+    .mobile-menu a:hover {
+      background: rgba(99, 102, 241, 0.1);
+      color: white;
+    }
+    
+    /* Key Cards */
+    .key-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .key-card {
+      background: rgba(20, 20, 30, 0.7);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: 12px;
+      padding: 2.5rem;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(5px);
+    }
+    
+    .key-card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, var(--accent-blue), transparent, var(--accent-pink));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    
+    .key-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      border-color: transparent;
+    }
+    
+    .key-card:hover::before {
+      opacity: 1;
+    }
+    
+    .key-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.4s ease;
+    }
+    
+    .key-card:hover .key-icon {
+      transform: scale(1.2);
+    }
+    
+    .key-name {
+      font-weight: 600;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .key-description {
+      color: #d1d5db;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    
+    .key-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .key-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: 0.5s;
+    }
+    
+    .key-btn:hover::before {
+      left: 100%;
+    }
+    
+    .key-btn-linkvertise {
+      background: linear-gradient(90deg, #4a69bd, #6a89cc);
+      color: white;
+    }
+    
+    .key-btn-lootlabs {
+      background: linear-gradient(90deg, #e55039, #eb2f06);
+      color: white;
+    }
+    
+    .key-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero {
+      padding-top: calc(var(--nav-height) + 4rem);
+      padding-bottom: 6rem;
+      position: relative;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      color: #d1d5db;
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .fade-in {
+      animation: fadeInUp 0.8s ease-out forwards;
+      opacity: 0;
+    }
+    
+    .slide-in {
+      animation: slideIn 0.6s ease-out forwards;
+      opacity: 0;
+    }
+    
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    
+    /* Section Styling */
+    section {
+      padding: 5rem 0;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+    }
+    
+    .section-subtitle {
+      color: #d1d5db;
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .nav-logo-title {
+        font-size: 1.5rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+      
+      .key-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .nav-logo-title {
+        font-size: 1.3rem;
+      }
+      
+      .nav-logo-subtitle {
+        font-size: 0.6rem;
+      }
+    }
+  </style>
+</head>
+<body class="text-white">
+  <!-- Enhanced Navigation -->
+  <nav>
+    <div class="nav-container">
+      <div class="nav-logo">
+        <img src="https://raw.githubusercontent.com/adauser-gg/Idk/refs/heads/main/Icon.png" alt="Moondiety Logo">
+        <div class="nav-logo-text">
+          <div class="nav-logo-title">MOONDIETY</div>
+          <div class="nav-logo-subtitle">SCRIPTS</div>
+        </div>
+      </div>
+      
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#scripts" class="nav-link">Scripts</a>
+        <a href="index.html#games" class="nav-link">Games</a>
+        <a href="index.html#premium" class="nav-link">Premium</a>
+        <a href="index.html#executors" class="nav-link">Executors</a>
+        <a href="index.html#discord" class="nav-link">Discord</a>
+      </div>
+      
+      <div class="nav-actions">
+        <a href="index.html#scripts" class="nav-btn nav-btn-primary">Get Key</a>
+      </div>
+      
+      <button class="mobile-menu-btn" id="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="index.html#scripts">Scripts</a>
+    <a href="index.html#games">Games</a>
+    <a href="index.html#premium">Premium</a>
+    <a href="index.html#executors">Executors</a>
+    <a href="index.html#discord">Discord</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container mx-auto px-4">
+      <div class="hero-content slide-in">
+        <h1 class="gradient-text">GET YOUR <span class="block">MOONDIETY KEY</span></h1>
+        <p class="text-gray-300">Choose your preferred method to obtain a key and unlock premium scripts</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Options Section -->
+  <section class="section-bg">
+    <div class="container mx-auto px-4">
+      <div class="section-header fade-in">
+        <h2 class="section-title gradient-text">KEY OPTIONS</h2>
+        <p class="section-subtitle">Select your preferred method to get a key</p>
+      </div>
+      
+      <div class="key-grid">
+        <!-- Linkvertise Option -->
+        <div class="key-card fade-in">
+          <div class="key-icon text-blue-400">
+            <i class="fas fa-link"></i>
+          </div>
+          <h3 class="key-name gradient-text">Linkvertise</h3>
+          <p class="key-description">Complete a short verification process through Linkvertise to get your key. This method is completely free and only takes a minute.</p>
+          <a href="https://ads.luarmor.net/get_key?for=Moondiety_Key_Linkvertise-IHeAAOKIUTol" class="key-btn key-btn-linkvertise">
+            <i class="fas fa-external-link-alt"></i>
+            <span>Get Key via Linkvertise</span>
+          </a>
+        </div>
+        
+        <!-- Lootlabs Option -->
+        <div class="key-card fade-in delay-1">
+          <div class="key-icon text-red-400">
+            <i class="fas fa-gem"></i>
+          </div>
+          <h3 class="key-name gradient-text">Lootlabs</h3>
+          <p class="key-description">Complete offers through Lootlabs to obtain your key. This method offers multiple ways to earn your key through various tasks.</p>
+          <a href="https://ads.luarmor.net/get_key?for=Moondiety_Key_Lootlabs-LWGKRDAaXqFl" class="key-btn key-btn-lootlabs">
+            <i class="fas fa-external-link-alt"></i>
+            <span>Get Key via Lootlabs</span>
+          </a>
+        </div>
+      </div>
+      
+      <div class="mt-12 text-center fade-in delay-2">
+        <p class="text-gray-400 mb-6">Having issues with key verification?</p>
+        <a href="https://discord.gg/moondiety" class="inline-flex items-center text-indigo-400 hover:text-indigo-300 transition">
+          <i class="fab fa-discord mr-2"></i> Join our Discord for support
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instructions Section -->
+  <section class="section-bg">
+    <div class="container mx-auto px-4">
+      <div class="section-header fade-in">
+        <h2 class="section-title gradient-text">HOW TO USE YOUR KEY</h2>
+        <p class="section-subtitle">Follow these simple steps to activate your scripts</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-gray-800 p-6 rounded-lg fade-in">
+          <div class="text-3xl text-indigo-400 mb-4">1</div>
+          <h3 class="text-xl font-semibold mb-3">Get Your Key</h3>
+          <p class="text-gray-400">Complete the verification process using either Linkvertise or Lootlabs to obtain your activation key.</p>
+        </div>
+        
+        <div class="bg-gray-800 p-6 rounded-lg fade-in delay-1">
+          <div class="text-3xl text-indigo-400 mb-4">2</div>
+          <h3 class="text-xl font-semibold mb-3">Execute the Script</h3>
+          <p class="text-gray-400">Copy and paste our loader script into your preferred executor and run it.</p>
+        </div>
+        
+        <div class="bg-gray-800 p-6 rounded-lg fade-in delay-2">
+          <div class="text-3xl text-indigo-400 mb-4">3</div>
+          <h3 class="text-xl font-semibold mb-3">Enter Your Key</h3>
+          <p class="text-gray-400">When prompted, enter the key you received to unlock all premium features.</p>
+        </div>
+      </div>
+      
+      <div class="mt-12 bg-gray-900 p-6 rounded-xl border border-gray-800 fade-in">
+        <h3 class="text-xl font-semibold mb-4 text-center">Loader Script</h3>
+        <div class="bg-gray-800 rounded-lg p-5 mb-6">
+          <pre class="text-gray-200 overflow-x-auto"><code class="language-lua">loadstring(game:HttpGet('https://raw.githubusercontent.com/m00ndiety/Moondiety/refs/heads/main/Loader'))()</code></pre>
+        </div>
+        
+        <div class="flex justify-center">
+          <button id="copy-script" class="nav-btn nav-btn-primary">
+            <i class="fas fa-copy mr-2"></i> Copy Script
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 border-t border-gray-800">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="flex items-center gap-4">
+          <img src="https://raw.githubusercontent.com/adauser-gg/Idk/refs/heads/main/Icon.png" alt="Moondiety Logo" class="h-12">
+          <div>
+            <h3 class="text-xl font-bold">MOONDIETY SCRIPTS</h3>
+            <p class="text-gray-400">Play to Win</p>
+          </div>
+        </div>
+        
+        <div class="flex flex-wrap justify-center gap-6">
+          <a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
+          <a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a>
+          <a href="#" class="text-gray-400 hover:text-white transition">Support</a>
+          <a href="https://discord.gg/moondiety" class="text-gray-400 hover:text-white transition">Discord</a>
+        </div>
+        
+        <div class="flex gap-4">
+          <a href="https://discord.gg/moondiety" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition">
+            <i class="fab fa-discord"></i>
+          </a>
+          <a href="https://youtube.com/@moondiety_script?si=3a6-FptuSGqq0xjt" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-600 transition">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="https://scriptblox.com/u/Moondiety" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-500 transition">
+            <img src="https://api.nuget.org/v3-flatcontainer/scriptbloxapi/6.3.0/icon" alt="ScriptBlox" class="w-6 h-6">
+          </a>
+        </div>
+      </div>
+      
+      <div class="mt-12 text-center text-gray-500 text-sm">
+        <p>© 2025 Moondiety Scripts. All rights reserved.</p>
+        <p class="mt-2">This content is not affiliated with, endorsed, sponsored, or specifically approved by Roblox and Roblox is not responsible for it.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu functionality
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+    });
+    
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        mobileMenu.classList.remove('active');
+      }
+    });
+
+    // Animation on scroll
+    const fadeElements = document.querySelectorAll('.fade-in, .slide-in');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+    
+    fadeElements.forEach(el => {
+      observer.observe(el);
+    });
+    
+    // Copy script button
+    const copyBtn = document.getElementById('copy-script');
+    if (copyBtn) {
+      const originalBtnHTML = copyBtn.innerHTML;
+      
+      copyBtn.addEventListener('click', () => {
+        const script = `loadstring(game:HttpGet('https://raw.githubusercontent.com/m00ndiety/Moondiety/refs/heads/main/Loader'))()`;
+        navigator.clipboard.writeText(script).then(() => {
+          copyBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Copied!';
+          setTimeout(() => {
+            copyBtn.innerHTML = originalBtnHTML;
+          }, 2000);
+        }).catch(err => {
+          console.error('Failed to copy script: ', err);
+          copyBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i> Failed!';
+          setTimeout(() => {
+            copyBtn.innerHTML = originalBtnHTML;
+          }, 2000);
+        });
+      });
+    }
+  </script>
+</body>
+</html>
