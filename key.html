@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Get Key | Moondiety Scripts - Best Roblox Scripts for Grow a Garden & More</title>
-  <meta name="description" content="Get your Moondiety key to unlock premium Roblox scripts for Grow a Garden, Steal a Brainrot, Dead Rails, and other popular games. Free and premium key options available.">
+  <title>Get Key | Moondiety Scripts - Best Roblox Scripts</title>
+  <meta name="description" content="Get your Moondiety key to unlock premium Roblox scripts for Grow a Garden, Steal a Brainrot, Dead Rails, and other popular games.">
   <meta name="keywords" content="moondiety, roblox script, roblox exploit, grow a garden script, steal a brainrot, dead rails, roblox hack, roblox executor">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,7 +18,7 @@
       --dark: #0f0f15;
       --darker: #080811;
       --light: #f3f4f6;
-      --nav-height: 80px;
+      --nav-height: 70px;
     }
     
     * {
@@ -54,31 +54,20 @@
     
     @keyframes float {
       0% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
+      50% { transform: translateY(-10px); }
       100% { transform: translateY(0px); }
     }
     
     @keyframes pulse {
       0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7); }
-      70% { box-shadow: 0 0 0 15px rgba(99, 102, 241, 0); }
+      70% { box-shadow: 0 0 0 12px rgba(99, 102, 241, 0); }
      100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
     }
     
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(20px);
       }
       to {
         opacity: 1;
@@ -88,13 +77,12 @@
     
     @keyframes glow {
       0% { text-shadow: 0 0 5px #8b5cf6, 0 0 10px #8b5cf6; }
-      50% { text-shadow: 0 0 20px #8b5cf6, 0 0 30px #8b5cf6; }
+      50% { text-shadow: 0 0 15px #8b5cf6, 0 0 20px #8b5cf6; }
       100% { text-shadow: 0 0 5px #8b5cf6, 0 0 10px #8b5cf6; }
     }
     
     .float { 
-      animation: float 4s ease-in-out infinite;
-      filter: drop-shadow(0 10px 15px rgba(99, 102, 241, 0.3));
+      animation: float 3s ease-in-out infinite;
     }
     
     .glow {
@@ -115,7 +103,7 @@
       border: 1px solid rgba(99, 102, 241, 0.2);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       margin: 20px auto;
-      max-width: 1400px;
+      max-width: 1200px;
     }
     
     nav {
@@ -147,8 +135,8 @@
     }
     
     .nav-logo img {
-      height: 45px;
-      animation: float 4s ease-in-out infinite;
+      height: 40px;
+      animation: float 3s ease-in-out infinite;
     }
     
     .nav-logo-text {
@@ -157,7 +145,7 @@
     }
     
     .nav-logo-title {
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -169,17 +157,17 @@
     }
     
     .nav-logo-subtitle {
-      font-size: 0.7rem;
+      font-size: 0.6rem;
       color: #d1d5db;
       letter-spacing: 2px;
       text-transform: uppercase;
-      margin-top: -5px;
+      margin-top: -3px;
       font-family: 'Share Tech Mono', monospace;
     }
     
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.5rem;
     }
     
     .nav-link {
@@ -198,7 +186,7 @@
       bottom: 0;
       left: 0;
       width: 0;
-      height: 3px;
+      height: 2px;
       background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
       border-radius: 3px;
       transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -221,18 +209,14 @@
       background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
     }
     
-    .nav-actions {
-      display: flex;
-      gap: 1rem;
-    }
-    
     .nav-btn {
-      padding: 0.6rem 1.5rem;
+      padding: 0.5rem 1.2rem;
       border-radius: 8px;
       font-weight: 500;
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+      text-decoration: none;
     }
     
     .nav-btn::before {
@@ -313,12 +297,16 @@
       background: rgba(20, 20, 30, 0.7);
       border: 1px solid rgba(99, 102, 241, 0.2);
       border-radius: 12px;
-      padding: 2.5rem;
+      padding: 2rem;
       text-align: center;
       transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
       position: relative;
       overflow: hidden;
       backdrop-filter: blur(5px);
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     
     .key-card::before {
@@ -345,8 +333,8 @@
     }
     
     .key-icon {
-      font-size: 3rem;
-      margin-bottom: 1.5rem;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
       transition: all 0.4s ease;
     }
     
@@ -356,27 +344,30 @@
     
     .key-name {
       font-weight: 600;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       margin-bottom: 1rem;
     }
     
     .key-description {
       color: #d1d5db;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       line-height: 1.6;
+      flex-grow: 1;
     }
     
     .key-btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.8rem;
-      padding: 1rem 2rem;
+      padding: 1rem 1.5rem;
       border-radius: 10px;
       font-weight: 600;
       transition: all 0.3s ease;
       text-decoration: none;
       position: relative;
       overflow: hidden;
+      width: 100%;
     }
     
     .key-btn::before {
@@ -410,7 +401,7 @@
     }
     
     .main-content {
-      padding-top: calc(var(--nav-height) + 2rem);
+      padding-top: calc(var(--nav-height) + 1rem);
       padding-bottom: 2rem;
       min-height: calc(100vh - var(--nav-height));
       display: flex;
@@ -423,20 +414,9 @@
       opacity: 0;
     }
     
-    .slide-in {
-      animation: slideIn 0.6s ease-out forwards;
-      opacity: 0;
-    }
-    
     .delay-1 { animation-delay: 0.1s; }
     .delay-2 { animation-delay: 0.2s; }
     .delay-3 { animation-delay: 0.3s; }
-    .delay-4 { animation-delay: 0.4s; }
-    
-    /* Section Styling */
-    section {
-      padding: 3rem 0;
-    }
     
     .section-header {
       text-align: center;
@@ -467,7 +447,7 @@
       }
       
       .nav-logo-title {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
       }
     }
     
@@ -476,12 +456,8 @@
         grid-template-columns: 1fr;
       }
       
-      .nav-logo-title {
-        font-size: 1.3rem;
-      }
-      
-      .nav-logo-subtitle {
-        font-size: 0.6rem;
+      .nav-container {
+        padding: 0 1rem;
       }
       
       .main-content {
@@ -490,6 +466,7 @@
       
       .key-card {
         padding: 1.5rem;
+        min-height: 280px;
       }
       
       .section-title {
@@ -498,17 +475,21 @@
     }
     
     @media (max-width: 480px) {
-      .nav-container {
-        padding: 0 1rem;
-      }
-      
       .key-btn {
-        padding: 0.8rem 1.5rem;
+        padding: 0.8rem 1.2rem;
         font-size: 0.9rem;
       }
       
       .key-icon {
-        font-size: 2.5rem;
+        font-size: 2rem;
+      }
+      
+      .nav-logo-title {
+        font-size: 1.1rem;
+      }
+      
+      .nav-logo img {
+        height: 35px;
       }
     }
   </style>
@@ -565,12 +546,14 @@
       <div class="key-grid">
         <!-- Linkvertise Option -->
         <div class="key-card fade-in">
-          <div class="key-icon text-blue-400">
-            <i class="fas fa-link"></i>
+          <div>
+            <div class="key-icon text-blue-400">
+              <i class="fas fa-link"></i>
+            </div>
+            <h2 class="key-name gradient-text">Linkvertise</h2>
+            <p class="key-description">Complete a short verification process through Linkvertise to get your key. This method is completely free and only takes a minute.</p>
           </div>
-          <h2 class="key-name gradient-text">Linkvertise</h2>
-          <p class="key-description">Complete a short verification process through Linkvertise to get your key. This method is completely free and only takes a minute.</p>
-          <a href="https://ads.luarmor.net/get_key?for=Moondiety_Key_Linkvertise-IHeAAOKIUTol" class="key-btn key-btn-linkvertise">
+          <a href="https://ads.luarmor.net/get_key?for=Moondiety_Key_Linkvertise-IHeAAOKIUTol" target="_blank" class="key-btn key-btn-linkvertise">
             <i class="fas fa-external-link-alt"></i>
             <span>Get Key via Linkvertise</span>
           </a>
@@ -578,12 +561,14 @@
         
         <!-- Lootlabs Option -->
         <div class="key-card fade-in delay-1">
-          <div class="key-icon text-red-400">
-            <i class="fas fa-gem"></i>
+          <div>
+            <div class="key-icon text-red-400">
+              <i class="fas fa-gem"></i>
+            </div>
+            <h2 class="key-name gradient-text">Lootlabs</h2>
+            <p class="key-description">Complete offers through Lootlabs to obtain your key. This method offers multiple ways to earn your key through various tasks.</p>
           </div>
-          <h2 class="key-name gradient-text">Lootlabs</h2>
-          <p class="key-description">Complete offers through Lootlabs to obtain your key. This method offers multiple ways to earn your key through various tasks.</p>
-          <a href="https://ads.luarmor.net/get_key?for=Moondiety_Key_Lootlabs-LWGKRDAaXqFl" class="key-btn key-btn-lootlabs">
+          <a href="https://ads.luarmor.net/get_key?for=Moondiety_Key_Lootlabs-LWGKRDAaXqFl" target="_blank" class="key-btn key-btn-lootlabs">
             <i class="fas fa-external-link-alt"></i>
             <span>Get Key via Lootlabs</span>
           </a>
@@ -600,37 +585,37 @@
   </main>
 
   <!-- Script Section -->
-  <section class="section-bg">
-    <div class="container mx-auto px-4">
+  <section class="section-bg mt-8">
+    <div class="container mx-auto px-4 py-8">
       <div class="section-header fade-in">
         <h2 class="section-title gradient-text">HOW TO USE YOUR KEY</h2>
         <p class="section-subtitle">Follow these simple steps to activate your Roblox scripts</p>
       </div>
       
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-gray-800 p-6 rounded-lg fade-in">
-          <div class="text-3xl text-indigo-400 mb-4">1</div>
-          <h3 class="text-xl font-semibold mb-3">Get Your Key</h3>
-          <p class="text-gray-400">Complete the verification process using either Linkvertise or Lootlabs to obtain your activation key.</p>
+        <div class="bg-gray-800 p-4 rounded-lg fade-in">
+          <div class="text-2xl text-indigo-400 mb-3">1</div>
+          <h3 class="text-lg font-semibold mb-2">Get Your Key</h3>
+          <p class="text-gray-400 text-sm">Complete the verification process using either Linkvertise or Lootlabs to obtain your activation key.</p>
         </div>
         
-        <div class="bg-gray-800 p-6 rounded-lg fade-in delay-1">
-          <div class="text-3xl text-indigo-400 mb-4">2</div>
-          <h3 class="text-xl font-semibold mb-3">Execute the Script</h3>
-          <p class="text-gray-400">Copy and paste our loader script into your preferred executor and run it.</p>
+        <div class="bg-gray-800 p-4 rounded-lg fade-in delay-1">
+          <div class="text-2xl text-indigo-400 mb-3">2</div>
+          <h3 class="text-lg font-semibold mb-2">Execute the Script</h3>
+          <p class="text-gray-400 text-sm">Copy and paste our loader script into your preferred executor and run it.</p>
         </div>
         
-        <div class="bg-gray-800 p-6 rounded-lg fade-in delay-2">
-          <div class="text-3xl text-indigo-400 mb-4">3</div>
-          <h3 class="text-xl font-semibold mb-3">Enter Your Key</h3>
-          <p class="text-gray-400">When prompted, enter the key you received to unlock all premium features.</p>
+        <div class="bg-gray-800 p-4 rounded-lg fade-in delay-2">
+          <div class="text-2xl text-indigo-400 mb-3">3</div>
+          <h3 class="text-lg font-semibold mb-2">Enter Your Key</h3>
+          <p class="text-gray-400 text-sm">When prompted, enter the key you received to unlock all premium features.</p>
         </div>
       </div>
       
-      <div class="mt-12 bg-gray-900 p-6 rounded-xl border border-gray-800 fade-in">
-        <h3 class="text-xl font-semibold mb-4 text-center">Loader Script for Roblox</h3>
-        <div class="bg-gray-800 rounded-lg p-5 mb-6">
-          <pre class="text-gray-200 overflow-x-auto"><code class="language-lua">loadstring(game:HttpGet('https://raw.githubusercontent.com/m00ndiety/Moondiety/refs/heads/main/Loader'))()</code></pre>
+      <div class="mt-8 bg-gray-900 p-4 rounded-xl border border-gray-800 fade-in">
+        <h3 class="text-lg font-semibold mb-3 text-center">Loader Script for Roblox</h3>
+        <div class="bg-gray-800 rounded-lg p-4 mb-4">
+          <pre class="text-gray-200 overflow-x-auto text-sm"><code class="language-lua">loadstring(game:HttpGet('https://raw.githubusercontent.com/m00ndiety/Moondiety/refs/heads/main/Loader'))()</code></pre>
         </div>
         
         <div class="flex justify-center">
@@ -642,41 +627,41 @@
     </div>
   </section>
 
-  
+
 
   <!-- Footer -->
-  <footer class="py-12 border-t border-gray-800">
+  <footer class="py-8 border-t border-gray-800 mt-8">
     <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-        <div class="flex items-center gap-4">
-          <img src="https://raw.githubusercontent.com/adauser-gg/Idk/refs/heads/main/Icon.png" alt="Moondiety Logo" class="h-12">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="flex items-center gap-3">
+          <img src="https://raw.githubusercontent.com/adauser-gg/Idk/refs/heads/main/Icon.png" alt="Moondiety Logo" class="h-10">
           <div>
-            <h3 class="text-xl font-bold">MOONDIETY SCRIPTS</h3>
-            <p class="text-gray-400">Premium Roblox Scripts</p>
+            <h3 class="text-lg font-bold">MOONDIETY SCRIPTS</h3>
+            <p class="text-gray-400 text-sm">Premium Roblox Scripts</p>
           </div>
         </div>
         
-        <div class="flex flex-wrap justify-center gap-6">
-          <a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
-          <a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a>
-          <a href="#" class="text-gray-400 hover:text-white transition">Support</a>
-          <a href="https://discord.gg/moondiety" class="text-gray-400 hover:text-white transition">Discord</a>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="#" class="text-gray-400 hover:text-white transition text-sm">Privacy Policy</a>
+          <a href="#" class="text-gray-400 hover:text-white transition text-sm">Terms of Service</a>
+          <a href="#" class="text-gray-400 hover:text-white transition text-sm">Support</a>
+          <a href="https://discord.gg/moondiety" class="text-gray-400 hover:text-white transition text-sm">Discord</a>
         </div>
         
-        <div class="flex gap-4">
-          <a href="https://discord.gg/moondiety" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition">
-            <i class="fab fa-discord"></i>
+        <div class="flex gap-3">
+          <a href="https://discord.gg/moondiety" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition">
+            <i class="fab fa-discord text-sm"></i>
           </a>
-          <a href="https://youtube.com/@moondiety_script?si=3a6-FptuSGqq0xjt" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-600 transition">
-            <i class="fab fa-youtube"></i>
+          <a href="https://youtube.com/@moondiety_script?si=3a6-FptuSGqq0xjt" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-600 transition">
+            <i class="fab fa-youtube text-sm"></i>
           </a>
-          <a href="https://scriptblox.com/u/Moondiety" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-500 transition">
-            <i class="fas fa-code"></i>
+          <a href="https://scriptblox.com/u/Moondiety" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-500 transition">
+            <i class="fas fa-code text-sm"></i>
           </a>
         </div>
       </div>
       
-      <div class="mt-12 text-center text-gray-500 text-sm">
+      <div class="mt-8 text-center text-gray-500 text-xs">
         <p>© 2025 Moondiety Scripts. All rights reserved.</p>
         <p class="mt-2">This content is not affiliated with, endorsed, sponsored, or specifically approved by Roblox and Roblox is not responsible for it.</p>
       </div>
@@ -699,7 +684,7 @@
     });
 
     // Animation on scroll
-    const fadeElements = document.querySelectorAll('.fade-in, .slide-in');
+    const fadeElements = document.querySelectorAll('.fade-in');
     
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
