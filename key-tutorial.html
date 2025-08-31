@@ -29,11 +29,19 @@
     
     body {
       font-family: 'Poppins', sans-serif;
-      background: url('https://raw.githubusercontent.com/adauser-gg/Idk/refs/heads/main/New_Project_2_Copy_2_3C4630B.gif') no-repeat center center fixed;
-      background-size: cover;
       color: var(--light);
       overflow-x: hidden;
       min-height: 100vh;
+    }
+    
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
     }
     
     body::before {
@@ -132,6 +140,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      cursor: pointer;
     }
     
     .nav-logo img {
@@ -237,12 +246,13 @@
     .nav-btn-primary {
       background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
       color: white;
-      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+      box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+      transform: translateY(0);
     }
     
     .nav-btn-primary:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+      box-shadow: 0 6px 15px rgba(99, 102, 241, 0.4);
     }
     
     .mobile-menu-btn {
@@ -331,10 +341,11 @@
       font-size: 2.5rem;
       margin-bottom: 1rem;
       transition: all 0.4s ease;
+      display: inline-block;
     }
     
     .tutorial-card:hover .tutorial-icon {
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
     
     .tutorial-name {
@@ -539,11 +550,17 @@
   </style>
 </head>
 <body class="text-white">
+  <!-- Background Video -->
+  <video id="bg-video" autoplay muted loop>
+    <source src="/media/Icon-Animated.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
   <!-- Enhanced Navigation -->
   <nav>
     <div class="nav-container">
-      <div class="nav-logo">
-        <img src="https://raw.githubusercontent.com/adauser-gg/Idk/refs/heads/main/Icon.png" alt="Moondiety Logo">
+      <div class="nav-logo" onclick="window.location.href='index.html'">
+        <img src="/media/logo.png" alt="Moondiety Logo">
         <div class="nav-logo-text">
           <div class="nav-logo-title">MOONDIETY</div>
           <div class="nav-logo-subtitle">SCRIPTS</div>
@@ -597,7 +614,7 @@
           <p class="tutorial-description">Follow these steps to get your key through Linkvertise. This method is completely free and only takes a minute.</p>
           
           <div class="video-container">
-            <video controls poster="https://raw.githubusercontent.com/adauser-gg/Idk/refs/heads/main/Icon.png">
+            <video controls poster="/media/banner.jpg">
               <source src="/media/LV.mov" type="video/mp4">
               Your browser does not support the video tag.
             </video>
@@ -638,7 +655,7 @@
           <p class="tutorial-description">Follow these steps to get your key through Lootlabs. Complete offers to earn your key through various tasks.</p>
           
           <div class="video-container">
-            <video controls poster="https://raw.githubusercontent.com/adauser-gg/Idk/refs/heads/main/Icon.png">
+            <video controls poster="/media/banner.jpg">
               <source src="/media/LB.mov" type="video/mp4">
               Your browser does not support the video tag.
             </video>
@@ -728,7 +745,7 @@
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row justify-between items-center gap-6">
         <div class="flex items-center gap-3">
-          <img src="https://raw.githubusercontent.com/adauser-gg/Idk/refs/heads/main/Icon.png" alt="Moondiety Logo" class="h-10">
+          <img src="/media/logo.png" alt="Moondiety Logo" class="h-10">
           <div>
             <h3 class="text-lg font-bold">MOONDIETY SCRIPTS</h3>
             <p class="text-gray-400 text-sm">Premium Roblox Scripts</p>
