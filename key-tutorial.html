@@ -32,6 +32,7 @@
       color: var(--light);
       overflow-x: hidden;
       min-height: 100vh;
+      background: linear-gradient(135deg, #0f0f15 0%, #1a1a2e 50%, #16213e 100%);
     }
     
     #bg-video {
@@ -42,6 +43,7 @@
       height: 100%;
       object-fit: cover;
       z-index: -2;
+      opacity: 0.4;
     }
     
     body::before {
@@ -226,6 +228,9 @@
       position: relative;
       overflow: hidden;
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
     
     .nav-btn::before {
@@ -248,10 +253,11 @@
       color: white;
       box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
       transform: translateY(0);
+      border: none;
     }
     
     .nav-btn-primary:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
       box-shadow: 0 6px 15px rgba(99, 102, 241, 0.4);
     }
     
@@ -342,6 +348,8 @@
       margin-bottom: 1rem;
       transition: all 0.4s ease;
       display: inline-block;
+      position: relative;
+      z-index: 2;
     }
     
     .tutorial-card:hover .tutorial-icon {
@@ -367,6 +375,10 @@
       margin-bottom: 1.5rem;
       border-radius: 8px;
       overflow: hidden;
+      background: #0f0f15;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
     .video-container video {
@@ -376,6 +388,24 @@
       width: 100%;
       height: 100%;
       border-radius: 8px;
+    }
+    
+    .video-placeholder {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: linear-gradient(45deg, #0f0f15, #1a1a2e);
+      color: #6366f1;
+      font-size: 1.2rem;
+    }
+    
+    .video-placeholder i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
     }
     
     .steps-list {
@@ -614,6 +644,10 @@
           <p class="tutorial-description">Follow these steps to get your key through Linkvertise. This method is completely free and only takes a minute.</p>
           
           <div class="video-container">
+            <div class="video-placeholder">
+              <i class="fas fa-play-circle"></i>
+              <p>Video Tutorial Preview</p>
+            </div>
             <video controls poster="/media/banner.jpg">
               <source src="/media/LV.mov" type="video/mp4">
               Your browser does not support the video tag.
@@ -655,6 +689,10 @@
           <p class="tutorial-description">Follow these steps to get your key through Lootlabs. Complete offers to earn your key through various tasks.</p>
           
           <div class="video-container">
+            <div class="video-placeholder">
+              <i class="fas fa-play-circle"></i>
+              <p>Video Tutorial Preview</p>
+            </div>
             <video controls poster="/media/banner.jpg">
               <source src="/media/LB.mov" type="video/mp4">
               Your browser does not support the video tag.
