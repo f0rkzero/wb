@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moondiety Scripts | Best Roblox scripts</title>
+  <title>Moondiety Scripts | Best Free Roblox Executor Scripts & Hacks</title>
+  <meta name="description" content="Moondiety offers the best free Roblox scripts for popular games like Grow a Garden, Steal a Brainrot, Dead Rails, Murder Mystery 2, and more. Compatible with Delta, Krnl, Ronix, Swift, and other executors.">
+  <meta name="keywords" content="moondiety, moondiety scripts, roblox scripts, roblox hacks, free roblox scripts, roblox executor, delta executor, krnl, ronix, swift, snypse x, lunor hub, speed hub, grow a garden script, steal a brainrot script, dead rails script, murder mystery 2 script, 99 nights in the forest script, ink game script, forsaken script">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -27,11 +29,21 @@
     
     body {
       font-family: 'Poppins', sans-serif;
-      background: url('https://raw.githubusercontent.com/adauser-gg/Idk/refs/heads/main/New_Project_2_Copy_2_3C4630B.gif') no-repeat center center fixed;
-      background-size: cover;
       color: var(--light);
       overflow-x: hidden;
       min-height: 100vh;
+      background: linear-gradient(135deg, #0f0f15 0%, #1a1a2e 50%, #16213e 100%);
+    }
+    
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      opacity: 0.4;
     }
     
     body::before {
@@ -112,6 +124,15 @@
       100% { text-shadow: 0 0 5px #8b5cf6, 0 0 10px #8b5cf6; }
     }
     
+    @keyframes auto-scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-100% - 1.5rem));
+      }
+    }
+    
     .float { 
       animation: float 4s ease-in-out infinite;
       filter: drop-shadow(0 10px 15px rgba(99, 102, 241, 0.3));
@@ -165,6 +186,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      cursor: pointer;
     }
     
     .nav-logo img {
@@ -457,7 +479,7 @@
     .hero-btn-primary {
       background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
       color: white;
-      box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
+      box-shadow: 0 5px 20px rgba(99, 102, 102, 241, 0.4);
     }
     
     .hero-btn-primary:hover {
@@ -622,6 +644,9 @@
     .game-card {
       perspective: 1000px;
       height: 300px;
+      flex: 0 0 auto;
+      width: 280px;
+      margin-right: 1.5rem;
     }
     
     .game-card-inner {
@@ -655,6 +680,21 @@
       justify-content: center;
     }
     
+    .games-scroll-container {
+      position: relative;
+      overflow: hidden;
+      padding: 1rem 0;
+    }
+    
+    .games-scroll-track {
+      display: flex;
+      animation: auto-scroll 60s linear infinite;
+      width: max-content;
+    }
+    
+    .games-scroll-track:hover {
+      animation-play-state: paused;
+    }
     
     .game-title {
       font-family: 'Orbitron', sans-serif;
@@ -729,6 +769,7 @@
       
       .game-card {
         height: 250px;
+        width: 240px;
       }
       
       .nav-logo-title {
@@ -742,11 +783,17 @@
   </style>
 </head>
 <body class="text-white">
+  <!-- Background Video -->
+  <video id="bg-video" autoplay muted loop>
+    <source src="/media/Icon-Animated.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
   <!-- Enhanced Navigation -->
   <nav>
     <div class="nav-container">
-      <div class="nav-logo">
-        <img src="https://raw.githubusercontent.com/adauser-gg/Idk/refs/heads/main/Icon.png" alt="Moondiety Logo">
+      <div class="nav-logo" onclick="window.location.href='/home'">
+        <img src="/media/logo.png" alt="Moondiety Logo">
         <div class="nav-logo-text">
           <div class="nav-logo-title">MOONDIETY</div>
           <div class="nav-logo-subtitle">SCRIPTS</div>
@@ -755,7 +802,6 @@
       
       <div class="nav-links">
         <a href="#home" class="nav-link active">Home</a>
-        
         <a href="#scripts" class="nav-link">Scripts</a>
         <a href="#games" class="nav-link">Games</a>
         <a href="#premium" class="nav-link">Premium</a>
@@ -776,7 +822,6 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobile-menu">
     <a href="#home">Home</a>
-    
     <a href="#scripts">Scripts</a>
     <a href="#games">Games</a>
     <a href="#premium">Premium</a>
@@ -789,9 +834,9 @@
     <div class="container mx-auto px-4">
       <div class="hero-content slide-in">
         <h1 class="gradient-text">UNLEASH YOUR <span class="block">ROBLOX POTENTIAL</span></h1>
-        <p class="text-gray-300">Premium Quality scripts for the most popular Roblox games at no cost</p>
+        <p class="text-gray-300">Moondiety offers premium quality scripts for the most popular Roblox games at no cost. With over 40K daily users and 50M+ executions, we're one of the top Roblox script hubs.</p>
         <div class="hero-btns">
-          <a href="https://discord.gg/moondiety" class="hero-btn hero-btn-primary">Join Us</a>
+          <a href="https://discord.gg/moondiety" class="hero-btn hero-btn-primary">Join Our Discord</a>
           <a href="#scripts" class="hero-btn hero-btn-secondary">Get Script</a>
         </div>
       </div>
@@ -799,7 +844,7 @@
       <!-- Stats Section -->
       <div class="stats-grid mt-16 fade-in">
         <div class="stat-card">
-          <div class="stat-value">40M+</div>
+          <div class="stat-value">50M+</div>
           <div class="stat-label">Executions</div>
         </div>
         
@@ -809,12 +854,12 @@
         </div>
         
         <div class="stat-card fade-in delay-2">
-          <div class="stat-value">50K+</div>
+          <div class="stat-value">60K+</div>
           <div class="stat-label">Discord Members</div>
         </div>
         
         <div class="stat-card fade-in delay-3">
-          <div class="stat-value">6</div>
+          <div class="stat-value">7</div>
           <div class="stat-label">Supported Games</div>
         </div>
       </div>
@@ -826,7 +871,7 @@
     <div class="container mx-auto px-4">
       <div class="section-header fade-in">
         <h2 class="section-title gradient-text">SCRIPT LOADER</h2>
-        <p class="section-subtitle">Copy and paste this script to unlock all features</p>
+        <p class="section-subtitle">Copy and paste this script to unlock all features. Compatible with Delta, Krnl, Ronix, Swift, and more executors.</p>
       </div>
       
       <div class="max-w-3xl mx-auto bg-gray-900 p-6 rounded-xl border border-gray-800 fade-in">
@@ -860,244 +905,286 @@
     <div class="container mx-auto px-4">
       <div class="section-header fade-in">
         <h2 class="section-title gradient-text">SUPPORTED GAMES</h2>
-        <p class="section-subtitle">Experience these games like never before</p>
+        <p class="section-subtitle">Experience these popular Roblox games like never before with Moondiety scripts</p>
       </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-6 gap-6">
-        <!-- Grow a Garden -->
-        <div class="game-card fade-in">
-          <div class="game-card-inner">
-            <div class="game-card-front">
-              <img src="https://raw.githubusercontent.com/adauser-gg/Idk/refs/heads/main/Grow_a_Garden.png" alt="Grow a Garden" class="w-full h-48 object-cover">
-              <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
-                <div class="game-title-container">
-                  <div class="game-title">Grow a Garden</div>
-                  <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
+      <div class="games-scroll-container">
+        <div class="games-scroll-track">
+          <!-- Grow a Garden -->
+          <div class="game-card fade-in">
+            <div class="game-card-inner">
+              <div class="game-card-front">
+                <img src="/media/gag.png" alt="Grow a Garden" class="w-full h-48 object-cover">
+                <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
+                  <div class="game-title-container">
+                    <div class="game-title">Grow a Garden</div>
+                    <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="game-card-back">
-              <h3 class="text-xl font-semibold gradient-text mb-4">Grow a Garden Features</h3>
-              <div class="text-left">
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-seedling text-purple-400 mt-1 mr-2"></i>
-                  <span>Auto Farm</span>
-                </div>
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-bolt text-purple-400 mt-1 mr-2"></i>
-                  <span>Auto New events</span>
-                </div>
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-coins text-purple-400 mt-1 mr-2"></i>
-                  <span>Updated to latest version</span>
-                </div>
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-shield-alt text-purple-400 mt-1 mr-2"></i>
-                  <span>Anti-Ban Protection</span>
-                </div>
-                <div class="flex items-start text-purple-300">
-                  <i class="fas fa-crown mr-2"></i>
-                  <span>36+ More Features</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Steal a Brainrot -->
-        <div class="game-card fade-in delay-1">
-          <div class="game-card-inner">
-            <div class="game-card-front">
-              <img src="https://raw.githubusercontent.com/adauser-gg/Idk/refs/heads/main/images_45_26.jpg" alt="Steal a Brainrot" class="w-full h-48 object-cover">
-              <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
-                <div class="game-title-container">
-                  <div class="game-title">Steal a Brainrot</div>
-                  <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
-                </div>
-              </div>
-            </div>
-            <div class="game-card-back">
-              <h3 class="text-xl font-semibold gradient-text mb-4">Steal a Brainrot Features</h3>
-              <div class="text-left">
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-running text-purple-400 mt-1 mr-2"></i>
-                  <span>Instant Steal brainrots</span>
-                </div>
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-eye text-purple-400 mt-1 mr-2"></i>
-                  <span>Speed Bypass</span>
-                </div>
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-fist-raised text-purple-400 mt-1 mr-2"></i>
-                  <span>Teleports</span>
-                </div>
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-user-shield text-purple-400 mt-1 mr-2"></i>
-                  <span>Anti-Ban & Kick</span>
-                </div>
-                <div class="flex items-start text-purple-300">
-                  <i class="fas fa-crown mr-2"></i>
-                  <span>32+ More Features</span>
+              <div class="game-card-back">
+                <h3 class="text-xl font-semibold gradient-text mb-4">Grow a Garden Features</h3>
+                <div class="text-left">
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-seedling text-purple-400 mt-1 mr-2"></i>
+                    <span>Auto Farm</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-bolt text-purple-400 mt-1 mr-2"></i>
+                    <span>Auto New events</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-coins text-purple-400 mt-1 mr-2"></i>
+                    <span>Updated to latest version</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-shield-alt text-purple-400 mt-1 mr-2"></i>
+                    <span>Anti-Ban Protection</span>
+                  </div>
+                  <div class="flex items-start text-purple-300">
+                    <i class="fas fa-crown mr-2"></i>
+                    <span>36+ More Features</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        
-        <!-- Dead Rails -->
-        <div class="game-card fade-in delay-2">
-          <div class="game-card-inner">
-            <div class="game-card-front">
-              <img src="https://raw.githubusercontent.com/adauser-gg/Idk/refs/heads/main/PNG.png"  alt="Dead Rails" class="w-full h-48 object-cover">
-              <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
-                <div class="game-title-container">
-                  <div class="game-title">Dead Rails</div>
-                  <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
+          
+          <!-- Steal a Brainrot -->
+          <div class="game-card fade-in delay-1">
+            <div class="game-card-inner">
+              <div class="game-card-front">
+                <img src="/media/sab.jpg" alt="Steal a Brainrot" class="w-full h-48 object-cover">
+                <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
+                  <div class="game-title-container">
+                    <div class="game-title">Steal a Brainrot</div>
+                    <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="game-card-back">
-              <h3 class="text-xl font-semibold gradient-text mb-4">Dead Rails Features</h3>
-              <div class="text-left">
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-skull text-purple-400 mt-1 mr-2"></i>
-                  <span>Best Auto bonds Farm</span>
-                </div>
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-syringe text-purple-400 mt-1 mr-2"></i>
-                  <span>Auto Win with Bond Farm</span>
-                </div>
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-bomb text-purple-400 mt-1 mr-2"></i>
-                  <span>All location teleports</span>
-                </div>
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-tools text-purple-400 mt-1 mr-2"></i>
-                  <span>All Item bringer</span>
-                </div>
-                <div class="flex items-start text-purple-300">
-                  <i class="fas fa-crown mr-2"></i>
-                  <span>28+ More Features</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- 99 Nights in the Forest -->
-        <div class="game-card fade-in">
-          <div class="game-card-inner">
-            <div class="game-card-front">
-              <img src="https://tr.rbxcdn.com/180DAY-8416ccb670b3523971f66e894153b263/768/432/Image/Webp/noFilter" alt="99 Nights in the Forest" class="w-full h-48 object-cover">
-              <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
-                <div class="game-title-container">
-                  <div class="game-title">99 Nights in Forest</div>
-                  <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
-                </div>
-              </div>
-            </div>
-            <div class="game-card-back">
-              <h3 class="text-xl font-semibold gradient-text mb-4">99 Nights Features</h3>
-              <div class="text-left">
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-tree text-purple-400 mt-1 mr-2"></i>
-                  <span>Bring All Items</span>
-                </div>
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-campground text-purple-400 mt-1 mr-2"></i>
-                  <span>Auto Farm</span>
-                </div>
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-shield-alt text-purple-400 mt-1 mr-2"></i>
-                  <span>Kill Aura</span>
-                </div>
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-running text-purple-400 mt-1 mr-2"></i>
-                  <span>Speed & Fly boost</span>
-                </div>
-                <div class="flex items-start text-purple-300">
-                  <i class="fas fa-crown mr-2"></i>
-                  <span>+25 More Features</span>
+              <div class="game-card-back">
+                <h3 class="text-xl font-semibold gradient-text mb-4">Steal a Brainrot Features</h3>
+                <div class="text-left">
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-running text-purple-400 mt-1 mr-2"></i>
+                    <span>Instant Steal brainrots</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-eye text-purple-400 mt-1 mr-2"></i>
+                    <span>Speed Bypass</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-fist-raised text-purple-400 mt-1 mr-2"></i>
+                    <span>Teleports</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-user-shield text-purple-400 mt-1 mr-2"></i>
+                    <span>Anti-Ban & Kick</span>
+                  </div>
+                  <div class="flex items-start text-purple-300">
+                    <i class="fas fa-crown mr-2"></i>
+                    <span>32+ More Features</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        
-        <!-- Ink Game -->
-        <div class="game-card fade-in delay-1">
-          <div class="game-card-inner">
-            <div class="game-card-front">
-              <img src="https://raw.githubusercontent.com/adauser-gg/Idk/refs/heads/main/images%20(45)%20(25).jpeg" alt="Ink Game" class="w-full h-48 object-cover">
-              <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
-                <div class="game-title-container">
-                  <div class="game-title">Ink Game</div>
-                  <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
+          
+          <!-- Dead Rails -->
+          <div class="game-card fade-in delay-2">
+            <div class="game-card-inner">
+              <div class="game-card-front">
+                <img src="/media/dr.png" alt="Dead Rails" class="w-full h-48 object-cover">
+                <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
+                  <div class="game-title-container">
+                    <div class="game-title">Dead Rails</div>
+                    <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="game-card-back">
-              <h3 class="text-xl font-semibold gradient-text mb-4">Ink Game Features</h3>
-              <div class="text-left">
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-paint-roller text-purple-400 mt-1 mr-2"></i>
-                  <span>God Mode</span>
-                </div>
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-expand text-purple-400 mt-1 mr-2"></i>
-                  <span>Kill All</span>
-                </div>
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-running text-purple-400 mt-1 mr-2"></i>
-                  <span>Auto win AFK Farm</span>
-                </div>
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-eye text-purple-400 mt-1 mr-2"></i>
-                  <span>Aimbot</span>
-                </div>
-                <div class="flex items-start text-purple-300">
-                  <i class="fas fa-crown mr-2"></i>
-                  <span>38+ More Features</span>
+              <div class="game-card-back">
+                <h3 class="text-xl font-semibold gradient-text mb-4">Dead Rails Features</h3>
+                <div class="text-left">
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-skull text-purple-400 mt-1 mr-2"></i>
+                    <span>Best Auto bonds Farm</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-syringe text-purple-400 mt-1 mr-2"></i>
+                    <span>Auto Win with Bond Farm</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-bomb text-purple-400 mt-1 mr-2"></i>
+                    <span>All location teleports</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-tools text-purple-400 mt-1 mr-2"></i>
+                    <span>All Item bringer</span>
+                  </div>
+                  <div class="flex items-start text-purple-300">
+                    <i class="fas fa-crown mr-2"></i>
+                    <span>28+ More Features</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        
-        <!-- Forsaken -->
-        <div class="game-card fade-in delay-2">
-          <div class="game-card-inner">
-            <div class="game-card-front">
-              <img src="https://raw.githubusercontent.com/adauser-gg/Idk/refs/heads/main/Forsaken_thumb.png" alt="Forsaken" class="w-full h-48 object-cover">
-              <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
-                <div class="game-title-container">
-                  <div class="game-title">Forsaken</div>
-                  <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
+          
+          <!-- 99 Nights in the Forest -->
+          <div class="game-card fade-in">
+            <div class="game-card-inner">
+              <div class="game-card-front">
+                <img src="/media/99.webp" alt="99 Nights in the Forest" class="w-full h-48 object-cover">
+                <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
+                  <div class="game-title-container">
+                    <div class="game-title">99 Nights in Forest</div>
+                    <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
+                  </div>
+                </div>
+              </div>
+              <div class="game-card-back">
+                <h3 class="text-xl font-semibold gradient-text mb-4">99 Nights Features</h3>
+                <div class="text-left">
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-tree text-purple-400 mt-1 mr-2"></i>
+                    <span>Bring All Items</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-campground text-purple-400 mt-1 mr-2"></i>
+                    <span>Auto Farm</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-shield-alt text-purple-400 mt-1 mr-2"></i>
+                    <span>Kill Aura</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-running text-purple-400 mt-1 mr-2"></i>
+                    <span>Speed & Fly boost</span>
+                  </div>
+                  <div class="flex items-start text-purple-300">
+                    <i class="fas fa-crown mr-2"></i>
+                    <span>+25 More Features</span>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="game-card-back">
-              <h3 class="text-xl font-semibold gradient-text mb-4">Forsaken Features</h3>
-              <div class="text-left">
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-shield-alt text-purple-400 mt-1 mr-2"></i>
-                  <span>Infinite stamina</span>
+          </div>
+          
+          <!-- Ink Game -->
+          <div class="game-card fade-in delay-1">
+            <div class="game-card-inner">
+              <div class="game-card-front">
+                <img src="/media/Ink.jpg" alt="Ink Game" class="w-full h-48 object-cover">
+                <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
+                  <div class="game-title-container">
+                    <div class="game-title">Ink Game</div>
+                    <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
+                  </div>
                 </div>
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-fist-raised text-purple-400 mt-1 mr-2"></i>
-                  <span>Auto generator</span>
+              </div>
+              <div class="game-card-back">
+                <h3 class="text-xl font-semibold gradient-text mb-4">Ink Game Features</h3>
+                <div class="text-left">
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-paint-roller text-purple-400 mt-1 mr-2"></i>
+                    <span>God Mode</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-expand text-purple-400 mt-1 mr-2"></i>
+                    <span>Kill All</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-running text-purple-400 mt-1 mr-2"></i>
+                    <span>Auto win AFK Farm</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-eye text-purple-400 mt-1 mr-2"></i>
+                    <span>Aimbot</span>
+                  </div>
+                  <div class="flex items-start text-purple-300">
+                    <i class="fas fa-crown mr-2"></i>
+                    <span>38+ More Features</span>
+                  </div>
                 </div>
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-coins text-purple-400 mt-1 mr-2"></i>
-                  <span>Kill All</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Forsaken -->
+          <div class="game-card fade-in delay-2">
+            <div class="game-card-inner">
+              <div class="game-card-front">
+                <img src="/media/forsaken.png" alt="Forsaken" class="w-full h-48 object-cover">
+                <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
+                  <div class="game-title-container">
+                    <div class="game-title">Forsaken</div>
+                    <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
+                  </div>
                 </div>
-                <div class="mb-3 flex items-start">
-                  <i class="fas fa-bolt text-purple-400 mt-1 mr-2"></i>
-                  <span>ESP players & Killer</span>
+              </div>
+              <div class="game-card-back">
+                <h3 class="text-xl font-semibold gradient-text mb-4">Forsaken Features</h3>
+                <div class="text-left">
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-shield-alt text-purple-400 mt-1 mr-2"></i>
+                    <span>Infinite stamina</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-fist-raised text-purple-400 mt-1 mr-2"></i>
+                    <span>Auto generator</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-coins text-purple-400 mt-1 mr-2"></i>
+                    <span>Kill All</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-bolt text-purple-400 mt-1 mr-2"></i>
+                    <span>ESP players & Killer</span>
+                  </div>
+                  <div class="flex items-start text-purple-300">
+                    <i class="fas fa-crown mr-2"></i>
+                    <span>18+ More Features</span>
+                  </div>
                 </div>
-                <div class="flex items-start text-purple-300">
-                  <i class="fas fa-crown mr-2"></i>
-                  <span>18+ More Features</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Murder Mystery 2 -->
+          <div class="game-card fade-in">
+            <div class="game-card-inner">
+              <div class="game-card-front">
+                <img src="/media/mm2.webp" alt="Murder Mystery 2" class="w-full h-48 object-cover">
+                <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
+                  <div class="game-title-container">
+                    <div class="game-title">Murder Mystery 2</div>
+                    <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
+                  </div>
+                </div>
+              </div>
+              <div class="game-card-back">
+                <h3 class="text-xl font-semibold gradient-text mb-4">Murder Mystery 2 Features</h3>
+                <div class="text-left">
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-user-secret text-purple-400 mt-1 mr-2"></i>
+                    <span>Murderer Revealer</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-running text-purple-400 mt-1 mr-2"></i>
+                    <span>Speed Hack</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-eye text-purple-400 mt-1 mr-2"></i>
+                    <span>ESP for All Players</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-skull text-purple-400 mt-1 mr-2"></i>
+                    <span>Auto Win Features</span>
+                  </div>
+                  <div class="flex items-start text-purple-300">
+                    <i class="fas fa-crown mr-2"></i>
+                    <span>20+ More Features</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1165,7 +1252,7 @@
     <div class="container mx-auto px-4">
       <div class="section-header fade-in">
         <h2 class="section-title gradient-text">SUPPORTED EXECUTORS</h2>
-        <p class="section-subtitle">Compatible with the most popular Roblox executors</p>
+        <p class="section-subtitle">Compatible with the most popular Roblox executors including Delta, Krnl, Ronix, Swift, and more</p>
       </div>
       
       <div class="executor-grid">
@@ -1334,7 +1421,7 @@
           <i class="fab fa-discord text-4xl text-indigo-400"></i>
         </div>
         <h2 class="section-title gradient-text">JOIN OUR DISCORD</h2>
-        <p class="section-subtitle">Connect with 50,000+ users and get support</p>
+        <p class="section-subtitle">Connect with 60,000+ users and get support for all your scripting needs</p>
         
         <div class="mt-10">
           <a href="https://discord.gg/moondiety" class="hero-btn hero-btn-primary inline-flex items-center">
@@ -1350,7 +1437,7 @@
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row justify-between items-center gap-8">
         <div class="flex items-center gap-4">
-          <img src="https://raw.githubusercontent.com/adauser-gg/Idk/refs/heads/main/Icon.png" alt="Moondiety Logo" class="h-12">
+          <img src="/media/logo.png" alt="Moondiety Logo" class="h-12">
           <div>
             <h3 class="text-xl font-bold">MOONDIETY SCRIPTS</h3>
             <p class="text-gray-400">Play to Win</p>
@@ -1361,7 +1448,7 @@
           <a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
           <a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a>
           <a href="#" class="text-gray-400 hover:text-white transition">Support</a>
-          <a href="#" class="text-gray-400 hover:text-white transition">Discord</a>
+          <a href="https://discord.gg/moondiety" class="text-gray-400 hover:text-white transition">Discord</a>
         </div>
         
         <div class="flex gap-4">
