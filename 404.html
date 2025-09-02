@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | Moondiety Scripts</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #8b5cf6;
+      --secondary: #ec4899;
+      --accent-blue: #6366f1;
+      --accent-pink: #ec4899;
+      --dark: #0f0f15;
+      --darker: #080811;
+      --light: #f3f4f6;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--light);
+      overflow-x: hidden;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0f0f15 0%, #1a1a2e 50%, #16213e 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      opacity: 0.4;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(8, 8, 17, 0.85);
+      z-index: -1;
+    }
+    
+    h1, h2, h3, h4, h5 {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 600;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .gradient-text {
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .error-container {
+      background: rgba(15, 15, 25, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      padding: 3rem;
+      max-width: 700px;
+      width: 100%;
+    }
+    
+    .error-code {
+      font-size: 8rem;
+      line-height: 1;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+    }
+    
+    .error-message {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: #d1d5db;
+    }
+    
+    .hero-btn {
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      text-decoration: none;
+      margin: 0.5rem;
+    }
+    
+    .hero-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .hero-btn:hover::before {
+      left: 100%;
+    }
+    
+    .hero-btn-primary {
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
+      color: white;
+      box-shadow: 0 5px 20px rgba(99, 102, 102, 241, 0.4);
+    }
+    
+    .hero-btn-primary:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+    }
+    
+    .hero-btn-secondary {
+      background: rgba(30, 30, 40, 0.7);
+      color: white;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+    
+    .hero-btn-secondary:hover {
+      background: rgba(40, 40, 50, 0.8);
+      transform: translateY(-3px);
+    }
+    
+    .astro-icon {
+      font-size: 5rem;
+      margin-bottom: 2rem;
+      animation: float 4s ease-in-out infinite;
+      color: var(--accent-blue);
+    }
+    
+    .search-box {
+      display: flex;
+      margin: 2rem auto;
+      max-width: 500px;
+    }
+    
+    .search-input {
+      flex: 1;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px 0 0 8px;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      background: rgba(20, 20, 30, 0.7);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .search-btn {
+      padding: 0.8rem 1.5rem;
+      border-radius: 0 8px 8px 0;
+      border: none;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .search-btn:hover {
+      opacity: 0.9;
+    }
+    
+    .footer {
+      margin-top: 3rem;
+      color: #d1d5db;
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
+      .error-code {
+        font-size: 5rem;
+      }
+      
+      .error-message {
+        font-size: 1.2rem;
+      }
+      
+      .error-container {
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+<body class="text-white">
+  <!-- Background Video -->
+  <video id="bg-video" autoplay muted loop>
+    <source src="/media/Icon-Animated.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="error-container">
+    <div class="astro-icon">
+      <i class="fas fa-rocket"></i>
+    </div>
+    
+    <h1 class="error-code">404</h1>
+    
+    <h2 class="error-message">Lost in Space?</h2>
+    
+    <p class="text-gray-300 mb-6">The page you're looking for seems to have been lost in the cosmos. Don't worry, we'll help you get back on track!</p>
+    
+    <div class="search-box">
+      <input type="text" class="search-input" placeholder="Search our website...">
+      <button class="search-btn">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+    
+    <div class="action-buttons">
+      <a href="/" class="hero-btn hero-btn-primary">
+        <i class="fas fa-home mr-2"></i> Back to Home
+      </a>
+      
+      <a href="#scripts" class="hero-btn hero-btn-secondary">
+        <i class="fas fa-code mr-2"></i> Browse Scripts
+      </a>
+    </div>
+    
+    <div class="footer">
+      <p>If you believe this is an error, contact our support on <a href="https://discord.gg/moondiety" class="text-indigo-400 hover:underline">Discord</a></p>
+      <p class="mt-2">© 2025 Moondiety Scripts. All rights reserved.</p>
+    </div>
+  </div>
+
+  <script>
+    // Simple search functionality
+    document.querySelector('.search-btn').addEventListener('click', function() {
+      const searchQuery = document.querySelector('.search-input').value;
+      if (searchQuery.trim() !== '') {
+        alert(`Searching for: ${searchQuery}\nIn a real implementation, this would redirect to search results.`);
+      }
+    });
+    
+    // Allow pressing Enter to search
+    document.querySelector('.search-input').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        document.querySelector('.search-btn').click();
+      }
+    });
+  </script>
+</body>
+</html>
