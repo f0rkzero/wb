@@ -133,6 +133,22 @@
       }
     }
     
+    @keyframes live-pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    @keyframes live-shadow {
+      0%, 100% { 
+        box-shadow: 0 5px 20px rgba(99, 102, 102, 241, 0.4),
+                  0 0 0 0 rgba(99, 102, 241, 0.5);
+      }
+      50% { 
+        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5),
+                  0 0 0 10px rgba(99, 102, 241, 0);
+      }
+    }
+    
     .float { 
       animation: float 4s ease-in-out infinite;
       filter: drop-shadow(0 10px 15px rgba(99, 102, 241, 0.3));
@@ -487,6 +503,12 @@
       box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
     }
     
+    .hero-btn-live {
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
+      color: white;
+      animation: live-pulse 2s infinite, live-shadow 2s infinite;
+    }
+    
     .hero-btn-secondary {
       background: rgba(30, 30, 40, 0.7);
       color: white;
@@ -626,6 +648,45 @@
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
     
+    /* Tutorial Button */
+    .tutorial-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      font-weight: 600;
+      background: linear-gradient(90deg, #ff9a00, #ff5500);
+      color: white;
+      margin: 1.5rem auto;
+      max-width: 300px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .tutorial-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: 0.5s;
+    }
+    
+    .tutorial-btn:hover::before {
+      left: 100%;
+    }
+    
+    .tutorial-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 106, 0, 0.4);
+    }
+    
     /* Premium Badge */
     .best-badge {
       position: absolute;
@@ -686,13 +747,34 @@
       padding: 1rem 0;
     }
     
+    .games-scroll-container::before,
+    .games-scroll-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 100px;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+    
+    .games-scroll-container::before {
+      left: 0;
+      background: linear-gradient(90deg, rgba(15, 15, 25, 0.9) 0%, transparent 100%);
+    }
+    
+    .games-scroll-container::after {
+      right: 0;
+      background: linear-gradient(270deg, rgba(15, 15, 25, 0.9) 0%, transparent 100%);
+    }
+    
     .games-scroll-track {
       display: flex;
       animation: auto-scroll 60s linear infinite;
       width: max-content;
     }
     
-    .games-scroll-track:hover {
+    .games-scroll-track.paused {
       animation-play-state: paused;
     }
     
@@ -732,6 +814,77 @@
       width: 100%;
       height: 2px;
       background: linear-gradient(90deg, transparent, #8b5cf6, transparent);
+    }
+    
+    /* Executors Marquee */
+    .executors-scroll-container {
+      position: relative;
+      overflow: hidden;
+      padding: 1rem 0;
+      margin: 2rem 0;
+    }
+    
+    .executors-scroll-container::before,
+    .executors-scroll-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 100px;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+    
+    .executors-scroll-container::before {
+      left: 0;
+      background: linear-gradient(90deg, rgba(15, 15, 25, 0.9) 0%, transparent 100%);
+    }
+    
+    .executors-scroll-container::after {
+      right: 0;
+      background: linear-gradient(270deg, rgba(15, 15, 25, 0.9) 0%, transparent 100%);
+    }
+    
+    .executors-scroll-track {
+      display: flex;
+      animation: auto-scroll 40s linear infinite;
+      width: max-content;
+    }
+    
+    .executors-scroll-track.paused {
+      animation-play-state: paused;
+    }
+    
+    .executor-marquee-card {
+      background: rgba(20, 20, 30, 0.7);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: 8px;
+      padding: 0.8rem 1.2rem;
+      margin-right: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+    
+    .executor-marquee-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      border-color: rgba(99, 102, 241, 0.5);
+    }
+    
+    .executor-marquee-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    
+    .executor-marquee-status {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 20px;
+      background: rgba(16, 185, 129, 0.2);
+      color: #10b981;
     }
     
     /* Responsive Design */
@@ -779,6 +932,13 @@
       .nav-logo-subtitle {
         font-size: 0.6rem;
       }
+      
+      .games-scroll-container::before,
+      .games-scroll-container::after,
+      .executors-scroll-container::before,
+      .executors-scroll-container::after {
+        width: 50px;
+      }
     }
   </style>
 </head>
@@ -810,7 +970,7 @@
       </div>
       
       <div class="nav-actions">
-        <a href="#scripts" class="nav-btn nav-btn-primary">Get Key</a>
+        <a href="/key.html" class="nav-btn nav-btn-primary">Get Key</a>
       </div>
       
       <button class="mobile-menu-btn" id="mobile-menu-btn">
@@ -834,9 +994,9 @@
     <div class="container mx-auto px-4">
       <div class="hero-content slide-in">
         <h1 class="gradient-text">UNLEASH YOUR <span class="block">ROBLOX POTENTIAL</span></h1>
-        <p class="text-gray-300">Moondiety offers premium quality scripts for the most popular Roblox games at no cost. With over 40K daily users and 50M+ executions, we're one of the top Roblox script hubs.</p>
+        <p class="text-gray-300">We offers premium quality scripts for the most popular Roblox games at no cost!!</p>
         <div class="hero-btns">
-          <a href="https://discord.gg/moondiety" class="hero-btn hero-btn-primary">Join Our Discord</a>
+          <a href="https://discord.gg/moondiety" class="hero-btn hero-btn-live">Join Our Discord</a>
           <a href="#scripts" class="hero-btn hero-btn-secondary">Get Script</a>
         </div>
       </div>
@@ -844,17 +1004,17 @@
       <!-- Stats Section -->
       <div class="stats-grid mt-16 fade-in">
         <div class="stat-card">
-          <div class="stat-value">50M+</div>
+          <div class="stat-value">53M+</div>
           <div class="stat-label">Executions</div>
         </div>
         
         <div class="stat-card fade-in delay-1">
-          <div class="stat-value">40K+</div>
+          <div class="stat-value">46K+</div>
           <div class="stat-label">Daily Users</div>
         </div>
         
         <div class="stat-card fade-in delay-2">
-          <div class="stat-value">60K+</div>
+          <div class="stat-value">63K+</div>
           <div class="stat-label">Discord Members</div>
         </div>
         
@@ -871,7 +1031,7 @@
     <div class="container mx-auto px-4">
       <div class="section-header fade-in">
         <h2 class="section-title gradient-text">SCRIPT LOADER</h2>
-        <p class="section-subtitle">Copy and paste this script to unlock all features. Compatible with Delta, Krnl, Ronix, Swift, and more executors.</p>
+        <p class="section-subtitle">Copy and paste this script in any of our supported games.</p>
       </div>
       
       <div class="max-w-3xl mx-auto bg-gray-900 p-6 rounded-xl border border-gray-800 fade-in">
@@ -896,6 +1056,11 @@
             <span>Get Key [Lootlabs]</span>
           </a>
         </div>
+        
+        <a href="https://moondiety.com/key-tutorial" target="_blank" class="tutorial-btn">
+          <i class="fas fa-video"></i>
+          <span>Watch Key Tutorial</span>
+        </a>
       </div>
     </div>
   </section>
@@ -908,8 +1073,8 @@
         <p class="section-subtitle">Experience these popular Roblox games like never before with Moondiety scripts</p>
       </div>
       
-      <div class="games-scroll-container">
-        <div class="games-scroll-track">
+      <div class="games-scroll-container" id="games-scroll-container">
+        <div class="games-scroll-track" id="games-scroll-track">
           <!-- Grow a Garden -->
           <div class="game-card fade-in">
             <div class="game-card-inner">
@@ -1255,161 +1420,96 @@
         <p class="section-subtitle">Compatible with the most popular Roblox executors including Delta, Krnl, Ronix, Swift, and more</p>
       </div>
       
-      <div class="executor-grid">
-        <!-- Delta -->
-        <div class="executor-card fade-in">
-          <a href="https://deltaexploits.gg/" target="_blank">
-            <div class="executor-icon">
-              <i class="fas fa-arrow-right text-green-400"></i>
-            </div>
-            <h3 class="executor-name">Delta</h3>
-            <span class="executor-status status-active">Fully Supported</span>
+      <!-- Executors Marquee -->
+      <div class="executors-scroll-container" id="executors-scroll-container">
+        <div class="executors-scroll-track" id="executors-scroll-track">
+          <a href="https://deltaexploits.gg/" target="_blank" class="executor-marquee-card">
+            <i class="fas fa-arrow-right text-green-400"></i>
+            <span class="executor-marquee-name">Delta</span>
+            <span class="executor-marquee-status">Active</span>
           </a>
-        </div>
-        
-        <!-- Codex -->
-        <div class="executor-card fade-in delay-1">
-          <a href="https://codex.lol/" target="_blank">
-            <div class="executor-icon">
-              <i class="fas fa-arrow-right text-green-400"></i>
-            </div>
-            <h3 class="executor-name">Codex</h3>
-            <span class="executor-status status-active">Fully Supported</span>
+          
+          <a href="https://codex.lol/" target="_blank" class="executor-marquee-card">
+            <i class="fas fa-arrow-right text-green-400"></i>
+            <span class="executor-marquee-name">Codex</span>
+            <span class="executor-marquee-status">Active</span>
           </a>
-        </div>
-        
-        <!-- Krnl -->
-        <div class="executor-card fade-in delay-2">
-          <a href="https://krnl.cat/" target="_blank">
-            <div class="executor-icon">
-              <i class="fas fa-arrow-right text-green-400"></i>
-            </div>
-            <h3 class="executor-name">Krnl</h3>
-            <span class="executor-status status-active">Fully Supported</span>
+          
+          <a href="https://krnl.cat/" target="_blank" class="executor-marquee-card">
+            <i class="fas fa-arrow-right text-green-400"></i>
+            <span class="executor-marquee-name">Krnl</span>
+            <span class="executor-marquee-status">Active</span>
           </a>
-        </div>
-        
-        <!-- Ronix -->
-        <div class="executor-card fade-in delay-3">
-          <a href="https://ronixstudios.com/" target="_blank">
-            <div class="executor-icon">
-              <i class="fas fa-arrow-right text-green-400"></i>
-            </div>
-            <h3 class="executor-name">Ronix</h3>
-            <span class="executor-status status-active">Fully Supported</span>
+          
+          <a href="https://ronixstudios.com/" target="_blank" class="executor-marquee-card">
+            <i class="fas fa-arrow-right text-green-400"></i>
+            <span class="executor-marquee-name">Ronix</span>
+            <span class="executor-marquee-status">Active</span>
           </a>
-        </div>
-        
-        <!-- Arceus X -->
-        <div class="executor-card fade-in">
-          <a href="https://spdmteam.com/index" target="_blank">
-            <div class="executor-icon">
-              <i class="fas fa-arrow-right text-green-400"></i>
-            </div>
-            <h3 class="executor-name">Arceus X</h3>
-            <span class="executor-status status-active">Fully Supported</span>
+          
+          <a href="https://spdmteam.com/index" target="_blank" class="executor-marquee-card">
+            <i class="fas fa-arrow-right text-green-400"></i>
+            <span class="executor-marquee-name">Arceus X</span>
+            <span class="executor-marquee-status">Active</span>
           </a>
-        </div>
-        
-        <!-- Vega X -->
-        <div class="executor-card fade-in delay-1">
-          <a href="https://vegax.gg/" target="_blank">
-            <div class="executor-icon">
-              <i class="fas fa-arrow-right text-green-400"></i>
-            </div>
-            <h3 class="executor-name">Vega X</h3>
-            <span class="executor-status status-active">Fully Supported</span>
+          
+          <a href="https://vegax.gg/" target="_blank" class="executor-marquee-card">
+            <i class="fas fa-arrow-right text-green-400"></i>
+            <span class="executor-marquee-name">Vega X</span>
+            <span class="executor-marquee-status">Active</span>
           </a>
-        </div>
-        
-        <!-- Cryptic -->
-        <div class="executor-card fade-in delay-2">
-          <a href="https://getcryptic.net/" target="_blank">
-            <div class="executor-icon">
-              <i class="fas fa-arrow-right text-green-400"></i>
-            </div>
-            <h3 class="executor-name">Cryptic</h3>
-            <span class="executor-status status-active">Fully Supported</span>
+          
+          <a href="https://getcryptic.net/" target="_blank" class="executor-marquee-card">
+            <i class="fas fa-arrow-right text-green-400"></i>
+            <span class="executor-marquee-name">Cryptic</span>
+            <span class="executor-marquee-status">Active</span>
           </a>
-        </div>
-        
-        <!-- Bunni -->
-        <div class="executor-card fade-in delay-3">
-          <a href="https://realbunni.com/" target="_blank">
-            <div class="executor-icon">
-              <i class="fas fa-arrow-right text-green-400"></i>
-            </div>
-            <h3 class="executor-name">Bunni</h3>
-            <span class="executor-status status-active">Fully Supported</span>
+          
+          <a href="https://realbunni.com/" target="_blank" class="executor-marquee-card">
+            <i class="fas fa-arrow-right text-green-400"></i>
+            <span class="executor-marquee-name">Bunni</span>
+            <span class="executor-marquee-status">Active</span>
           </a>
-        </div>
-        
-        <!-- Swift -->
-        <div class="executor-card fade-in">
-          <a href="https://getswift.vip/" target="_blank">
-            <div class="executor-icon">
-              <i class="fas fa-arrow-right text-green-400"></i>
-            </div>
-            <h3 class="executor-name">Swift</h3>
-            <span class="executor-status status-active">Fully Supported</span>
+          
+          <a href="https://getswift.vip/" target="_blank" class="executor-marquee-card">
+            <i class="fas fa-arrow-right text-green-400"></i>
+            <span class="executor-marquee-name">Swift</span>
+            <span class="executor-marquee-status">Active</span>
           </a>
-        </div>
-        
-        <!-- Velocity -->
-        <div class="executor-card fade-in delay-1">
-          <a href="https://getvelocity.live/" target="_blank">
-            <div class="executor-icon">
-              <i class="fas fa-arrow-right text-green-400"></i>
-            </div>
-            <h3 class="executor-name">Velocity</h3>
-            <span class="executor-status status-active">Fully Supported</span>
+          
+          <a href="https://getvelocity.live/" target="_blank" class="executor-marquee-card">
+            <i class="fas fa-arrow-right text-green-400"></i>
+            <span class="executor-marquee-name">Velocity</span>
+            <span class="executor-marquee-status">Active</span>
           </a>
-        </div>
-        
-        
-        <div class="executor-card fade-in delay-2">
-          <a href="https://volcano.best/" target="_blank">
-            <div class="executor-icon">
-              <i class="fas fa-arrow-right text-green-400"></i>
-            </div>
-            <h3 class="executor-name">Volcano</h3>
-            <span class="executor-status status-active">Fully Supported</span>
+          
+          <a href="https://volcano.best/" target="_blank" class="executor-marquee-card">
+            <i class="fas fa-arrow-right text-green-400"></i>
+            <span class="executor-marquee-name">Volcano</span>
+            <span class="executor-marquee-status">Active</span>
           </a>
-        </div>
-        
-        
-        <div class="executor-card fade-in delay-3">
-          <a href="https://zenith.win/" target="_blank">
-            <div class="executor-icon">
-              <i class="fas fa-arrow-right text-green-400"></i>
-            </div>
-            <h3 class="executor-name">Zenith</h3>
-            <span class="executor-status status-active">Fully Supported</span>
+          
+          <a href="https://zenith.win/" target="_blank" class="executor-marquee-card">
+            <i class="fas fa-arrow-right text-green-400"></i>
+            <span class="executor-marquee-name">Zenith</span>
+            <span class="executor-marquee-status">Active</span>
           </a>
-        </div>
-        
-        
-        <div class="executor-card fade-in">
-          <a href="https://getwave.gg/" target="_blank">
-            <div class="executor-icon">
-              <i class="fas fa-arrow-right text-green-400"></i>
-            </div>
-            <h3 class="executor-name">Wave</h3>
-            <span class="executor-status status-active">Fully Supported</span>
+          
+          <a href="https://getwave.gg/" target="_blank" class="executor-marquee-card">
+            <i class="fas fa-arrow-right text-green-400"></i>
+            <span class="executor-marquee-name">Wave</span>
+            <span class="executor-marquee-status">Active</span>
           </a>
-        </div>
-        
-        
-        <div class="executor-card fade-in delay-1">
-          <a href="https://buyawp.gg" target="_blank">
-            <div class="executor-icon">
-              <i class="fas fa-arrow-right text-green-400"></i>
-            </div>
-            <h3 class="executor-name">Awp</h3>
-            <span class="executor-status status-active">Fully Supported</span>
+          
+          <a href="https://buyawp.gg" target="_blank" class="executor-marquee-card">
+            <i class="fas fa-arrow-right text-green-400"></i>
+            <span class="executor-marquee-name">Awp</span>
+            <span class="executor-marquee-status">Active</span>
           </a>
         </div>
       </div>
+      
+      
     </div>
   </section>
 
@@ -1577,6 +1677,86 @@
         });
       });
     }
+
+    // Enhanced scrolling functionality for games and executors
+    function setupInfiniteScroll(containerId, trackId, duplicate = true) {
+      const container = document.getElementById(containerId);
+      const track = document.getElementById(trackId);
+      
+      if (!container || !track) return;
+      
+      // Duplicate content for seamless looping
+      if (duplicate) {
+        track.innerHTML += track.innerHTML;
+      }
+      
+      let isPaused = false;
+      let startX, scrollLeft, isDown = false;
+      
+      // Pause auto-scroll on hover/touch
+      container.addEventListener('mouseenter', () => {
+        isPaused = true;
+        track.classList.add('paused');
+      });
+      
+      container.addEventListener('mouseleave', () => {
+        isPaused = false;
+        track.classList.remove('paused');
+      });
+      
+      // Touch events for mobile
+      container.addEventListener('touchstart', (e) => {
+        isPaused = true;
+        track.classList.add('paused');
+      }, { passive: true });
+      
+      container.addEventListener('touchend', () => {
+        // Small delay before resuming auto-scroll
+        setTimeout(() => {
+          isPaused = false;
+          track.classList.remove('paused');
+        }, 2000);
+      }, { passive: true });
+      
+      // Mouse drag functionality for desktop
+      container.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+        container.style.cursor = 'grabbing';
+      });
+      
+      container.addEventListener('mouseleave', () => {
+        isDown = false;
+        container.style.cursor = 'grab';
+      });
+      
+      container.addEventListener('mouseup', () => {
+        isDown = false;
+        container.style.cursor = 'grab';
+      });
+      
+      container.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - container.offsetLeft;
+        const walk = (x - startX) * 2;
+        container.scrollLeft = scrollLeft - walk;
+      });
+      
+      // Reset position when scroll reaches the end for seamless loop
+      container.addEventListener('scroll', () => {
+        if (container.scrollLeft >= track.scrollWidth / 2) {
+          container.scrollLeft = 0;
+        }
+      });
+    }
+    
+    // Initialize enhanced scrolling
+    document.addEventListener('DOMContentLoaded', () => {
+      setupInfiniteScroll('games-scroll-container', 'games-scroll-track');
+      setupInfiniteScroll('executors-scroll-container', 'executors-scroll-track');
+    });
   </script>
 </body>
 </html>
