@@ -1357,6 +1357,85 @@
         </div>
       </div>
     </div>
+              <!-- Evade -->
+          <div class="game-card fade-in delay-1">
+            <div class="game-card-inner">
+              <div class="game-card-front">
+                <img src="/media/Evade.webp" alt="Evade" class="w-full h-48 object-cover">
+                <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
+                  <div class="game-title-container">
+                    <div class="game-title">Evade</div>
+                    <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
+                  </div>
+                </div>
+              </div>
+              <div class="game-card-back">
+                <h3 class="text-xl font-semibold gradient-text mb-4">Evade Features</h3>
+                <div class="text-left">
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-eye text-purple-400 mt-1 mr-2"></i>
+                    <span>Player & Bot ESP</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-shield-alt text-purple-400 mt-1 mr-2"></i>
+                    <span>God Mode</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-running text-purple-400 mt-1 mr-2"></i>
+                    <span>WalkSpeed & JumpPower</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-first-aid text-purple-400 mt-1 mr-2"></i>
+                    <span>Auto Revive & Heal</span>
+                  </div>
+                  <div class="flex items-start text-purple-300">
+                    <i class="fas fa-crown mr-2"></i>
+                    <span>22+ More Features</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Plant vs Brainrot -->
+          <div class="game-card fade-in delay-2">
+            <div class="game-card-inner">
+              <div class="game-card-front">
+                <img src="/media/pvb.webp" alt="Plant vs Brainrot" class="w-full h-48 object-cover">
+                <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
+                  <div class="game-title-container">
+                    <div class="game-title">Plant vs Brainrot</div>
+                    <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
+                  </div>
+                </div>
+              </div>
+              <div class="game-card-back">
+                <h3 class="text-xl font-semibold gradient-text mb-4">Plant vs Brainrot Features</h3>
+                <div class="text-left">
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-sun text-purple-400 mt-1 mr-2"></i>
+                    <span>Infinite Sun/Currency</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-robot text-purple-400 mt-1 mr-2"></i>
+                    <span>Auto Collect</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-skull-crossbones text-purple-400 mt-1 mr-2"></i>
+                    <span>Kill All Brainrots</span>
+                  </div>
+                  <div class="mb-3 flex items-start">
+                    <i class="fas fa-seedling text-purple-400 mt-1 mr-2"></i>
+                    <span>God Mode Plants</span>
+                  </div>
+                  <div class="flex items-start text-purple-300">
+                    <i class="fas fa-crown mr-2"></i>
+                    <span>15+ More Features</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
   </section>
 
   <!-- Premium Section -->
@@ -1632,13 +1711,13 @@
             behavior: 'smooth'
           });
           
-          // Close mobile menu
+          
           mobileMenu.classList.remove('active');
         }
       });
     });
     
-    // Animation on scroll
+   
     const fadeElements = document.querySelectorAll('.fade-in, .slide-in');
     
     const observer = new IntersectionObserver((entries) => {
@@ -1656,7 +1735,7 @@
       observer.observe(el);
     });
     
-    // Copy script button
+   
     const copyBtn = document.getElementById('copy-script');
     if (copyBtn) {
       const originalBtnHTML = copyBtn.innerHTML;
@@ -1678,14 +1757,14 @@
       });
     }
 
-    // Enhanced scrolling functionality for games and executors
+    
     function setupInfiniteScroll(containerId, trackId, duplicate = true) {
       const container = document.getElementById(containerId);
       const track = document.getElementById(trackId);
       
       if (!container || !track) return;
       
-      // Duplicate content for seamless looping
+
       if (duplicate) {
         track.innerHTML += track.innerHTML;
       }
@@ -1693,7 +1772,7 @@
       let isPaused = false;
       let startX, scrollLeft, isDown = false;
       
-      // Pause auto-scroll on hover/touch
+      
       container.addEventListener('mouseenter', () => {
         isPaused = true;
         track.classList.add('paused');
@@ -1704,21 +1783,21 @@
         track.classList.remove('paused');
       });
       
-      // Touch events for mobile
+
       container.addEventListener('touchstart', (e) => {
         isPaused = true;
         track.classList.add('paused');
       }, { passive: true });
       
       container.addEventListener('touchend', () => {
-        // Small delay before resuming auto-scroll
+  
         setTimeout(() => {
           isPaused = false;
           track.classList.remove('paused');
         }, 2000);
       }, { passive: true });
       
-      // Mouse drag functionality for desktop
+  
       container.addEventListener('mousedown', (e) => {
         isDown = true;
         startX = e.pageX - container.offsetLeft;
@@ -1744,7 +1823,7 @@
         container.scrollLeft = scrollLeft - walk;
       });
       
-      // Reset position when scroll reaches the end for seamless loop
+  
       container.addEventListener('scroll', () => {
         if (container.scrollLeft >= track.scrollWidth / 2) {
           container.scrollLeft = 0;
@@ -1752,7 +1831,7 @@
       });
     }
     
-    // Initialize enhanced scrolling
+
     document.addEventListener('DOMContentLoaded', () => {
       setupInfiniteScroll('games-scroll-container', 'games-scroll-track');
       setupInfiniteScroll('executors-scroll-container', 'executors-scroll-track');
