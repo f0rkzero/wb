@@ -1354,9 +1354,7 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+       
               <!-- Evade -->
           <div class="game-card fade-in delay-1">
             <div class="game-card-inner">
@@ -1436,6 +1434,9 @@
               </div>
             </div>
           </div>
+           </div>
+      </div>
+    </div>
   </section>
 
   <!-- Premium Section -->
@@ -1711,13 +1712,13 @@
             behavior: 'smooth'
           });
           
-          
+          // Close mobile menu
           mobileMenu.classList.remove('active');
         }
       });
     });
     
-   
+    // Animation on scroll
     const fadeElements = document.querySelectorAll('.fade-in, .slide-in');
     
     const observer = new IntersectionObserver((entries) => {
@@ -1735,7 +1736,7 @@
       observer.observe(el);
     });
     
-   
+    // Copy script button
     const copyBtn = document.getElementById('copy-script');
     if (copyBtn) {
       const originalBtnHTML = copyBtn.innerHTML;
@@ -1757,14 +1758,14 @@
       });
     }
 
-    
+    // Enhanced scrolling functionality for games and executors
     function setupInfiniteScroll(containerId, trackId, duplicate = true) {
       const container = document.getElementById(containerId);
       const track = document.getElementById(trackId);
       
       if (!container || !track) return;
       
-
+      // Duplicate content for seamless looping
       if (duplicate) {
         track.innerHTML += track.innerHTML;
       }
@@ -1772,7 +1773,7 @@
       let isPaused = false;
       let startX, scrollLeft, isDown = false;
       
-      
+      // Pause auto-scroll on hover/touch
       container.addEventListener('mouseenter', () => {
         isPaused = true;
         track.classList.add('paused');
@@ -1783,21 +1784,21 @@
         track.classList.remove('paused');
       });
       
-
+      // Touch events for mobile
       container.addEventListener('touchstart', (e) => {
         isPaused = true;
         track.classList.add('paused');
       }, { passive: true });
       
       container.addEventListener('touchend', () => {
-  
+        // Small delay before resuming auto-scroll
         setTimeout(() => {
           isPaused = false;
           track.classList.remove('paused');
         }, 2000);
       }, { passive: true });
       
-  
+      // Mouse drag functionality for desktop
       container.addEventListener('mousedown', (e) => {
         isDown = true;
         startX = e.pageX - container.offsetLeft;
@@ -1823,7 +1824,7 @@
         container.scrollLeft = scrollLeft - walk;
       });
       
-  
+      // Reset position when scroll reaches the end for seamless loop
       container.addEventListener('scroll', () => {
         if (container.scrollLeft >= track.scrollWidth / 2) {
           container.scrollLeft = 0;
@@ -1831,7 +1832,7 @@
       });
     }
     
-
+    // Initialize enhanced scrolling
     document.addEventListener('DOMContentLoaded', () => {
       setupInfiniteScroll('games-scroll-container', 'games-scroll-track');
       setupInfiniteScroll('executors-scroll-container', 'executors-scroll-track');
