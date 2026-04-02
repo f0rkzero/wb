@@ -1,11 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="refresh" content="0; url=https://discord.gg/moondiety">
     <title>Moondiety Discord</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Inter', system-ui, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 40px 20px;
+        }
+
+        .icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 600;
+            margin: 0 0 15px 0;
+            background: linear-gradient(90deg, #7289da, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 18px;
+            color: #aaaaaa;
+            margin: 0 0 30px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #7289da;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 17px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #5b6ebe;
+            transform: translateY(-2px);
+        }
+
+        .stars {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: transparent;
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
 </head>
 <body>
-    <p>Redirecting to Moondiety Discord...</p>
-    <p>If it doesn't redirect, click <a href="https://discord.gg/moondiety">here</a>.</p>
+    <div class="stars"></div>
+    
+    <div class="container">
+        <div class="icon">🌌</div>
+        <h1>Join Moondiety Discord</h1>
+        <p>Redirecting you to our official Discord server...</p>
+        
+        <a href="https://discord.gg/moondiety" class="btn">
+            Open Discord Now
+        </a>
+        
+        <p style="margin-top: 40px; font-size: 15px; color: #666;">
+            If it doesn't redirect automatically, click the button above.
+        </p>
+    </div>
+
+    <script>
+       
+        setTimeout(() => {
+            window.location.href = "https://discord.gg/moondiety";
+        }, 800);
+    </script>
 </body>
 </html>
