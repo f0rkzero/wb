@@ -284,32 +284,30 @@
     }
   </style>
 </head>
-<body class="dark-theme">
+<body>
 <div class="scroll-progress" id="scroll-progress"></div>
-<div class="site-bg"></div>
-<canvas id="particles-canvas"></canvas>
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
-    <a href="/" class="nav-logo">
+    <a href="/" class="nav-logo" aria-label="Moondiety Home">
       <img src="/media/logo.png" alt="Moondiety Logo" width="36" height="36">
       <span class="nav-logo-name">MOONDIETY</span>
     </a>
-    <nav class="nav-links" aria-label="Primary navigation">
-      <a href="/" class="nav-link">Home</a>
-      <a href="/#scripts" class="nav-link">Scripts</a>
-      <a href="/#games"     class="nav-link">Games</a>
-      <a href="/shop.html"   class="nav-link">Shop</a>
+    <div class="nav-pill" role="navigation" aria-label="Main navigation">
+      <a href="/"          class="nav-link">Home</a>
+      <a href="/#scripts"  class="nav-link">Scripts</a>
+      <a href="/#games"    class="nav-link">Games</a>
+      <a href="/shop.html" class="nav-link">Shop</a>
       <a href="/#executors" class="nav-link">Executors</a>
-      <a href="/#discord" class="nav-link">Discord</a>
-    </nav>
+      <a href="/#discord"  class="nav-link">Discord</a>
+    </div>
     <div class="nav-actions">
-      <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="btn-discord">
+      <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="nav-login">
         <i class="fab fa-discord"></i> Discord
       </a>
       <a href="/key.html" class="btn-get-key">
         <i class="fas fa-key"></i> Get Key
       </a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
