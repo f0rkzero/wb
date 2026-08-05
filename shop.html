@@ -5,695 +5,269 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moondiety Shop | Premium Keys</title>
   <meta name="description" content="Get Moondiety premium keys for exclusive features and priority support. 7-day, monthly, and lifetime options available.">
-  <meta name="keywords" content="moondiety premium, moondiety shop, roblox premium scripts, roblox game passes">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/animations.css">
   <style>
-    :root {
-      --primary: #8b5cf6;
-      --secondary: #ec4899;
-      --accent-blue: #6366f1;
-      --accent-pink: #ec4899;
-      --dark: #0f0f15;
-      --darker: #080811;
-      --light: #f3f4f6;
-      --nav-height: 80px;
-    }
+    .page-hero { padding: calc(var(--nav-h) + 0rem) 0 3rem; text-align: center; }
+    .page-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.1; margin-bottom: 1rem; color: var(--text-white); }
+    .page-sub { color: var(--text-muted); font-size: 1.05rem; max-width: 500px; margin: 0 auto 3rem; }
     
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: var(--max-w); margin: 0 auto 4rem; padding: 0 2rem; }
+    .benefit-card { background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 2rem; border-radius: var(--radius-lg); text-align: left; transition: all 0.3s ease; }
+    .benefit-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.1); background: var(--glass-bg-md); }
+    .benefit-icon { color: var(--rose); font-size: 1.5rem; margin-bottom: 1rem; }
+    .benefit-title { font-size: 1.1rem; font-weight: 600; color: var(--text-white); margin-bottom: 0.5rem; }
+    .benefit-desc { font-size: 0.9rem; color: var(--text-dim); line-height: 1.5; }
     
-    body {
-      font-family: 'Poppins', sans-serif;
-      color: var(--light);
-      overflow-x: hidden;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #0f0f15 0%, #1a1a2e 50%, #16213e 100%);
-    }
-    
-    #bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -2;
-      opacity: 0.4;
-    }
-    
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(8, 8, 17, 0.85);
-      z-index: -1;
-    }
-    
-    h1, h2, h3, h4, h5 {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 600;
-    }
-    
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
-      100% { transform: translateY(0px); }
-    }
-    
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7); }
-      70% { box-shadow: 0 0 0 15px rgba(99, 102, 241, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
-    }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    @keyframes glow {
-      0% { text-shadow: 0 0 5px #8b5cf6, 0 0 10px #8b5cf6; }
-      50% { text-shadow: 0 0 20px #8b5cf6, 0 0 30px #8b5cf6; }
-      100% { text-shadow: 0 0 5px #8b5cf6, 0 0 10px #8b5cf6; }
-    }
-    
-    .float { 
-      animation: float 4s ease-in-out infinite;
-      filter: drop-shadow(0 10px 15px rgba(99, 102, 241, 0.3));
-    }
-    
-    .glow {
-      animation: glow 2s infinite;
-    }
-    
-    .gradient-text {
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    .section-bg {
-      background: rgba(15, 15, 25, 0.7);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
-      border: 1px solid rgba(99, 102, 241, 0.2);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      margin: 20px auto;
-      max-width: 1400px;
-    }
-    
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(10, 10, 20, 0.95);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-      border-bottom: 1px solid rgba(99, 102, 241, 0.2);
-      height: var(--nav-height);
-    }
-    
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 100%;
-      padding: 0 2rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      cursor: pointer;
-    }
-    
-    .nav-logo img {
-      height: 45px;
-      animation: float 4s ease-in-out infinite;
-    }
-    
-    .nav-logo-text {
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .nav-logo-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-family: 'Share Tech Mono', monospace;
-      text-shadow: 0 0 10px rgba(139, 92, 246, 0.7);
-    }
-    
-    .nav-logo-subtitle {
-      font-size: 0.7rem;
-      color: #d1d5db;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-top: -5px;
-      font-family: 'Share Tech Mono', monospace;
-    }
-    
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-    }
-    
-    .nav-link {
-      position: relative;
-      padding: 0.5rem 0;
-      color: #e0e0e0;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      overflow: hidden;
-    }
-    
-    .nav-link::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
-      border-radius: 3px;
-      transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-    
-    .nav-link:hover {
-      color: white;
-    }
-    
-    .nav-link:hover::before {
-      width: 100%;
-    }
-    
-    .nav-link.active {
-      color: white;
-    }
-    
-    .nav-link.active::before {
-      width: 100%;
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
-    }
-    
-    .nav-actions {
-      display: flex;
-      gap: 1rem;
-    }
-    
-    .nav-btn {
-      padding: 0.6rem 1.5rem;
-      border-radius: 8px;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .nav-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: 0.5s;
-    }
-    
-    .nav-btn:hover::before {
-      left: 100%;
-    }
-    
-    .nav-btn-primary {
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
-      color: white;
-      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-    }
-    
-    .nav-btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
-    }
-    
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    
-    .mobile-menu {
-      position: fixed;
-      top: var(--nav-height);
-      left: 0;
-      width: 100%;
-      background: rgba(15, 15, 25, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 1rem 0;
-      transform: translateY(-100%);
-      transition: transform 0.4s ease;
-      z-index: 999;
-    }
-    
-    .mobile-menu.active {
-      transform: translateY(0);
-    }
-    
-    .mobile-menu a {
-      display: block;
-      padding: 1rem 2rem;
-      color: #e0e0e0;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      border-bottom: 1px solid rgba(99, 102, 241, 0.1);
-    }
-    
-    .mobile-menu a:hover {
-      background: rgba(99, 102, 241, 0.1);
-      color: white;
-    }
-    
-    .hero-btn {
-      padding: 1rem 2rem;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .hero-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: 0.5s;
-    }
-    
-    .hero-btn:hover::before {
-      left: 100%;
-    }
-    
-    .hero-btn-primary {
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
-      color: white;
-      box-shadow: 0 5px 20px rgba(99, 102, 102, 241, 0.4);
-    }
-    
-    .hero-btn-primary:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
-    }
-    
-    .hero-btn-secondary {
-      background: rgba(30, 30, 40, 0.7);
-      color: white;
-      border: 1px solid rgba(99, 102, 241, 0.3);
-    }
-    
-    .hero-btn-secondary:hover {
-      background: rgba(40, 40, 50, 0.8);
-      transform: translateY(-3px);
-    }
-    
-    .fade-in {
-      animation: fadeInUp 0.8s ease-out forwards;
-      opacity: 0;
-    }
-    
-    .slide-in {
-      animation: slideIn 0.6s ease-out forwards;
-      opacity: 0;
-    }
-    
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.2s; }
-    .delay-3 { animation-delay: 0.3s; }
-    .delay-4 { animation-delay: 0.4s; }
-    
-    section {
-      padding: 5rem 0;
-    }
-    
-    .section-header {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-    
-    .section-title {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      text-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
-    }
-    
-    .section-subtitle {
-      color: #d1d5db;
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    
-    .best-badge {
-      position: absolute;
-      top: 0;
-      right: 0;
-      background: linear-gradient(90deg, #ff9a00, #ff5500);
-      color: white;
-      padding: 0.5rem 1.5rem;
-      font-weight: 700;
-      border-radius: 0 0 0 12px;
-      font-size: 0.9rem;
-      animation: pulse 2s infinite;
-    }
-    
-
-    @media (max-width: 1024px) {
-      .nav-links {
-        display: none;
-      }
-      
-      .mobile-menu-btn {
-        display: block;
-      }
-      
-      .nav-logo-title {
-        font-size: 1.5rem;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .hero-btns {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .nav-logo-title {
-        font-size: 1.3rem;
-      }
-      
-      .nav-logo-subtitle {
-        font-size: 0.6rem;
-      }
-    }
+    .faq-grid { display: grid; gap: 1rem; max-width: 800px; margin: 0 auto 4rem; padding: 0 2rem; text-align: left; }
+    .faq-card { background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 1.5rem; border-radius: var(--radius-md); }
+    .faq-title { font-size: 1.05rem; font-weight: 600; color: var(--text-white); margin-bottom: 0.5rem; }
+    .faq-desc { font-size: 0.9rem; color: var(--text-dim); line-height: 1.5; }
   </style>
 </head>
-<body class="text-white">
- 
-  <video id="bg-video" autoplay muted loop>
-    <source src="/media/Icon-Animated.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-
-
-  <nav>
-    <div class="nav-container">
-      <div class="nav-logo" onclick="window.location.href='/'">
-        <img src="/media/logo.png" alt="Moondiety Logo">
-        <div class="nav-logo-text">
-          <div class="nav-logo-title">MOONDIETY</div>
-          <div class="nav-logo-subtitle">SHOP</div>
-        </div>
-      </div>
-      
-      <div class="nav-links">
-        <a href="/" class="nav-link">Home</a>
-        <a href="/#scripts" class="nav-link">Scripts</a>
-        <a href="/#games" class="nav-link">Games</a>
-        <a href="/shop" class="nav-link active">Premium</a>
-        <a href="/#executors" class="nav-link">Executors</a>
-        <a href="/#discord" class="nav-link">Discord</a>
-      </div>
-      
-      <div class="nav-actions">
-        <a href="/key.html" class="nav-btn nav-btn-primary">Get Key</a>
-      </div>
-      
-      <button class="mobile-menu-btn" id="mobile-menu-btn">
-        <i class="fas fa-bars"></i>
+<body>
+  <nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="/#home" class="nav-logo" aria-label="Moondiety Home">
+      <img src="/media/logo.png" alt="Moondiety Logo" width="36" height="36">
+      <span class="nav-logo-name">MOONDIETY</span>
+    </a>
+    <div class="nav-pill" role="navigation" aria-label="Main navigation">
+      <a href="/#home"      class="nav-link active">Home</a>
+      <a href="/#scripts"   class="nav-link">Scripts</a>
+      <a href="/#games"     class="nav-link">Games</a>
+      <a href="/shop.html"   class="nav-link">Shop</a>
+      <a href="/#executors" class="nav-link">Executors</a>
+      <a href="/#discord"   class="nav-link">Discord</a>
+    </div>
+    <div class="nav-actions">
+      <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="nav-login">
+        <i class="fab fa-discord"></i> Discord
+      </a>
+      <a href="/key.html" class="btn-get-key">
+        <i class="fas fa-key"></i> Get Key
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
       </button>
     </div>
-  </nav>
+  </div>
+</nav>
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu-header">
+    <div class="mobile-menu-brand">
+      <img src="/media/logo.png" alt="Moondiety" width="28">
+      <span>Moondiety</span>
+    </div>
+    <button class="mobile-close" id="mobile-close" aria-label="Close menu">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <div class="mobile-menu-body">
+    <a href="/#home" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-home"></i></span>
+      <span>Home</span>
+    </a>
+    <a href="/#scripts" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-code"></i></span>
+      <span>Script Loader</span>
+    </a>
+    <a href="/#games" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-gamepad"></i></span>
+      <span>Games</span>
+    </a>
+    <a href="/shop.html" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-crown"></i></span>
+      <span>Premium Shop</span>
+    </a>
+    <a href="/#executors" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-bolt"></i></span>
+      <span>Executors</span>
+    </a>
+    <div class="mobile-menu-separator"></div>
+    <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="mobile-link">
+      <span class="ml-icon"><i class="fab fa-discord"></i></span>
+      <span>Join Discord</span>
+    </a>
+  </div>
+  <div class="mobile-menu-footer">
+    <a href="/key.html" class="btn-lg btn-primary">
+      <i class="fas fa-key"></i> Get Free Key
+    </a>
+  </div>
+</div>
 
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="/">Home</a>
-    <a href="/#scripts">Scripts</a>
-    <a href="/#games">Games</a>
-    <a href="/shop">Premium</a>
-    <a href="/#executors">Executors</a>
-    <a href="/#discord">Discord</a>
+
+  <div class="page-hero">
+    <div class="section-label" style="margin-top: 4rem; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); border: 1px solid rgba(255,45,85,0.3); background: rgba(255,45,85,0.07); padding: 0.35rem 0.9rem; border-radius: 100px; margin-bottom: 1.5rem;"><i class="fas fa-shopping-cart"></i> Premium Shop</div>
+    <h1 class="page-title">Unlock the Full Features.</h1>
+    <p class="page-sub">Get AD-Free access and exclusive premium features. Keys delivered instantly.</p>
   </div>
 
-  <section class="section-bg">
-    <div class="container mx-auto px-4">
-      <div class="section-header fade-in">
-        <h2 class="section-title gradient-text">PREMIUM KEYS</h2>
-        <p class="section-subtitle">Unlock exclusive features and AD Free access</p>
-        <p class="section-subtitle">Open Ticket in Discord Server if any issue</p>
+  <section class="premium-section" style="padding-top: 0;">
+    <canvas id="globe-canvas" aria-hidden="true"></canvas>
+    <div class="section">
+      <div class="pricing-grid">
+      <div class="pricing-card" data-anim="fade-up" data-delay="50" id="plan-1day">
+        <div class="pricing-plan">1-Day Key</div>
+        <div class="pricing-price">Free</div>
+        <div class="pricing-price-sub">Requires Linkvertise/Lootlabs</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> 24-Hour Access</li>
+          <li class="pricing-feature disabled"><i class="fas fa-times icon-no"></i> No AD-Free Key</li>
+          <li class="pricing-feature disabled"><i class="fas fa-times icon-no"></i> No Premium Features</li>
+          <li class="pricing-feature disabled"><i class="fas fa-times icon-no"></i> No Priority Support</li>
+        </ul>
+        <a href="/key.html" class="btn-pricing btn-pricing-default" id="buy-1day">Get Free Key</a>
       </div>
-      
-      <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-gradient-to-b from-gray-900 to-gray-800 rounded-xl border border-gray-700 p-8 text-center fade-in">
-          <h3 class="text-2xl font-bold mb-4">7 Day</h3>
-          <div class="text-3xl font-bold mb-2">3$<span class="text-lg"> Crypto</span></div>
-          <p class="text-gray-400 mb-6">(BTC, LTC)</p>
-          <ul class="space-y-3 mb-8">
-            <li>Premium Features</li>
-            <li>7 Day Access</li>
-            <li class="text-gray-500">No Early Access</li>
-          </ul>
-          <a href="https://moondiety.mysellauth.com/product/moondiety-scripts-premium" target="_blank">
-            <button class="hero-btn hero-btn-secondary w-full">Get Key</button>
-          </a>
-        </div>
-        
-        <div class="bg-gradient-to-b from-gray-900 to-gray-800 rounded-xl border border-gray-700 p-8 text-center fade-in delay-1">
-          <h3 class="text-2xl font-bold mb-4">1 Month</h3>
-          <div class="text-3xl font-bold mb-2">6$<span class="text-lg"> Crypto</span></div>
-          <p class="text-gray-400 mb-6">(BTC, LTC)</p>
-          <ul class="space-y-3 mb-8">
-            <li>Premium Features</li>
-            <li>30 Day Access</li>
-            <li>Priority Support</li>
-          </ul>
-          <a href="https://moondiety.mysellauth.com/product/moondiety-scripts-premium" target="_blank">
-            <button class="hero-btn hero-btn-secondary w-full">Get Key</button>
-          </a>
-        </div>
-        
-        <div class="bg-gradient-to-b from-purple-900 to-indigo-900 rounded-xl border border-purple-500 p-8 text-center relative fade-in delay-2">
-          <div class="best-badge">BEST VALUE</div>
-          <h3 class="text-2xl font-bold mb-4">Lifetime</h3>
-          <div class="text-3xl font-bold mb-2">10$<span class="text-lg"> Crypto</span></div>
-          <p class="text-gray-300 mb-6">(BTC, LTC)</p>
-          <ul class="space-y-3 mb-8">
-            <li>All Premium Features</li>
-            <li>Permanent Access</li>
-            <li>Free Permanent Early Access</li>
-            <li>Premium Role</li>
-            <li>24/7 Priority Support</li>
-          </ul>
-          <a href="https://moondiety.mysellauth.com/product/moondiety-scripts-premium" target="_blank">
-            <button class="hero-btn hero-btn-primary w-full">Get Lifetime Key</button>
-          </a>
-        </div>
+      <div class="pricing-card" data-anim="fade-up" data-delay="100" id="plan-7day">
+        <div class="pricing-plan">7-Day Key</div>
+        <div class="pricing-price"><sup>$</sup>3</div>
+        <div class="pricing-price-sub">Paid in Crypto (BTC, LTC)</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Premium Features</li>
+          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> 7-Day Access</li>
+          <li class="pricing-feature disabled"><i class="fas fa-times icon-no"></i> No Early Access</li>
+          <li class="pricing-feature disabled"><i class="fas fa-times icon-no"></i> No Priority Support</li>
+        </ul>
+        <a href="https://moondiety.mysellauth.com/product/moondiety-scripts-premium" target="_blank" rel="noopener" class="btn-pricing btn-pricing-default" id="buy-7day">Get 7-Day Key</a>
       </div>
-      
-      <!-- Benefits Section -->
-      <div class="mt-16 max-w-3xl mx-auto fade-in delay-3">
-        <h3 class="text-2xl font-bold text-center mb-8 gradient-text">PREMIUM BENEFITS</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg">
-            <div class="flex items-center mb-4">
-              <i class="fas fa-bolt text-purple-400 text-xl mr-3"></i>
-              <h4 class="text-xl font-semibold">Early Access</h4>
-            </div>
-            <p class="text-gray-300">Get access to new features and scripts before anyone else.</p>
-          </div>
-          
-          <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg">
-            <div class="flex items-center mb-4">
-              <i class="fas fa-shield-alt text-purple-400 text-xl mr-3"></i>
-              <h4 class="text-xl font-semibold">Advanced Features</h4>
-            </div>
-            <p class="text-gray-300">Unlock exclusive premium-only features in all supported games.</p>
-          </div>
-          
-          <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg">
-            <div class="flex items-center mb-4">
-              <i class="fas fa-headset text-purple-400 text-xl mr-3"></i>
-              <h4 class="text-xl font-semibold">Priority Support</h4>
-            </div>
-            <p class="text-gray-300">Get faster responses and dedicated support from our team.</p>
-          </div>
-          
-          <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg">
-            <div class="flex items-center mb-4">
-              <i class="fas fa-crown text-purple-400 text-xl mr-3"></i>
-              <h4 class="text-xl font-semibold">Premium Role</h4>
-            </div>
-            <p class="text-gray-300">Show off your premium status with a special role in our Discord.</p>
-          </div>
-           <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg">
-            <div class="flex items-center mb-4">
-              <i class="fas fa-headset text-purple-400 text-xl mr-3"></i>
-              <h4 class="text-xl font-semibold">AD Free Services</h4>
-            </div>
-            <p class="text-gray-300">No need to daily scroll through ad pages if you got premium key.</p>
-          </div>
-        </div>
+      <div class="pricing-card" data-anim="fade-up" data-delay="200" id="plan-monthly">
+        <div class="pricing-plan">Monthly Key</div>
+        <div class="pricing-price"><sup>$</sup>6</div>
+        <div class="pricing-price-sub">Paid in Crypto (BTC, LTC)</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Premium Features</li>
+          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> 30-Day Access</li>
+          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Priority Support</li>
+          <li class="pricing-feature disabled"><i class="fas fa-times icon-no"></i> No Early Access</li>
+        </ul>
+        <a href="https://moondiety.mysellauth.com/product/moondiety-scripts-premium" target="_blank" rel="noopener" class="btn-pricing btn-pricing-default" id="buy-monthly">Get Monthly Key</a>
+      </div>
+      <div class="pricing-card featured" data-anim="fade-up" data-delay="300" id="plan-lifetime">
+        <div class="pricing-badge">Best Value</div>
+        <div class="pricing-plan">Lifetime Key</div>
+        <div class="pricing-price"><sup>$</sup>10</div>
+        <div class="pricing-price-sub">Paid in Crypto (BTC, LTC)</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> All Premium Features</li>
+          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Permanent Access</li>
+          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Free Permanent Early Access</li>
+          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Premium Role in Discord</li>
+          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> 24/7 Priority Support</li>
+        </ul>
+        <a href="https://moondiety.mysellauth.com/product/moondiety-scripts-premium" target="_blank" rel="noopener" class="btn-pricing btn-pricing-featured" id="buy-lifetime">Get Lifetime Key</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <div class="separator"></div>
+
+  <section class="section" style="padding-top: 4rem;">
+    <div style="text-align: center; margin-bottom: 3rem;">
+      <h2 class="section-title">Premium Benefits</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <i class="fas fa-bolt benefit-icon"></i>
+        <div class="benefit-title">Early Access</div>
+        <div class="benefit-desc">Get access to new features and scripts before anyone else.</div>
+      </div>
+      <div class="benefit-card">
+        <i class="fas fa-shield-alt benefit-icon"></i>
+        <div class="benefit-title">Advanced Features</div>
+        <div class="benefit-desc">Unlock exclusive premium-only features in all supported games.</div>
+      </div>
+      <div class="benefit-card">
+        <i class="fas fa-headset benefit-icon"></i>
+        <div class="benefit-title">Priority Support</div>
+        <div class="benefit-desc">Get faster responses and dedicated support from our team.</div>
+      </div>
+      <div class="benefit-card">
+        <i class="fas fa-crown benefit-icon"></i>
+        <div class="benefit-title">Premium Role</div>
+        <div class="benefit-desc">Show off your premium status with a special role in our Discord.</div>
+      </div>
+      <div class="benefit-card">
+        <i class="fas fa-ban benefit-icon"></i>
+        <div class="benefit-title">AD Free Services</div>
+        <div class="benefit-desc">No need to daily scroll through ad pages if you have a premium key.</div>
       </div>
     </div>
   </section>
 
+  <div class="separator"></div>
 
-  <section class="section-bg">
-    <div class="container mx-auto px-4">
-      <div class="section-header fade-in">
-        <h2 class="section-title gradient-text">FREQUENTLY ASKED QUESTIONS</h2>
-        <p class="section-subtitle">Get answers to common questions about Moondiety premium keys</p>
+  <section class="section" style="padding-top: 4rem;">
+    <div style="text-align: center; margin-bottom: 3rem;">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-card">
+        <div class="faq-title">How do I use my premium key?</div>
+        <div class="faq-desc">After purchasing a key, join our Discord server and use the /redeem command in the designated channel to activate your premium access.</div>
       </div>
-      
-      <div class="max-w-3xl mx-auto fade-in">
-        <div class="space-y-6">
-          <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg">
-            <h3 class="text-xl font-semibold mb-3">How do I use my premium key?</h3>
-            <p class="text-gray-300">After purchasing a key, join our Discord server and use the /redeem command in the designated channel to activate your premium access.</p>
-          </div>
-          
-          <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg">
-            <h3 class="text-xl font-semibold mb-3">Can I get a refund?</h3>
-            <p class="text-gray-300">Due to the digital nature of our products, we do not offer refunds. Please make sure to read the product description carefully before purchasing.</p>
-          </div>
-          
-          <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg">
-            <h3 class="text-xl font-semibold mb-3">What payment methods do you accept?</h3>
-            <p class="text-gray-300">We currently accept cryptocurrency (BTC, LTC) only. All payments are processed securely through SellAuth.</p>
-          </div>
-          
-          <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg">
-            <h3 class="text-xl font-semibold mb-3">How long does it take to get my key?</h3>
-            <p class="text-gray-300">Your key is delivered instantly after purchase. You'll receive it by opening ticket in discord server by showing proof of purchse and can redeem it immediately in our Discord.</p>
-          </div>
-        </div>
+      <div class="faq-card">
+        <div class="faq-title">Can I get a refund?</div>
+        <div class="faq-desc">Due to the digital nature of our products, we do not offer refunds. Please make sure to read the product description carefully before purchasing.</div>
+      </div>
+      <div class="faq-card">
+        <div class="faq-title">What payment methods do you accept?</div>
+        <div class="faq-desc">We currently accept cryptocurrency (BTC, LTC) only. All payments are processed securely through SellAuth.</div>
+      </div>
+      <div class="faq-card">
+        <div class="faq-title">How long does it take to get my key?</div>
+        <div class="faq-desc">Your key is delivered instantly after purchase.</div>
       </div>
     </div>
   </section>
 
-
-  <footer class="py-12 border-t border-gray-800">
-    <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-        <div class="flex items-center gap-4">
-          <img src="/media/logo.png" alt="Moondiety Logo" class="h-12">
-          <div>
-            <h3 class="text-xl font-bold">MOONDIETY SCRIPTS</h3>
-            <p class="text-gray-400">Play to Win</p>
-          </div>
-        </div>
-        
-        <div class="flex flex-wrap justify-center gap-6">
-          <a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
-          <a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a>
-          <a href="#" class="text-gray-400 hover:text-white transition">Support</a>
-          <a href="https://discord.gg/moondiety" class="text-gray-400 hover:text-white transition">Discord</a>
-        </div>
-        
-        <div class="flex gap-4">
-          <a href="https://discord.gg/moondiety" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition">
-            <i class="fab fa-discord"></i>
-          </a>
-          <a href="https://youtube.com/@moondiety_script?si=3a6-FptuSGqq0xjt" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-600 transition">
-            <i class="fab fa-youtube"></i>
-          </a>
-          <a href="https://scriptblox.com/u/Moondiety" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-500 transition">
-            <img src="https://api.nuget.org/v3-flatcontainer/scriptbloxapi/6.3.0/icon" alt="ScriptBlox" class="w-6 h-6">
-          </a>
-        </div>
+  <footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand-col">
+      <div class="footer-brand">
+        <img src="/media/logo.png" alt="Moondiety Logo" width="32" height="32">
+        <span class="footer-brand-name">MOONDIETY</span>
       </div>
-      
-      <div class="mt-12 text-center text-gray-500 text-sm">
-        <p>© 2025 Moondiety Scripts. All rights reserved.</p>
-        <p class="mt-2">This content is not affiliated with, endorsed, sponsored, or specifically approved by Roblox and Roblox is not responsible for it.</p>
+      <p class="footer-tagline">PLAY TO WIN!</p>
+      <div class="footer-socials">
+        <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="footer-social" aria-label="Discord"><i class="fab fa-discord"></i></a>
+        <a href="https://youtube.com/@moondiety_script?si=3a6-FptuSGqq0xjt" target="_blank" rel="noopener" class="footer-social" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://scriptblox.com/u/Moondiety" target="_blank" rel="noopener" class="footer-social" aria-label="ScriptBlox"><i class="fas fa-scroll"></i></a>
       </div>
     </div>
-  </footer>
+    <div class="footer-links-col">
+      <h4 class="footer-heading">Product</h4>
+      <a href="/#scripts" class="footer-link">Script Loader</a>
+      <a href="/#games" class="footer-link">Supported Games</a>
+      <a href="/#executors" class="footer-link">Executors</a>
+      <a href="/shop.html" class="footer-link">Premium Plans</a>
+    </div>
+    <div class="footer-links-col">
+      <h4 class="footer-heading">Resources</h4>
+      <a href="/shop.html" class="footer-link">Premium Shop</a>
+      <a href="/key.html" class="footer-link">Get Key</a>
+      <a href="/key-tutorial.html" class="footer-link">Key Tutorial</a>
+      <a href="https://discord.gg/moondiety" target="_blank" class="footer-link">Support Server</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">
+      <span>&copy; 2025 Moondiety Scripts. All rights reserved.</span>
+    </div>
+    <div class="footer-legal">
+      <span>Not affiliated with or endorsed by Roblox Corporation.</span>
+    </div>
+  </div>
+</footer>
 
-  <script>
-  
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('active');
-    });
-    
-  
-    document.addEventListener('click', (e) => {
-      if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-        mobileMenu.classList.remove('active');
-      }
-    });
-
-  
-    const fadeElements = document.querySelectorAll('.fade-in, .slide-in');
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = 1;
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, {
-      threshold: 0.1
-    });
-    
-    fadeElements.forEach(el => {
-      observer.observe(el);
-    });
-  </script>
+  <script src="/assets/js/main.js"></script>
 </body>
 </html>

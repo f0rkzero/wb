@@ -3,1857 +3,534 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moondiety Scripts | Best Free Roblox scripts provider</title>
-  
+  <title>Moondiety Scripts | Best Free Roblox Scripts</title>
+  <meta name="description" content="Moondiety offers premium free Roblox scripts for Grow a Garden, Steal a Brainrot, Dead Rails, Murder Mystery 2, and more.">
+  <meta name="keywords" content="moondiety, roblox scripts, free roblox scripts, roblox executor, grow a garden script">
+  <meta name="theme-color" content="#030014">
+  <meta property="og:title" content="Moondiety Scripts | Best Free Roblox Scripts">
+  <meta property="og:description" content="Premium quality scripts for most popular Roblox games completely free.">
+  <meta property="og:image" content="/media/banner.jpg">
+  <meta property="og:type" content="website">
   <link rel="apple-touch-icon" sizes="180x180" href="/media/apple-touch-icon.png">
   <link rel="icon" type="image/svg+xml" href="/media/favicon.svg">
   <link rel="icon" type="image/png" sizes="96x96" href="/media/favicon-96x96.png">
   <link rel="shortcut icon" href="/media/favicon.ico">
   <link rel="manifest" href="/media/site.webmanifest">
-  <meta name="apple-mobile-web-app-title" content="Moondiety">
-  <meta name="msapplication-TileColor" content="#6366f1">
-  <meta name="theme-color" content="#0f0f15">
-
-  <meta name="description" content="Moondiety offers the best free Roblox scripts for popular games like Grow a Garden, Steal a Brainrot, Dead Rails, Murder Mystery 2, and more. Compatible with Delta, Krnl, Ronix, Swift, and other executors.">
-  <meta name="keywords" content="moondiety, moondiety scripts, roblox scripts, roblox hacks, free roblox scripts, roblox executor, delta executor, krnl, ronix, swift, snypse x, lunor hub, speed hub, grow a garden script, steal a brainrot script, dead rails script, murder mystery 2 script, 99 nights in the forest script, ink game script, forsaken script">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #8b5cf6;
-      --secondary: #ec4899;
-      --accent-blue: #6366f1;
-      --accent-pink: #ec4899;
-      --dark: #0f0f15;
-      --darker: #080811;
-      --light: #f3f4f6;
-      --nav-height: 80px;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Poppins', sans-serif;
-      color: var(--light);
-      overflow-x: hidden;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #0f0f15 0%, #1a1a2e 50%, #16213e 100%);
-    }
-    
-    #bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -2;
-      opacity: 0.4;
-    }
-    
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(8, 8, 17, 0.85);
-      z-index: -1;
-    }
-    
-    h1, h2, h3, h4, h5 {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 600;
-    }
-    
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
-      100% { transform: translateY(0px); }
-    }
-    
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7); }
-      70% { box-shadow: 0 0 0 15px rgba(99, 102, 241, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
-    }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    
-    @keyframes shine {
-      to {
-        background-position: 200% center;
-      }
-    }
-    
-    @keyframes terminalTyping {
-      0% { width: 0; }
-      100% { width: 100%; }
-    }
-    
-    @keyframes terminalCursor {
-      0%, 100% { opacity: 0; }
-      50% { opacity: 1; }
-    }
-    
-    @keyframes glow {
-      0% { text-shadow: 0 0 5px #8b5cf6, 0 0 10px #8b5cf6; }
-      50% { text-shadow: 0 0 20px #8b5cf6, 0 0 30px #8b5cf6; }
-      100% { text-shadow: 0 0 5px #8b5cf6, 0 0 10px #8b5cf6; }
-    }
-    
-    @keyframes auto-scroll {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(calc(-100% - 1.5rem));
-      }
-    }
-    
-    @keyframes live-pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-    
-    @keyframes live-shadow {
-      0%, 100% { 
-        box-shadow: 0 5px 20px rgba(99, 102, 102, 241, 0.4),
-                  0 0 0 0 rgba(99, 102, 241, 0.5);
-      }
-      50% { 
-        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5),
-                  0 0 0 10px rgba(99, 102, 241, 0);
-      }
-    }
-    
-    .float { 
-      animation: float 4s ease-in-out infinite;
-      filter: drop-shadow(0 10px 15px rgba(99, 102, 241, 0.3));
-    }
-    
-    .glow {
-      animation: glow 2s infinite;
-    }
-    
-    .gradient-text {
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    .section-bg {
-      background: rgba(15, 15, 25, 0.7);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
-      border: 1px solid rgba(99, 102, 241, 0.2);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      margin: 20px auto;
-      max-width: 1400px;
-    }
-    
-    
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(10, 10, 20, 0.95);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-      border-bottom: 1px solid rgba(99, 102, 241, 0.2);
-      height: var(--nav-height);
-    }
-    
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 100%;
-      padding: 0 2rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      cursor: pointer;
-    }
-    
-    .nav-logo img {
-      height: 45px;
-      animation: float 4s ease-in-out infinite;
-    }
-    
-    .nav-logo-text {
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .nav-logo-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-family: 'Share Tech Mono', monospace;
-      text-shadow: 0 0 10px rgba(139, 92, 246, 0.7);
-    }
-    
-    .nav-logo-subtitle {
-      font-size: 0.7rem;
-      color: #d1d5db;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-top: -5px;
-      font-family: 'Share Tech Mono', monospace;
-    }
-    
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-    }
-    
-    .nav-link {
-      position: relative;
-      padding: 0.5rem 0;
-      color: #e0e0e0;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      overflow: hidden;
-    }
-    
-    .nav-link::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
-      border-radius: 3px;
-      transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-    
-    .nav-link:hover {
-      color: white;
-    }
-    
-    .nav-link:hover::before {
-      width: 100%;
-    }
-    
-    .nav-link.active {
-      color: white;
-    }
-    
-    .nav-link.active::before {
-      width: 100%;
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
-    }
-    
-    .nav-actions {
-      display: flex;
-      gap: 1rem;
-    }
-    
-    .nav-btn {
-      padding: 0.6rem 1.5rem;
-      border-radius: 8px;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .nav-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: 0.5s;
-    }
-    
-    .nav-btn:hover::before {
-      left: 100%;
-    }
-    
-    .nav-btn-primary {
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
-      color: white;
-      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-    }
-    
-    .nav-btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
-    }
-    
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    
-    .mobile-menu {
-      position: fixed;
-      top: var(--nav-height);
-      left: 0;
-      width: 100%;
-      background: rgba(15, 15, 25, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 1rem 0;
-      transform: translateY(-100%);
-      transition: transform 0.4s ease;
-      z-index: 999;
-    }
-    
-    .mobile-menu.active {
-      transform: translateY(0);
-    }
-    
-    .mobile-menu a {
-      display: block;
-      padding: 1rem 2rem;
-      color: #e0e0e0;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      border-bottom: 1px solid rgba(99, 102, 241, 0.1);
-    }
-    
-    .mobile-menu a:hover {
-      background: rgba(99, 102, 241, 0.1);
-      color: white;
-    }
-    
-    /* Executor Cards */
-    .executor-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 1.5rem;
-    }
-    
-    .executor-card {
-      background: rgba(20, 20, 30, 0.7);
-      border: 1px solid rgba(99, 102, 241, 0.2);
-      border-radius: 12px;
-      padding: 1.5rem;
-      text-align: center;
-      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(5px);
-    }
-    
-    .executor-card::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(45deg, var(--accent-blue), transparent, var(--accent-pink));
-      z-index: -1;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-    
-    .executor-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-      border-color: transparent;
-    }
-    
-    .executor-card:hover::before {
-      opacity: 1;
-    }
-    
-    .executor-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: var(--accent-blue);
-      transition: all 0.4s ease;
-    }
-    
-    .executor-card:hover .executor-icon {
-      color: white;
-      transform: scale(1.2);
-    }
-    
-    .executor-name {
-      font-weight: 600;
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .executor-status {
-      font-size: 0.85rem;
-      padding: 0.2rem 0.5rem;
-      border-radius: 20px;
-      display: inline-block;
-    }
-    
-    .status-active {
-      background: rgba(16, 185, 129, 0.2);
-      color: #10b981;
-    }
-    
-    
-    .hero {
-      padding-top: calc(var(--nav-height) + 4rem);
-      padding-bottom: 6rem;
-      position: relative;
-    }
-    
-    .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    
-    .hero h1 {
-      font-size: 3.5rem;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-      text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
-    }
-    
-    .hero p {
-      font-size: 1.25rem;
-      color: #d1d5db;
-      margin-bottom: 2.5rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    .hero-btns {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-    }
-    
-    .hero-btn {
-      padding: 1rem 2rem;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .hero-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: 0.5s;
-    }
-    
-    .hero-btn:hover::before {
-      left: 100%;
-    }
-    
-    .hero-btn-primary {
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
-      color: white;
-      box-shadow: 0 5px 20px rgba(99, 102, 102, 241, 0.4);
-    }
-    
-    .hero-btn-primary:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
-    }
-    
-    .hero-btn-live {
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
-      color: white;
-      animation: live-pulse 2s infinite, live-shadow 2s infinite;
-    }
-    
-    .hero-btn-secondary {
-      background: rgba(30, 30, 40, 0.7);
-      color: white;
-      border: 1px solid rgba(99, 102, 241, 0.3);
-    }
-    
-    .hero-btn-secondary:hover {
-      background: rgba(40, 40, 50, 0.8);
-      transform: translateY(-3px);
-    }
-    
-    
-    .fade-in {
-      animation: fadeInUp 0.8s ease-out forwards;
-      opacity: 0;
-    }
-    
-    .slide-in {
-      animation: slideIn 0.6s ease-out forwards;
-      opacity: 0;
-    }
-    
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.2s; }
-    .delay-3 { animation-delay: 0.3s; }
-    .delay-4 { animation-delay: 0.4s; }
-    
-    /* Section Styling */
-    section {
-      padding: 5rem 0;
-    }
-    
-    .section-header {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-    
-    .section-title {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      text-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
-    }
-    
-    .section-subtitle {
-      color: #d1d5db;
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    
-    
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    
-    .stat-card {
-      background: rgba(30, 30, 40, 0.7);
-      border: 1px solid rgba(99, 102, 241, 0.2);
-      border-radius: 12px;
-      padding: 2rem;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-    
-    .stat-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    }
-    
-    .stat-value {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .stat-label {
-      color: #d1d5db;
-      font-size: 1.1rem;
-    }
-    
-    
-    .key-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-      margin-top: 2rem;
-    }
-    
-    .key-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      padding: 1rem 1.8rem;
-      border-radius: 10px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .key-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: 0.5s;
-    }
-    
-    .key-btn:hover::before {
-      left: 100%;
-    }
-    
-    .key-btn-linkvertise {
-      background: linear-gradient(90deg, #4a69bd, #6a89cc);
-      color: white;
-    }
-    
-    .key-btn-lootlabs {
-      background: linear-gradient(90deg, #e55039, #eb2f06);
-      color: white;
-    }
-    
-    .key-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-    
-    /* Tutorial Button */
-    .tutorial-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.8rem;
-      padding: 1rem 2rem;
-      border-radius: 10px;
-      font-weight: 600;
-      background: linear-gradient(90deg, #ff9a00, #ff5500);
-      color: white;
-      margin: 1.5rem auto;
-      max-width: 300px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .tutorial-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: 0.5s;
-    }
-    
-    .tutorial-btn:hover::before {
-      left: 100%;
-    }
-    
-    .tutorial-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(255, 106, 0, 0.4);
-    }
-    
-    /* Premium Badge */
-    .best-badge {
-      position: absolute;
-      top: 0;
-      right: 0;
-      background: linear-gradient(90deg, #ff9a00, #ff5500);
-      color: white;
-      padding: 0.5rem 1.5rem;
-      font-weight: 700;
-      border-radius: 0 0 0 12px;
-      font-size: 0.9rem;
-      animation: pulse 2s infinite;
-    }
-    
-    /* Game Cards */
-    .game-card {
-      perspective: 1000px;
-      height: 300px;
-      flex: 0 0 auto;
-      width: 280px;
-      margin-right: 1.5rem;
-    }
-    
-    .game-card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: transform 0.8s;
-      transform-style: preserve-3d;
-    }
-    
-    .game-card:hover .game-card-inner {
-      transform: rotateY(180deg);
-    }
-    
-    .game-card-front, .game-card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      border-radius: 16px;
-      overflow: hidden;
-    }
-    
-    .game-card-back {
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-      transform: rotateY(180deg);
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    
-    .games-scroll-container {
-      position: relative;
-      overflow: hidden;
-      padding: 1rem 0;
-    }
-    
-    .games-scroll-container::before,
-    .games-scroll-container::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      width: 100px;
-      height: 100%;
-      z-index: 2;
-      pointer-events: none;
-    }
-    
-    .games-scroll-container::before {
-      left: 0;
-      background: linear-gradient(90deg, rgba(15, 15, 25, 0.9) 0%, transparent 100%);
-    }
-    
-    .games-scroll-container::after {
-      right: 0;
-      background: linear-gradient(270deg, rgba(15, 15, 25, 0.9) 0%, transparent 100%);
-    }
-    
-    .games-scroll-track {
-      display: flex;
-      animation: auto-scroll 60s linear infinite;
-      width: max-content;
-    }
-    
-    .games-scroll-track.paused {
-      animation-play-state: paused;
-    }
-    
-    .game-title {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 700;
-      font-size: 1.5rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      background: linear-gradient(90deg, #8b5cf6, #ec4899);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
-      position: relative;
-      display: inline-block;
-      margin-bottom: 5px;
-    }
-    
-    .game-subtitle {
-      font-size: 0.8rem;
-      color: #a0aec0;
-      font-family: 'Share Tech Mono', monospace;
-      letter-spacing: 2px;
-      margin-top: -5px;
-    }
-    
-    .game-title-container {
-      position: relative;
-      padding: 15px 0;
-    }
-    
-    .game-title-container::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #8b5cf6, transparent);
-    }
-    
-    /* Executors Marquee */
-    .executors-scroll-container {
-      position: relative;
-      overflow: hidden;
-      padding: 1rem 0;
-      margin: 2rem 0;
-    }
-    
-    .executors-scroll-container::before,
-    .executors-scroll-container::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      width: 100px;
-      height: 100%;
-      z-index: 2;
-      pointer-events: none;
-    }
-    
-    .executors-scroll-container::before {
-      left: 0;
-      background: linear-gradient(90deg, rgba(15, 15, 25, 0.9) 0%, transparent 100%);
-    }
-    
-    .executors-scroll-container::after {
-      right: 0;
-      background: linear-gradient(270deg, rgba(15, 15, 25, 0.9) 0%, transparent 100%);
-    }
-    
-    .executors-scroll-track {
-      display: flex;
-      animation: auto-scroll 40s linear infinite;
-      width: max-content;
-    }
-    
-    .executors-scroll-track.paused {
-      animation-play-state: paused;
-    }
-    
-    .executor-marquee-card {
-      background: rgba(20, 20, 30, 0.7);
-      border: 1px solid rgba(99, 102, 241, 0.2);
-      border-radius: 8px;
-      padding: 0.8rem 1.2rem;
-      margin-right: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-    }
-    
-    .executor-marquee-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      border-color: rgba(99, 102, 241, 0.5);
-    }
-    
-    .executor-marquee-name {
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-    
-    .executor-marquee-status {
-      font-size: 0.7rem;
-      padding: 0.2rem 0.5rem;
-      border-radius: 20px;
-      background: rgba(16, 185, 129, 0.2);
-      color: #10b981;
-    }
-    
-    /* Responsive Design */
-    @media (max-width: 1024px) {
-      .nav-links {
-        display: none;
-      }
-      
-      .mobile-menu-btn {
-        display: block;
-      }
-      
-      .hero h1 {
-        font-size: 2.8rem;
-      }
-      
-      .nav-logo-title {
-        font-size: 1.5rem;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.3rem;
-      }
-      
-      .hero-btns {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .executor-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      }
-      
-      .game-card {
-        height: 250px;
-        width: 240px;
-      }
-      
-      .nav-logo-title {
-        font-size: 1.3rem;
-      }
-      
-      .nav-logo-subtitle {
-        font-size: 0.6rem;
-      }
-      
-      .games-scroll-container::before,
-      .games-scroll-container::after,
-      .executors-scroll-container::before,
-      .executors-scroll-container::after {
-        width: 50px;
-      }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Michroma&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/animations.css">
 </head>
-<body class="text-white">
-  <!-- Background Video -->
-  <video id="bg-video" autoplay muted loop>
-    <source src="/media/Icon-Animated.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-
-  <!-- Enhanced Navigation -->
-  <nav>
-    <div class="nav-container">
-      <div class="nav-logo" onclick="window.location.href='/home'">
-        <img src="/media/logo.png" alt="Moondiety Logo">
-        <div class="nav-logo-text">
-          <div class="nav-logo-title">MOONDIETY</div>
-          <div class="nav-logo-subtitle">SCRIPTS</div>
-        </div>
-      </div>
-      
-      <div class="nav-links">
-        <a href="#home" class="nav-link active">Home</a>
-        <a href="#scripts" class="nav-link">Scripts</a>
-        <a href="#games" class="nav-link">Games</a>
-        <a href="#premium" class="nav-link">Premium</a>
-        <a href="#executors" class="nav-link">Executors</a>
-        <a href="#discord" class="nav-link">Discord</a>
-      </div>
-      
-      <div class="nav-actions">
-        <a href="/key.html" class="nav-btn nav-btn-primary">Get Key</a>
-      </div>
-      
-      <button class="mobile-menu-btn" id="mobile-menu-btn">
-        <i class="fas fa-bars"></i>
+<body class="dark-theme">
+<div class="scroll-progress" id="scroll-progress"></div>
+<div class="toast" id="toast" role="alert">
+  <i class="toast-icon fas fa-check-circle toast-icon-success"></i>
+  <span class="toast-text">Script copied!</span>
+</div>
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="/#home" class="nav-logo" aria-label="Moondiety Home">
+      <img src="/media/logo.png" alt="Moondiety Logo" width="36" height="36">
+      <span class="nav-logo-name">MOONDIETY</span>
+    </a>
+    <div class="nav-pill" role="navigation" aria-label="Main navigation">
+      <a href="/#home"      class="nav-link active">Home</a>
+      <a href="/#scripts"   class="nav-link">Scripts</a>
+      <a href="/#games"     class="nav-link">Games</a>
+      <a href="/shop.html"   class="nav-link">Shop</a>
+      <a href="/#executors" class="nav-link">Executors</a>
+      <a href="/#discord"   class="nav-link">Discord</a>
+    </div>
+    <div class="nav-actions">
+      <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="nav-login">
+        <i class="fab fa-discord"></i> Discord
+      </a>
+      <a href="/key.html" class="btn-get-key">
+        <i class="fas fa-key"></i> Get Key
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
       </button>
     </div>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="#home">Home</a>
-    <a href="#scripts">Scripts</a>
-    <a href="#games">Games</a>
-    <a href="#premium">Premium</a>
-    <a href="#executors">Executors</a>
-    <a href="#discord">Discord</a>
+  </div>
+</nav>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu-header">
+    <div class="mobile-menu-brand">
+      <img src="/media/logo.png" alt="Moondiety" width="28">
+      <span>Moondiety</span>
+    </div>
+    <button class="mobile-close" id="mobile-close" aria-label="Close menu">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <div class="mobile-menu-body">
+    <a href="/#home" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-home"></i></span>
+      <span>Home</span>
+    </a>
+    <a href="/#scripts" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-code"></i></span>
+      <span>Script Loader</span>
+    </a>
+    <a href="/#games" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-gamepad"></i></span>
+      <span>Games</span>
+    </a>
+    <a href="/shop.html" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-crown"></i></span>
+      <span>Premium Shop</span>
+    </a>
+    <a href="/#executors" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-bolt"></i></span>
+      <span>Executors</span>
+    </a>
+    <div class="mobile-menu-separator"></div>
+    <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="mobile-link">
+      <span class="ml-icon"><i class="fab fa-discord"></i></span>
+      <span>Join Discord</span>
+    </a>
+  </div>
+  <div class="mobile-menu-footer">
+    <a href="/key.html" class="btn-lg btn-primary">
+      <i class="fas fa-key"></i> Get Free Key
+    </a>
+  </div>
+</div>
+<section id="home" class="hero">
+  
+  <video class="hero-video-bg" autoplay muted loop playsinline aria-hidden="true">
+    <source src="/media/blackhole.mp4" type="video/mp4">
+  </video>
+  <div class="hero-horizon" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="announce-badge">
+      <span class="dot"></span>
+      Now supporting 19+ Roblox games &middot; Updated regularly
+    </div>
+    <h1 class="hero-title">
+      <span class="hero-line-plain">Skill Issue?</span>
+      <span class="line-accent">We got you</span>
+    </h1>
+    <p class="hero-sub">
+      Premium quality scripts for most popular Roblox games
+      <em>completely free</em>
+    </p>
   </div>
 
   
-  <section id="home" class="hero">
-    <div class="container mx-auto px-4">
-      <div class="hero-content slide-in">
-        <h1 class="gradient-text">UNLEASH YOUR <span class="block">ROBLOX POTENTIAL</span></h1>
-        <p class="text-gray-300">We offers premium quality scripts for the most popular Roblox games at no cost!!</p>
-        <div class="hero-btns">
-          <a href="https://discord.gg/moondiety" class="hero-btn hero-btn-live">Join Our Discord</a>
-          <a href="#scripts" class="hero-btn hero-btn-secondary">Get Script</a>
+  <div class="hero-mockup-float" data-anim="fade-up" data-delay="200">
+    
+    <div class="hero-mockup-inner">
+      
+      <div class="mockup-chrome">
+        <div class="mockup-chrome-dots">
+          <span></span><span></span><span></span>
         </div>
+        <div class="mockup-chrome-title">Moondiety Script Hub</div>
+        <div class="mockup-chrome-badge">User interface</div>
       </div>
       
-      <!-- Stats Section -->
-      <div class="stats-grid mt-16 fade-in">
-        <div class="stat-card">
-          <div class="stat-value">100M+</div>
-          <div class="stat-label">Executions</div>
-        </div>
-        
-        <div class="stat-card fade-in delay-1">
-          <div class="stat-value">48K+</div>
-          <div class="stat-label">Daily Users</div>
-        </div>
-        
-        <div class="stat-card fade-in delay-2">
-          <div class="stat-value">115K+</div>
-          <div class="stat-label">Discord Members</div>
-        </div>
-        
-        <div class="stat-card fade-in delay-3">
-          <div class="stat-value">10</div>
-          <div class="stat-label">Supported Games</div>
-        </div>
+      <div class="mockup-screen">
+        <img src="/media/uilib.png" alt="Moondiety Script Hub UI" class="hero-mockup-img">
       </div>
     </div>
-  </section>
-
-  <!-- Script Loader Section -->
-  <section id="scripts" class="section-bg">
-    <div class="container mx-auto px-4">
-      <div class="section-header fade-in">
-        <h2 class="section-title gradient-text">SCRIPT LOADER</h2>
-        <p class="section-subtitle">Copy and paste this script in any of our supported games.</p>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-divider"></div>
+    <div class="hero-stats-row">
+      <div class="hero-stat">
+        <div class="hero-stat-value"><span data-counter data-target="108" data-suffix="M+">108M+</span></div>
+        <div class="hero-stat-label">Executions</div>
       </div>
-      
-      <div class="max-w-3xl mx-auto bg-gray-900 p-6 rounded-xl border border-gray-800 fade-in">
-        <div class="bg-gray-800 rounded-lg p-5 mb-6">
-          <pre class="text-gray-200 overflow-x-auto"><code class="language-lua">loadstring(game:HttpGet('https://raw.githubusercontent.com/m00ndiety/Moondiety/refs/heads/main/Loader'))()</code></pre>
+      <div class="hero-stat-sep"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-value"><span data-counter data-target="48" data-suffix="K+">48K+</span></div>
+        <div class="hero-stat-label">Daily Users</div>
+      </div>
+      <div class="hero-stat-sep"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-value"><span data-counter data-target="140" data-suffix="K+">140K+</span></div>
+        <div class="hero-stat-label">Discord Members</div>
+      </div>
+      <div class="hero-stat-sep"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-value"><span data-counter data-target="19" data-suffix="">19</span></div>
+        <div class="hero-stat-label">Supported Games</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="scripts">
+  <div class="section">
+    <div data-anim="fade-up">
+      <div class="section-label"><i class="fas fa-terminal"></i> Script Loader</div>
+      <h2 class="section-title">One Script.<br>Every Game.</h2>
+      <p class="section-desc">Copy and paste this loader in your executor for any of our supported games. It auto-detects what you're playing.</p>
+    </div>
+    <div class="loader-wrap" data-anim="fade-up" data-delay="200">
+      <div class="code-block shimmer">
+        <div class="code-block-header">
+          <div class="code-dots">
+            <div class="code-dot code-dot-red"></div>
+            <div class="code-dot code-dot-yellow"></div>
+            <div class="code-dot code-dot-green"></div>
+          </div>
+          <span class="code-lang">Lua</span>
         </div>
-        
-        <div class="flex flex-wrap justify-center gap-4">
-          <button id="copy-script" class="hero-btn hero-btn-primary w-full sm:w-auto">
-            <i class="fas fa-copy mr-2"></i> Copy Script
-          </button>
-        </div>
-        
-        <div class="key-buttons">
-          <a href="https://ads.luarmor.net/get_key?for=Moondiety_Key_Linkvertise-IHeAAOKIUTol" class="key-btn key-btn-linkvertise">
-            <i class="fas fa-link"></i>
-            <span>Get Key [Linkvertise]</span>
-          </a>
+        <div class="code-content">
           
-          <a href="https://ads.luarmor.net/get_key?for=Moondiety_Key_Lootlabs-LWGKRDAaXqFl" class="key-btn key-btn-lootlabs">
-            <i class="fas fa-gem"></i>
-            <span>Get Key [Lootlabs]</span>
-          </a>
+          <span class="code-func">loadstring</span>(<span class="code-func">game</span>:<span class="code-func">HttpGet</span>(<span class="code-string">"https://moondiety.com/loader"</span>))()
         </div>
-        
-        <a href="https://moondiety.com/key-tutorial" target="_blank" class="tutorial-btn">
-          <i class="fas fa-video"></i>
-          <span>Watch Key Tutorial</span>
+      </div>
+      <div class="loader-actions">
+        <button class="btn-copy" id="copy-script" aria-label="Copy script to clipboard">
+          <i class="fas fa-copy"></i>
+          <span>Copy Script</span>
+        </button>
+        <a href="https://ads.luarmor.net/get_key?for=Moondiety_Key_Linkvertise-IHeAAOKIUTol" target="_blank" rel="noopener" class="btn-key" id="key-linkvertise">
+          <img src="/media/linkvertise.png" alt="Linkvertise" style="width:16px;height:16px;margin-right:8px;vertical-align:middle;"> Get Key - Linkvertise
+        </a>
+        <a href="https://ads.luarmor.net/get_key?for=Moondiety_Key_Lootlabs-LWGKRDAaXqFl" target="_blank" rel="noopener" class="btn-key" id="key-lootlabs">
+          <img src="/media/lootlabs.png" alt="Lootlabs" style="width:16px;height:16px;margin-right:8px;vertical-align:middle;"> Get Key - Lootlabs
+        </a>
+      </div>
+      <div style="text-align:center;margin-top:1rem;">
+        <a href="/key-tutorial.html" class="btn-tutorial" id="btn-tutorial">
+          <i class="fas fa-play-circle"></i> Watch Key Tutorial
         </a>
       </div>
     </div>
-  </section>
-
-  <!-- Games Section -->
-  <section id="games" class="section-bg">
-    <div class="container mx-auto px-4">
-      <div class="section-header fade-in">
-        <h2 class="section-title gradient-text">SUPPORTED GAMES</h2>
-        <p class="section-subtitle">Experience these popular Roblox games like never before with Moondiety scripts</p>
-      </div>
-      
-      <div class="games-scroll-container" id="games-scroll-container">
-        <div class="games-scroll-track" id="games-scroll-track">
-          <!-- Grow a Garden -->
-          <div class="game-card fade-in">
-            <div class="game-card-inner">
-              <div class="game-card-front">
-                <img src="/media/gag.png" alt="Grow a Garden" class="w-full h-48 object-cover">
-                <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
-                  <div class="game-title-container">
-                    <div class="game-title">Grow a Garden</div>
-                    <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
-                  </div>
-                </div>
-              </div>
-              <div class="game-card-back">
-                <h3 class="text-xl font-semibold gradient-text mb-4">Grow a Garden Features</h3>
-                <div class="text-left">
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-seedling text-purple-400 mt-1 mr-2"></i>
-                    <span>Auto Farm</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-bolt text-purple-400 mt-1 mr-2"></i>
-                    <span>Auto New events</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-coins text-purple-400 mt-1 mr-2"></i>
-                    <span>Updated to latest version</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-shield-alt text-purple-400 mt-1 mr-2"></i>
-                    <span>Anti-Ban Protection</span>
-                  </div>
-                  <div class="flex items-start text-purple-300">
-                    <i class="fas fa-crown mr-2"></i>
-                    <span>36+ More Features</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Steal a Brainrot -->
-          <div class="game-card fade-in delay-1">
-            <div class="game-card-inner">
-              <div class="game-card-front">
-                <img src="/media/sab.jpg" alt="Steal a Brainrot" class="w-full h-48 object-cover">
-                <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
-                  <div class="game-title-container">
-                    <div class="game-title">Steal a Brainrot</div>
-                    <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
-                  </div>
-                </div>
-              </div>
-              <div class="game-card-back">
-                <h3 class="text-xl font-semibold gradient-text mb-4">Steal a Brainrot Features</h3>
-                <div class="text-left">
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-running text-purple-400 mt-1 mr-2"></i>
-                    <span>Instant Steal brainrots</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-eye text-purple-400 mt-1 mr-2"></i>
-                    <span>Speed Bypass</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-fist-raised text-purple-400 mt-1 mr-2"></i>
-                    <span>Teleports</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-user-shield text-purple-400 mt-1 mr-2"></i>
-                    <span>Anti-Ban & Kick</span>
-                  </div>
-                  <div class="flex items-start text-purple-300">
-                    <i class="fas fa-crown mr-2"></i>
-                    <span>32+ More Features</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Dead Rails -->
-          <div class="game-card fade-in delay-2">
-            <div class="game-card-inner">
-              <div class="game-card-front">
-                <img src="/media/dr.png" alt="Dead Rails" class="w-full h-48 object-cover">
-                <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
-                  <div class="game-title-container">
-                    <div class="game-title">Dead Rails</div>
-                    <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
-                  </div>
-                </div>
-              </div>
-              <div class="game-card-back">
-                <h3 class="text-xl font-semibold gradient-text mb-4">Dead Rails Features</h3>
-                <div class="text-left">
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-skull text-purple-400 mt-1 mr-2"></i>
-                    <span>Best Auto bonds Farm</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-syringe text-purple-400 mt-1 mr-2"></i>
-                    <span>Auto Win with Bond Farm</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-bomb text-purple-400 mt-1 mr-2"></i>
-                    <span>All location teleports</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-tools text-purple-400 mt-1 mr-2"></i>
-                    <span>All Item bringer</span>
-                  </div>
-                  <div class="flex items-start text-purple-300">
-                    <i class="fas fa-crown mr-2"></i>
-                    <span>28+ More Features</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- 99 Nights in the Forest -->
-          <div class="game-card fade-in">
-            <div class="game-card-inner">
-              <div class="game-card-front">
-                <img src="/media/99.webp" alt="99 Nights in the Forest" class="w-full h-48 object-cover">
-                <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
-                  <div class="game-title-container">
-                    <div class="game-title">99 Nights in Forest</div>
-                    <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
-                  </div>
-                </div>
-              </div>
-              <div class="game-card-back">
-                <h3 class="text-xl font-semibold gradient-text mb-4">99 Nights Features</h3>
-                <div class="text-left">
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-tree text-purple-400 mt-1 mr-2"></i>
-                    <span>Bring All Items</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-campground text-purple-400 mt-1 mr-2"></i>
-                    <span>Auto Farm</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-shield-alt text-purple-400 mt-1 mr-2"></i>
-                    <span>Kill Aura</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-running text-purple-400 mt-1 mr-2"></i>
-                    <span>Speed & Fly boost</span>
-                  </div>
-                  <div class="flex items-start text-purple-300">
-                    <i class="fas fa-crown mr-2"></i>
-                    <span>+25 More Features</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Ink Game -->
-          <div class="game-card fade-in delay-1">
-            <div class="game-card-inner">
-              <div class="game-card-front">
-                <img src="/media/Ink.jpg" alt="Ink Game" class="w-full h-48 object-cover">
-                <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
-                  <div class="game-title-container">
-                    <div class="game-title">Ink Game</div>
-                    <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
-                  </div>
-                </div>
-              </div>
-              <div class="game-card-back">
-                <h3 class="text-xl font-semibold gradient-text mb-4">Ink Game Features</h3>
-                <div class="text-left">
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-paint-roller text-purple-400 mt-1 mr-2"></i>
-                    <span>God Mode</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-expand text-purple-400 mt-1 mr-2"></i>
-                    <span>Kill All</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-running text-purple-400 mt-1 mr-2"></i>
-                    <span>Auto win AFK Farm</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-eye text-purple-400 mt-1 mr-2"></i>
-                    <span>Aimbot</span>
-                  </div>
-                  <div class="flex items-start text-purple-300">
-                    <i class="fas fa-crown mr-2"></i>
-                    <span>38+ More Features</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Forsaken -->
-          <div class="game-card fade-in delay-2">
-            <div class="game-card-inner">
-              <div class="game-card-front">
-                <img src="/media/forsaken.png" alt="Forsaken" class="w-full h-48 object-cover">
-                <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
-                  <div class="game-title-container">
-                    <div class="game-title">Forsaken</div>
-                    <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
-                  </div>
-                </div>
-              </div>
-              <div class="game-card-back">
-                <h3 class="text-xl font-semibold gradient-text mb-4">Forsaken Features</h3>
-                <div class="text-left">
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-shield-alt text-purple-400 mt-1 mr-2"></i>
-                    <span>Infinite stamina</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-fist-raised text-purple-400 mt-1 mr-2"></i>
-                    <span>Auto generator</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-coins text-purple-400 mt-1 mr-2"></i>
-                    <span>Kill All</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-bolt text-purple-400 mt-1 mr-2"></i>
-                    <span>ESP players & Killer</span>
-                  </div>
-                  <div class="flex items-start text-purple-300">
-                    <i class="fas fa-crown mr-2"></i>
-                    <span>18+ More Features</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Murder Mystery 2 -->
-          <div class="game-card fade-in">
-            <div class="game-card-inner">
-              <div class="game-card-front">
-                <img src="/media/mm2.webp" alt="Murder Mystery 2" class="w-full h-48 object-cover">
-                <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
-                  <div class="game-title-container">
-                    <div class="game-title">Murder Mystery 2</div>
-                    <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
-                  </div>
-                </div>
-              </div>
-              <div class="game-card-back">
-                <h3 class="text-xl font-semibold gradient-text mb-4">Murder Mystery 2 Features</h3>
-                <div class="text-left">
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-user-secret text-purple-400 mt-1 mr-2"></i>
-                    <span>Murderer Revealer</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-running text-purple-400 mt-1 mr-2"></i>
-                    <span>Speed Customiser</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-eye text-purple-400 mt-1 mr-2"></i>
-                    <span>ESP for All Players</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-skull text-purple-400 mt-1 mr-2"></i>
-                    <span>Auto Win Features</span>
-                  </div>
-                  <div class="flex items-start text-purple-300">
-                    <i class="fas fa-crown mr-2"></i>
-                    <span>20+ More Features</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-       
-              <!-- Evade -->
-          <div class="game-card fade-in delay-1">
-            <div class="game-card-inner">
-              <div class="game-card-front">
-                <img src="/media/Evade.webp" alt="Evade" class="w-full h-48 object-cover">
-                <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
-                  <div class="game-title-container">
-                    <div class="game-title">Evade</div>
-                    <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
-                  </div>
-                </div>
-              </div>
-              <div class="game-card-back">
-                <h3 class="text-xl font-semibold gradient-text mb-4">Evade Features</h3>
-                <div class="text-left">
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-eye text-purple-400 mt-1 mr-2"></i>
-                    <span>Player & Bot ESP</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-shield-alt text-purple-400 mt-1 mr-2"></i>
-                    <span>God Mode</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-running text-purple-400 mt-1 mr-2"></i>
-                    <span>WalkSpeed & JumpPower</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-first-aid text-purple-400 mt-1 mr-2"></i>
-                    <span>Auto Revive & Heal</span>
-                  </div>
-                  <div class="flex items-start text-purple-300">
-                    <i class="fas fa-crown mr-2"></i>
-                    <span>22+ More Features</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Plant vs Brainrot -->
-          <div class="game-card fade-in delay-2">
-            <div class="game-card-inner">
-              <div class="game-card-front">
-                <img src="/media/pvb.webp" alt="Plant vs Brainrot" class="w-full h-48 object-cover">
-                <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4">
-                  <div class="game-title-container">
-                    <div class="game-title">Plant vs Brainrot</div>
-                    <div class="game-subtitle">// CLICK TO REVEAL FEATURES</div>
-                  </div>
-                </div>
-              </div>
-              <div class="game-card-back">
-                <h3 class="text-xl font-semibold gradient-text mb-4">Plant vs Brainrot Features</h3>
-                <div class="text-left">
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-sun text-purple-400 mt-1 mr-2"></i>
-                    <span>Fastest Auto Farm</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-robot text-purple-400 mt-1 mr-2"></i>
-                    <span>Auto Collect</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-skull-crossbones text-purple-400 mt-1 mr-2"></i>
-                    <span>Kill All Brainrots</span>
-                  </div>
-                  <div class="mb-3 flex items-start">
-                    <i class="fas fa-seedling text-purple-400 mt-1 mr-2"></i>
-                    <span>Auto Upgrade Plants</span>
-                  </div>
-                  <div class="flex items-start text-purple-300">
-                    <i class="fas fa-crown mr-2"></i>
-                    <span>15+ More Features</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-           </div>
-      </div>
+  </div>
+</section>
+<div class="separator"></div>
+<section id="games">
+  <div class="section">
+    <div data-anim="fade-up">
+      <div class="section-label"><i class="fas fa-gamepad"></i> Supported Games</div>
+      <h2 class="section-title">Play to Win.</h2>
+      <p class="section-desc">Experience your favorite Roblox games like never before.</p>
     </div>
-  </section>
-
-  <!-- Premium Section -->
- 
-  <section id="premium" class="section-bg">
-    <div class="container mx-auto px-4">
-      <div class="section-header fade-in">
-        <h2 class="section-title gradient-text">PREMIUM KEYS</h2>
-        <p class="section-subtitle">Unlock exclusive features and AD Free access</p>
-        <p class="section-subtitle">Open Ticket in Discord Server for any issue</p>
-        <p class="section-subtitle font-bold text-green-400 mt-2">Keys are delivered instantly!</p>
+  </div>
+  <div class="games-scroll-wrap" data-anim="fade-up" data-delay="200" data-marquee>
+    <div class="games-track" id="games-track">
+      <div class="game-card" role="article" aria-label="Grow a Garden">
+        <div class="game-card-inner">
+          <div class="game-face game-face-front">
+            <img class="game-thumb" src="/media/gag.png" alt="Grow a Garden" loading="lazy">
+            <div class="game-info"><div class="game-name">Grow a Garden</div></div>
+          </div>
+          <div class="game-face game-face-back">
+            <div class="game-back-title">Grow a Garden</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-seedling"></i> Auto Farm</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-bolt"></i> Auto New Events</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-sync-alt"></i> Updated to Latest Version</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-shield-alt"></i> Anti-Ban Protection</div>
+            <div class="game-more"><i class="fas fa-crown"></i> 36+ More Features</div>
+          </div>
+        </div>
       </div>
-      
-      <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-gradient-to-b from-gray-900 to-gray-800 rounded-xl border border-gray-700 p-8 text-center fade-in">
-          <h3 class="text-2xl font-bold mb-4">7 Day</h3>
-          <div class="text-3xl font-bold mb-2">3$<span class="text-lg"> Crypto</span></div>
-          <p class="text-gray-400 mb-6">(BTC, LTC)</p>
-          <ul class="space-y-3 mb-8">
-            <li>Premium Features</li>
-            <li>7 Day Access</li>
-            <li class="text-gray-500">No Early Access</li>
-          </ul>
-          <a href="https://moondiety.mysellauth.com/product/moondiety-scripts-premium" target="_blank">
-            <button class="hero-btn hero-btn-secondary w-full">Get Key</button>
-          </a>
+      <div class="game-card" role="article" aria-label="Steal a Brainrot">
+        <div class="game-card-inner">
+          <div class="game-face game-face-front">
+            <img class="game-thumb" src="/media/sab.jpg" alt="Steal a Brainrot" loading="lazy">
+            <div class="game-info"><div class="game-name">Steal a Brainrot</div></div>
+          </div>
+          <div class="game-face game-face-back">
+            <div class="game-back-title">Steal a Brainrot</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-running"></i> Instant Steal Brainrots</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-tachometer-alt"></i> Speed Bypass</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-crosshairs"></i> Teleports</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-user-shield"></i> Anti-Ban &amp; Kick</div>
+            <div class="game-more"><i class="fas fa-crown"></i> 32+ More Features</div>
+          </div>
         </div>
-        
-        <div class="bg-gradient-to-b from-gray-900 to-gray-800 rounded-xl border border-gray-700 p-8 text-center fade-in delay-1">
-          <h3 class="text-2xl font-bold mb-4">1 Month</h3>
-          <div class="text-3xl font-bold mb-2">6$<span class="text-lg"> Crypto</span></div>
-          <p class="text-gray-400 mb-6">(BTC, LTC)</p>
-          <ul class="space-y-3 mb-8">
-            <li>Premium Features</li>
-            <li>30 Day Access</li>
-            <li>Priority Support</li>
-          </ul>
-          <a href="https://moondiety.mysellauth.com/product/moondiety-scripts-premium" target="_blank">
-            <button class="hero-btn hero-btn-secondary w-full">Get Key</button>
-          </a>
+      </div>
+      <div class="game-card" role="article" aria-label="Dead Rails">
+        <div class="game-card-inner">
+          <div class="game-face game-face-front">
+            <img class="game-thumb" src="/media/dr.png" alt="Dead Rails" loading="lazy">
+            <div class="game-info"><div class="game-name">Dead Rails</div></div>
+          </div>
+          <div class="game-face game-face-back">
+            <div class="game-back-title">Dead Rails</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-skull"></i> Best Auto Bonds Farm</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-trophy"></i> Auto Win with Bond Farm</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-map-marker-alt"></i> All Location Teleports</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-toolbox"></i> All Item Bringer</div>
+            <div class="game-more"><i class="fas fa-crown"></i> 28+ More Features</div>
+          </div>
         </div>
-        
-        <div class="bg-gradient-to-b from-purple-900 to-indigo-900 rounded-xl border border-purple-500 p-8 text-center relative fade-in delay-2">
-          <div class="best-badge">BEST VALUE</div>
-          <h3 class="text-2xl font-bold mb-4">Lifetime</h3>
-          <div class="text-3xl font-bold mb-2">10$<span class="text-lg"> Crypto</span></div>
-          <p class="text-gray-300 mb-6">(BTC, LTC)</p>
-          <ul class="space-y-3 mb-8">
-            <li>All Premium Features</li>
-            <li>Permanent Access</li>
-            <li>Free Permanent Early Access</li>
-            <li>Premium Role</li>
-            <li>24/7 Priority Support</li>
-          </ul>
-          <a href="https://moondiety.mysellauth.com/product/moondiety-scripts-premium" target="_blank">
-            <button class="hero-btn hero-btn-primary w-full">Get Lifetime Key</button>
-          </a>
+      </div>
+      <div class="game-card" role="article" aria-label="99 Nights in the Forest">
+        <div class="game-card-inner">
+          <div class="game-face game-face-front">
+            <img class="game-thumb" src="/media/99.webp" alt="99 Nights in the Forest" loading="lazy">
+            <div class="game-info"><div class="game-name">99 Nights in Forest</div></div>
+          </div>
+          <div class="game-face game-face-back">
+            <div class="game-back-title">99 Nights in Forest</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-tree"></i> Bring All Items</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-campground"></i> Auto Farm</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-fist-raised"></i> Kill Aura</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-running"></i> Speed &amp; Fly Boost</div>
+            <div class="game-more"><i class="fas fa-crown"></i> 25+ More Features</div>
+          </div>
+        </div>
+      </div>
+      <div class="game-card" role="article" aria-label="Ink Game">
+        <div class="game-card-inner">
+          <div class="game-face game-face-front">
+            <img class="game-thumb" src="/media/Ink.jpg" alt="Ink Game" loading="lazy">
+            <div class="game-info"><div class="game-name">Ink Game</div></div>
+          </div>
+          <div class="game-face game-face-back">
+            <div class="game-back-title">Ink Game</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-shield-alt"></i> God Mode</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-crosshairs"></i> Kill All</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-robot"></i> Auto Win AFK Farm</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-eye"></i> Aimbot</div>
+            <div class="game-more"><i class="fas fa-crown"></i> 38+ More Features</div>
+          </div>
+        </div>
+      </div>
+      <div class="game-card" role="article" aria-label="Forsaken">
+        <div class="game-card-inner">
+          <div class="game-face game-face-front">
+            <img class="game-thumb" src="/media/forsaken.png" alt="Forsaken" loading="lazy">
+            <div class="game-info"><div class="game-name">Forsaken</div></div>
+          </div>
+          <div class="game-face game-face-back">
+            <div class="game-back-title">Forsaken</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-heart"></i> Infinite Stamina</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-cog"></i> Auto Generator</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-skull-crossbones"></i> Kill All</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-eye"></i> ESP Players &amp; Killer</div>
+            <div class="game-more"><i class="fas fa-crown"></i> 18+ More Features</div>
+          </div>
+        </div>
+      </div>
+      <div class="game-card" role="article" aria-label="Murder Mystery 2">
+        <div class="game-card-inner">
+          <div class="game-face game-face-front">
+            <img class="game-thumb" src="/media/mm2.webp" alt="Murder Mystery 2" loading="lazy">
+            <div class="game-info"><div class="game-name">Murder Mystery 2</div></div>
+          </div>
+          <div class="game-face game-face-back">
+            <div class="game-back-title">Murder Mystery 2</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-user-secret"></i> Murderer Revealer</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-running"></i> Speed Customiser</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-eye"></i> ESP for All Players</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-trophy"></i> Auto Win Features</div>
+            <div class="game-more"><i class="fas fa-crown"></i> 20+ More Features</div>
+          </div>
+        </div>
+      </div>
+      <div class="game-card" role="article" aria-label="Evade">
+        <div class="game-card-inner">
+          <div class="game-face game-face-front">
+            <img class="game-thumb" src="/media/Evade.webp" alt="Evade" loading="lazy">
+            <div class="game-info"><div class="game-name">Evade</div></div>
+          </div>
+          <div class="game-face game-face-back">
+            <div class="game-back-title">Evade</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-eye"></i> Player &amp; Bot ESP</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-shield-alt"></i> God Mode</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-running"></i> WalkSpeed &amp; JumpPower</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-first-aid"></i> Auto Revive &amp; Heal</div>
+            <div class="game-more"><i class="fas fa-crown"></i> 22+ More Features</div>
+          </div>
+        </div>
+      </div>
+      <div class="game-card" role="article" aria-label="Plant vs Brainrot">
+        <div class="game-card-inner">
+          <div class="game-face game-face-front">
+            <img class="game-thumb" src="/media/pvb.webp" alt="Plant vs Brainrot" loading="lazy">
+            <div class="game-info"><div class="game-name">Plant vs Brainrot</div></div>
+          </div>
+          <div class="game-face game-face-back">
+            <div class="game-back-title">Plant vs Brainrot</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-sun"></i> Fastest Auto Farm</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-robot"></i> Auto Collect</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-skull-crossbones"></i> Kill All Brainrots</div>
+            <div class="game-feature"><i class="game-feature-icon fas fa-seedling"></i> Auto Upgrade Plants</div>
+            <div class="game-more"><i class="fas fa-crown"></i> 15+ More Features</div>
+          </div>
         </div>
       </div>
     </div>
-  </section>
-      
-  <!-- Executors Section -->
-  <section id="executors" class="section-bg">
-    <div class="container mx-auto px-4">
-      <div class="section-header fade-in">
-        <h2 class="section-title gradient-text">SUPPORTED EXECUTORS</h2>
-        <p class="section-subtitle">Compatible with the most popular Roblox executors including Delta, Krnl, Ronix, Swift, and more</p>
-      </div>
-      
-      <!-- Executors Marquee -->
-      <div class="executors-scroll-container" id="executors-scroll-container">
-        <div class="executors-scroll-track" id="executors-scroll-track">
-          <a href="https://deltaexploits.gg/" target="_blank" class="executor-marquee-card">
-            <i class="fas fa-arrow-right text-green-400"></i>
-            <span class="executor-marquee-name">Delta</span>
-            <span class="executor-marquee-status">Active</span>
-          </a>
-          
-          <a href="https://codex.lol/" target="_blank" class="executor-marquee-card">
-            <i class="fas fa-arrow-right text-green-400"></i>
-            <span class="executor-marquee-name">Codex</span>
-            <span class="executor-marquee-status">Active</span>
-          </a>
-          
-          <a href="https://krnl.cat/" target="_blank" class="executor-marquee-card">
-            <i class="fas fa-arrow-right text-green-400"></i>
-            <span class="executor-marquee-name">Krnl</span>
-            <span class="executor-marquee-status">Active</span>
-          </a>
-          
-          <a href="https://ronixstudios.com/" target="_blank" class="executor-marquee-card">
-            <i class="fas fa-arrow-right text-green-400"></i>
-            <span class="executor-marquee-name">Ronix</span>
-            <span class="executor-marquee-status">Active</span>
-          </a>
-          
-          <a href="https://spdmteam.com/index" target="_blank" class="executor-marquee-card">
-            <i class="fas fa-arrow-right text-green-400"></i>
-            <span class="executor-marquee-name">Arceus X</span>
-            <span class="executor-marquee-status">Active</span>
-          </a>
-          
-          <a href="https://vegax.gg/" target="_blank" class="executor-marquee-card">
-            <i class="fas fa-arrow-right text-green-400"></i>
-            <span class="executor-marquee-name">Vega X</span>
-            <span class="executor-marquee-status">Active</span>
-          </a>
-          
-          <a href="https://getcryptic.net/" target="_blank" class="executor-marquee-card">
-            <i class="fas fa-arrow-right text-green-400"></i>
-            <span class="executor-marquee-name">Cryptic</span>
-            <span class="executor-marquee-status">Active</span>
-          </a>
-          
-          <a href="https://realbunni.com/" target="_blank" class="executor-marquee-card">
-            <i class="fas fa-arrow-right text-green-400"></i>
-            <span class="executor-marquee-name">Bunni</span>
-            <span class="executor-marquee-status">Active</span>
-          </a>
-          
-          <a href="https://getswift.vip/" target="_blank" class="executor-marquee-card">
-            <i class="fas fa-arrow-right text-green-400"></i>
-            <span class="executor-marquee-name">Swift</span>
-            <span class="executor-marquee-status">Active</span>
-          </a>
-          
-          <a href="https://getvelocity.live/" target="_blank" class="executor-marquee-card">
-            <i class="fas fa-arrow-right text-green-400"></i>
-            <span class="executor-marquee-name">Velocity</span>
-            <span class="executor-marquee-status">Active</span>
-          </a>
-          
-          <a href="https://volcano.best/" target="_blank" class="executor-marquee-card">
-            <i class="fas fa-arrow-right text-green-400"></i>
-            <span class="executor-marquee-name">Volcano</span>
-            <span class="executor-marquee-status">Active</span>
-          </a>
-          
-          <a href="https://zenith.win/" target="_blank" class="executor-marquee-card">
-            <i class="fas fa-arrow-right text-green-400"></i>
-            <span class="executor-marquee-name">Zenith</span>
-            <span class="executor-marquee-status">Active</span>
-          </a>
-          
-          <a href="https://getwave.gg/" target="_blank" class="executor-marquee-card">
-            <i class="fas fa-arrow-right text-green-400"></i>
-            <span class="executor-marquee-name">Wave</span>
-            <span class="executor-marquee-status">Active</span>
-          </a>
-          
-          <a href="https://buyawp.gg" target="_blank" class="executor-marquee-card">
-            <i class="fas fa-arrow-right text-green-400"></i>
-            <span class="executor-marquee-name">Awp</span>
-            <span class="executor-marquee-status">Active</span>
-          </a>
-        </div>
-      </div>
-      
-      
+  </div>
+</section>
+<div class="separator"></div>
+<section id="premium" class="premium-section">
+  <canvas id="globe-canvas" aria-hidden="true"></canvas>
+  <div class="section">
+    <div data-anim="fade-up">
+      <div class="section-label"><i class="fas fa-crown"></i> Premium Keys</div>
+      <h2 class="section-title">Unlock Full Features.</h2>
+      <p class="section-desc">Get AD-Free access and exclusive premium features. Keys delivered instantly. Open a ticket in Discord for any issue.</p>
     </div>
-  </section>
-
-  <!-- Discord Section -->
-  <section id="discord" class="section-bg">
-    <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto text-center fade-in">
-        <div class="inline-block bg-gray-800 p-3 rounded-full mb-6">
-          <i class="fab fa-discord text-4xl text-indigo-400"></i>
-        </div>
-        <h2 class="section-title gradient-text">JOIN OUR DISCORD</h2>
-        <p class="section-subtitle">Connect with 100K+ users and get support for all your scripting needs</p>
-        
-        <div class="mt-10">
-          <a href="https://discord.gg/moondiety" class="hero-btn hero-btn-primary inline-flex items-center">
-            <i class="fab fa-discord mr-3 text-xl"></i> Join Discord Community
-          </a>
-        </div>
+    <div class="pricing-grid">
+      <div class="pricing-card" data-anim="fade-up" data-delay="50" id="plan-1day">
+        <div class="pricing-plan">1-Day Key</div>
+        <div class="pricing-price">Free</div>
+        <div class="pricing-price-sub">Requires Linkvertise/Lootlabs</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> 24-Hour Access</li>
+          <li class="pricing-feature disabled"><i class="fas fa-times icon-no"></i> No AD-Free Key</li>
+          <li class="pricing-feature disabled"><i class="fas fa-times icon-no"></i> No Premium Features</li>
+          <li class="pricing-feature disabled"><i class="fas fa-times icon-no"></i> No Priority Support</li>
+        </ul>
+        <a href="/key.html" class="btn-pricing btn-pricing-default" id="buy-1day">Get Free Key</a>
+      </div>
+      <div class="pricing-card" data-anim="fade-up" data-delay="100" id="plan-7day">
+        <div class="pricing-plan">7-Day Key</div>
+        <div class="pricing-price"><sup>$</sup>3</div>
+        <div class="pricing-price-sub">Paid in Crypto (BTC, LTC)</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Premium Features</li>
+          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> 7-Day Access</li>
+          <li class="pricing-feature disabled"><i class="fas fa-times icon-no"></i> No Early Access</li>
+          <li class="pricing-feature disabled"><i class="fas fa-times icon-no"></i> No Priority Support</li>
+        </ul>
+        <a href="https://moondiety.mysellauth.com/product/moondiety-scripts-premium" target="_blank" rel="noopener" class="btn-pricing btn-pricing-default" id="buy-7day">Get 7-Day Key</a>
+      </div>
+      <div class="pricing-card" data-anim="fade-up" data-delay="200" id="plan-monthly">
+        <div class="pricing-plan">Monthly Key</div>
+        <div class="pricing-price"><sup>$</sup>6</div>
+        <div class="pricing-price-sub">Paid in Crypto (BTC, LTC)</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Premium Features</li>
+          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> 30-Day Access</li>
+          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Priority Support</li>
+          <li class="pricing-feature disabled"><i class="fas fa-times icon-no"></i> No Early Access</li>
+        </ul>
+        <a href="https://moondiety.mysellauth.com/product/moondiety-scripts-premium" target="_blank" rel="noopener" class="btn-pricing btn-pricing-default" id="buy-monthly">Get Monthly Key</a>
+      </div>
+      <div class="pricing-card featured" data-anim="fade-up" data-delay="300" id="plan-lifetime">
+        <div class="pricing-badge">Best Value</div>
+        <div class="pricing-plan">Lifetime Key</div>
+        <div class="pricing-price"><sup>$</sup>10</div>
+        <div class="pricing-price-sub">Paid in Crypto (BTC, LTC)</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> All Premium Features</li>
+          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Permanent Access</li>
+          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Free Permanent Early Access</li>
+          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Premium Role in Discord</li>
+          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> 24/7 Priority Support</li>
+        </ul>
+        <a href="https://moondiety.mysellauth.com/product/moondiety-scripts-premium" target="_blank" rel="noopener" class="btn-pricing btn-pricing-featured" id="buy-lifetime">Get Lifetime Key</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+<div class="separator"></div>
+<section id="executors">
+  <div class="section">
+    <div data-anim="fade-up">
+      <div class="section-label"><i class="fas fa-terminal"></i> Supported Executors</div>
+      <h2 class="section-title">Works Everywhere.</h2>
+      <p class="section-desc">Compatible with most popular Roblox executors Delta, Krnl, Ronix, Swift, and many more.</p>
+    </div>
+  </div>
+  <div class="executors-scroll-wrap" data-anim="fade-up" data-delay="200" data-marquee>
+    <div class="executors-track" id="executors-track">
+      <a href="https://deltaexploits.gg/"   target="_blank" rel="noopener" class="executor-pill"><span class="executor-status-dot"></span> Delta</a>
+      <a href="https://codex.lol/"          target="_blank" rel="noopener" class="executor-pill"><span class="executor-status-dot"></span> Codex</a>
+      <a href="https://krnl.cat/"           target="_blank" rel="noopener" class="executor-pill"><span class="executor-status-dot"></span> Krnl</a>
+      <a href="https://ronixstudios.com/"   target="_blank" rel="noopener" class="executor-pill"><span class="executor-status-dot"></span> Ronix</a>
+      <a href="https://spdmteam.com/index"  target="_blank" rel="noopener" class="executor-pill"><span class="executor-status-dot"></span> Arceus X</a>
+      <a href="https://vegax.gg/"           target="_blank" rel="noopener" class="executor-pill"><span class="executor-status-dot"></span> Vega X</a>
+      <a href="https://getcryptic.net/"     target="_blank" rel="noopener" class="executor-pill"><span class="executor-status-dot"></span> Cryptic</a>
+      <a href="https://realbunni.com/"      target="_blank" rel="noopener" class="executor-pill"><span class="executor-status-dot"></span> Bunni</a>
+      <a href="https://getswift.vip/"       target="_blank" rel="noopener" class="executor-pill"><span class="executor-status-dot"></span> Swift</a>
+      <a href="https://getvelocity.live/"   target="_blank" rel="noopener" class="executor-pill"><span class="executor-status-dot"></span> Velocity</a>
+      <a href="https://volcano.best/"       target="_blank" rel="noopener" class="executor-pill"><span class="executor-status-dot"></span> Volcano</a>
+      <a href="https://zenith.win/"         target="_blank" rel="noopener" class="executor-pill"><span class="executor-status-dot"></span> Zenith</a>
+      <a href="https://getwave.gg/"         target="_blank" rel="noopener" class="executor-pill"><span class="executor-status-dot"></span> Wave</a>
+      <a href="https://buyawp.gg"           target="_blank" rel="noopener" class="executor-pill"><span class="executor-status-dot"></span> Awp</a>
+    </div>
+  </div>
+</section>
+<div class="separator"></div>
+<section id="discord" class="section">
+  <div class="discord-section-inner" data-anim="fade-up">
 
-  <!-- Footer -->
-  <footer class="py-12 border-t border-gray-800">
-    <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-        <div class="flex items-center gap-4">
-          <img src="/media/logo.png" alt="Moondiety Logo" class="h-12">
-          <div>
-            <h3 class="text-xl font-bold">MOONDIETY SCRIPTS</h3>
-            <p class="text-gray-400">Play to Win</p>
-          </div>
-        </div>
-        
-        <div class="flex flex-wrap justify-center gap-6">
-          <a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
-          <a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a>
-          <a href="#" class="text-gray-400 hover:text-white transition">Support</a>
-          <a href="https://discord.gg/moondiety" class="text-gray-400 hover:text-white transition">Discord</a>
-        </div>
-        
-        <div class="flex gap-4">
-          <a href="https://discord.gg/moondiety" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition">
-            <i class="fab fa-discord"></i>
-          </a>
-          <a href="https://youtube.com/@moondiety_script?si=3a6-FptuSGqq0xjt" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-600 transition">
-            <i class="fab fa-youtube"></i>
-          </a>
-          <a href="https://scriptblox.com/u/Moondiety" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-500 transition">
-            <img src="https://api.nuget.org/v3-flatcontainer/scriptbloxapi/6.3.0/icon" alt="ScriptBlox" class="w-6 h-6">
-          </a>
-        </div>
+    
+    <div class="discord-left">
+      <div class="discord-badge">
+        <i class="fab fa-discord"></i> Live Community
       </div>
-      
-      <div class="mt-12 text-center text-gray-500 text-sm">
-        <p>© 2025 Moondiety Scripts. All rights reserved.</p>
-        <p class="mt-2">This content is not affiliated with, endorsed, sponsored, or specifically approved by Roblox and Roblox is not responsible for it.</p>
+      <h2 class="discord-heading">Join <span class="line-accent" style="-webkit-text-fill-color:unset;background:none;color:var(--rose);">140K+</span><br>members in our server</h2>
+      <p class="discord-sub" style="margin-bottom: 2rem;">Get instant support, early access to new scripts, and exclusive premium roles...</p>
+      <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="btn-lg btn-primary" id="discord-join-btn" style="align-self:flex-start;">
+        <i class="fab fa-discord"></i> Join Discord Community
+      </a>
+    </div>
+
+    
+    <div class="discord-right" data-anim="fade-up" data-delay="200">
+      <div class="discord-widget-wrapper">
+        <iframe
+          src="https://discord.com/widget?id=1369029597684957295&theme=dark"
+          width="100%"
+          height="500"
+          allowtransparency="true"
+          frameborder="0"
+          sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+          title="Moondiety Discord Server">
+        </iframe>
       </div>
     </div>
-  </footer>
 
-  <script>
-    
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('active');
-    });
-    
-    
-    document.addEventListener('click', (e) => {
-      if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-        mobileMenu.classList.remove('active');
-      }
-    });
+  </div>
+</section>
 
-    
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section');
-    
-    
-    window.addEventListener('scroll', () => {
-      let current = '';
-      
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        if (pageYOffset >= (sectionTop - 200)) {
-          current = section.getAttribute('id');
-        }
-      });
-      
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').substring(1) === current) {
-          link.classList.add('active');
-        }
-      });
-      
-      // Also mobile menu
-      const mobileLinks = mobileMenu.querySelectorAll('a');
-      mobileLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').substring(1) === current) {
-          link.classList.add('active');
-        }
-      });
-    });
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          window.scrollTo({
-            top: target.offsetTop - 100,
-            behavior: 'smooth'
-          });
-          
-          // Close mobile menu
-          mobileMenu.classList.remove('active');
-        }
-      });
-    });
-    
-    // Animation on scroll
-    const fadeElements = document.querySelectorAll('.fade-in, .slide-in');
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = 1;
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, {
-      threshold: 0.1
-    });
-    
-    fadeElements.forEach(el => {
-      observer.observe(el);
-    });
-    
-    // Copy script button
-    const copyBtn = document.getElementById('copy-script');
-    if (copyBtn) {
-      const originalBtnHTML = copyBtn.innerHTML;
-      
-      copyBtn.addEventListener('click', () => {
-        const script = `loadstring(game:HttpGet('https://raw.githubusercontent.com/m00ndiety/Moondiety/refs/heads/main/Loader'))()`;
-        navigator.clipboard.writeText(script).then(() => {
-          copyBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Copied!';
-          setTimeout(() => {
-            copyBtn.innerHTML = originalBtnHTML;
-          }, 2000);
-        }).catch(err => {
-          console.error('Failed to copy script: ', err);
-          copyBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i> Failed!';
-          setTimeout(() => {
-            copyBtn.innerHTML = originalBtnHTML;
-          }, 2000);
-        });
-      });
-    }
-
-    // Enhanced scrolling functionality for games and executors
-    function setupInfiniteScroll(containerId, trackId, duplicate = true) {
-      const container = document.getElementById(containerId);
-      const track = document.getElementById(trackId);
-      
-      if (!container || !track) return;
-      
-      // Duplicate content for seamless looping
-      if (duplicate) {
-        track.innerHTML += track.innerHTML;
-      }
-      
-      let isPaused = false;
-      let startX, scrollLeft, isDown = false;
-      
-      // Pause auto-scroll on hover/touch
-      container.addEventListener('mouseenter', () => {
-        isPaused = true;
-        track.classList.add('paused');
-      });
-      
-      container.addEventListener('mouseleave', () => {
-        isPaused = false;
-        track.classList.remove('paused');
-      });
-      
-      // Touch events for mobile
-      container.addEventListener('touchstart', (e) => {
-        isPaused = true;
-        track.classList.add('paused');
-      }, { passive: true });
-      
-      container.addEventListener('touchend', () => {
-        // Small delay before resuming auto-scroll
-        setTimeout(() => {
-          isPaused = false;
-          track.classList.remove('paused');
-        }, 2000);
-      }, { passive: true });
-      
-      // Mouse drag functionality for desktop
-      container.addEventListener('mousedown', (e) => {
-        isDown = true;
-        startX = e.pageX - container.offsetLeft;
-        scrollLeft = container.scrollLeft;
-        container.style.cursor = 'grabbing';
-      });
-      
-      container.addEventListener('mouseleave', () => {
-        isDown = false;
-        container.style.cursor = 'grab';
-      });
-      
-      container.addEventListener('mouseup', () => {
-        isDown = false;
-        container.style.cursor = 'grab';
-      });
-      
-      container.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - container.offsetLeft;
-        const walk = (x - startX) * 2;
-        container.scrollLeft = scrollLeft - walk;
-      });
-      
-      // Reset position when scroll reaches the end for seamless loop
-      container.addEventListener('scroll', () => {
-        if (container.scrollLeft >= track.scrollWidth / 2) {
-          container.scrollLeft = 0;
-        }
-      });
-    }
-    
-    // Initialize enhanced scrolling
-    document.addEventListener('DOMContentLoaded', () => {
-      setupInfiniteScroll('games-scroll-container', 'games-scroll-track');
-      setupInfiniteScroll('executors-scroll-container', 'executors-scroll-track');
-    });
-  </script>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand-col">
+      <div class="footer-brand">
+        <img src="/media/logo.png" alt="Moondiety Logo" width="32" height="32">
+        <span class="footer-brand-name">MOONDIETY</span>
+      </div>
+      <p class="footer-tagline">PLAY TO WIN!</p>
+      <div class="footer-socials">
+        <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="footer-social" aria-label="Discord"><i class="fab fa-discord"></i></a>
+        <a href="https://youtube.com/@moondiety_script?si=3a6-FptuSGqq0xjt" target="_blank" rel="noopener" class="footer-social" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://scriptblox.com/u/Moondiety" target="_blank" rel="noopener" class="footer-social" aria-label="ScriptBlox"><i class="fas fa-scroll"></i></a>
+      </div>
+    </div>
+    <div class="footer-links-col">
+      <h4 class="footer-heading">Product</h4>
+      <a href="/#scripts" class="footer-link">Script Loader</a>
+      <a href="/#games" class="footer-link">Supported Games</a>
+      <a href="/#executors" class="footer-link">Executors</a>
+      <a href="/shop.html" class="footer-link">Premium Plans</a>
+    </div>
+    <div class="footer-links-col">
+      <h4 class="footer-heading">Resources</h4>
+      <a href="/shop.html" class="footer-link">Premium Shop</a>
+      <a href="/key.html" class="footer-link">Get Key</a>
+      <a href="/key-tutorial.html" class="footer-link">Key Tutorial</a>
+      <a href="https://discord.gg/moondiety" target="_blank" class="footer-link">Support Server</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">
+      <span>&copy; 2025 Moondiety Scripts. All rights reserved.</span>
+    </div>
+    <div class="footer-legal">
+      <span>Not affiliated with or endorsed by Roblox Corporation.</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/main.js" defer></script>
 </body>
 </html>

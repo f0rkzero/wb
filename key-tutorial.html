@@ -3,886 +3,533 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Key Tutorials | Moondiety Scripts - How to Get Your Key</title>
-
-   <link rel="apple-touch-icon" sizes="180x180" href="/media/apple-touch-icon.png">
+  <title>Key Tutorial | Moondiety Scripts</title>
+  <meta name="description" content="Step-by-step video tutorials on how to get your Moondiety key through Linkvertise and Lootlabs. Learn how to unlock free Roblox scripts.">
+  <meta name="keywords" content="moondiety, key tutorial, linkvertise, lootlabs, roblox script, get key, how to">
+  <meta name="theme-color" content="#0a0a0f">
+  <link rel="apple-touch-icon" sizes="180x180" href="/media/apple-touch-icon.png">
   <link rel="icon" type="image/svg+xml" href="/media/favicon.svg">
   <link rel="icon" type="image/png" sizes="96x96" href="/media/favicon-96x96.png">
   <link rel="shortcut icon" href="/media/favicon.ico">
   <link rel="manifest" href="/media/site.webmanifest">
-  <meta name="apple-mobile-web-app-title" content="Moondiety">
-  <meta name="msapplication-TileColor" content="#6366f1">
-  <meta name="theme-color" content="#0f0f15">
-
-  
-  <meta name="description" content="Step-by-step tutorials on how to get your Moondiety key through Linkvertise and Lootlabs. Learn how to unlock premium Roblox scripts.">
-  <meta name="keywords" content="moondiety, key tutorial, linkvertise, lootlabs, roblox script, get key">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Michroma&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/animations.css">
   <style>
-    :root {
-      --primary: #8b5cf6;
-      --secondary: #ec4899;
-      --accent-blue: #6366f1;
-      --accent-pink: #ec4899;
-      --dark: #0f0f15;
-      --darker: #080811;
-      --light: #f3f4f6;
-      --nav-height: 70px;
-    }
     
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    .page-hero {
+      padding: calc(var(--nav-h) - 2.5rem) 0 3rem;
+      text-align: center;
     }
-    
-    body {
-      font-family: 'Poppins', sans-serif;
-      color: var(--light);
-      overflow-x: hidden;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #0f0f15 0%, #1a1a2e 50%, #16213e 100%);
-    }
-    
-    #bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -2;
-      opacity: 0.4;
-    }
-    
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(8, 8, 17, 0.85);
-      z-index: -1;
-    }
-    
-    h1, h2, h3, h4, h5 {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 600;
-    }
-    
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0px); }
-    }
-    
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7); }
-      70% { box-shadow: 0 0 0 12px rgba(99, 102, 241, 0); }
-     100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
-    }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    @keyframes glow {
-      0% { text-shadow: 0 0 5px #8b5cf6, 0 0 10px #8b5cf6; }
-      50% { text-shadow: 0 0 15px #8b5cf6, 0 0 20px #8b5cf6; }
-      100% { text-shadow: 0 0 5px #8b5cf6, 0 0 10px #8b5cf6; }
-    }
-    
-    .float { 
-      animation: float 3s ease-in-out infinite;
-    }
-    
-    .glow {
-      animation: glow 2s infinite;
-    }
-    
-    .gradient-text {
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    .section-bg {
-      background: rgba(15, 15, 25, 0.7);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
-      border: 1px solid rgba(99, 102, 241, 0.2);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      margin: 20px auto;
-      max-width: 1200px;
-    }
-    
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(10, 10, 20, 0.95);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-      border-bottom: 1px solid rgba(99, 102, 241, 0.2);
-      height: var(--nav-height);
-    }
-    
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 100%;
-      padding: 0 2rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      cursor: pointer;
-    }
-    
-    .nav-logo img {
-      height: 40px;
-      animation: float 3s ease-in-out infinite;
-    }
-    
-    .nav-logo-text {
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .nav-logo-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-family: 'Share Tech Mono', monospace;
-      text-shadow: 0 0 10px rgba(139, 92, 246, 0.7);
-    }
-    
-    .nav-logo-subtitle {
-      font-size: 0.6rem;
-      color: #d1d5db;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-top: -3px;
-      font-family: 'Share Tech Mono', monospace;
-    }
-    
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-    }
-    
-    .nav-link {
-      position: relative;
-      padding: 0.5rem 0;
-      color: #e0e0e0;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      overflow: hidden;
-    }
-    
-    .nav-link::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
-      border-radius: 3px;
-      transition: width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-    
-    .nav-link:hover {
-      color: white;
-    }
-    
-    .nav-link:hover::before {
-      width: 100%;
-    }
-    
-    .nav-link.active {
-      color: white;
-    }
-    
-    .nav-link.active::before {
-      width: 100%;
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
-    }
-    
-    .nav-btn {
-      padding: 0.5rem 1.2rem;
-      border-radius: 8px;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      text-decoration: none;
+    .page-hero-label {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--rose);
+      border: 1px solid rgba(255,45,85,0.3);
+      background: rgba(255,45,85,0.07);
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+      animation: hero-line-in 0.6s ease 0.1s both;
+    }
+    .page-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      animation: hero-line-in 0.7s ease 0.2s both;
+    }
+    .page-sub {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 540px;
+      margin: 0 auto 3.5rem;
+      animation: hero-line-in 0.7s ease 0.3s both;
     }
     
-    .nav-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: 0.5s;
-    }
-    
-    .nav-btn:hover::before {
-      left: 100%;
-    }
-    
-    .nav-btn-primary {
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
-      color: white;
-      box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
-      transform: translateY(0);
-      border: none;
-    }
-    
-    .nav-btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(99, 102, 241, 0.4);
-    }
-    
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    
-    .mobile-menu {
-      position: fixed;
-      top: var(--nav-height);
-      left: 0;
-      width: 100%;
-      background: rgba(15, 15, 25, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 1rem 0;
-      transform: translateY(-100%);
-      transition: transform 0.4s ease;
-      z-index: 999;
-    }
-    
-    .mobile-menu.active {
-      transform: translateY(0);
-    }
-    
-    .mobile-menu a {
-      display: block;
-      padding: 1rem 2rem;
-      color: #e0e0e0;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      border-bottom: 1px solid rgba(99, 102, 241, 0.1);
-    }
-    
-    .mobile-menu a:hover {
-      background: rgba(99, 102, 241, 0.1);
-      color: white;
-    }
-    
-    /* Tutorial Cards */
     .tutorial-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
       gap: 2rem;
-      margin-top: 2rem;
+      margin-bottom: 5rem;
     }
-    
     .tutorial-card {
-      background: rgba(20, 20, 30, 0.7);
-      border: 1px solid rgba(99, 102, 241, 0.2);
-      border-radius: 12px;
-      padding: 2rem;
-      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      background: var(--glass-bg-md);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      backdrop-filter: var(--blur-md);
+      -webkit-backdrop-filter: var(--blur-md);
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1),
+                  border-color 0.4s ease,
+                  box-shadow 0.4s ease;
       position: relative;
       overflow: hidden;
-      backdrop-filter: blur(5px);
     }
-    
     .tutorial-card::before {
       content: '';
       position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(45deg, var(--accent-blue), transparent, var(--accent-pink));
-      z-index: -1;
-      opacity: 0;
-      transition: opacity 0.4s ease;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(ellipse at top left, rgba(232,0,58,0.05), transparent 60%);
+      pointer-events: none;
     }
-    
     .tutorial-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-      border-color: transparent;
+      transform: translateY(-5px);
+      border-color: var(--glass-border-red);
+      box-shadow: var(--shadow-red), var(--shadow-card);
     }
-    
-    .tutorial-card:hover::before {
-      opacity: 1;
-    }
-    
-    .tutorial-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      transition: all 0.4s ease;
-      display: inline-block;
-      position: relative;
-      z-index: 2;
-    }
-    
-    .tutorial-card:hover .tutorial-icon {
-      transform: scale(1.1);
-    }
-    
-    .tutorial-name {
-      font-weight: 600;
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
-    }
-    
-    .tutorial-description {
-      color: #d1d5db;
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
-    }
-    
-    .video-container {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-      margin-bottom: 1.5rem;
-      border-radius: 8px;
-      overflow: hidden;
-      background: #0f0f15;
+    .tutorial-card-icon {
+      width: 52px;
+      height: 52px;
+      margin: 0 0 1.25rem 0;
+      border-radius: var(--radius-md);
+      background: rgba(232,0,58,0.12);
+      border: 1px solid rgba(232,0,58,0.2);
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 1.3rem;
+      color: var(--rose);
+    }
+    .tutorial-card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .tutorial-card-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.65;
+      margin-bottom: 1.75rem;
     }
     
-    .video-container video {
+    .video-wrap {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid var(--glass-border);
+      margin-bottom: 1.75rem;
+    }
+    .video-wrap video {
       position: absolute;
-      top: 0;
-      left: 0;
+      inset: 0;
       width: 100%;
       height: 100%;
-      border-radius: 8px;
+      border-radius: inherit;
     }
-    
     .video-placeholder {
       position: absolute;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
-      background: linear-gradient(45deg, #0f0f15, #1a1a2e);
-      color: #6366f1;
-      font-size: 1.2rem;
+      gap: 0.75rem;
+      background: radial-gradient(ellipse at center, rgba(232,0,58,0.08), rgba(10,10,15,0.9));
+      color: var(--rose);
+      font-size: 0.9rem;
+      pointer-events: none;
     }
+    .video-placeholder i { font-size: 2.5rem; opacity: 0.6; }
+    .video-placeholder span { color: var(--text-muted); font-size: 0.8rem; }
     
-    .video-placeholder i {
-      font-size: 3rem;
-      margin-bottom: 1rem;
+    .steps-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.9rem;
     }
-    
     .steps-list {
-      list-style-type: none;
-      margin-top: 1.5rem;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      margin-bottom: 1.75rem;
     }
-    
     .steps-list li {
-      margin-bottom: 0.8rem;
       display: flex;
       align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.5;
     }
-    
-    .steps-list li .step-number {
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
-      color: white;
-      width: 24px;
-      height: 24px;
+    .step-num-pill {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
+      background: linear-gradient(135deg, var(--red-accent), var(--rose));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.8rem;
-      margin-right: 10px;
-      flex-shrink: 0;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: white;
     }
     
-    .tutorial-btn {
-      display: inline-flex;
+    .tut-btn {
+      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.8rem;
-      padding: 1rem 1.5rem;
-      border-radius: 10px;
+      gap: 0.6rem;
+      padding: 0.9rem 1.5rem;
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
       font-weight: 600;
-      transition: all 0.3s ease;
       text-decoration: none;
+      transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
       width: 100%;
-      margin-top: 1.5rem;
     }
-    
-    .tutorial-btn::before {
+    .tut-btn::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: 0.5s;
+      top: 0; left: -100%; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+      transition: left 0.5s;
     }
-    
-    .tutorial-btn:hover::before {
-      left: 100%;
-    }
-    
-    .tutorial-btn-linkvertise {
-      background: linear-gradient(90deg, #4a69bd, #6a89cc);
+    .tut-btn:hover::before { left: 100%; }
+    .tut-btn-lv {
+      background: linear-gradient(135deg, #3b5fc0, #5a7fd4);
       color: white;
+      box-shadow: 0 4px 20px rgba(59,95,192,0.35);
     }
-    
-    .tutorial-btn-lootlabs {
-      background: linear-gradient(90deg, #e55039, #eb2f06);
+    .tut-btn-lv:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(59,95,192,0.5); }
+    .tut-btn-ll {
+      background: linear-gradient(135deg, var(--red-accent), var(--rose));
       color: white;
+      box-shadow: 0 4px 20px rgba(232,0,58,0.35);
     }
+    .tut-btn-ll:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,0,58,0.5); }
     
-    .tutorial-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    .script-section {
+      padding: 5rem 0;
+      border-top: 1px solid var(--glass-border);
     }
-    
-    .main-content {
-      padding-top: calc(var(--nav-height) + 1rem);
-      padding-bottom: 2rem;
-      min-height: calc(100vh - var(--nav-height));
+    .script-box {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      max-width: 720px;
+      margin: 3rem auto 0;
     }
-    
-    .fade-in {
-      animation: fadeInUp 0.8s ease-out forwards;
-      opacity: 0;
-    }
-    
-    .delay-1 { animation-delay: 0.1s; }
-    .delay-2 { animation-delay: 0.2s; }
-    .delay-3 { animation-delay: 0.3s; }
-    
-    .section-header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    
-    .section-title {
-      font-size: 2rem;
+    .script-box-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
       margin-bottom: 1rem;
-      text-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
     }
-    
-    .section-subtitle {
-      color: #d1d5db;
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto;
+    .script-code {
+      background: rgba(0,0,0,0.45);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem 1.5rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+      color: #e2e8f0;
+      overflow-x: auto;
+      margin-bottom: 1.25rem;
+      white-space: nowrap;
     }
-    
-    /* Responsive Design */
-    @media (max-width: 1024px) {
-      .nav-links {
-        display: none;
-      }
-      
-      .mobile-menu-btn {
-        display: block;
-      }
-      
-      .nav-logo-title {
-        font-size: 1.3rem;
-      }
+    .copy-btn-lg {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.8rem 1.75rem;
+      background: linear-gradient(135deg, var(--red-accent), var(--rose));
+      color: white;
+      border: none;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
-    
-    @media (max-width: 768px) {
-      .tutorial-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .nav-container {
-        padding: 0 1rem;
-      }
-      
-      .main-content {
-        padding-top: calc(var(--nav-height) + 1rem);
-      }
-      
-      .tutorial-card {
-        padding: 1.5rem;
-      }
-      
-      .section-title {
-        font-size: 1.8rem;
-      }
+    .copy-btn-lg:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,0,58,0.4); }
+    .support-cta {
+      text-align: center;
+      padding: 2.5rem 0 5rem;
+      color: var(--text-muted);
     }
-    
-    @media (max-width: 600px) {
-      .tutorial-grid {
-        grid-template-columns: 1fr;
-      }
+    .support-cta a {
+      color: var(--rose);
+      font-weight: 600;
+      text-decoration: none;
     }
-    
-    @media (max-width: 480px) {
-      .tutorial-btn {
-        padding: 0.8rem 1.2rem;
-        font-size: 0.9rem;
-      }
-      
-      .tutorial-icon {
-        font-size: 2rem;
-      }
-      
-      .nav-logo-title {
-        font-size: 1.1rem;
-      }
-      
-      .nav-logo img {
-        height: 35px;
-      }
-      
-      .section-title {
-        font-size: 1.6rem;
-      }
+    .support-cta a:hover { color: var(--pink); }
+    @media (max-width: 700px) {
+      .tutorial-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
-<body class="text-white">
-  <!-- Background Video -->
-  <video id="bg-video" autoplay muted loop>
-    <source src="/media/Icon-Animated.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-
-  <!-- Enhanced Navigation -->
-  <nav>
-    <div class="nav-container">
-      <div class="nav-logo" onclick="window.location.href='index.html'">
-        <img src="/media/logo.png" alt="Moondiety Logo">
-        <div class="nav-logo-text">
-          <div class="nav-logo-title">MOONDIETY</div>
-          <div class="nav-logo-subtitle">SCRIPTS</div>
-        </div>
-      </div>
-      
-      <div class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="key.html" class="nav-link">Get Key</a>
-        <a href="index.html#games" class="nav-link">Games</a>
-        <a href="index.html#premium" class="nav-link">Premium</a>
-        <a href="index.html#executors" class="nav-link">Executors</a>
-        <a href="index.html#discord" class="nav-link">Discord</a>
-      </div>
-      
-      <div class="nav-actions">
-        <a href="key.html" class="nav-btn nav-btn-primary">Get Key</a>
-      </div>
-      
-      <button class="mobile-menu-btn" id="mobile-menu-btn">
-        <i class="fas fa-bars"></i>
+<body class="dark-theme">
+<div class="scroll-progress" id="scroll-progress"></div>
+<div class="site-bg"></div>
+<canvas id="particles-canvas"></canvas>
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="/media/logo.png" alt="Moondiety Logo" width="36" height="36">
+      <span class="nav-logo-name">MOONDIETY</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/#scripts" class="nav-link">Scripts</a>
+      <a href="/#games"     class="nav-link">Games</a>
+      <a href="/shop.html"   class="nav-link">Shop</a>
+      <a href="/#executors" class="nav-link">Executors</a>
+      <a href="/#discord" class="nav-link">Discord</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="btn-discord">
+        <i class="fab fa-discord"></i> Discord
+      </a>
+      <a href="/key.html" class="btn-get-key">
+        <i class="fas fa-key"></i> Get Key
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
       </button>
     </div>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="index.html">Home</a>
-    <a href="key.html">Get Key</a>
-    <a href="index.html#games">Games</a>
-    <a href="index.html#premium">Premium</a>
-    <a href="index.html#executors">Executors</a>
-    <a href="index.html#discord">Discord</a>
   </div>
-
-  <!-- Main Content -->
-  <main class="main-content">
-    <div class="container mx-auto px-4">
-      <div class="section-header fade-in">
-        <h1 class="section-title gradient-text">KEY TUTORIALS</h1>
-        <p class="section-subtitle">Step-by-step guides to get your Moondiety key through Linkvertise and Lootlabs</p>
-      </div>
-      
-      <div class="tutorial-grid">
-        <!-- Linkvertise Tutorial -->
-        <div class="tutorial-card fade-in">
-          <div class="tutorial-icon text-blue-400">
-            <i class="fas fa-link"></i>
+</nav>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu-header">
+    <div class="mobile-menu-brand">
+      <img src="/media/logo.png" alt="Moondiety" width="28">
+      <span>Moondiety</span>
+    </div>
+    <button class="mobile-close" id="mobile-close" aria-label="Close menu">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <div class="mobile-menu-body">
+    <a href="/#home" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-home"></i></span>
+      <span>Home</span>
+    </a>
+    <a href="/#scripts" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-code"></i></span>
+      <span>Script Loader</span>
+    </a>
+    <a href="/#games" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-gamepad"></i></span>
+      <span>Games</span>
+    </a>
+    <a href="/shop.html" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-crown"></i></span>
+      <span>Premium Shop</span>
+    </a>
+    <a href="/#executors" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-bolt"></i></span>
+      <span>Executors</span>
+    </a>
+    <div class="mobile-menu-separator"></div>
+    <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="mobile-link">
+      <span class="ml-icon"><i class="fab fa-discord"></i></span>
+      <span>Join Discord</span>
+    </a>
+  </div>
+  <div class="mobile-menu-footer">
+    <a href="/key.html" class="btn-lg btn-primary">
+      <i class="fas fa-key"></i> Get Free Key
+    </a>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="container" style="max-width:var(--max-w); margin:0 auto; padding:0 2rem; text-align:center;">
+    <div class="page-hero-label">
+      <i class="fas fa-play-circle"></i> Step-by-Step
+    </div>
+    <h1 class="page-title">
+      Key <span class="gradient-text">Tutorials</span>
+    </h1>
+    <p class="page-sub">Watch these short tutorials to get your Moondiety key through Linkvertise or Lootlabs - completely free.</p>
+    <div class="tutorial-grid" style="text-align:left;">
+      <div class="tutorial-card" data-anim="fade-up" data-delay="100">
+        <div class="tutorial-card-icon"><img src="/media/linkvertise.png" alt="Linkvertise Logo" style="width: 28px; height: 28px; object-fit: contain;"></div>
+        <div class="tutorial-card-title">Linkvertise Tutorial</div>
+        <p class="tutorial-card-desc">Follow these steps to get your key through Linkvertise. Fast, free, and usually takes under 30 seconds.</p>
+        <div class="video-wrap">
+          <div class="video-placeholder">
+            <i class="fas fa-play-circle"></i>
+            <span>Video Tutorial</span>
           </div>
-          <h2 class="tutorial-name gradient-text">Linkvertise Tutorial</h2>
-          <p class="tutorial-description">Follow these steps to get your key through Linkvertise. This method is completely free and only takes a minute.</p>
-          
-          <div class="video-container">
-            <div class="video-placeholder">
-              <i class="fas fa-play-circle"></i>
-              <p>Video Tutorial Preview</p>
-            </div>
-            <video controls poster="/media/banner.jpg">
-              <source src="/media/LV.mov" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          
-          <h3 class="text-lg font-semibold mb-3">Steps to Get Key:</h3>
-          <ul class="steps-list">
-            <li>
-              <span class="step-number">1</span>
-              <span>Click the "Get Key via Linkvertise" button below</span>
-            </li>
-            <li>
-              <span class="step-number">2</span>
-              <span>Complete the short verification process (usually watching an ad or completing a survey)</span>
-            </li>
-            <li>
-              <span class="step-number">3</span>
-              <span>Copy your key from the success page</span>
-            </li>
-            <li>
-              <span class="step-number">4</span>
-              <span>Use the key in our script loader to unlock premium features</span>
-            </li>
-          </ul>
-          
-          <a href="https://ads.luarmor.net/get_key?for=Moondiety_Key_Linkvertise-IHeAAOKIUTol" target="_blank" class="tutorial-btn tutorial-btn-linkvertise">
-            <i class="fas fa-external-link-alt"></i>
-            <span>Get Key via Linkvertise</span>
-          </a>
+          <video controls poster="/media/banner.jpg">
+            <source src="/media/LV.mov" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
         </div>
-        
-        <!-- Lootlabs Tutorial -->
-        <div class="tutorial-card fade-in delay-1">
-          <div class="tutorial-icon text-red-400">
-            <i class="fas fa-gem"></i>
-          </div>
-          <h2 class="tutorial-name gradient-text">Lootlabs Tutorial</h2>
-          <p class="tutorial-description">Follow these steps to get your key through Lootlabs. Complete offers to earn your key through various tasks.</p>
-          
-          <div class="video-container">
-            <div class="video-placeholder">
-              <i class="fas fa-play-circle"></i>
-              <p>Video Tutorial Preview</p>
-            </div>
-            <video controls poster="/media/banner.jpg">
-              <source src="/media/LB.mov" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          
-          <h3 class="text-lg font-semibold mb-3">Steps to Get Key:</h3>
-          <ul class="steps-list">
-            <li>
-              <span class="step-number">1</span>
-              <span>Click the "Get Key via Lootlabs" button below</span>
-            </li>
-            <li>
-              <span class="step-number">2</span>
-              <span>Complete one of the available offers (surveys, app installs, etc.)</span>
-            </li>
-            <li>
-              <span class="step-number">3</span>
-              <span>Receive your key upon completion of the offer</span>
-            </li>
-            <li>
-              <span class="step-number">4</span>
-              <span>Use the key in our script loader to unlock premium features</span>
-            </li>
-          </ul>
-          
-          <a href="https://ads.luarmor.net/get_key?for=Moondiety_Key_Lootlabs-LWGKRDAaXqFl" target="_blank" class="tutorial-btn tutorial-btn-lootlabs">
-            <i class="fas fa-external-link-alt"></i>
-            <span>Get Key via Lootlabs</span>
-          </a>
-        </div>
+        <div class="steps-title">Steps to Get Key:</div>
+        <ul class="steps-list">
+          <li>
+            <span class="step-num-pill">1</span>
+            <span>Click the "Get Key via Linkvertise" button below</span>
+          </li>
+          <li>
+            <span class="step-num-pill">2</span>
+            <span>Complete the short verification (watch an ad or complete a quick task)</span>
+          </li>
+          <li>
+            <span class="step-num-pill">3</span>
+            <span>Copy your key from the success page</span>
+          </li>
+          <li>
+            <span class="step-num-pill">4</span>
+            <span>Paste the key into the Moondiety script prompt in Roblox</span>
+          </li>
+        </ul>
+        <a href="https://ads.luarmor.net/get_key?for=Moondiety_Key_Linkvertise-IHeAAOKIUTol"
+           target="_blank" rel="noopener" class="tut-btn tut-btn-lv">
+          <i class="fas fa-external-link-alt"></i>
+          Get Key via Linkvertise
+        </a>
       </div>
-      
-      <div class="mt-12 text-center fade-in delay-2">
-        <p class="text-gray-400 mb-6">Having issues with key verification?</p>
-        <a href="https://discord.gg/moondiety" class="inline-flex items-center text-indigo-400 hover:text-indigo-300 transition">
-          <i class="fab fa-discord mr-2"></i> Join our Discord for support
+      <div class="tutorial-card" data-anim="fade-up" data-delay="200">
+        <div class="tutorial-card-icon" style="background:rgba(232,0,58,0.18)"><img src="/media/lootlabs.png" alt="Lootlabs Logo" style="width: 28px; height: 28px; object-fit: contain;"></div>
+        <div class="tutorial-card-title">Lootlabs Tutorial</div>
+        <p class="tutorial-card-desc">Get your key through Lootlabs by completing offers. More task variety but takes a bit more time.</p>
+        <div class="video-wrap">
+          <div class="video-placeholder">
+            <i class="fas fa-play-circle"></i>
+            <span>Video Tutorial</span>
+          </div>
+          <video controls poster="/media/banner.jpg">
+            <source src="/media/LB.mov" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="steps-title">Steps to Get Key:</div>
+        <ul class="steps-list">
+          <li>
+            <span class="step-num-pill">1</span>
+            <span>Click the "Get Key via Lootlabs" button below</span>
+          </li>
+          <li>
+            <span class="step-num-pill">2</span>
+            <span>Complete one of the available offers (surveys, app installs, etc.)</span>
+          </li>
+          <li>
+            <span class="step-num-pill">3</span>
+            <span>Receive your key upon offer completion</span>
+          </li>
+          <li>
+            <span class="step-num-pill">4</span>
+            <span>Paste the key into the Moondiety script prompt in Roblox</span>
+          </li>
+        </ul>
+        <a href="https://ads.luarmor.net/get_key?for=Moondiety_Key_Lootlabs-LWGKRDAaXqFl"
+           target="_blank" rel="noopener" class="tut-btn tut-btn-ll">
+          <i class="fas fa-external-link-alt"></i>
+          Get Key via Lootlabs
         </a>
       </div>
     </div>
-  </main>
-
-  <!-- Script Section -->
-  <section class="section-bg mt-8">
-    <div class="container mx-auto px-4 py-8">
-      <div class="section-header fade-in">
-        <h2 class="section-title gradient-text">HOW TO USE YOUR KEY</h2>
-        <p class="section-subtitle">After obtaining your key, follow these steps to activate your scripts</p>
+  </div>
+</section>
+<div class="separator"></div>
+<section class="script-section">
+  <div class="container" style="max-width:var(--max-w); margin:0 auto; padding:0 2rem;">
+    <div class="section-label" data-anim="fade-up">- LOADER SCRIPT</div>
+    <h2 class="section-title" data-anim="fade-up" data-delay="100">
+      Use Your <span class="gradient-text">Key</span>
+    </h2>
+    <p style="color:var(--text-muted); margin-top:0.75rem; max-width:520px;" data-anim="fade-up" data-delay="200">
+      After getting your key, paste and run this script in your executor inside a Roblox game.
+    </p>
+    <div class="script-box shimmer" data-anim="fade-up" data-delay="200">
+      <div class="script-box-label">
+        <i class="fas fa-code" style="color:var(--rose);margin-right:0.4rem"></i>
+        Loader Script - Paste into your executor
       </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-gray-800 p-4 rounded-lg fade-in">
-          <div class="text-2xl text-indigo-400 mb-3">1</div>
-          <h3 class="text-lg font-semibold mb-2">Copy the Loader Script</h3>
-          <p class="text-gray-400 text-sm">Copy our loader script to your clipboard using the button below.</p>
-        </div>
-        
-        <div class="bg-gray-800 p-4 rounded-lg fade-in delay-1">
-          <div class="text-2xl text-indigo-400 mb-3">2</div>
-          <h3 class="text-lg font-semibold mb-2">Execute in Roblox</h3>
-          <p class="text-gray-400 text-sm">Paste and execute the script in your preferred executor while in a Roblox game.</p>
-        </div>
-        
-        <div class="bg-gray-800 p-4 rounded-lg fade-in delay-2">
-          <div class="text-2xl text-indigo-400 mb-3">3</div>
-          <h3 class="text-lg font-semibold mb-2">Enter Your Key</h3>
-          <p class="text-gray-400 text-sm">When prompted, enter the key you received to unlock all premium features.</p>
-        </div>
-      </div>
-      
-      <div class="mt-8 bg-gray-900 p-4 rounded-xl border border-gray-800 fade-in">
-        <h3 class="text-lg font-semibold mb-3 text-center">Loader Script for Roblox</h3>
-        <div class="bg-gray-800 rounded-lg p-4 mb-4">
-          <pre class="text-gray-200 overflow-x-auto text-sm"><code class="language-lua">loadstring(game:HttpGet('https://raw.githubusercontent.com/m00ndiety/Moondiety/refs/heads/main/Loader'))()</code></pre>
-        </div>
-        
-        <div class="flex justify-center">
-          <button id="copy-script" class="nav-btn nav-btn-primary">
-            <i class="fas fa-copy mr-2"></i> Copy Script
-          </button>
-        </div>
+      <div class="script-code">loadstring(game:HttpGet('https://raw.githubusercontent.com/m00ndiety/Moondiety/refs/heads/main/Loader'))()</div>
+      <div style="text-align:center">
+        <button class="copy-btn-lg" id="copy-script">
+          <i class="fas fa-copy"></i> Copy Script
+        </button>
       </div>
     </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-8 border-t border-gray-800 mt-8">
-    <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-        <div class="flex items-center gap-3">
-          <img src="/media/logo.png" alt="Moondiety Logo" class="h-10">
-          <div>
-            <h3 class="text-lg font-bold">MOONDIETY SCRIPTS</h3>
-            <p class="text-gray-400 text-sm">Premium Roblox Scripts</p>
-          </div>
-        </div>
-        
-        <div class="flex flex-wrap justify-center gap-4">
-          <a href="#" class="text-gray-400 hover:text-white transition text-sm">Privacy Policy</a>
-          <a href="#" class="text-gray-400 hover:text-white transition text-sm">Terms of Service</a>
-          <a href="#" class="text-gray-400 hover:text-white transition text-sm">Support</a>
-          <a href="https://discord.gg/moondiety" class="text-gray-400 hover:text-white transition text-sm">Discord</a>
-        </div>
-        
-        <div class="flex gap-3">
-          <a href="https://discord.gg/moondiety" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition">
-            <i class="fab fa-discord text-sm"></i>
-          </a>
-          <a href="https://youtube.com/@moondiety_script?si=3a6-FptuSGqq0xjt" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-600 transition">
-            <i class="fab fa-youtube text-sm"></i>
-          </a>
-          <a href="https://scriptblox.com/u/Moondiety" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-500 transition">
-            <i class="fas fa-code text-sm"></i>
-          </a>
-        </div>
+  </div>
+</section>
+<div class="support-cta">
+  <p>Having issues? <a href="https://discord.gg/moondiety" target="_blank" rel="noopener"><i class="fab fa-discord"></i> Join our Discord for support</a></p>
+</div>
+<div class="separator"></div>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand-col">
+      <div class="footer-brand">
+        <img src="/media/logo.png" alt="Moondiety Logo" width="32" height="32">
+        <span class="footer-brand-name">MOONDIETY</span>
       </div>
-      
-      <div class="mt-8 text-center text-gray-500 text-xs">
-        <p>© 2025 Moondiety Scripts. All rights reserved.</p>
-        <p class="mt-2">This content is not affiliated with, endorsed, sponsored, or specifically approved by Roblox and Roblox is not responsible for it.</p>
+      <p class="footer-tagline">PLAY TO WIN!</p>
+      <div class="footer-socials">
+        <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="footer-social" aria-label="Discord"><i class="fab fa-discord"></i></a>
+        <a href="https://youtube.com/@moondiety_script?si=3a6-FptuSGqq0xjt" target="_blank" rel="noopener" class="footer-social" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://scriptblox.com/u/Moondiety" target="_blank" rel="noopener" class="footer-social" aria-label="ScriptBlox"><i class="fas fa-scroll"></i></a>
       </div>
     </div>
-  </footer>
-
-  <script>
-    // Mobile menu functionality
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('active');
-    });
-    
-    document.addEventListener('click', (e) => {
-      if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-        mobileMenu.classList.remove('active');
-      }
-    });
-
-    // Animation on scroll
-    const fadeElements = document.querySelectorAll('.fade-in');
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = 1;
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, {
-      threshold: 0.1
-    });
-    
-    fadeElements.forEach(el => {
-      observer.observe(el);
-    });
-    
-    // Copy script button
-    const copyBtn = document.getElementById('copy-script');
-    if (copyBtn) {
-      const originalBtnHTML = copyBtn.innerHTML;
-      
-      copyBtn.addEventListener('click', () => {
-        const script = `loadstring(game:HttpGet('https://raw.githubusercontent.com/m00ndiety/Moondiety/refs/heads/main/Loader'))()`;
-        navigator.clipboard.writeText(script).then(() => {
-          copyBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Copied!';
-          setTimeout(() => {
-            copyBtn.innerHTML = originalBtnHTML;
-          }, 2000);
-        }).catch(err => {
-          console.error('Failed to copy script: ', err);
-          copyBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i> Failed!';
-          setTimeout(() => {
-            copyBtn.innerHTML = originalBtnHTML;
-          }, 2000);
-        });
-      });
-    }
-  </script>
+    <div class="footer-links-col">
+      <h4 class="footer-heading">Product</h4>
+      <a href="/#scripts" class="footer-link">Script Loader</a>
+      <a href="/#games" class="footer-link">Supported Games</a>
+      <a href="/#executors" class="footer-link">Executors</a>
+      <a href="/shop.html" class="footer-link">Premium Plans</a>
+    </div>
+    <div class="footer-links-col">
+      <h4 class="footer-heading">Resources</h4>
+      <a href="/shop.html" class="footer-link">Premium Shop</a>
+      <a href="/key.html" class="footer-link">Get Key</a>
+      <a href="/key-tutorial.html" class="footer-link">Key Tutorial</a>
+      <a href="https://discord.gg/moondiety" target="_blank" class="footer-link">Support Server</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">
+      <span>&copy; 2025 Moondiety Scripts. All rights reserved.</span>
+    </div>
+    <div class="footer-legal">
+      <span>Not affiliated with or endorsed by Roblox Corporation.</span>
+    </div>
+  </div>
+</footer>
+<div class="toast" id="toast">
+  <i class="fas fa-check-circle toast-icon toast-icon-success"></i>
+  <span class="toast-text">Script copied!</span>
+</div>
+<script src="/assets/js/main.js" defer></script>
+<script>
+  document.getElementById('copy-script')?.addEventListener('click', async function() {
+    const script = "loadstring(game:HttpGet('https://raw.githubusercontent.com/m00ndiety/Moondiety/refs/heads/main/Loader'))()";
+    try {
+      await navigator.clipboard.writeText(script);
+      this.innerHTML = '<i class="fas fa-check"></i> Copied!';
+      setTimeout(() => { this.innerHTML = '<i class="fas fa-copy"></i> Copy Script'; }, 2200);
+    } catch(e) {}
+  });
+</script>
 </body>
 </html>
-
