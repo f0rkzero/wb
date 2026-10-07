@@ -1,1 +1,1 @@
-loadstring(game:HttpGet("https://flowauth.net/v1/ui/7a216fac3375e27f775b62d7fce66f5a.lua"))()
+loadstring(game:HttpGet("https://flowauth.net/v1/ui/Moondiety-Loader.lua"))()
