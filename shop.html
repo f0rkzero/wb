@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moondiety Shop | Premium Keys</title>
-  <meta name="description" content="Get Moondiety premium keys for exclusive features and priority support. 7-day, monthly, and lifetime options available.">
+  <title>Moondiety Shop | Lifetime Premium</title>
+  <meta name="description" content="Get Moondiety Lifetime Premium. Moondiety is 100% keyless for base features. Lifetime unlocks exclusive game bypasses, auto win filters, and priority support.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="stylesheet" href="/assets/css/animations.css">
   <style>
     .page-hero { padding: calc(var(--nav-h) + 0rem) 0 3rem; text-align: center; }
     .page-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.1; margin-bottom: 1rem; color: var(--text-white); }
-    .page-sub { color: var(--text-muted); font-size: 1.05rem; max-width: 500px; margin: 0 auto 3rem; }
+    .page-sub { color: var(--text-muted); font-size: 1.05rem; max-width: 580px; margin: 0 auto 3rem; }
     
     .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: var(--max-w); margin: 0 auto 4rem; padding: 0 2rem; }
     .benefit-card { background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 2rem; border-radius: var(--radius-lg); text-align: left; transition: all 0.3s ease; }
@@ -45,8 +45,8 @@
       <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="nav-login">
         <i class="fab fa-discord"></i> Discord
       </a>
-      <a href="/key.html" class="btn-get-key">
-        <i class="fas fa-key"></i> Get Key
+      <a href="/shop.html" class="btn-get-key">
+        <i class="fas fa-crown"></i> Get Premium
       </a>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -93,80 +93,54 @@
     </a>
   </div>
   <div class="mobile-menu-footer">
-    <a href="/key.html" class="btn-lg btn-primary">
-      <i class="fas fa-key"></i> Get Free Key
+    <a href="/shop.html" class="btn-lg btn-primary">
+      <i class="fas fa-crown"></i> Get Premium
     </a>
   </div>
 </div>
 
-
   <div class="page-hero">
-    <div class="section-label" style="margin-top: 4rem; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); border: 1px solid rgba(255,45,85,0.3); background: rgba(255,45,85,0.07); padding: 0.35rem 0.9rem; border-radius: 100px; margin-bottom: 1.5rem;"><i class="fas fa-shopping-cart"></i> Premium Shop</div>
-    <h1 class="page-title">Unlock the Full Features.</h1>
-    <p class="page-sub">Get AD-Free access and exclusive premium features. Keys delivered instantly.</p>
+    <div class="section-label" style="margin-top: 4rem; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); border: 1px solid rgba(255,45,85,0.3); background: rgba(255,45,85,0.07); padding: 0.35rem 0.9rem; border-radius: 100px; margin-bottom: 1.5rem;"><i class="fas fa-crown"></i> Premium Shop</div>
+    <h1 class="page-title">Unlock All Exclusive Features.</h1>
+    <p class="page-sub">Moondiety is 100% keyless for free users. Get lifetime permanent access to all exclusive features across every game.</p>
   </div>
 
   <section class="premium-section" style="padding-top: 0;">
     <canvas id="globe-canvas" aria-hidden="true"></canvas>
     <div class="section">
-      <div class="pricing-grid">
-      <div class="pricing-card" data-anim="fade-up" data-delay="50" id="plan-1day">
-        <div class="pricing-plan">1-Day Key</div>
-        <div class="pricing-price">Free</div>
-        <div class="pricing-price-sub">Requires Linkvertise/Lootlabs</div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> 24-Hour Access</li>
-          <li class="pricing-feature disabled"><i class="fas fa-times icon-no"></i> No AD-Free Key</li>
-          <li class="pricing-feature disabled"><i class="fas fa-times icon-no"></i> No Premium Features</li>
-          <li class="pricing-feature disabled"><i class="fas fa-times icon-no"></i> No Priority Support</li>
-        </ul>
-        <a href="/key.html" class="btn-pricing btn-pricing-default" id="buy-1day">Get Free Key</a>
-      </div>
-      <div class="pricing-card" data-anim="fade-up" data-delay="100" id="plan-7day">
-        <div class="pricing-plan">7-Day Key</div>
-        <div class="pricing-price"><sup>$</sup>3</div>
-        <div class="pricing-price-sub">Paid in Crypto (BTC, LTC)</div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Premium Features</li>
-          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> 7-Day Access</li>
-          <li class="pricing-feature disabled"><i class="fas fa-times icon-no"></i> No Early Access</li>
-          <li class="pricing-feature disabled"><i class="fas fa-times icon-no"></i> No Priority Support</li>
-        </ul>
-        <a href="https://moondiety.mysellauth.com/product/moondiety-scripts-premium" target="_blank" rel="noopener" class="btn-pricing btn-pricing-default" id="buy-7day">Get 7-Day Key</a>
-      </div>
-      <div class="pricing-card" data-anim="fade-up" data-delay="200" id="plan-monthly">
-        <div class="pricing-plan">Monthly Key</div>
-        <div class="pricing-price"><sup>$</sup>6</div>
-        <div class="pricing-price-sub">Paid in Crypto (BTC, LTC)</div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Premium Features</li>
-          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> 30-Day Access</li>
-          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Priority Support</li>
-          <li class="pricing-feature disabled"><i class="fas fa-times icon-no"></i> No Early Access</li>
-        </ul>
-        <a href="https://moondiety.mysellauth.com/product/moondiety-scripts-premium" target="_blank" rel="noopener" class="btn-pricing btn-pricing-default" id="buy-monthly">Get Monthly Key</a>
-      </div>
-      <div class="pricing-card featured" data-anim="fade-up" data-delay="300" id="plan-lifetime">
-        <div class="pricing-badge">Best Value</div>
-        <div class="pricing-plan">Lifetime Key</div>
-        <div class="pricing-price"><sup>$</sup>10</div>
-        <div class="pricing-price-sub">Paid in Crypto (BTC, LTC)</div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> All Premium Features</li>
-          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Permanent Access</li>
-          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Free Permanent Early Access</li>
-          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Premium Role in Discord</li>
-          <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> 24/7 Priority Support</li>
-        </ul>
-        <a href="https://moondiety.mysellauth.com/product/moondiety-scripts-premium" target="_blank" rel="noopener" class="btn-pricing btn-pricing-featured" id="buy-lifetime">Get Lifetime Key</a>
+      <div class="pricing-grid" style="display:flex;justify-content:center;">
+        <div class="pricing-card featured" style="max-width:460px;width:100%;" data-anim="fade-up" data-delay="100" id="plan-lifetime">
+          <div class="pricing-badge">Permanent License</div>
+          <div class="pricing-plan">Lifetime Access</div>
+          <div class="pricing-price"><sup>$</sup>10</div>
+          <div class="pricing-price-sub">One-time payment • Permanent activation</div>
+          <div class="pricing-divider"></div>
+          <ul class="pricing-features">
+            <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> All Exclusive Premium Features</li>
+            <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Permanent Access Across All Games</li>
+            <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Unlocks Locked Game Bypasses (Auto Win, etc.)</li>
+            <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Free Early Access to All Future Updates</li>
+            <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> VIP Premium Role in Discord</li>
+            <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> 24/7 Dedicated Priority Support</li>
+          </ul>
+          <a href="https://moondiety.mysellauth.com/product/moondiety-scripts-premium" target="_blank" rel="noopener" class="btn-pricing btn-pricing-featured" id="buy-lifetime">
+            <i class="fas fa-bolt"></i> Instant Crypto Checkout
+          </a>
+          <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="btn-pricing btn-pricing-default" style="margin-top:0.75rem;" id="buy-discord">
+            <i class="fab fa-discord"></i> Manual Payment (Open Ticket)
+          </a>
+          <div class="manual-methods-box" style="margin-top:1.25rem; padding:0.85rem 1rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:var(--radius-md); text-align:center;">
+            <div style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); margin-bottom:0.4rem;">
+              Supported Manual Payment Methods
+            </div>
+            <div style="font-size:0.76rem; font-weight:600; color:var(--text-light); line-height:1.6;">
+              PayPal Balance &bull; Revolut &bull; Paysafe &bull; CashApp &bull; Apple Pay &bull; Bank Transfer &bull; Zelle &bull; Venmo &bull; Stripe &bull; FunPay
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <div class="separator"></div>
 
@@ -196,9 +170,9 @@
         <div class="benefit-desc">Show off your premium status with a special role in our Discord.</div>
       </div>
       <div class="benefit-card">
-        <i class="fas fa-ban benefit-icon"></i>
-        <div class="benefit-title">AD Free Services</div>
-        <div class="benefit-desc">No need to daily scroll through ad pages if you have a premium key.</div>
+        <i class="fas fa-unlock-alt benefit-icon"></i>
+        <div class="benefit-title">Exclusive Game Bypasses</div>
+        <div class="benefit-desc">Unlock game-breaking automated win filters and special gameplay bypasses not available to free users.</div>
       </div>
     </div>
   </section>
@@ -211,20 +185,20 @@
     </div>
     <div class="faq-grid">
       <div class="faq-card">
-        <div class="faq-title">How do I use my premium key?</div>
-        <div class="faq-desc">After purchasing a key, join our Discord server and use the /redeem command in the designated channel to activate your premium access.</div>
-      </div>
-      <div class="faq-card">
-        <div class="faq-title">Can I get a refund?</div>
-        <div class="faq-desc">Due to the digital nature of our products, we do not offer refunds. Please make sure to read the product description carefully before purchasing.</div>
+        <div class="faq-title">How do I activate Lifetime Premium?</div>
+        <div class="faq-desc">Launch any Moondiety script in your executor. Click any locked feature to open the key prompt, paste your key, and click Check Key. Your lifetime access will unlock permanently across all games.</div>
       </div>
       <div class="faq-card">
         <div class="faq-title">What payment methods do you accept?</div>
-        <div class="faq-desc">We currently accept cryptocurrency (BTC, LTC) only. All payments are processed securely through SellAuth.</div>
+        <div class="faq-desc">We accept Cryptocurrency (BTC, LTC, USDT, etc.) instantly on our store. For PayPal Balance, Revolut, Paysafe, CashApp, Apple Pay, Bank Transfer, Zelle, Venmo, Stripe, and FunPay, simply join our Discord server and open a ticket.</div>
       </div>
       <div class="faq-card">
-        <div class="faq-title">How long does it take to get my key?</div>
-        <div class="faq-desc">Your key is delivered instantly after purchase.</div>
+        <div class="faq-title">Is Moondiety really free and keyless?</div>
+        <div class="faq-desc">Yes! All standard Moondiety features across all 22+ supported games are 100% free and keyless with zero ads or checkpoints. Lifetime Premium is an optional upgrade that unlocks exclusive game bypasses and special features.</div>
+      </div>
+      <div class="faq-card">
+        <div class="faq-title">How long does delivery take?</div>
+        <div class="faq-desc">Crypto orders deliver your key instantly. For manual payments through Discord tickets, staff verifies payment and provides your license key immediately.</div>
       </div>
     </div>
   </section>
@@ -253,8 +227,8 @@
     <div class="footer-links-col">
       <h4 class="footer-heading">Resources</h4>
       <a href="/shop.html" class="footer-link">Premium Shop</a>
-      <a href="/key.html" class="footer-link">Get Key</a>
-      <a href="/key-tutorial.html" class="footer-link">Key Tutorial</a>
+      <a href="/shop.html" class="footer-link">Lifetime Premium</a>
+      <a href="/#scripts" class="footer-link">Keyless Loader</a>
       <a href="https://discord.gg/moondiety" target="_blank" class="footer-link">Support Server</a>
     </div>
   </div>
