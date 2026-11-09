@@ -1,115 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moondiety Shop | Lifetime Premium</title>
-  <meta name="description" content="Get Moondiety Lifetime Premium. Moondiety is 100% keyless for base features. Lifetime unlocks exclusive game bypasses, auto win filters, and priority support.">
+  <meta name="description"
+    content="Get Moondiety Lifetime Premium. Moondiety is 100% keyless for base features. Lifetime unlocks exclusive game bypasses, auto win filters, and priority support.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="stylesheet" href="/assets/css/animations.css">
   <style>
-    .page-hero { padding: calc(var(--nav-h) + 0rem) 0 3rem; text-align: center; }
-    .page-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.1; margin-bottom: 1rem; color: var(--text-white); }
-    .page-sub { color: var(--text-muted); font-size: 1.05rem; max-width: 580px; margin: 0 auto 3rem; }
-    
-    .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: var(--max-w); margin: 0 auto 4rem; padding: 0 2rem; }
-    .benefit-card { background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 2rem; border-radius: var(--radius-lg); text-align: left; transition: all 0.3s ease; }
-    .benefit-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.1); background: var(--glass-bg-md); }
-    .benefit-icon { color: var(--rose); font-size: 1.5rem; margin-bottom: 1rem; }
-    .benefit-title { font-size: 1.1rem; font-weight: 600; color: var(--text-white); margin-bottom: 0.5rem; }
-    .benefit-desc { font-size: 0.9rem; color: var(--text-dim); line-height: 1.5; }
-    
-    .faq-grid { display: grid; gap: 1rem; max-width: 800px; margin: 0 auto 4rem; padding: 0 2rem; text-align: left; }
-    .faq-card { background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 1.5rem; border-radius: var(--radius-md); }
-    .faq-title { font-size: 1.05rem; font-weight: 600; color: var(--text-white); margin-bottom: 0.5rem; }
-    .faq-desc { font-size: 0.9rem; color: var(--text-dim); line-height: 1.5; }
+    .page-hero {
+      padding: calc(var(--nav-h) + 0rem) 0 3rem;
+      text-align: center;
+    }
+
+    .page-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      color: var(--text-white);
+    }
+
+    .page-sub {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 580px;
+      margin: 0 auto 3rem;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: var(--max-w);
+      margin: 0 auto 4rem;
+      padding: 0 2rem;
+    }
+
+    .benefit-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      text-align: left;
+      transition: all 0.3s ease;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255, 255, 255, 0.1);
+      background: var(--glass-bg-md);
+    }
+
+    .benefit-icon {
+      color: var(--rose);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .benefit-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-white);
+      margin-bottom: 0.5rem;
+    }
+
+    .benefit-desc {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    .faq-grid {
+      display: grid;
+      gap: 1rem;
+      max-width: 800px;
+      margin: 0 auto 4rem;
+      padding: 0 2rem;
+      text-align: left;
+    }
+
+    .faq-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+    }
+
+    .faq-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-white);
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-desc {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
   </style>
 </head>
+
 <body>
   <nav class="navbar" id="navbar">
-  <div class="nav-inner">
-    <a href="/#home" class="nav-logo" aria-label="Moondiety Home">
-      <img src="/media/logo.png" alt="Moondiety Logo" width="36" height="36">
-      <span class="nav-logo-name">MOONDIETY</span>
-    </a>
-    <div class="nav-pill" role="navigation" aria-label="Main navigation">
-      <a href="/#home"      class="nav-link active">Home</a>
-      <a href="/#scripts"   class="nav-link">Scripts</a>
-      <a href="/#games"     class="nav-link">Games</a>
-      <a href="/shop.html"   class="nav-link">Shop</a>
-      <a href="/#executors" class="nav-link">Executors</a>
-      <a href="/#discord"   class="nav-link">Discord</a>
+    <div class="nav-inner">
+      <a href="/#home" class="nav-logo" aria-label="Moondiety Home">
+        <img src="/media/logo.png" alt="Moondiety Logo" width="36" height="36">
+        <span class="nav-logo-name">MOONDIETY</span>
+      </a>
+      <div class="nav-pill" role="navigation" aria-label="Main navigation">
+        <a href="/#home" class="nav-link active">Home</a>
+        <a href="/#scripts" class="nav-link">Scripts</a>
+        <a href="/#games" class="nav-link">Games</a>
+        <a href="/shop.html" class="nav-link">Shop</a>
+        <a href="/#executors" class="nav-link">Executors</a>
+        <a href="/#discord" class="nav-link">Discord</a>
+      </div>
+      <div class="nav-actions">
+        <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="nav-login">
+          <i class="fab fa-discord"></i> Discord
+        </a>
+        <a href="/shop.html" class="btn-get-key">
+          <i class="fas fa-crown"></i> Get Premium
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
-    <div class="nav-actions">
-      <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="nav-login">
-        <i class="fab fa-discord"></i> Discord
-      </a>
-      <a href="/shop.html" class="btn-get-key">
-        <i class="fas fa-crown"></i> Get Premium
-      </a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+  </nav>
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-header">
+      <div class="mobile-menu-brand">
+        <img src="/media/logo.png" alt="Moondiety" width="28">
+        <span>Moondiety</span>
+      </div>
+      <button class="mobile-close" id="mobile-close" aria-label="Close menu">
+        <i class="fas fa-times"></i>
       </button>
     </div>
-  </div>
-</nav>
-  <div class="mobile-overlay" id="mobile-overlay"></div>
-<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-  <div class="mobile-menu-header">
-    <div class="mobile-menu-brand">
-      <img src="/media/logo.png" alt="Moondiety" width="28">
-      <span>Moondiety</span>
+    <div class="mobile-menu-body">
+      <a href="/#home" class="mobile-link">
+        <span class="ml-icon"><i class="fas fa-home"></i></span>
+        <span>Home</span>
+      </a>
+      <a href="/#scripts" class="mobile-link">
+        <span class="ml-icon"><i class="fas fa-code"></i></span>
+        <span>Script Loader</span>
+      </a>
+      <a href="/#games" class="mobile-link">
+        <span class="ml-icon"><i class="fas fa-gamepad"></i></span>
+        <span>Games</span>
+      </a>
+      <a href="/shop.html" class="mobile-link">
+        <span class="ml-icon"><i class="fas fa-crown"></i></span>
+        <span>Premium Shop</span>
+      </a>
+      <a href="/#executors" class="mobile-link">
+        <span class="ml-icon"><i class="fas fa-bolt"></i></span>
+        <span>Executors</span>
+      </a>
+      <div class="mobile-menu-separator"></div>
+      <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="mobile-link">
+        <span class="ml-icon"><i class="fab fa-discord"></i></span>
+        <span>Join Discord</span>
+      </a>
     </div>
-    <button class="mobile-close" id="mobile-close" aria-label="Close menu">
-      <i class="fas fa-times"></i>
-    </button>
+    <div class="mobile-menu-footer">
+      <a href="/shop.html" class="btn-lg btn-primary">
+        <i class="fas fa-crown"></i> Get Premium
+      </a>
+    </div>
   </div>
-  <div class="mobile-menu-body">
-    <a href="/#home" class="mobile-link">
-      <span class="ml-icon"><i class="fas fa-home"></i></span>
-      <span>Home</span>
-    </a>
-    <a href="/#scripts" class="mobile-link">
-      <span class="ml-icon"><i class="fas fa-code"></i></span>
-      <span>Script Loader</span>
-    </a>
-    <a href="/#games" class="mobile-link">
-      <span class="ml-icon"><i class="fas fa-gamepad"></i></span>
-      <span>Games</span>
-    </a>
-    <a href="/shop.html" class="mobile-link">
-      <span class="ml-icon"><i class="fas fa-crown"></i></span>
-      <span>Premium Shop</span>
-    </a>
-    <a href="/#executors" class="mobile-link">
-      <span class="ml-icon"><i class="fas fa-bolt"></i></span>
-      <span>Executors</span>
-    </a>
-    <div class="mobile-menu-separator"></div>
-    <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="mobile-link">
-      <span class="ml-icon"><i class="fab fa-discord"></i></span>
-      <span>Join Discord</span>
-    </a>
-  </div>
-  <div class="mobile-menu-footer">
-    <a href="/shop.html" class="btn-lg btn-primary">
-      <i class="fas fa-crown"></i> Get Premium
-    </a>
-  </div>
-</div>
 
   <div class="page-hero">
-    <div class="section-label" style="margin-top: 4rem; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); border: 1px solid rgba(255,45,85,0.3); background: rgba(255,45,85,0.07); padding: 0.35rem 0.9rem; border-radius: 100px; margin-bottom: 1.5rem;"><i class="fas fa-crown"></i> Premium Shop</div>
+    <div class="section-label"
+      style="margin-top: 4rem; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); border: 1px solid rgba(255,45,85,0.3); background: rgba(255,45,85,0.07); padding: 0.35rem 0.9rem; border-radius: 100px; margin-bottom: 1.5rem;">
+      <i class="fas fa-crown"></i> Premium Shop
+    </div>
     <h1 class="page-title">Unlock All Exclusive Features.</h1>
-    <p class="page-sub">Moondiety is 100% keyless for free users. Get lifetime permanent access to all exclusive features across every game.</p>
+    <p class="page-sub">Moondiety is 100% keyless for free users. Get lifetime permanent access to all exclusive
+      features across every game.</p>
   </div>
 
   <section class="premium-section" style="padding-top: 0;">
     <canvas id="globe-canvas" aria-hidden="true"></canvas>
     <div class="section">
       <div class="pricing-grid" style="display:flex;justify-content:center;">
-        <div class="pricing-card featured" style="max-width:460px;width:100%;" data-anim="fade-up" data-delay="100" id="plan-lifetime">
+        <div class="pricing-card featured" style="max-width:460px;width:100%;" data-anim="fade-up" data-delay="100"
+          id="plan-lifetime">
           <div class="pricing-badge">Permanent License</div>
           <div class="pricing-plan">Lifetime Access</div>
           <div class="pricing-price"><sup>$</sup>10</div>
@@ -118,23 +203,30 @@
           <ul class="pricing-features">
             <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> All Exclusive Premium Features</li>
             <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Permanent Access Across All Games</li>
-            <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Unlocks Locked Game Bypasses (Auto Win, etc.)</li>
-            <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Free Early Access to All Future Updates</li>
+            <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Unlocks Locked Game Features (Auto Win,
+              etc.)</li>
+            <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> Free Early Access to All Future Updates
+            </li>
             <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> VIP Premium Role in Discord</li>
             <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> 24/7 Dedicated Priority Support</li>
           </ul>
-          <a href="https://moondiety.mysellauth.com/product/moondiety-scripts-premium" target="_blank" rel="noopener" class="btn-pricing btn-pricing-featured" id="buy-lifetime">
+          <a href="https://moondiety.mysellauth.com/product/moondiety-scripts-premium" target="_blank" rel="noopener"
+            class="btn-pricing btn-pricing-featured" id="buy-lifetime">
             <i class="fas fa-bolt"></i> Instant Crypto Checkout
           </a>
-          <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="btn-pricing btn-pricing-default" style="margin-top:0.75rem;" id="buy-discord">
+          <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="btn-pricing btn-pricing-default"
+            style="margin-top:0.75rem;" id="buy-discord">
             <i class="fab fa-discord"></i> Manual Payment (Open Ticket)
           </a>
-          <div class="manual-methods-box" style="margin-top:1.25rem; padding:0.85rem 1rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:var(--radius-md); text-align:center;">
-            <div style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); margin-bottom:0.4rem;">
+          <div class="manual-methods-box"
+            style="margin-top:1.25rem; padding:0.85rem 1rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:var(--radius-md); text-align:center;">
+            <div
+              style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); margin-bottom:0.4rem;">
               Supported Manual Payment Methods
             </div>
             <div style="font-size:0.76rem; font-weight:600; color:var(--text-light); line-height:1.6;">
-              PayPal Balance &bull; Revolut &bull; Paysafe &bull; CashApp &bull; Apple Pay &bull; Bank Transfer &bull; Zelle &bull; Venmo &bull; Stripe &bull; FunPay
+              PayPal Balance &bull; Revolut &bull; Paysafe &bull; CashApp &bull; Apple Pay &bull; Bank Transfer &bull;
+              Zelle &bull; Venmo &bull; Stripe &bull; FunPay
             </div>
           </div>
         </div>
@@ -171,8 +263,8 @@
       </div>
       <div class="benefit-card">
         <i class="fas fa-unlock-alt benefit-icon"></i>
-        <div class="benefit-title">Exclusive Game Bypasses</div>
-        <div class="benefit-desc">Unlock game-breaking automated win filters and special gameplay bypasses not available to free users.</div>
+        <div class="benefit-title">Exclusive Suggetions</div>
+        <div class="benefit-desc">Suggested features gets priority to be added in the script.</div>
       </div>
     </div>
   </section>
@@ -186,62 +278,73 @@
     <div class="faq-grid">
       <div class="faq-card">
         <div class="faq-title">How do I activate Lifetime Premium?</div>
-        <div class="faq-desc">Launch any Moondiety script in your executor. Click any locked feature to open the key prompt, paste your key, and click Check Key. Your lifetime access will unlock permanently across all games.</div>
+        <div class="faq-desc">Launch any Moondiety script in your executor. Click any locked feature to open the key
+          prompt, paste your key, and click Check Key. Your lifetime access will unlock permanently across all games.
+        </div>
       </div>
       <div class="faq-card">
         <div class="faq-title">What payment methods do you accept?</div>
-        <div class="faq-desc">We accept Cryptocurrency (BTC, LTC, USDT, etc.) instantly on our store. For PayPal Balance, Revolut, Paysafe, CashApp, Apple Pay, Bank Transfer, Zelle, Venmo, Stripe, and FunPay, simply join our Discord server and open a ticket.</div>
+        <div class="faq-desc">We accept Cryptocurrency (BTC, LTC, USDT, etc.) instantly on our store. For PayPal
+          Balance, Revolut, Paysafe, CashApp, Apple Pay, Bank Transfer, Zelle, Venmo, Stripe, and FunPay, simply join
+          our Discord server and open a ticket.</div>
       </div>
       <div class="faq-card">
         <div class="faq-title">Is Moondiety really free and keyless?</div>
-        <div class="faq-desc">Yes! All standard Moondiety features across all 22+ supported games are 100% free and keyless with zero ads or checkpoints. Lifetime Premium is an optional upgrade that unlocks exclusive game bypasses and special features.</div>
+        <div class="faq-desc">Yes! All standard Moondiety features across all 22+ supported games are 100% free and
+          keyless with zero ads or checkpoints. Lifetime Premium is an optional upgrade that unlocks exclusive special
+          features.</div>
       </div>
       <div class="faq-card">
         <div class="faq-title">How long does delivery take?</div>
-        <div class="faq-desc">Crypto orders deliver your key instantly. For manual payments through Discord tickets, staff verifies payment and provides your license key immediately.</div>
+        <div class="faq-desc">Crypto orders deliver your key instantly. For manual payments through Discord tickets,
+          staff verifies payment and provides your license key immediately.</div>
       </div>
     </div>
   </section>
 
   <footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-brand-col">
-      <div class="footer-brand">
-        <img src="/media/logo.png" alt="Moondiety Logo" width="32" height="32">
-        <span class="footer-brand-name">MOONDIETY</span>
+    <div class="footer-inner">
+      <div class="footer-brand-col">
+        <div class="footer-brand">
+          <img src="/media/logo.png" alt="Moondiety Logo" width="32" height="32">
+          <span class="footer-brand-name">MOONDIETY</span>
+        </div>
+        <p class="footer-tagline">PLAY TO WIN!</p>
+        <div class="footer-socials">
+          <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="footer-social"
+            aria-label="Discord"><i class="fab fa-discord"></i></a>
+          <a href="https://youtube.com/@moondiety_script?si=3a6-FptuSGqq0xjt" target="_blank" rel="noopener"
+            class="footer-social" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://scriptblox.com/u/Moondiety" target="_blank" rel="noopener" class="footer-social"
+            aria-label="ScriptBlox"><i class="fas fa-scroll"></i></a>
+        </div>
       </div>
-      <p class="footer-tagline">PLAY TO WIN!</p>
-      <div class="footer-socials">
-        <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="footer-social" aria-label="Discord"><i class="fab fa-discord"></i></a>
-        <a href="https://youtube.com/@moondiety_script?si=3a6-FptuSGqq0xjt" target="_blank" rel="noopener" class="footer-social" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="https://scriptblox.com/u/Moondiety" target="_blank" rel="noopener" class="footer-social" aria-label="ScriptBlox"><i class="fas fa-scroll"></i></a>
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Product</h4>
+        <a href="/#scripts" class="footer-link">Script Loader</a>
+        <a href="/#games" class="footer-link">Supported Games</a>
+        <a href="/#executors" class="footer-link">Executors</a>
+        <a href="/shop.html" class="footer-link">Premium Plans</a>
+      </div>
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Resources</h4>
+        <a href="/shop.html" class="footer-link">Premium Shop</a>
+        <a href="/shop.html" class="footer-link">Lifetime Premium</a>
+        <a href="/#scripts" class="footer-link">Keyless Loader</a>
+        <a href="https://discord.gg/moondiety" target="_blank" class="footer-link">Support Server</a>
       </div>
     </div>
-    <div class="footer-links-col">
-      <h4 class="footer-heading">Product</h4>
-      <a href="/#scripts" class="footer-link">Script Loader</a>
-      <a href="/#games" class="footer-link">Supported Games</a>
-      <a href="/#executors" class="footer-link">Executors</a>
-      <a href="/shop.html" class="footer-link">Premium Plans</a>
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        <span>&copy; 2025 Moondiety Scripts. All rights reserved.</span>
+      </div>
+      <div class="footer-legal">
+        <span>Not affiliated with or endorsed by Roblox Corporation.</span>
+      </div>
     </div>
-    <div class="footer-links-col">
-      <h4 class="footer-heading">Resources</h4>
-      <a href="/shop.html" class="footer-link">Premium Shop</a>
-      <a href="/shop.html" class="footer-link">Lifetime Premium</a>
-      <a href="/#scripts" class="footer-link">Keyless Loader</a>
-      <a href="https://discord.gg/moondiety" target="_blank" class="footer-link">Support Server</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-copy">
-      <span>&copy; 2025 Moondiety Scripts. All rights reserved.</span>
-    </div>
-    <div class="footer-legal">
-      <span>Not affiliated with or endorsed by Roblox Corporation.</span>
-    </div>
-  </div>
-</footer>
+  </footer>
 
   <script src="/assets/js/main.js"></script>
 </body>
+
 </html>
