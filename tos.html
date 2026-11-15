@@ -26,167 +26,470 @@
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="stylesheet" href="/assets/css/animations.css">
   <style>
-    .tos-hero {
-      padding: calc(var(--nav-h) + 3.5rem) 2rem 2.5rem;
-      text-align: center;
+    .tos-hero-wrap {
       position: relative;
+      overflow: hidden;
+      padding: calc(var(--nav-h) + 4.25rem) 1.5rem 3.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .tos-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--rose);
-      border: 1px solid rgba(255, 45, 85, 0.3);
-      background: rgba(255, 45, 85, 0.07);
-      padding: 0.35rem 0.9rem;
-      border-radius: 100px;
-      margin-bottom: 1.25rem;
+    .tos-hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: radial-gradient(ellipse 75% 75% at 50% 35%, #000 35%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 35%, #000 35%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .tos-hero-orb {
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232, 0, 58, 0.16) 0%, rgba(255, 45, 85, 0.04) 45%, transparent 70%);
+      top: -180px;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(18px);
+    }
+
+    .tos-hero {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
     }
 
     .tos-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.1rem, 5vw, 3.25rem);
+      font-size: clamp(2.4rem, 5.5vw, 3.85rem);
       font-weight: 700;
-      line-height: 1.1;
-      margin-bottom: 1rem;
+      letter-spacing: -0.04em;
+      line-height: 1.06;
+      margin-bottom: 1.15rem;
       color: var(--text-white);
     }
 
     .tos-sub {
       color: var(--text-muted);
-      font-size: 1.02rem;
-      max-width: 620px;
-      margin: 0 auto;
-      line-height: 1.6;
+      font-size: 1.05rem;
+      max-width: 580px;
+      margin: 0 auto 2rem;
+      line-height: 1.65;
     }
 
-    .tos-container {
-      max-width: 860px;
-      margin: 0 auto 5rem;
+    .tos-meta-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .tos-meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0.95rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: var(--blur-sm);
+      -webkit-backdrop-filter: var(--blur-sm);
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+
+    .tos-meta-pill i {
+      color: var(--rose);
+      font-size: 0.78rem;
+    }
+
+    .tos-shell {
+      max-width: 1140px;
+      margin: 3.5rem auto 5.5rem;
       padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 270px 1fr;
+      gap: 2.25rem;
+      align-items: start;
+      position: relative;
+    }
+
+    .tos-sidebar {
+      position: sticky;
+      top: calc(var(--nav-h) + 1.5rem);
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
+      gap: 1rem;
     }
 
-    .tos-card {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
+    .tos-nav-box {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.07);
       border-radius: var(--radius-lg);
-      padding: 1.75rem 2rem;
-      transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+      padding: 1.15rem;
+      backdrop-filter: var(--blur-md);
+      -webkit-backdrop-filter: var(--blur-md);
     }
 
-    .tos-card:hover {
-      border-color: var(--glass-border-md);
-      background: var(--glass-bg-md);
-      transform: translateY(-2px);
+    .tos-nav-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      padding: 0 0.5rem 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      margin-bottom: 0.6rem;
     }
 
-    .tos-card-header {
+    .tos-toc {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .tos-toc-link {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
+      gap: 0.65rem;
+      padding: 0.52rem 0.65rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .tos-toc-link span.toc-idx {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      min-width: 18px;
+    }
+
+    .tos-toc-link:hover {
+      color: var(--text-white);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .tos-toc-link.active {
+      color: var(--text-white);
+      background: rgba(232, 0, 58, 0.1);
+      border-color: rgba(232, 0, 58, 0.28);
+    }
+
+    .tos-toc-link.active span.toc-idx {
+      color: var(--rose);
+    }
+
+    .tos-help-box {
+      background: linear-gradient(155deg, rgba(232, 0, 58, 0.08), rgba(255, 255, 255, 0.02));
+      border: 1px solid rgba(232, 0, 58, 0.22);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      backdrop-filter: var(--blur-md);
+      -webkit-backdrop-filter: var(--blur-md);
+    }
+
+    .tos-help-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-white);
+      margin-bottom: 0.4rem;
+    }
+
+    .tos-help-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.55;
       margin-bottom: 1rem;
     }
 
-    .tos-num {
-      width: 32px;
-      height: 32px;
+    .tos-help-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.65rem 1rem;
       border-radius: var(--radius-sm);
-      background: rgba(255, 45, 85, 0.12);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-white);
+      font-size: 0.83rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .tos-help-btn:hover {
+      background: rgba(232, 0, 58, 0.16);
+      border-color: rgba(232, 0, 58, 0.4);
+      transform: translateY(-1px);
+    }
+
+    .tos-main {
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
+      min-width: 0;
+    }
+
+    .tos-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.028);
+      border: 1px solid rgba(255, 255, 255, 0.075);
+      border-radius: var(--radius-xl);
+      padding: 1.85rem 2rem;
+      backdrop-filter: var(--blur-md);
+      -webkit-backdrop-filter: var(--blur-md);
+      overflow: hidden;
+      scroll-margin-top: calc(var(--nav-h) + 1.5rem);
+      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .tos-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(ellipse at top left, rgba(232, 0, 58, 0.07), transparent 60%);
+      pointer-events: none;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    .tos-card:hover {
+      border-color: rgba(232, 0, 58, 0.3);
+      background: rgba(255, 255, 255, 0.038);
+      transform: translateY(-2px);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.38), 0 0 32px rgba(232, 0, 58, 0.08);
+    }
+
+    .tos-card:hover::before {
+      opacity: 1;
+    }
+
+    .tos-card-top {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 1.1rem;
+      margin-bottom: 1.15rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .tos-card-heading {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .tos-icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, rgba(232, 0, 58, 0.16), rgba(255, 45, 85, 0.05));
       border: 1px solid rgba(255, 45, 85, 0.3);
       color: var(--rose);
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      font-size: 0.9rem;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      font-size: 1rem;
       flex-shrink: 0;
+      box-shadow: 0 4px 18px rgba(232, 0, 58, 0.14);
+    }
+
+    .tos-step-label {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 0.15rem;
     }
 
     .tos-card-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: 600;
       color: var(--text-white);
+      letter-spacing: -0.01em;
+    }
+
+    .tos-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .tos-tag--strict {
+      color: var(--pink);
+      background: rgba(232, 0, 58, 0.1);
+      border-color: rgba(232, 0, 58, 0.26);
     }
 
     .tos-list {
+      position: relative;
       display: flex;
       flex-direction: column;
       gap: 0.65rem;
-      padding-left: 0.25rem;
     }
 
     .tos-list li {
-      position: relative;
-      padding-left: 1.35rem;
-      font-size: 0.95rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.7rem 0.9rem;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.035);
+      font-size: 0.94rem;
       color: var(--text-light);
       line-height: 1.6;
+      transition: background 0.2s ease, border-color 0.2s ease;
     }
 
-    .tos-list li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.62rem;
-      width: 6px;
-      height: 6px;
+    .tos-list li:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.07);
+    }
+
+    .tos-bullet {
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      background: var(--rose);
-      opacity: 0.85;
+      background: rgba(255, 45, 85, 0.12);
+      color: var(--rose);
+      font-size: 0.62rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.22rem;
     }
 
     .tos-notice {
-      background: linear-gradient(135deg, rgba(232, 0, 58, 0.08), rgba(255, 45, 85, 0.03));
-      border: 1px solid var(--glass-border-red);
-      border-radius: var(--radius-lg);
-      padding: 1.85rem 2rem;
-      margin-top: 0.5rem;
+      position: relative;
+      background: linear-gradient(135deg, rgba(232, 0, 58, 0.11), rgba(255, 45, 85, 0.03) 65%, rgba(255, 255, 255, 0.02));
+      border: 1px solid rgba(232, 0, 58, 0.42);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
       box-shadow: var(--shadow-red);
+      backdrop-filter: var(--blur-md);
+      -webkit-backdrop-filter: var(--blur-md);
+      scroll-margin-top: calc(var(--nav-h) + 1.5rem);
+      overflow: hidden;
+    }
+
+    .tos-notice-head {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .tos-notice-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--red-accent), var(--rose));
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      box-shadow: 0 6px 20px rgba(232, 0, 58, 0.4);
+      flex-shrink: 0;
     }
 
     .tos-notice-title {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.15rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: var(--text-white);
-      margin-bottom: 0.65rem;
-    }
-
-    .tos-notice-title i {
-      color: var(--rose);
     }
 
     .tos-notice p {
-      font-size: 0.95rem;
+      font-size: 0.96rem;
       color: var(--text-light);
-      line-height: 1.65;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
     }
 
     .tos-actions {
       display: flex;
-      justify-content: center;
-      gap: 1rem;
+      gap: 0.9rem;
       flex-wrap: wrap;
-      margin-top: 1rem;
+    }
+
+    @media (max-width: 920px) {
+      .tos-shell {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2.25rem;
+      }
+
+      .tos-sidebar {
+        position: static;
+      }
+
+      .tos-toc {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+
+      .tos-toc-link {
+        padding: 0.42rem 0.72rem;
+        font-size: 0.8rem;
+        background: rgba(255, 255, 255, 0.03);
+        border-color: rgba(255, 255, 255, 0.06);
+      }
+
+      .tos-help-box {
+        display: none;
+      }
     }
 
     @media (max-width: 640px) {
       .tos-card,
       .tos-notice {
-        padding: 1.35rem 1.25rem;
+        padding: 1.35rem 1.2rem;
+      }
+
+      .tos-card-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.65rem;
+      }
+
+      .tos-list li {
+        padding: 0.65rem 0.75rem;
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -205,7 +508,7 @@
         <a href="/#home" class="nav-link">Home</a>
         <a href="/#scripts" class="nav-link">Scripts</a>
         <a href="/#games" class="nav-link">Games</a>
-        <a href="/shop.html" class="nav-link">Shop</a>
+        <a href="/shop" class="nav-link">Shop</a>
         <a href="/#executors" class="nav-link">Executors</a>
         <a href="/#discord" class="nav-link">Discord</a>
       </div>
@@ -213,7 +516,7 @@
         <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="nav-login">
           <i class="fab fa-discord"></i> Discord
         </a>
-        <a href="/shop.html" class="btn-get-key">
+        <a href="/shop" class="btn-get-key">
           <i class="fas fa-crown"></i> Get Premium
         </a>
         <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
@@ -247,7 +550,7 @@
         <span class="ml-icon"><i class="fas fa-gamepad"></i></span>
         <span>Games</span>
       </a>
-      <a href="/shop.html" class="mobile-link">
+      <a href="/shop" class="mobile-link">
         <span class="ml-icon"><i class="fas fa-crown"></i></span>
         <span>Premium Shop</span>
       </a>
@@ -262,116 +565,247 @@
       </a>
     </div>
     <div class="mobile-menu-footer">
-      <a href="/shop.html" class="btn-lg btn-primary">
+      <a href="/shop" class="btn-lg btn-primary">
         <i class="fas fa-crown"></i> Get Premium
       </a>
     </div>
   </div>
 
-  <header class="tos-hero">
-    <div class="tos-pill">
-      <i class="fas fa-file-contract"></i> Legal
-    </div>
-    <h1 class="tos-title">Terms of Service</h1>
-    <p class="tos-sub">By using Moondiety scripts or buying a Lifetime Premium license, you agree to follow the rules listed below.</p>
-  </header>
+  <section class="tos-hero-wrap">
+    <canvas id="void-canvas" aria-hidden="true"></canvas>
+    <div class="tos-hero-grid" aria-hidden="true"></div>
+    <div class="tos-hero-orb" aria-hidden="true"></div>
+    <div class="hero-horizon" aria-hidden="true"></div>
 
-  <main class="tos-container">
-    <section class="tos-card" data-anim="fade-up">
-      <div class="tos-card-header">
-        <span class="tos-num">1</span>
-        <h2 class="tos-card-title">License Usage &amp; Restrictions</h2>
+    <header class="tos-hero">
+      <div class="announce-badge">
+        <span class="dot"></span>
+        Official Rules &amp; Policies
       </div>
-      <ul class="tos-list">
-        <li>License sharing is strictly prohibited. Your key is meant for your personal use only.</li>
-        <li>Licenses cannot be transferred, resold, traded, gifted, or given out to anyone else under any circumstances.</li>
-        <li>Trying to share your key or let other people use your access will lead to an instant ban on that license.</li>
-        <li>We can deactivate a license at any time if we notice misuse, abuse, or suspicious activity.</li>
-      </ul>
-    </section>
-
-    <section class="tos-card" data-anim="fade-up" data-delay="50">
-      <div class="tos-card-header">
-        <span class="tos-num">2</span>
-        <h2 class="tos-card-title">Payment Terms</h2>
+      <h1 class="tos-title">Terms of <span class="line-accent">Service</span></h1>
+      <p class="tos-sub">By running Moondiety scripts or buying a Lifetime Premium key, you agree to follow every rule on this page.</p>
+      <div class="tos-meta-row">
+        <span class="tos-meta-pill"><i class="fas fa-calendar-check"></i> Updated November 2026</span>
+        <span class="tos-meta-pill"><i class="fas fa-shield-alt"></i> Free &amp; Lifetime Premium</span>
+        <span class="tos-meta-pill"><i class="fas fa-list-ol"></i> 7 Core Rules</span>
       </div>
-      <ul class="tos-list">
-        <li>Overpayments and underpayments will not be refunded, credited, or adjusted.</li>
-        <li>It is your responsibility to double-check the exact amount and payment details before sending anything.</li>
-        <li>We are not responsible for any lost funds caused by sending to the wrong address, user errors, or blockchain delays.</li>
-      </ul>
-    </section>
+    </header>
+  </section>
 
-    <section class="tos-card" data-anim="fade-up" data-delay="100">
-      <div class="tos-card-header">
-        <span class="tos-num">3</span>
-        <h2 class="tos-card-title">Refund Policy</h2>
+  <main class="tos-shell">
+    <aside class="tos-sidebar" aria-label="Terms sections">
+      <div class="tos-nav-box">
+        <div class="tos-nav-label">Quick Jump</div>
+        <nav class="tos-toc" id="tos-toc">
+          <a href="#rule-1" class="tos-toc-link active"><span class="toc-idx">01</span> License Usage</a>
+          <a href="#rule-2" class="tos-toc-link"><span class="toc-idx">02</span> Payment Terms</a>
+          <a href="#rule-3" class="tos-toc-link"><span class="toc-idx">03</span> Refund Policy</a>
+          <a href="#rule-4" class="tos-toc-link"><span class="toc-idx">04</span> Termination</a>
+          <a href="#rule-5" class="tos-toc-link"><span class="toc-idx">05</span> Service Disclaimer</a>
+          <a href="#rule-6" class="tos-toc-link"><span class="toc-idx">06</span> Anti-Reverse Eng.</a>
+          <a href="#rule-7" class="tos-toc-link"><span class="toc-idx">07</span> Terms Updates</a>
+          <a href="#notice" class="tos-toc-link"><span class="toc-idx">!</span> Important Notice</a>
+        </nav>
       </div>
-      <ul class="tos-list">
-        <li>All purchases are final. No refunds will be issued under any circumstances.</li>
-        <li>This applies to every situation, including changing your mind, executor compatibility issues, game updates, inactivity, or not being happy with script performance.</li>
-      </ul>
-    </section>
 
-    <section class="tos-card" data-anim="fade-up" data-delay="150">
-      <div class="tos-card-header">
-        <span class="tos-num">4</span>
-        <h2 class="tos-card-title">Service Termination</h2>
+      <div class="tos-help-box">
+        <div class="tos-help-title">Got a question?</div>
+        <p class="tos-help-desc">Need help with an order, manual payment, or license issue? Open a ticket in Discord.</p>
+        <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="tos-help-btn">
+          <i class="fab fa-discord"></i> Open Support Server
+        </a>
       </div>
-      <ul class="tos-list">
-        <li>We keep the right to suspend or permanently terminate any license at our discretion, with or without prior notice.</li>
-        <li>Access can be revoked if you break these rules, abuse our loader or Discord support, or cause trouble for the community.</li>
-      </ul>
-    </section>
+    </aside>
 
-    <section class="tos-card" data-anim="fade-up" data-delay="200">
-      <div class="tos-card-header">
-        <span class="tos-num">5</span>
-        <h2 class="tos-card-title">Service Disclaimer</h2>
+    <div class="tos-main">
+      <section class="tos-card" id="rule-1" data-anim="fade-up">
+        <div class="tos-card-top">
+          <div class="tos-card-heading">
+            <span class="tos-icon-box"><i class="fas fa-key"></i></span>
+            <div>
+              <span class="tos-step-label">Section 01</span>
+              <h2 class="tos-card-title">License Usage &amp; Restrictions</h2>
+            </div>
+          </div>
+          <span class="tos-tag tos-tag--strict">Personal Use Only</span>
+        </div>
+        <ul class="tos-list">
+          <li>
+            <span class="tos-bullet"><i class="fas fa-check"></i></span>
+            <span>License sharing is strictly prohibited. Your key is meant for your personal use only.</span>
+          </li>
+          <li>
+            <span class="tos-bullet"><i class="fas fa-check"></i></span>
+            <span>Licenses cannot be transferred, resold, traded, gifted, or given out to anyone else under any circumstances.</span>
+          </li>
+          <li>
+            <span class="tos-bullet"><i class="fas fa-check"></i></span>
+            <span>Trying to share your key or let other people use your access will lead to an instant ban on that license.</span>
+          </li>
+          <li>
+            <span class="tos-bullet"><i class="fas fa-check"></i></span>
+            <span>We can deactivate a license at any time if we notice misuse, abuse, or suspicious activity.</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="tos-card" id="rule-2" data-anim="fade-up" data-delay="50">
+        <div class="tos-card-top">
+          <div class="tos-card-heading">
+            <span class="tos-icon-box"><i class="fas fa-wallet"></i></span>
+            <div>
+              <span class="tos-step-label">Section 02</span>
+              <h2 class="tos-card-title">Payment Terms</h2>
+            </div>
+          </div>
+          <span class="tos-tag">Exact Amount</span>
+        </div>
+        <ul class="tos-list">
+          <li>
+            <span class="tos-bullet"><i class="fas fa-check"></i></span>
+            <span>Overpayments and underpayments will not be refunded, credited, or adjusted.</span>
+          </li>
+          <li>
+            <span class="tos-bullet"><i class="fas fa-check"></i></span>
+            <span>It is your responsibility to double-check the exact amount and payment details before sending anything.</span>
+          </li>
+          <li>
+            <span class="tos-bullet"><i class="fas fa-check"></i></span>
+            <span>We are not responsible for any lost funds caused by sending to the wrong address, user errors, or blockchain delays.</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="tos-card" id="rule-3" data-anim="fade-up" data-delay="100">
+        <div class="tos-card-top">
+          <div class="tos-card-heading">
+            <span class="tos-icon-box"><i class="fas fa-ban"></i></span>
+            <div>
+              <span class="tos-step-label">Section 03</span>
+              <h2 class="tos-card-title">Refund Policy</h2>
+            </div>
+          </div>
+          <span class="tos-tag tos-tag--strict">All Sales Final</span>
+        </div>
+        <ul class="tos-list">
+          <li>
+            <span class="tos-bullet"><i class="fas fa-check"></i></span>
+            <span>All purchases are final. No refunds will be issued under any circumstances.</span>
+          </li>
+          <li>
+            <span class="tos-bullet"><i class="fas fa-check"></i></span>
+            <span>This applies to every situation, including changing your mind, executor compatibility issues, game updates, inactivity, or not being happy with script performance.</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="tos-card" id="rule-4" data-anim="fade-up" data-delay="150">
+        <div class="tos-card-top">
+          <div class="tos-card-heading">
+            <span class="tos-icon-box"><i class="fas fa-user-slash"></i></span>
+            <div>
+              <span class="tos-step-label">Section 04</span>
+              <h2 class="tos-card-title">Service Termination</h2>
+            </div>
+          </div>
+          <span class="tos-tag">Account Access</span>
+        </div>
+        <ul class="tos-list">
+          <li>
+            <span class="tos-bullet"><i class="fas fa-check"></i></span>
+            <span>We keep the right to suspend or permanently terminate any license at our discretion, with or without prior notice.</span>
+          </li>
+          <li>
+            <span class="tos-bullet"><i class="fas fa-check"></i></span>
+            <span>Access can be revoked if you break these rules, abuse our loader or Discord support, or cause trouble for the community.</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="tos-card" id="rule-5" data-anim="fade-up" data-delay="200">
+        <div class="tos-card-top">
+          <div class="tos-card-heading">
+            <span class="tos-icon-box"><i class="fas fa-bolt"></i></span>
+            <div>
+              <span class="tos-step-label">Section 05</span>
+              <h2 class="tos-card-title">Service Disclaimer</h2>
+            </div>
+          </div>
+          <span class="tos-tag">As-Is Service</span>
+        </div>
+        <ul class="tos-list">
+          <li>
+            <span class="tos-bullet"><i class="fas fa-check"></i></span>
+            <span>Everything in Moondiety is provided "as is" without warranties of any kind.</span>
+          </li>
+          <li>
+            <span class="tos-bullet"><i class="fas fa-check"></i></span>
+            <span>Roblox updates and game patches happen out of our control, so we cannot guarantee 100% uptime, continuous access, or constant technical support for every feature.</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="tos-card" id="rule-6" data-anim="fade-up" data-delay="250">
+        <div class="tos-card-top">
+          <div class="tos-card-heading">
+            <span class="tos-icon-box"><i class="fas fa-code"></i></span>
+            <div>
+              <span class="tos-step-label">Section 06</span>
+              <h2 class="tos-card-title">Reverse Engineering Prohibition</h2>
+            </div>
+          </div>
+          <span class="tos-tag tos-tag--strict">Zero Tolerance</span>
+        </div>
+        <ul class="tos-list">
+          <li>
+            <span class="tos-bullet"><i class="fas fa-check"></i></span>
+            <span>Reverse engineering, decompiling, dumping, cracking, or modifying our scripts, loader, or systems is strictly forbidden.</span>
+          </li>
+          <li>
+            <span class="tos-bullet"><i class="fas fa-check"></i></span>
+            <span>Anyone caught trying to tamper with or bypass our software will lose access immediately and be permanently blacklisted.</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="tos-card" id="rule-7" data-anim="fade-up" data-delay="300">
+        <div class="tos-card-top">
+          <div class="tos-card-heading">
+            <span class="tos-icon-box"><i class="fas fa-sync-alt"></i></span>
+            <div>
+              <span class="tos-step-label">Section 07</span>
+              <h2 class="tos-card-title">Terms Updates</h2>
+            </div>
+          </div>
+          <span class="tos-tag">Policy Updates</span>
+        </div>
+        <ul class="tos-list">
+          <li>
+            <span class="tos-bullet"><i class="fas fa-check"></i></span>
+            <span>We can edit or update these terms whenever needed without sending out prior notice.</span>
+          </li>
+          <li>
+            <span class="tos-bullet"><i class="fas fa-check"></i></span>
+            <span>Continuing to use Moondiety scripts or your Lifetime Premium key after changes go live means you accept the updated terms.</span>
+          </li>
+        </ul>
+      </section>
+
+      <div class="tos-notice" id="notice" data-anim="fade-up" data-delay="350">
+        <div class="tos-notice-head">
+          <span class="tos-notice-icon"><i class="fas fa-exclamation-triangle"></i></span>
+          <div class="tos-notice-title">Important Notice</div>
+        </div>
+        <p>By buying a Moondiety Lifetime Premium key or running any of our scripts, you confirm that you have read, understood, and agreed to follow these Terms of Service. If you do not agree with any part of these rules, please do not purchase a license or use our scripts.</p>
+        <div class="tos-actions">
+          <a href="/shop" class="btn-lg btn-primary">
+            <i class="fas fa-crown"></i> Go to Shop
+          </a>
+          <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="btn-lg btn-secondary">
+            <i class="fab fa-discord"></i> Ask on Discord
+          </a>
+        </div>
       </div>
-      <ul class="tos-list">
-        <li>Everything in Moondiety is provided "as is" without warranties of any kind.</li>
-        <li>Roblox updates and game patches happen out of our control, so we cannot guarantee 100% uptime, continuous access, or constant technical support for every feature.</li>
-      </ul>
-    </section>
-
-    <section class="tos-card" data-anim="fade-up" data-delay="250">
-      <div class="tos-card-header">
-        <span class="tos-num">6</span>
-        <h2 class="tos-card-title">Reverse Engineering Prohibition</h2>
-      </div>
-      <ul class="tos-list">
-        <li>Reverse engineering, decompiling, dumping, cracking, or modifying our scripts, loader, or systems is strictly forbidden.</li>
-        <li>Anyone caught trying to tamper with or bypass our software will lose access immediately and be permanently blacklisted.</li>
-      </ul>
-    </section>
-
-    <section class="tos-card" data-anim="fade-up" data-delay="300">
-      <div class="tos-card-header">
-        <span class="tos-num">7</span>
-        <h2 class="tos-card-title">Terms Updates</h2>
-      </div>
-      <ul class="tos-list">
-        <li>We can edit or update these terms whenever needed without sending out prior notice.</li>
-        <li>Continuing to use Moondiety scripts or your Lifetime Premium key after changes go live means you accept the updated terms.</li>
-      </ul>
-    </section>
-
-    <div class="tos-notice" data-anim="fade-up" data-delay="350">
-      <div class="tos-notice-title">
-        <i class="fas fa-exclamation-triangle"></i>
-        <span>Important Notice</span>
-      </div>
-      <p>By buying a Moondiety Lifetime Premium key or running any of our scripts, you confirm that you have read, understood, and agreed to follow these Terms of Service. If you do not agree with any part of these rules, please do not purchase a license or use our scripts.</p>
-    </div>
-
-    <div class="tos-actions">
-      <a href="/shop.html" class="btn-lg btn-primary">
-        <i class="fas fa-crown"></i> Go to Shop
-      </a>
-      <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="btn-lg btn-ghost">
-        <i class="fab fa-discord"></i> Ask on Discord
-      </a>
     </div>
   </main>
 
@@ -397,27 +831,58 @@
         <a href="/#scripts" class="footer-link">Script Loader</a>
         <a href="/#games" class="footer-link">Supported Games</a>
         <a href="/#executors" class="footer-link">Executors</a>
-        <a href="/shop.html" class="footer-link">Premium Plans</a>
+        <a href="/shop" class="footer-link">Premium Plans</a>
       </div>
       <div class="footer-links-col">
         <h4 class="footer-heading">Resources</h4>
-        <a href="/shop.html" class="footer-link">Premium Shop</a>
-        <a href="/#scripts" class="footer-link">Keyless Loader</a>
-        <a href="/tos.html" class="footer-link">Terms of Service</a>
+        <a href="/shop" class="footer-link">Premium Shop</a>
+        <a href="/shop#faq" class="footer-link">FAQ</a>
+        <a href="/tos" class="footer-link">Terms of Service</a>
         <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="footer-link">Support Server</a>
       </div>
     </div>
     <div class="footer-bottom">
       <div class="footer-copy">
-        <span>&copy; 2025 Moondiety Scripts. All rights reserved.</span>
+        <span>&copy; <span class="js-year">2026</span> Moondiety Scripts. All rights reserved.</span>
       </div>
       <div class="footer-legal">
+        <a href="/tos" class="footer-link" style="font-size:12px;">Terms of Service</a>
+        <span style="margin:0 8px;opacity:0.4;">&middot;</span>
         <span>Not affiliated with or endorsed by Roblox Corporation.</span>
       </div>
     </div>
   </footer>
 
   <script src="/assets/js/main.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tocLinks = [...document.querySelectorAll('.tos-toc-link')];
+      const targets = tocLinks
+        .map(l => document.querySelector(l.getAttribute('href')))
+        .filter(Boolean);
+
+      tocLinks.forEach(link => {
+        link.addEventListener('click', e => {
+          const el = document.querySelector(link.getAttribute('href'));
+          if (!el) return;
+          e.preventDefault();
+          window.scrollTo({ top: el.offsetTop - 96, behavior: 'smooth' });
+        });
+      });
+
+      if (targets.length) {
+        const obs = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const id = '#' + entry.target.id;
+              tocLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
+            }
+          });
+        }, { rootMargin: '-25% 0px -60% 0px' });
+        targets.forEach(t => obs.observe(t));
+      }
+    });
+  </script>
 </body>
 
 </html>

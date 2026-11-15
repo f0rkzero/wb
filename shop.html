@@ -77,31 +77,104 @@
 
     .faq-grid {
       display: grid;
-      gap: 1rem;
-      max-width: 800px;
+      gap: 0.85rem;
+      max-width: 820px;
       margin: 0 auto 4rem;
       padding: 0 2rem;
       text-align: left;
     }
 
     .faq-card {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      padding: 1.5rem;
-      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.028);
+      border: 1px solid rgba(255, 255, 255, 0.075);
+      border-radius: var(--radius-lg);
+      backdrop-filter: var(--blur-md);
+      -webkit-backdrop-filter: var(--blur-md);
+      overflow: hidden;
+      transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .faq-card:hover {
+      border-color: rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .faq-card.open {
+      border-color: rgba(232, 0, 58, 0.35);
+      background: rgba(232, 0, 58, 0.045);
+      box-shadow: 0 10px 36px rgba(0, 0, 0, 0.3), 0 0 24px rgba(232, 0, 58, 0.08);
+    }
+
+    .faq-trigger {
+      width: 100%;
+      background: none;
+      border: 0;
+      padding: 1.35rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      cursor: pointer;
+      text-align: left;
+      color: inherit;
+      font-family: inherit;
     }
 
     .faq-title {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 1.05rem;
       font-weight: 600;
       color: var(--text-white);
-      margin-bottom: 0.5rem;
+      line-height: 1.35;
+    }
+
+    .faq-chevron {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    }
+
+    .faq-card.open .faq-chevron {
+      transform: rotate(180deg);
+      background: rgba(232, 0, 58, 0.16);
+      border-color: rgba(232, 0, 58, 0.4);
+      color: var(--rose);
+    }
+
+    .faq-panel {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.28s ease;
+    }
+
+    .faq-card.open .faq-panel {
+      grid-template-rows: 1fr;
+    }
+
+    .faq-panel-inner {
+      overflow: hidden;
     }
 
     .faq-desc {
-      font-size: 0.9rem;
-      color: var(--text-dim);
-      line-height: 1.5;
+      padding: 0 1.5rem 1.35rem;
+      font-size: 0.93rem;
+      color: var(--text-light);
+      line-height: 1.65;
+    }
+
+    .faq-desc a {
+      color: var(--rose);
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
   </style>
 </head>
@@ -114,10 +187,10 @@
         <span class="nav-logo-name">MOONDIETY</span>
       </a>
       <div class="nav-pill" role="navigation" aria-label="Main navigation">
-        <a href="/#home" class="nav-link active">Home</a>
+        <a href="/#home" class="nav-link">Home</a>
         <a href="/#scripts" class="nav-link">Scripts</a>
         <a href="/#games" class="nav-link">Games</a>
-        <a href="/shop.html" class="nav-link">Shop</a>
+        <a href="/shop" class="nav-link active">Shop</a>
         <a href="/#executors" class="nav-link">Executors</a>
         <a href="/#discord" class="nav-link">Discord</a>
       </div>
@@ -125,7 +198,7 @@
         <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="nav-login">
           <i class="fab fa-discord"></i> Discord
         </a>
-        <a href="/shop.html" class="btn-get-key">
+        <a href="/shop" class="btn-get-key">
           <i class="fas fa-crown"></i> Get Premium
         </a>
         <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
@@ -158,7 +231,7 @@
         <span class="ml-icon"><i class="fas fa-gamepad"></i></span>
         <span>Games</span>
       </a>
-      <a href="/shop.html" class="mobile-link">
+      <a href="/shop" class="mobile-link">
         <span class="ml-icon"><i class="fas fa-crown"></i></span>
         <span>Premium Shop</span>
       </a>
@@ -173,7 +246,7 @@
       </a>
     </div>
     <div class="mobile-menu-footer">
-      <a href="/shop.html" class="btn-lg btn-primary">
+      <a href="/shop" class="btn-lg btn-primary">
         <i class="fas fa-crown"></i> Get Premium
       </a>
     </div>
@@ -263,41 +336,102 @@
       </div>
       <div class="benefit-card">
         <i class="fas fa-unlock-alt benefit-icon"></i>
-        <div class="benefit-title">Exclusive Suggetions</div>
-        <div class="benefit-desc">Suggested features gets priority to be added in the script.</div>
+        <div class="benefit-title">Exclusive Suggestions</div>
+        <div class="benefit-desc">Your feature suggestions get top priority for getting added to the script.</div>
       </div>
     </div>
   </section>
 
   <div class="separator"></div>
 
-  <section class="section" style="padding-top: 4rem;">
+  <section class="section" id="faq" style="padding-top: 4rem;">
     <div style="text-align: center; margin-bottom: 3rem;">
+      <div class="section-label"><i class="fas fa-circle-question"></i> Got Questions?</div>
       <h2 class="section-title">Frequently Asked Questions</h2>
     </div>
-    <div class="faq-grid">
-      <div class="faq-card">
-        <div class="faq-title">How do I activate Lifetime Premium?</div>
-        <div class="faq-desc">Launch any Moondiety script in your executor. Click any locked feature to open the key
-          prompt, paste your key, and click Check Key. Your lifetime access will unlock permanently across all games.
+    <div class="faq-grid" id="faq-grid">
+      <div class="faq-card open">
+        <button class="faq-trigger" type="button" aria-expanded="true">
+          <span class="faq-title">Is Moondiety actually free and keyless?</span>
+          <span class="faq-chevron"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-panel">
+          <div class="faq-panel-inner">
+            <div class="faq-desc">Yes. Every normal feature across all 22+ supported games is 100% free with zero keys, zero ads, and zero checkpoints. Lifetime Premium is completely optional if you want extra bypasses and exclusive features.</div>
+          </div>
         </div>
       </div>
+
       <div class="faq-card">
-        <div class="faq-title">What payment methods do you accept?</div>
-        <div class="faq-desc">We accept Cryptocurrency (BTC, LTC, USDT, etc.) instantly on our store. For PayPal
-          Balance, Revolut, Paysafe, CashApp, Apple Pay, Bank Transfer, Zelle, Venmo, Stripe, and FunPay, simply join
-          our Discord server and open a ticket.</div>
+        <button class="faq-trigger" type="button" aria-expanded="false">
+          <span class="faq-title">Do I pay once, or is it a subscription?</span>
+          <span class="faq-chevron"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-panel">
+          <div class="faq-panel-inner">
+            <div class="faq-desc">It is a one-time $10 payment. There are no monthly fees or renewals, and your key keeps working across future updates and new games we add.</div>
+          </div>
+        </div>
       </div>
+
       <div class="faq-card">
-        <div class="faq-title">Is Moondiety really free and keyless?</div>
-        <div class="faq-desc">Yes! All standard Moondiety features across all 22+ supported games are 100% free and
-          keyless with zero ads or checkpoints. Lifetime Premium is an optional upgrade that unlocks exclusive special
-          features.</div>
+        <button class="faq-trigger" type="button" aria-expanded="false">
+          <span class="faq-title">How do I activate my Lifetime Premium key?</span>
+          <span class="faq-chevron"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-panel">
+          <div class="faq-panel-inner">
+            <div class="faq-desc">Run the Moondiety loader in your executor, click any locked premium feature to bring up the key box, paste your key, and hit Check Key. Once verified, it stays unlocked across all supported games.</div>
+          </div>
+        </div>
       </div>
+
       <div class="faq-card">
-        <div class="faq-title">How long does delivery take?</div>
-        <div class="faq-desc">Crypto orders deliver your key instantly. For manual payments through Discord tickets,
-          staff verifies payment and provides your license key immediately.</div>
+        <button class="faq-trigger" type="button" aria-expanded="false">
+          <span class="faq-title">What payment methods do you take?</span>
+          <span class="faq-chevron"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-panel">
+          <div class="faq-panel-inner">
+            <div class="faq-desc">You can pay with Crypto (BTC, LTC, USDT, and more) directly on the store for instant checkout. If you want to pay using PayPal Balance, Revolut, Paysafe, CashApp, Apple Pay, Bank Transfer, Zelle, Venmo, Stripe, or FunPay, join our Discord and open a ticket.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <button class="faq-trigger" type="button" aria-expanded="false">
+          <span class="faq-title">How long does it take to get my key?</span>
+          <span class="faq-chevron"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-panel">
+          <div class="faq-panel-inner">
+            <div class="faq-desc">Crypto orders deliver automatically right after the payment confirms. For manual payments in Discord tickets, a staff member checks your payment and sends your key straight over.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <button class="faq-trigger" type="button" aria-expanded="false">
+          <span class="faq-title">Which executors work with Moondiety?</span>
+          <span class="faq-chevron"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-panel">
+          <div class="faq-panel-inner">
+            <div class="faq-desc">It runs on most popular PC and mobile executors including Delta, Codex, Krnl, Ronix, Arceus X, Swift, Wave, Zenith, Volcano, Velocity, and more. Check the Executors list on the homepage if you are not sure about yours.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <button class="faq-trigger" type="button" aria-expanded="false">
+          <span class="faq-title">Can I share my key with a friend, or get a refund?</span>
+          <span class="faq-chevron"><i class="fas fa-chevron-down"></i></span>
+        </button>
+        <div class="faq-panel">
+          <div class="faq-panel-inner">
+            <div class="faq-desc">No sharing and no refunds. Your key is locked to you only, and sharing or reselling it gets the license banned. Since digital keys cannot be taken back once sent, all sales are final, so read our <a href="/tos">Terms of Service</a> before buying.</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -324,27 +458,45 @@
         <a href="/#scripts" class="footer-link">Script Loader</a>
         <a href="/#games" class="footer-link">Supported Games</a>
         <a href="/#executors" class="footer-link">Executors</a>
-        <a href="/shop.html" class="footer-link">Premium Plans</a>
+        <a href="/shop" class="footer-link">Premium Plans</a>
       </div>
       <div class="footer-links-col">
         <h4 class="footer-heading">Resources</h4>
-        <a href="/shop.html" class="footer-link">Premium Shop</a>
-        <a href="/#scripts" class="footer-link">Keyless Loader</a>
-        <a href="/tos.html" class="footer-link">Terms of Service</a>
+        <a href="/shop" class="footer-link">Premium Shop</a>
+        <a href="/shop#faq" class="footer-link">FAQ</a>
+        <a href="/tos" class="footer-link">Terms of Service</a>
         <a href="https://discord.gg/moondiety" target="_blank" class="footer-link">Support Server</a>
       </div>
     </div>
     <div class="footer-bottom">
       <div class="footer-copy">
-        <span>&copy; 2025 Moondiety Scripts. All rights reserved.</span>
+        <span>&copy; <span class="js-year">2026</span> Moondiety Scripts. All rights reserved.</span>
       </div>
       <div class="footer-legal">
+        <a href="/tos" class="footer-link" style="font-size:12px;">Terms of Service</a>
+        <span style="margin:0 8px;opacity:0.4;">&middot;</span>
         <span>Not affiliated with or endorsed by Roblox Corporation.</span>
       </div>
     </div>
   </footer>
 
   <script src="/assets/js/main.js"></script>
+  <script>
+    document.querySelectorAll('.faq-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.faq-card');
+        const wasOpen = card.classList.contains('open');
+        document.querySelectorAll('.faq-card').forEach(c => {
+          c.classList.remove('open');
+          c.querySelector('.faq-trigger')?.setAttribute('aria-expanded', 'false');
+        });
+        if (!wasOpen) {
+          card.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
