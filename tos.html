@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moondiety | Terms of Service</title>
+  <meta name="description"
+    content="Terms of Service for Moondiety Scripts and Lifetime Premium licenses. Read our license rules, payment terms, refund policy, and usage guidelines.">
+  <meta name="theme-color" content="#030014">
+  <meta property="og:title" content="Moondiety | Terms of Service">
+  <meta property="og:description" content="Terms of Service for Moondiety Scripts and Lifetime Premium licenses.">
+  <meta property="og:image" content="/media/banner.jpg">
+  <meta property="og:type" content="website">
+  <link rel="apple-touch-icon" sizes="180x180" href="/media/apple-touch-icon.png">
+  <link rel="icon" type="image/svg+xml" href="/media/favicon.svg">
+  <link rel="icon" type="image/png" sizes="96x96" href="/media/favicon-96x96.png">
+  <link rel="shortcut icon" href="/media/favicon.ico">
+  <link rel="manifest" href="/media/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Michroma&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/animations.css">
+  <style>
+    .tos-hero {
+      padding: calc(var(--nav-h) + 3.5rem) 2rem 2.5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .tos-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--rose);
+      border: 1px solid rgba(255, 45, 85, 0.3);
+      background: rgba(255, 45, 85, 0.07);
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1.25rem;
+    }
+
+    .tos-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.1rem, 5vw, 3.25rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      color: var(--text-white);
+    }
+
+    .tos-sub {
+      color: var(--text-muted);
+      font-size: 1.02rem;
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .tos-container {
+      max-width: 860px;
+      margin: 0 auto 5rem;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .tos-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 2rem;
+      transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+    }
+
+    .tos-card:hover {
+      border-color: var(--glass-border-md);
+      background: var(--glass-bg-md);
+      transform: translateY(-2px);
+    }
+
+    .tos-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    .tos-num {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 45, 85, 0.12);
+      border: 1px solid rgba(255, 45, 85, 0.3);
+      color: var(--rose);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .tos-card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-white);
+    }
+
+    .tos-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      padding-left: 0.25rem;
+    }
+
+    .tos-list li {
+      position: relative;
+      padding-left: 1.35rem;
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    .tos-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.62rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--rose);
+      opacity: 0.85;
+    }
+
+    .tos-notice {
+      background: linear-gradient(135deg, rgba(232, 0, 58, 0.08), rgba(255, 45, 85, 0.03));
+      border: 1px solid var(--glass-border-red);
+      border-radius: var(--radius-lg);
+      padding: 1.85rem 2rem;
+      margin-top: 0.5rem;
+      box-shadow: var(--shadow-red);
+    }
+
+    .tos-notice-title {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 0.65rem;
+    }
+
+    .tos-notice-title i {
+      color: var(--rose);
+    }
+
+    .tos-notice p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.65;
+    }
+
+    .tos-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 640px) {
+      .tos-card,
+      .tos-notice {
+        padding: 1.35rem 1.25rem;
+      }
+    }
+  </style>
+</head>
+
+<body class="dark-theme">
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="/#home" class="nav-logo" aria-label="Moondiety Home">
+        <img src="/media/logo.png" alt="Moondiety Logo" width="36" height="36">
+        <span class="nav-logo-name">MOONDIETY</span>
+      </a>
+      <div class="nav-pill" role="navigation" aria-label="Main navigation">
+        <a href="/#home" class="nav-link">Home</a>
+        <a href="/#scripts" class="nav-link">Scripts</a>
+        <a href="/#games" class="nav-link">Games</a>
+        <a href="/shop.html" class="nav-link">Shop</a>
+        <a href="/#executors" class="nav-link">Executors</a>
+        <a href="/#discord" class="nav-link">Discord</a>
+      </div>
+      <div class="nav-actions">
+        <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="nav-login">
+          <i class="fab fa-discord"></i> Discord
+        </a>
+        <a href="/shop.html" class="btn-get-key">
+          <i class="fas fa-crown"></i> Get Premium
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-header">
+      <div class="mobile-menu-brand">
+        <img src="/media/logo.png" alt="Moondiety" width="28">
+        <span>Moondiety</span>
+      </div>
+      <button class="mobile-close" id="mobile-close" aria-label="Close menu">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="mobile-menu-body">
+      <a href="/#home" class="mobile-link">
+        <span class="ml-icon"><i class="fas fa-home"></i></span>
+        <span>Home</span>
+      </a>
+      <a href="/#scripts" class="mobile-link">
+        <span class="ml-icon"><i class="fas fa-code"></i></span>
+        <span>Script Loader</span>
+      </a>
+      <a href="/#games" class="mobile-link">
+        <span class="ml-icon"><i class="fas fa-gamepad"></i></span>
+        <span>Games</span>
+      </a>
+      <a href="/shop.html" class="mobile-link">
+        <span class="ml-icon"><i class="fas fa-crown"></i></span>
+        <span>Premium Shop</span>
+      </a>
+      <a href="/#executors" class="mobile-link">
+        <span class="ml-icon"><i class="fas fa-bolt"></i></span>
+        <span>Executors</span>
+      </a>
+      <div class="mobile-menu-separator"></div>
+      <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="mobile-link">
+        <span class="ml-icon"><i class="fab fa-discord"></i></span>
+        <span>Join Discord</span>
+      </a>
+    </div>
+    <div class="mobile-menu-footer">
+      <a href="/shop.html" class="btn-lg btn-primary">
+        <i class="fas fa-crown"></i> Get Premium
+      </a>
+    </div>
+  </div>
+
+  <header class="tos-hero">
+    <div class="tos-pill">
+      <i class="fas fa-file-contract"></i> Legal
+    </div>
+    <h1 class="tos-title">Terms of Service</h1>
+    <p class="tos-sub">By using Moondiety scripts or buying a Lifetime Premium license, you agree to follow the rules listed below.</p>
+  </header>
+
+  <main class="tos-container">
+    <section class="tos-card" data-anim="fade-up">
+      <div class="tos-card-header">
+        <span class="tos-num">1</span>
+        <h2 class="tos-card-title">License Usage &amp; Restrictions</h2>
+      </div>
+      <ul class="tos-list">
+        <li>License sharing is strictly prohibited. Your key is meant for your personal use only.</li>
+        <li>Licenses cannot be transferred, resold, traded, gifted, or given out to anyone else under any circumstances.</li>
+        <li>Trying to share your key or let other people use your access will lead to an instant ban on that license.</li>
+        <li>We can deactivate a license at any time if we notice misuse, abuse, or suspicious activity.</li>
+      </ul>
+    </section>
+
+    <section class="tos-card" data-anim="fade-up" data-delay="50">
+      <div class="tos-card-header">
+        <span class="tos-num">2</span>
+        <h2 class="tos-card-title">Payment Terms</h2>
+      </div>
+      <ul class="tos-list">
+        <li>Overpayments and underpayments will not be refunded, credited, or adjusted.</li>
+        <li>It is your responsibility to double-check the exact amount and payment details before sending anything.</li>
+        <li>We are not responsible for any lost funds caused by sending to the wrong address, user errors, or blockchain delays.</li>
+      </ul>
+    </section>
+
+    <section class="tos-card" data-anim="fade-up" data-delay="100">
+      <div class="tos-card-header">
+        <span class="tos-num">3</span>
+        <h2 class="tos-card-title">Refund Policy</h2>
+      </div>
+      <ul class="tos-list">
+        <li>All purchases are final. No refunds will be issued under any circumstances.</li>
+        <li>This applies to every situation, including changing your mind, executor compatibility issues, game updates, inactivity, or not being happy with script performance.</li>
+      </ul>
+    </section>
+
+    <section class="tos-card" data-anim="fade-up" data-delay="150">
+      <div class="tos-card-header">
+        <span class="tos-num">4</span>
+        <h2 class="tos-card-title">Service Termination</h2>
+      </div>
+      <ul class="tos-list">
+        <li>We keep the right to suspend or permanently terminate any license at our discretion, with or without prior notice.</li>
+        <li>Access can be revoked if you break these rules, abuse our loader or Discord support, or cause trouble for the community.</li>
+      </ul>
+    </section>
+
+    <section class="tos-card" data-anim="fade-up" data-delay="200">
+      <div class="tos-card-header">
+        <span class="tos-num">5</span>
+        <h2 class="tos-card-title">Service Disclaimer</h2>
+      </div>
+      <ul class="tos-list">
+        <li>Everything in Moondiety is provided "as is" without warranties of any kind.</li>
+        <li>Roblox updates and game patches happen out of our control, so we cannot guarantee 100% uptime, continuous access, or constant technical support for every feature.</li>
+      </ul>
+    </section>
+
+    <section class="tos-card" data-anim="fade-up" data-delay="250">
+      <div class="tos-card-header">
+        <span class="tos-num">6</span>
+        <h2 class="tos-card-title">Reverse Engineering Prohibition</h2>
+      </div>
+      <ul class="tos-list">
+        <li>Reverse engineering, decompiling, dumping, cracking, or modifying our scripts, loader, or systems is strictly forbidden.</li>
+        <li>Anyone caught trying to tamper with or bypass our software will lose access immediately and be permanently blacklisted.</li>
+      </ul>
+    </section>
+
+    <section class="tos-card" data-anim="fade-up" data-delay="300">
+      <div class="tos-card-header">
+        <span class="tos-num">7</span>
+        <h2 class="tos-card-title">Terms Updates</h2>
+      </div>
+      <ul class="tos-list">
+        <li>We can edit or update these terms whenever needed without sending out prior notice.</li>
+        <li>Continuing to use Moondiety scripts or your Lifetime Premium key after changes go live means you accept the updated terms.</li>
+      </ul>
+    </section>
+
+    <div class="tos-notice" data-anim="fade-up" data-delay="350">
+      <div class="tos-notice-title">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span>Important Notice</span>
+      </div>
+      <p>By buying a Moondiety Lifetime Premium key or running any of our scripts, you confirm that you have read, understood, and agreed to follow these Terms of Service. If you do not agree with any part of these rules, please do not purchase a license or use our scripts.</p>
+    </div>
+
+    <div class="tos-actions">
+      <a href="/shop.html" class="btn-lg btn-primary">
+        <i class="fas fa-crown"></i> Go to Shop
+      </a>
+      <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="btn-lg btn-ghost">
+        <i class="fab fa-discord"></i> Ask on Discord
+      </a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand-col">
+        <div class="footer-brand">
+          <img src="/media/logo.png" alt="Moondiety Logo" width="32" height="32">
+          <span class="footer-brand-name">MOONDIETY</span>
+        </div>
+        <p class="footer-tagline">PLAY TO WIN!</p>
+        <div class="footer-socials">
+          <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="footer-social"
+            aria-label="Discord"><i class="fab fa-discord"></i></a>
+          <a href="https://youtube.com/@moondiety_script?si=3a6-FptuSGqq0xjt" target="_blank" rel="noopener"
+            class="footer-social" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://scriptblox.com/u/Moondiety" target="_blank" rel="noopener" class="footer-social"
+            aria-label="ScriptBlox"><i class="fas fa-scroll"></i></a>
+        </div>
+      </div>
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Product</h4>
+        <a href="/#scripts" class="footer-link">Script Loader</a>
+        <a href="/#games" class="footer-link">Supported Games</a>
+        <a href="/#executors" class="footer-link">Executors</a>
+        <a href="/shop.html" class="footer-link">Premium Plans</a>
+      </div>
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Resources</h4>
+        <a href="/shop.html" class="footer-link">Premium Shop</a>
+        <a href="/#scripts" class="footer-link">Keyless Loader</a>
+        <a href="/tos.html" class="footer-link">Terms of Service</a>
+        <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="footer-link">Support Server</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        <span>&copy; 2025 Moondiety Scripts. All rights reserved.</span>
+      </div>
+      <div class="footer-legal">
+        <span>Not affiliated with or endorsed by Roblox Corporation.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js" defer></script>
+</body>
+
+</html>
