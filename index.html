@@ -34,6 +34,26 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="stylesheet" href="/assets/css/animations.css">
+
+  <style id="scroll-background-fix">
+    html {
+      min-height: 100%;
+      background-color: #030014 !important;
+      overscroll-behavior: none;
+    }
+    body,
+    body.dark-theme {
+      min-height: 100%;
+      background-color: #030014 !important;
+      background-attachment: fixed;
+      overscroll-behavior: none;
+      overflow-x: clip;
+    }
+    body.dark-theme > footer,
+    body.dark-theme .footer {
+      background-color: #030014;
+    }
+  </style>
 </head>
 <body class="dark-theme">
 <div class="scroll-progress" id="scroll-progress"></div>
