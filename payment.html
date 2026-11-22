@@ -21,8 +21,15 @@
       --purple:#ed174c; --pink:#ff315b;
     }
     *{box-sizing:border-box}
+    html{
+      min-height:100%;
+      background:#030014;
+      overscroll-behavior-y:none;
+    }
     body{
       margin:0; min-height:100vh; color:var(--white);
+      background-color:#030014;
+      overflow-x:clip;
       font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
       background:
         radial-gradient(ellipse at 50% -10%,rgba(237,23,76,.20),transparent 48%),
@@ -32,7 +39,7 @@
     .navbar { position:fixed; }
     main { padding-top:80px; }
     .product-art { background:radial-gradient(circle at 50% 50%,rgba(232,0,58,.22),transparent 48%),linear-gradient(135deg,#24000c,#160b0f 65%,#3b101b); }
-    .moon { font-size:58px;color:#ff315b;text-shadow:0 0 35px rgba(255,45,85,.55); }
+    .product-logo{width:76px;height:76px;object-fit:contain;filter:drop-shadow(0 0 22px rgba(255,49,91,.28))}
     .payment-page-footer { width:min(1050px,calc(100% - 40px));margin:0 auto 30px;text-align:center;color:#8e777d;font-size:10px;letter-spacing:.06em; }
     a{color:inherit;text-decoration:none}
     .secure{display:flex;align-items:center;gap:7px;color:#c2aeb2;font-size:11px}
@@ -56,14 +63,14 @@
         linear-gradient(135deg,#321018,#160b0f 65%,#3b101b);
       border:1px solid rgba(255,49,91,.15);margin-bottom:23px;
     }
-    .moon{font-size:58px;color:#ff315b;text-shadow:0 0 35px rgba(196,181,253,.55)}
+    .product-logo{width:76px;height:76px;object-fit:contain;filter:drop-shadow(0 0 22px rgba(255,49,91,.28))}
     .product-name{font-size:18px;font-weight:800;letter-spacing:-.02em}
     .product-sub{margin-top:6px;color:var(--muted);font-size:12px}
     .divider{height:1px;background:var(--line);margin:22px 0}
     .line{display:flex;justify-content:space-between;gap:15px;color:#c5c1d2;font-size:12px;margin:13px 0}
     .line strong{color:var(--white);font-weight:750}
-    .total{font-size:14px}
-    .total strong{font-size:19px}
+    .total{font-size:12px}
+    .total strong{font-size:12px;font-weight:750}
     .benefits{display:grid;gap:12px;margin-top:22px}
     .benefit{display:flex;align-items:center;gap:10px;color:#c4bfd2;font-size:11px}
     .check{
@@ -93,7 +100,7 @@
     footer{width:min(1050px,calc(100% - 40px));margin:0 auto 30px;text-align:center;color:#8e777d;font-size:10px;letter-spacing:.06em}
     @keyframes spin{to{transform:rotate(360deg)}}
     @media(max-width:780px){main{margin-top:38px}.layout{grid-template-columns:1fr}.summary{order:1}.payment{order:0}}
-    @media(max-width:480px){.secure{font-size:0}.secure-dot{width:8px;height:8px}main{width:calc(100% - 24px)}.summary,.payment{padding:19px}.product-art{height:115px}}
+    @media(max-width:480px){.secure{font-size:0}.secure-dot{width:8px;height:8px}main{width:calc(100% - 24px)}.summary,.payment{padding:19px}.product-art{height:115px}.product-logo{width:64px;height:64px}}
   </style>
 </head>
 <body>
@@ -178,14 +185,16 @@
 
     <div class="layout">
       <aside class="panel summary">
-        <div class="product-art"><div class="moon">☾</div></div>
-        <div class="eyebrow">Digital product</div>
-        <div class="product-name">Moondiety Scripts Premium</div>
-        <div class="product-sub">Instant digital delivery after successful payment</div>
+        <div class="product-art">
+          <img class="product-logo" src="/media/logo.png" alt="Moondiety">
+        </div>
+        <div class="eyebrow">Premium access</div>
+        <div class="product-name">Moondiety Premium Key</div>
+        <div class="product-sub">Lifetime access key · Delivered after successful payment</div>
         <div class="divider"></div>
-        <div class="line"><span>Product</span><strong>Scripts Premium</strong></div>
-        <div class="line"><span>Delivery</span><strong>Instant</strong></div>
-        <div class="line total"><span>Total</span><strong>Shown at checkout</strong></div>
+        <div class="line"><span>Item</span><strong>Premium Key</strong></div>
+        <div class="line"><span>Activation</span><strong>Automatic</strong></div>
+        <div class="line total"><span>Final price</span><strong>Shown at checkout</strong></div>
         <div class="divider"></div>
         <div class="benefits">
           <div class="benefit"><span class="check">✓</span>Secure payment processing</div>
