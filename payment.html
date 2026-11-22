@@ -21,12 +21,7 @@
       --purple:#ed174c; --pink:#ff315b;
     }
     *{box-sizing:border-box}
-    html{
-      min-height:100%;
-      background:#030014;
-      overscroll-behavior-y:none;
-    }
-    body{
+body{
       margin:0; min-height:100vh; color:var(--white);
       background-color:#030014;
       overflow-x:clip;
@@ -97,8 +92,9 @@
       color:#fca5a5;font-size:11px;line-height:1.6
     }
     .fineprint{margin:18px 0 0;text-align:center;color:#8e777d;font-size:10px;line-height:1.7}
-    footer{width:min(1050px,calc(100% - 40px));margin:0 auto 30px;text-align:center;color:#8e777d;font-size:10px;letter-spacing:.06em}
-    @keyframes spin{to{transform:rotate(360deg)}}
+    footer{width:min(1050px,calc(100% - 40px));margin:0 auto 30px;text-align:center;color:#8e777d;font-size:10px;letter-spacing:.06em;background:#030014}
+
+    ::-webkit-scrollbar-track{background:#030014}\n    @keyframes spin{to{transform:rotate(360deg)}}
     @media(max-width:780px){main{margin-top:38px}.layout{grid-template-columns:1fr}.summary{order:1}.payment{order:0}}
     @media(max-width:480px){.secure{font-size:0}.secure-dot{width:8px;height:8px}main{width:calc(100% - 24px)}.summary,.payment{padding:19px}.product-art{height:115px}.product-logo{width:64px;height:64px}}
   </style>
@@ -206,7 +202,7 @@
       <section class="panel payment">
         <div class="payment-head">
           <h2>Payment details</h2>
-          <span class="sandbox">SANDBOX MODE</span>
+          <span class="sandbox">LIVE MODE</span>
         </div>
         <p class="hint">Enter your payment details in the secure checkout form below.</p>
         <div id="paddle-checkout">
@@ -222,8 +218,8 @@
 
   <script src="https://moondiety.com/assets/js/main.js"></script>
   <script>
-    const PADDLE_TOKEN = "test_8ca7d6392b26a3dbe5ec99fd8fc";
-    const PADDLE_PRICE_ID = "pri_01m82365p6gpxvj8zd1ymhevbf";
+    const PADDLE_TOKEN = "live_d8f4cd98497cfbdf3e9d693d6fb";
+    const PADDLE_PRICE_ID = "pri_01m81bgw2xgdfb7me002mm4t1g";
     const SUCCESS_URL = "http://c-pl-1.apexnodes.xyz:10079/checkout";
 
     function hideCheckoutLoader() {
@@ -259,7 +255,6 @@
       showCheckoutError("The secure payment service could not be loaded. Please refresh the page.");
     } else {
       try {
-        Paddle.Environment.set("sandbox");
         Paddle.Initialize({
           token: PADDLE_TOKEN,
           checkout: {
@@ -287,7 +282,7 @@
               window.location.href =
                 SUCCESS_URL + "?transaction_id=" + encodeURIComponent(transactionId);
             } else if (event && event.name === "checkout.error") {
-              showCheckoutError("Paddle could not start the checkout. Please check your Sandbox checkout settings and try again.");
+              showCheckoutError("Paddle could not start the checkout. Please check your Live checkout settings and try again.");
             }
           }
         });
