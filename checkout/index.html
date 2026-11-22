@@ -4,492 +4,317 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#030014">
-  <meta name="referrer" content="no-referrer">
-  <title>Moondiety — Order Confirmation</title>
-
+  <meta name="theme-color" content="#090608">
+  <title>Moondiety — Secure Checkout</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://moondiety.com/assets/css/main.css">
   <link rel="stylesheet" href="https://moondiety.com/assets/css/animations.css">
-
+  <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
   <style>
+    :root {
+      color-scheme: dark;
+      --bg:#090608; --panel:#160b0f; --panel2:#241016;
+      --line:rgba(255,255,255,.09); --muted:#a9959a; --white:#fff4f6;
+      --purple:#ed174c; --pink:#ff315b;
+    }
+    *{box-sizing:border-box}
+    html{
+      min-height:100%;
+      background:#030014;
+      overscroll-behavior-y:none;
+    }
+    body{
+      margin:0; min-height:100vh; color:var(--white);
+      background-color:#030014;
+      overflow-x:clip;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(ellipse at 50% -10%,rgba(237,23,76,.20),transparent 48%),
+        radial-gradient(ellipse at 100% 100%,rgba(255,35,91,.10),transparent 36%),
+        #030014;
+    }
+    .navbar { position:fixed; }
+    main { padding-top:80px; }
+    .product-art { background:radial-gradient(circle at 50% 50%,rgba(232,0,58,.22),transparent 48%),linear-gradient(135deg,#24000c,#160b0f 65%,#3b101b); }
+    .product-logo{width:76px;height:76px;object-fit:contain;filter:drop-shadow(0 0 22px rgba(255,49,91,.28))}
+    .payment-page-footer { width:min(1050px,calc(100% - 40px));margin:0 auto 30px;text-align:center;color:#8e777d;font-size:10px;letter-spacing:.06em; }
+    a{color:inherit;text-decoration:none}
+    .secure{display:flex;align-items:center;gap:7px;color:#c2aeb2;font-size:11px}
+    .secure-dot{width:7px;height:7px;border-radius:50%;background:#86efac;box-shadow:0 0 12px #86efac}
+    main{width:min(1050px,calc(100% - 40px));margin:58px auto 70px}
+    .intro{text-align:center;margin-bottom:35px}
+    .eyebrow{color:#ff5277;font-size:10px;font-weight:850;letter-spacing:.2em;text-transform:uppercase}
+    h1{margin:12px 0 10px;font-size:clamp(29px,5vw,43px);letter-spacing:-.055em}
+    .intro p{margin:0;color:var(--muted);font-size:13px;line-height:1.7}
+    .layout{display:grid;grid-template-columns:minmax(0, .82fr) minmax(0,1.18fr);gap:20px;align-items:start}
+    .panel{
+      border:1px solid var(--line);border-radius:22px;overflow:hidden;
+      background:linear-gradient(145deg,rgba(43,17,24,.97),rgba(17,8,12,.98));
+      box-shadow:0 24px 75px rgba(0,0,0,.32),inset 0 1px rgba(255,255,255,.025);
+    }
+    .summary{padding:25px}
+    .product-art{
+      height:150px;border-radius:15px;display:grid;place-items:center;overflow:hidden;
+      background:
+        radial-gradient(circle at 50% 50%,rgba(167,139,250,.27),transparent 48%),
+        linear-gradient(135deg,#321018,#160b0f 65%,#3b101b);
+      border:1px solid rgba(255,49,91,.15);margin-bottom:23px;
+    }
+    .product-logo{width:76px;height:76px;object-fit:contain;filter:drop-shadow(0 0 22px rgba(255,49,91,.28))}
+    .product-name{font-size:18px;font-weight:800;letter-spacing:-.02em}
+    .product-sub{margin-top:6px;color:var(--muted);font-size:12px}
+    .divider{height:1px;background:var(--line);margin:22px 0}
+    .line{display:flex;justify-content:space-between;gap:15px;color:#c5c1d2;font-size:12px;margin:13px 0}
+    .line strong{color:var(--white);font-weight:750}
+    .total{font-size:12px}
+    .total strong{font-size:12px;font-weight:750}
+    .benefits{display:grid;gap:12px;margin-top:22px}
+    .benefit{display:flex;align-items:center;gap:10px;color:#c4bfd2;font-size:11px}
+    .check{
+      display:grid;place-items:center;width:19px;height:19px;flex:0 0 19px;
+      border-radius:7px;background:rgba(237,23,76,.15);color:#ff315b;font-size:11px
+    }
+    .payment{padding:25px}
+    .payment-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+    .payment-head h2{margin:0;font-size:17px;letter-spacing:-.025em}
+    .sandbox{
+      padding:6px 9px;border-radius:8px;border:1px solid rgba(250,204,21,.2);
+      background:rgba(250,204,21,.07);color:#facc15;font-size:9px;font-weight:850;letter-spacing:.1em
+    }
+    .hint{margin:0 0 18px;color:var(--muted);font-size:11px;line-height:1.6}
+    #paddle-checkout{min-height:570px;width:100%;border-radius:14px;overflow:hidden}
+    .loading{
+      display:flex;align-items:center;justify-content:center;gap:10px;
+      min-height:170px;color:var(--muted);font-size:12px
+    }
+    .spinner{width:17px;height:17px;border:2px solid rgba(255,49,91,.22);border-top-color:#ff315b;border-radius:50%;animation:spin .8s linear infinite}
+    .error{
+      display:none;margin-top:14px;padding:13px;border-radius:12px;
+      border:1px solid rgba(248,113,113,.22);background:rgba(127,29,29,.16);
+      color:#fca5a5;font-size:11px;line-height:1.6
+    }
+    .fineprint{margin:18px 0 0;text-align:center;color:#8e777d;font-size:10px;line-height:1.7}
+    footer{width:min(1050px,calc(100% - 40px));margin:0 auto 30px;text-align:center;color:#8e777d;font-size:10px;letter-spacing:.06em}
+
+    /* Keep the document canvas dark during scroll/overscroll, including
+       the area exposed around the footer. */
+    html, body {
+      min-height: 100%;
+      background-color: #030014 !important;
+      overscroll-behavior: none;
+    }
     body {
-      min-height: 100vh;
-      background: radial-gradient(ellipse at 50% 0%, rgba(232,0,58,.18), transparent 48%), #030014;
+      background-attachment: fixed;
     }
-
-    .confirmation-main {
-      width: min(680px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 145px 0 70px;
+    footer, .payment-page-footer {
+      background-color: #030014;
     }
-
-    .confirmation-card {
-      position: relative;
-      overflow: hidden;
-      padding: 36px;
-      border: 1px solid rgba(255,255,255,.09);
-      border-radius: 22px;
-      background: linear-gradient(145deg, rgba(43,17,24,.97), rgba(17,8,12,.98));
-      box-shadow: 0 28px 90px rgba(0,0,0,.45), inset 0 1px rgba(255,255,255,.03);
-    }
-
-    .confirmation-card:before {
-      content: "";
-      position: absolute;
-      width: 210px;
-      height: 210px;
-      right: -135px;
-      top: -150px;
-      background: #ed174c;
-      filter: blur(90px);
-      opacity: .2;
-      pointer-events: none;
-    }
-
-    .eyebrow {
-      color: #ff5277;
-      font-size: 10px;
-      font-weight: 850;
-      letter-spacing: .19em;
-      text-transform: uppercase;
-    }
-
-    .confirmation-card h1 {
-      margin: 13px 0 8px;
-      font: 700 clamp(25px,4vw,34px) 'Space Grotesk', sans-serif;
-      letter-spacing: -.05em;
-      color: #fff;
-    }
-
-    .desc {
-      margin: 0;
-      color: rgba(255,255,255,.65);
-      font-size: 13px;
-      line-height: 1.7;
-    }
-
-    .status {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      margin: 27px 0 20px;
-      padding: 16px;
-      border: 1px solid rgba(255,255,255,.09);
-      border-radius: 15px;
-      background: rgba(255,255,255,.025);
-    }
-
-    .status-icon {
-      display: grid;
-      place-items: center;
-      flex: 0 0 40px;
-      height: 40px;
-      border-radius: 13px;
-      color: #ff315b;
-      background: rgba(237,23,76,.15);
-      font-size: 18px;
-    }
-
-    .status-title {
-      font-size: 13px;
-      font-weight: 800;
-      color: #fff;
-    }
-
-    .status-sub {
-      margin-top: 4px;
-      color: #a9959a;
-      font-size: 11px;
-    }
-
-    .spinner {
-      width: 18px;
-      height: 18px;
-      border: 2px solid rgba(255,49,91,.24);
-      border-top-color: #ff315b;
-      border-radius: 50%;
-      animation: spin .8s linear infinite;
-    }
-
-    .license-wrap {
-      display: none;
-      margin-top: 22px;
-    }
-
-    .license-label {
-      color: #a9959a;
-      font-size: 10px;
-      font-weight: 850;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-    }
-
-    .license-box {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 10px;
-      padding: 14px;
-      border: 1px solid rgba(255,49,91,.30);
-      border-radius: 13px;
-      background: rgba(237,23,76,.09);
-    }
-
-    #license {
-      flex: 1;
-      min-width: 0;
-      overflow-wrap: anywhere;
-      font: 600 13px ui-monospace, monospace;
-      color: #fff;
-    }
-
-    .license-box button {
-      border: 0;
-      border-radius: 10px;
-      padding: 10px 13px;
-      color: #fff;
-      background: linear-gradient(100deg, #e8003a, #ff315b);
-      font-weight: 850;
-      cursor: pointer;
-    }
-
-    .error {
-      display: none;
-      margin-top: 18px;
-      padding: 14px;
-      border-radius: 12px;
-      border: 1px solid rgba(248,113,113,.25);
-      background: rgba(127,29,29,.13);
-      color: #fca5a5;
-      font-size: 12px;
-      line-height: 1.6;
-    }
-
-    .home {
-      display: inline-block;
-      margin-top: 20px;
-      color: #ff315b;
-      font-size: 12px;
-    }
-
-    .confirmation-foot {
-      margin-top: 19px;
-      text-align: center;
-      color: rgba(255,255,255,.35);
-      font-size: 10px;
-      letter-spacing: .07em;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    @media(max-width:480px) {
-      .confirmation-main { padding-top: 120px; }
-      .confirmation-card { padding: 25px 21px; }
-    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @media(max-width:780px){main{margin-top:38px}.layout{grid-template-columns:1fr}.summary{order:1}.payment{order:0}}
+    @media(max-width:480px){.secure{font-size:0}.secure-dot{width:8px;height:8px}main{width:calc(100% - 24px)}.summary,.payment{padding:19px}.product-art{height:115px}.product-logo{width:64px;height:64px}}
   </style>
 </head>
-
-<body class="dark-theme">
-
+<body>
   <div class="scroll-progress" id="scroll-progress"></div>
-
   <nav class="navbar" id="navbar">
-    <div class="nav-inner">
-
-      <a href="/#home" class="nav-logo" aria-label="Moondiety Home">
-        <img src="/media/logo.png" alt="Moondiety Logo" width="36" height="36">
-        <span class="nav-logo-name">MOONDIETY</span>
-      </a>
-
-      <div class="nav-pill" role="navigation" aria-label="Main navigation">
-        <a href="/#home" class="nav-link active">Home</a>
-        <a href="/#scripts" class="nav-link">Scripts</a>
-        <a href="/#games" class="nav-link">Games</a>
-        <a href="/shop" class="nav-link">Shop</a>
-        <a href="/#executors" class="nav-link">Executors</a>
-        <a href="/#discord" class="nav-link">Discord</a>
-      </div>
-
-      <div class="nav-actions">
-        <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="nav-login">
-          <i class="fab fa-discord"></i> Discord
-        </a>
-
-        <a href="/shop" class="btn-get-key">
-          <i class="fas fa-crown"></i> Get Premium
-        </a>
-
-        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-
+  <div class="nav-inner">
+    <a href="/#home" class="nav-logo" aria-label="Moondiety Home">
+      <img src="/media/logo.png" alt="Moondiety Logo" width="36" height="36">
+      <span class="nav-logo-name">MOONDIETY</span>
+    </a>
+    <div class="nav-pill" role="navigation" aria-label="Main navigation">
+      <a href="/#home"      class="nav-link active">Home</a>
+      <a href="/#scripts"   class="nav-link">Scripts</a>
+      <a href="/#games"     class="nav-link">Games</a>
+      <a href="/shop"       class="nav-link">Shop</a>
+      <a href="/#executors" class="nav-link">Executors</a>
+      <a href="/#discord"   class="nav-link">Discord</a>
     </div>
-  </nav>
-
-  <div class="mobile-overlay" id="mobile-overlay"></div>
-
-  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-
-    <div class="mobile-menu-header">
-      <div class="mobile-menu-brand">
-        <img src="/media/logo.png" alt="Moondiety" width="28">
-        <span>Moondiety</span>
-      </div>
-
-      <button class="mobile-close" id="mobile-close" aria-label="Close menu">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-
-    <div class="mobile-menu-body">
-
-      <a href="/#home" class="mobile-link">
-        <span class="ml-icon"><i class="fas fa-home"></i></span>
-        <span>Home</span>
+    <div class="nav-actions">
+      <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="nav-login">
+        <i class="fab fa-discord"></i> Discord
       </a>
-
-      <a href="/#scripts" class="mobile-link">
-        <span class="ml-icon"><i class="fas fa-code"></i></span>
-        <span>Script Loader</span>
-      </a>
-
-      <a href="/#games" class="mobile-link">
-        <span class="ml-icon"><i class="fas fa-gamepad"></i></span>
-        <span>Games</span>
-      </a>
-
-      <a href="/shop" class="mobile-link">
-        <span class="ml-icon"><i class="fas fa-crown"></i></span>
-        <span>Premium Shop</span>
-      </a>
-
-      <a href="/#executors" class="mobile-link">
-        <span class="ml-icon"><i class="fas fa-bolt"></i></span>
-        <span>Executors</span>
-      </a>
-
-      <div class="mobile-menu-separator"></div>
-
-      <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="mobile-link">
-        <span class="ml-icon"><i class="fab fa-discord"></i></span>
-        <span>Join Discord</span>
-      </a>
-
-    </div>
-
-    <div class="mobile-menu-footer">
-      <a href="/shop" class="btn-lg btn-primary">
+      <a href="/shop" class="btn-get-key">
         <i class="fas fa-crown"></i> Get Premium
       </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-
   </div>
-
-  <main class="confirmation-main">
-
-    <section class="confirmation-card">
-
-      <div class="eyebrow">Order verification</div>
-
-      <h1 id="heading">Verifying your payment</h1>
-
-      <p class="desc" id="description">
-        We're securely confirming your transaction. Please keep this page open.
-      </p>
-
-      <div class="status">
-
-        <div class="status-icon" id="statusIcon">
-          <div class="spinner"></div>
-        </div>
-
-        <div>
-          <div class="status-title" id="statusTitle">
-            Payment verification in progress
-          </div>
-
-          <div class="status-sub" id="statusSub">
-            This should only take a few seconds
-          </div>
-        </div>
-
-      </div>
-
-      <div class="license-wrap" id="licenseWrap">
-
-        <div class="license-label">Your license key</div>
-
-        <div class="license-box">
-          <div id="license"></div>
-          <button id="copyButton" type="button">COPY</button>
-        </div>
-
-      </div>
-
-      <div class="error" id="errorBox"></div>
-
-      <div style="text-align:center">
-        <a class="home" href="https://moondiety.com/">Back to Moondiety</a>
-      </div>
-
+</nav>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu-header">
+    <div class="mobile-menu-brand">
+      <img src="/media/logo.png" alt="Moondiety" width="28">
+      <span>Moondiety</span>
+    </div>
+    <button class="mobile-close" id="mobile-close" aria-label="Close menu">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <div class="mobile-menu-body">
+    <a href="/#home" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-home"></i></span>
+      <span>Home</span>
+    </a>
+    <a href="/#scripts" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-code"></i></span>
+      <span>Script Loader</span>
+    </a>
+    <a href="/#games" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-gamepad"></i></span>
+      <span>Games</span>
+    </a>
+    <a href="/shop" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-crown"></i></span>
+      <span>Premium Shop</span>
+    </a>
+    <a href="/#executors" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-bolt"></i></span>
+      <span>Executors</span>
+    </a>
+    <div class="mobile-menu-separator"></div>
+    <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="mobile-link">
+      <span class="ml-icon"><i class="fab fa-discord"></i></span>
+      <span>Join Discord</span>
+    </a>
+  </div>
+  <div class="mobile-menu-footer">
+    <a href="/shop" class="btn-lg btn-primary">
+      <i class="fas fa-crown"></i> Get Premium
+    </a>
+  </div>
+</div>
+<main>
+    <section class="intro">
+      <div class="eyebrow">Almost yours</div>
+      <h1>Complete your purchase</h1>
+      <p>One final step to unlock your Moondiety experience.</p>
     </section>
 
-    <div class="confirmation-foot">
-      MOONDIETY · SECURE DIGITAL DELIVERY
-    </div>
+    <div class="layout">
+      <aside class="panel summary">
+        <div class="product-art">
+          <img class="product-logo" src="/media/logo.png" alt="Moondiety">
+        </div>
+        <div class="eyebrow">Premium access</div>
+        <div class="product-name">Moondiety Premium Key</div>
+        <div class="product-sub">Lifetime access key · Delivered after successful payment</div>
+        <div class="divider"></div>
+        <div class="line"><span>Item</span><strong>Premium Key</strong></div>
+        <div class="line"><span>Activation</span><strong>Automatic</strong></div>
+        <div class="line total"><span>Final price</span><strong>Shown at checkout</strong></div>
+        <div class="divider"></div>
+        <div class="benefits">
+          <div class="benefit"><span class="check">✓</span>Secure payment processing</div>
+          <div class="benefit"><span class="check">✓</span>Automatic license delivery</div>
+          <div class="benefit"><span class="check">✓</span>Order verification</div>
+        </div>
+      </aside>
 
+      <section class="panel payment">
+        <div class="payment-head">
+          <h2>Payment details</h2>
+          <span class="sandbox">SANDBOX MODE</span>
+        </div>
+        <p class="hint">Enter your payment details in the secure checkout form below.</p>
+        <div id="paddle-checkout">
+          <div class="loading"><span class="spinner"></span> Preparing secure checkout…</div>
+        </div>
+        <div class="error" id="checkout-error"></div>
+        <p class="fineprint">Your card details are handled securely by Paddle and are never stored on Moondiety servers.</p>
+      </section>
+    </div>
   </main>
 
+  <div class="payment-page-footer">MOONDIETY © 2026 · DIGITAL DELIVERY</div>
+
   <script src="https://moondiety.com/assets/js/main.js"></script>
-
   <script>
-    /*
-      Flask redemption endpoint.
-      This is a top-level browser navigation, not fetch().
-    */
-    const REDEEM_URL = "http://c-pl-1.apexnodes.xyz:10079/redeem";
+    const PADDLE_TOKEN = "test_8ca7d6392b26a3dbe5ec99fd8fc";
+    const PADDLE_PRICE_ID = "pri_01m82365p6gpxvj8zd1ymhevbf";
+    const SUCCESS_URL = "http://c-pl-1.apexnodes.xyz:10079/checkout";
 
-    const params = new URLSearchParams(window.location.search);
-    const claimToken = params.get("claim");
-
-    const fragmentParams = new URLSearchParams(
-      window.location.hash.startsWith("#")
-        ? window.location.hash.substring(1)
-        : window.location.hash
-    );
-
-    const receivedLicense = fragmentParams.get("license");
-
-    const heading = document.getElementById("heading");
-    const description = document.getElementById("description");
-    const statusIcon = document.getElementById("statusIcon");
-    const statusTitle = document.getElementById("statusTitle");
-    const statusSub = document.getElementById("statusSub");
-    const licenseWrap = document.getElementById("licenseWrap");
-    const licenseEl = document.getElementById("license");
-    const errorBox = document.getElementById("errorBox");
-    const copyButton = document.getElementById("copyButton");
-
-    function showError(message) {
-      heading.textContent = "We couldn't verify your payment";
-
-      description.textContent =
-        "Your license has not been displayed. Please contact support if you believe this is a mistake.";
-
-      statusIcon.textContent = "!";
-      statusTitle.textContent = "Verification unsuccessful";
-      statusSub.textContent = "No license has been displayed";
-
-      errorBox.style.display = "block";
-      errorBox.textContent = message;
+    function hideCheckoutLoader() {
+      const loader = document.querySelector("#paddle-checkout .loading");
+      if (loader) loader.remove();
     }
 
-    function showLicense(license) {
-      if (!license || typeof license !== "string") {
-        showError("The returned license is invalid. Please contact support.");
-        return;
-      }
-
-      heading.textContent = "Purchase successful";
-
-      description.textContent =
-        "Your payment has been confirmed. Your Moondiety access is ready.";
-
-      statusIcon.textContent = "✓";
-      statusIcon.style.color = "#86efac";
-      statusIcon.style.background = "rgba(34,197,94,.13)";
-
-      statusTitle.textContent = "Payment completed";
-      statusSub.textContent = "Your license has been issued successfully";
-
-      licenseEl.textContent = license;
-      licenseWrap.style.display = "block";
-
-      // Remove the license fragment from the visible URL.
-      // The fragment is not sent to the web server.
-      window.history.replaceState(
-        {},
-        document.title,
-        window.location.pathname
-      );
+    function watchPaddleFrame() {
+      const mount = document.getElementById("paddle-checkout");
+      if (!mount) return;
+      const attach = () => {
+        const frame = mount.querySelector("iframe");
+        if (frame && !frame.dataset.moondietyLoadWatch) {
+          frame.dataset.moondietyLoadWatch = "1";
+          frame.addEventListener("load", hideCheckoutLoader, { once: true });
+        }
+      };
+      const observer = new MutationObserver(attach);
+      observer.observe(mount, { childList: true, subtree: true });
+      attach();
     }
 
-    function deliverLicense() {
-      const paymentStatus = params.get("status");
-
-      if (paymentStatus === "error") {
-        const reason = params.get("reason");
-
-        showError(
-          reason === "delivery"
-            ? "Payment verification succeeded, but license preparation failed. Please contact support."
-            : "The payment could not be verified. If you were charged, please contact support."
-        );
-
-        return;
-      }
-
-      // Returned from Flask with the license in the URL fragment.
-      if (receivedLicense) {
-        showLicense(receivedLicense);
-        return;
-      }
-
-      // No token and no returned license.
-      if (!claimToken) {
-        showError(
-          "The secure delivery token is missing. Please return to your receipt or contact support."
-        );
-
-        return;
-      }
-
-      // Prevent repeatedly processing the same token on this page.
-      // The server also enforces one-time token redemption.
-      heading.textContent = "Retrieving your license";
-
-      description.textContent =
-        "Your payment has been verified. We are retrieving your license.";
-
-      statusTitle.textContent = "Preparing your license";
-      statusSub.textContent = "Please wait a moment";
-
-      // Navigate directly to Flask.
-      // No fetch(), CORS, HTTPS proxy or Cloudflare Worker is required.
-      window.location.replace(
-        REDEEM_URL + "?claim=" + encodeURIComponent(claimToken)
-      );
+    function showCheckoutError(message) {
+      const box = document.getElementById("checkout-error");
+      box.style.display = "block";
+      box.textContent = message;
+      const mount = document.getElementById("paddle-checkout");
+      if (mount) mount.innerHTML = "";
+      console.error("[Moondiety Paddle]", message);
     }
 
-    copyButton.addEventListener("click", async () => {
-      const license = licenseEl.textContent;
-
-      if (!license) return;
-
+    if (!window.Paddle) {
+      showCheckoutError("The secure payment service could not be loaded. Please refresh the page.");
+    } else {
       try {
-        await navigator.clipboard.writeText(license);
-        copyButton.textContent = "COPIED";
-      } catch {
-        const range = document.createRange();
-        range.selectNodeContents(licenseEl);
+        Paddle.Environment.set("sandbox");
+        Paddle.Initialize({
+          token: PADDLE_TOKEN,
+          checkout: {
+            settings: {
+              displayMode: "inline",
+              variant: "one-page",
+              theme: "dark",
+              locale: "en",
+              frameTarget: "paddle-checkout",
+              frameInitialHeight: "570",
+              frameStyle: "width:100%; min-width:312px; background:transparent; border:0;"
+            }
+          },
+          eventCallback: function(event) {
+            console.log("[Moondiety Paddle]", event);
+            if (event && event.name === "checkout.loaded") {
+              hideCheckoutLoader();
+            } else if (event && event.name === "checkout.completed") {
+              const transactionId =
+                event.data && (event.data.transaction_id || event.data.id);
+              if (!transactionId) {
+                showCheckoutError("Payment completed, but the transaction ID was not returned. Please contact support.");
+                return;
+              }
+              window.location.href =
+                SUCCESS_URL + "?transaction_id=" + encodeURIComponent(transactionId);
+            } else if (event && event.name === "checkout.error") {
+              showCheckoutError("Paddle could not start the checkout. Please check your Sandbox checkout settings and try again.");
+            }
+          }
+        });
 
-        const selection = window.getSelection();
-        selection.removeAllRanges();
-        selection.addRange(range);
-
-        copyButton.textContent = "SELECTED";
+        document.getElementById("paddle-checkout").classList.add("paddle-checkout");
+        watchPaddleFrame();
+        Paddle.Checkout.open({
+          items: [{ priceId: PADDLE_PRICE_ID, quantity: 1 }]
+        });
+      } catch (error) {
+        showCheckoutError(error && error.message ? error.message : "Unable to initialize secure checkout.");
       }
-    });
-
-    deliverLicense();
+    }
   </script>
-
 </body>
 </html>
