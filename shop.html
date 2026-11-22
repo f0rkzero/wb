@@ -176,6 +176,49 @@
       text-decoration: underline;
       text-underline-offset: 3px;
     }
+
+    .payment-choice-overlay {
+      position: fixed; inset: 0; z-index: 9999; display: none;
+      align-items: center; justify-content: center; padding: 1.25rem;
+      background: rgba(4, 5, 12, .82); backdrop-filter: blur(14px);
+    }
+    .payment-choice-overlay.is-open { display: flex; }
+    .payment-choice {
+      width: min(760px, 100%); position: relative; padding: 2rem;
+      border: 1px solid rgba(255,255,255,.12); border-radius: 24px;
+      background: linear-gradient(145deg, rgba(28,28,42,.98), rgba(12,13,22,.99));
+      box-shadow: 0 28px 100px rgba(0,0,0,.6);
+    }
+    .payment-choice-close {
+      position: absolute; top: 1rem; right: 1rem; width: 38px; height: 38px;
+      border: 1px solid rgba(255,255,255,.12); border-radius: 50%;
+      color: #fff; background: rgba(255,255,255,.06); cursor: pointer;
+    }
+    .payment-choice-heading { text-align:center; margin: .25rem 2rem 1.5rem; }
+    .payment-choice-heading h2 { color:#fff; font:700 clamp(1.4rem,4vw,2rem) 'Space Grotesk',sans-serif; margin:0 0 .5rem; }
+    .payment-choice-heading p { color:var(--text-muted); margin:0; font-size:.92rem; }
+    .payment-choice-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; }
+    .payment-choice-card {
+      min-height:210px; display:flex; flex-direction:column; align-items:center;
+      justify-content:center; gap:.85rem; padding:1.5rem 1rem; text-align:center;
+      color:#fff; text-decoration:none; border:1px solid rgba(255,255,255,.12);
+      border-radius:18px; background:rgba(255,255,255,.035);
+      transition:transform .2s ease,border-color .2s ease,background .2s ease;
+    }
+    .payment-choice-card:hover { transform:translateY(-4px); border-color:rgba(255,45,85,.55); background:rgba(255,45,85,.07); }
+    .payment-choice-icon { width:58px;height:58px;display:grid;place-items:center;border-radius:17px;
+      font-size:1.55rem;background:rgba(255,255,255,.08);color:#fff; }
+    .payment-choice-card strong { font-size:1.08rem; }
+    .payment-choice-card small { color:var(--text-muted); line-height:1.5; }
+    .payment-brand-row { display:flex;gap:.55rem;flex-wrap:wrap;justify-content:center; }
+    .payment-brand-row span { padding:.35rem .6rem;border:1px solid rgba(255,255,255,.1);
+      border-radius:7px;background:rgba(255,255,255,.055);font-size:.72rem;font-weight:700;color:#eee; }
+    @media(max-width:560px) {
+      .payment-choice { padding:1.5rem 1rem; }
+      .payment-choice-grid { grid-template-columns:1fr; }
+      .payment-choice-card { min-height:175px; }
+    }
+
   </style>
 </head>
 
@@ -283,25 +326,10 @@
             <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> VIP Premium Role in Discord</li>
             <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> 24/7 Dedicated Priority Support</li>
           </ul>
-          <button type="button" class="btn-pricing btn-pricing-featured" id="buy-lifetime">
-            <i class="fas fa-bolt"></i> Buy Lifetime Premium — $10
+          <button type="button" class="btn-pricing btn-pricing-featured" id="buy-lifetime"
+            style="width:100%;border:0;cursor:pointer;">
+            <i class="fas fa-bolt"></i> Instant Delivery
           </button>
-          <p id="paddle-error" role="status" style="display:none;color:#ff6b8a;text-align:center;margin-top:.75rem;"></p>
-          <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="btn-pricing btn-pricing-default"
-            style="margin-top:0.75rem;" id="buy-discord">
-            <i class="fab fa-discord"></i> Manual Payment (Open Ticket)
-          </a>
-          <div class="manual-methods-box"
-            style="margin-top:1.25rem; padding:0.85rem 1rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:var(--radius-md); text-align:center;">
-            <div
-              style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); margin-bottom:0.4rem;">
-              Supported Manual Payment Methods
-            </div>
-            <div style="font-size:0.76rem; font-weight:600; color:var(--text-light); line-height:1.6;">
-              PayPal Balance &bull; Revolut &bull; Paysafe &bull; CashApp &bull; Apple Pay &bull; Bank Transfer &bull;
-              Zelle &bull; Venmo &bull; Stripe &bull; FunPay
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -393,7 +421,7 @@
         </button>
         <div class="faq-panel">
           <div class="faq-panel-inner">
-            <div class="faq-desc">You can pay with Crypto (BTC, LTC, USDT, and more) directly on the store for instant checkout. If you want to pay using PayPal Balance, Revolut, Paysafe, CashApp, Apple Pay, Bank Transfer, Zelle, Venmo, Stripe, or FunPay, join our Discord and open a ticket.</div>
+            <div class="faq-desc">You can pay by card, Apple Pay, or Google Pay through Paddle, or choose cryptocurrency through MySellAuth.</div>
           </div>
         </div>
       </div>
@@ -405,7 +433,7 @@
         </button>
         <div class="faq-panel">
           <div class="faq-panel-inner">
-            <div class="faq-desc">Crypto orders deliver automatically right after the payment confirms. For manual payments in Discord tickets, a staff member checks your payment and sends your key straight over.</div>
+            <div class="faq-desc">Orders are processed automatically after the payment provider confirms your payment.</div>
           </div>
         </div>
       </div>
@@ -435,6 +463,35 @@
       </div>
     </div>
   </section>
+
+
+  <div class="payment-choice-overlay" id="payment-choice-modal" aria-hidden="true">
+    <div class="payment-choice" role="dialog" aria-modal="true" aria-labelledby="payment-choice-title">
+      <button type="button" class="payment-choice-close" id="payment-choice-close" aria-label="Close payment options">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="payment-choice-heading">
+        <h2 id="payment-choice-title">Choose Payment Method</h2>
+        <p>Select how you want to pay for Lifetime Premium.</p>
+      </div>
+      <div class="payment-choice-grid">
+        <a class="payment-choice-card" href="http://c-pl-1.apexnodes.xyz:10219/payment" id="paddle-payment-link">
+          <span class="payment-choice-icon"><i class="far fa-credit-card"></i></span>
+          <strong>Card &amp; Wallets</strong>
+          <span class="payment-brand-row">
+            <span>VISA</span><span>Mastercard</span><span>AMEX</span><span>Apple Pay</span><span>Google Pay</span>
+          </span>
+          <small>Secure checkout powered by Paddle</small>
+        </a>
+        <a class="payment-choice-card" href="https://moondiety.mysellauth.com/product/moondiety-scripts-premium"
+           target="_blank" rel="noopener" id="crypto-payment-link">
+          <span class="payment-choice-icon"><i class="fab fa-bitcoin"></i></span>
+          <strong>Cryptocurrency</strong>
+          <small>Pay with crypto through MySellAuth</small>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <footer class="footer">
     <div class="footer-inner">
@@ -496,50 +553,30 @@
         }
       });
     });
+
+    const paymentModal = document.getElementById('payment-choice-modal');
+    const instantDeliveryButton = document.getElementById('buy-lifetime');
+    const closePaymentModal = document.getElementById('payment-choice-close');
+
+    function openPaymentModal() {
+      paymentModal.classList.add('is-open');
+      paymentModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function hidePaymentModal() {
+      paymentModal.classList.remove('is-open');
+      paymentModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    instantDeliveryButton?.addEventListener('click', openPaymentModal);
+    closePaymentModal?.addEventListener('click', hidePaymentModal);
+    paymentModal?.addEventListener('click', (event) => {
+      if (event.target === paymentModal) hidePaymentModal();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && paymentModal?.classList.contains('is-open')) hidePaymentModal();
+    });
   </script>
-
-  <!-- Paddle Sandbox checkout -->
-  <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
-  <script>
-    (() => {
-      const PADDLE_CLIENT_TOKEN = "test_8ca7d6392b26a3dbe5ec99fd8fc";
-      const PRICE_ID = "pri_01m82365p6gpxvj8zd1ymhevbf";
-      const API_CHECKOUT_URL = "http://c-pl-1.apexnodes.xyz:10219/checkout";
-      const errorEl = document.getElementById("paddle-error");
-      const buyButton = document.getElementById("buy-lifetime");
-
-      if (!window.Paddle || !buyButton) {
-        if (errorEl) { errorEl.textContent = "Paddle could not be loaded. Please disable script blockers and refresh."; errorEl.style.display = "block"; }
-        return;
-      }
-
-      Paddle.Environment.set("sandbox");
-      Paddle.Initialize({
-        token: PADDLE_CLIENT_TOKEN,
-        eventCallback: function (event) {
-          if (event && event.name === "checkout.completed" && event.data && event.data.transaction_id) {
-            window.location.href = API_CHECKOUT_URL + "?transaction_id=" + encodeURIComponent(event.data.transaction_id);
-          }
-        }
-      });
-
-      buyButton.addEventListener("click", function () {
-        errorEl.style.display = "none";
-        buyButton.disabled = true;
-        try {
-          Paddle.Checkout.open({
-            items: [{ priceId: PRICE_ID, quantity: 1 }],
-            settings: { displayMode: "overlay", theme: "dark", locale: "en" }
-          });
-        } catch (error) {
-          errorEl.textContent = "Could not open checkout. Please refresh and try again.";
-          errorEl.style.display = "block";
-        }
-        setTimeout(() => { buyButton.disabled = false; }, 1500);
-      });
-    })();
-  </script>
-
 </body>
 
 </html>
