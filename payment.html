@@ -1,3 +1,6 @@
+---
+permalink: /payment/
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,7 +71,7 @@
         <span class="method"><i class="fab fa-apple-pay"></i> Apple Pay</span>
         <span class="method"><i class="fab fa-google-pay"></i> Google Pay</span>
       </div>
-      <div id="paddle-checkout"><div class="loading" id="checkout-loading"><span class="spinner"></span><span>Loading secure payment form...</span></div></div>
+      <div id="paddle-checkout" class="paddle-checkout"><div class="loading" id="checkout-loading"><span class="spinner"></span><span>Loading secure payment form...</span></div></div>
       <div class="error" id="checkout-error" role="alert"></div>
       <div class="footer-note"><i class="fas fa-lock"></i> Payments are securely processed by Paddle.<br>Your card details are never stored on Moondiety servers.</div>
     </section>
@@ -131,18 +134,24 @@
     }
     try {
       Paddle.Environment.set("sandbox");
-      Paddle.Initialize({ token: PADDLE_TOKEN, eventCallback: onPaddleEvent });
-      Paddle.Checkout.open({
-        items: [{ priceId: PADDLE_PRICE_ID, quantity: 1 }],
-        settings: {
-          displayMode: "inline",
-          variant: "one-page",
-          theme: "dark",
-          locale: "en",
-          frameTarget: "paddle-checkout",
-          frameInitialHeight: 560,
-          frameStyle: "width:100%; min-width:312px; background:transparent; border:0;"
+      Paddle.Initialize({
+        token: PADDLE_TOKEN,
+        eventCallback: onPaddleEvent,
+        checkout: {
+          settings: {
+            displayMode: "inline",
+            variant: "one-page",
+            theme: "dark",
+            locale: "en",
+            frameTarget: "paddle-checkout",
+            frameInitialHeight: "560",
+            frameStyle: "width:100%; min-width:312px; background:transparent; border:0;"
+          }
         }
+      });
+
+      Paddle.Checkout.open({
+        items: [{ priceId: PADDLE_PRICE_ID, quantity: 1 }]
       });
     } catch (error) {
       showError(error && error.message ? error.message : String(error));
