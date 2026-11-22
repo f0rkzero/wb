@@ -177,22 +177,45 @@
       text-underline-offset: 3px;
     }
 
+    /* Animated payment picker: fade + blur backdrop, lift/scale the modal. */
     .payment-choice-overlay {
-      position: fixed; inset: 0; z-index: 9999; display: none;
+      position: fixed; inset: 0; z-index: 9999; display: flex;
       align-items: center; justify-content: center; padding: 1.25rem;
-      background: rgba(4, 5, 12, .82); backdrop-filter: blur(14px);
+      background: rgba(4, 5, 12, .82);
+      -webkit-backdrop-filter: blur(0);
+      backdrop-filter: blur(0);
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity .28s ease, backdrop-filter .28s ease,
+        -webkit-backdrop-filter .28s ease, visibility 0s linear .28s;
     }
-    .payment-choice-overlay.is-open { display: flex; }
+    .payment-choice-overlay.is-open {
+      opacity: 1; visibility: visible; pointer-events: auto;
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
+      transition: opacity .28s ease, backdrop-filter .28s ease,
+        -webkit-backdrop-filter .28s ease, visibility 0s;
+    }
     .payment-choice {
       width: min(760px, 100%); position: relative; padding: 2rem;
       border: 1px solid rgba(255,255,255,.12); border-radius: 24px;
       background: linear-gradient(145deg, rgba(28,28,42,.98), rgba(12,13,22,.99));
-      box-shadow: 0 28px 100px rgba(0,0,0,.6);
+      box-shadow: 0 28px 100px rgba(0,0,0,.6), 0 0 55px rgba(232,0,58,.10);
+      opacity: 0; transform: translateY(22px) scale(.965);
+      transition: opacity .28s ease, transform .32s cubic-bezier(.2,.8,.2,1);
+      will-change: transform, opacity;
+    }
+    .payment-choice-overlay.is-open .payment-choice {
+      opacity: 1; transform: translateY(0) scale(1);
     }
     .payment-choice-close {
       position: absolute; top: 1rem; right: 1rem; width: 38px; height: 38px;
       border: 1px solid rgba(255,255,255,.12); border-radius: 50%;
       color: #fff; background: rgba(255,255,255,.06); cursor: pointer;
+      transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .payment-choice-close:hover {
+      color: #fff; background: rgba(232,0,58,.18);
+      border-color: rgba(255,45,85,.45); transform: rotate(90deg);
     }
     .payment-choice-heading { text-align:center; margin: .25rem 2rem 1.5rem; }
     .payment-choice-heading h2 { color:#fff; font:700 clamp(1.4rem,4vw,2rem) 'Space Grotesk',sans-serif; margin:0 0 .5rem; }
@@ -205,18 +228,32 @@
       border-radius:18px; background:rgba(255,255,255,.035);
       transition:transform .2s ease,border-color .2s ease,background .2s ease;
     }
-    .payment-choice-card:hover { transform:translateY(-4px); border-color:rgba(255,45,85,.55); background:rgba(255,45,85,.07); }
+    .payment-choice-card:hover {
+      transform:translateY(-5px); border-color:rgba(255,45,85,.58);
+      background:linear-gradient(145deg,rgba(255,45,85,.11),rgba(255,255,255,.035));
+      box-shadow:0 14px 36px rgba(0,0,0,.24),0 0 28px rgba(232,0,58,.09);
+    }
+    .payment-choice-card:focus-visible, .payment-choice-close:focus-visible {
+      outline:2px solid var(--rose); outline-offset:4px;
+    }
     .payment-choice-icon { width:58px;height:58px;display:grid;place-items:center;border-radius:17px;
-      font-size:1.55rem;background:rgba(255,255,255,.08);color:#fff; }
+      font-size:1.55rem;background:rgba(255,45,85,.12);color:#ff6684;
+      border:1px solid rgba(255,45,85,.18);box-shadow:0 8px 24px rgba(232,0,58,.08); }
     .payment-choice-card strong { font-size:1.08rem; }
     .payment-choice-card small { color:var(--text-muted); line-height:1.5; }
     .payment-brand-row { display:flex;gap:.55rem;flex-wrap:wrap;justify-content:center; }
     .payment-brand-row span { padding:.35rem .6rem;border:1px solid rgba(255,255,255,.1);
       border-radius:7px;background:rgba(255,255,255,.055);font-size:.72rem;font-weight:700;color:#eee; }
     @media(max-width:560px) {
-      .payment-choice { padding:1.5rem 1rem; }
-      .payment-choice-grid { grid-template-columns:1fr; }
-      .payment-choice-card { min-height:175px; }
+      .payment-choice { padding:1.5rem 1rem; border-radius:20px; }
+      .payment-choice-grid { grid-template-columns:1fr; gap:.8rem; }
+      .payment-choice-card { min-height:160px; }
+      .payment-choice-heading { margin-left:1.7rem; margin-right:1.7rem; }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      .payment-choice-overlay, .payment-choice, .payment-choice-card, .payment-choice-close {
+        transition:none !important;
+      }
     }
 
   </style>
@@ -327,6 +364,7 @@
             <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> 24/7 Dedicated Priority Support</li>
           </ul>
           <button type="button" class="btn-pricing btn-pricing-featured" id="buy-lifetime"
+            aria-haspopup="dialog" aria-expanded="false" aria-controls="payment-choice-modal"
             style="width:100%;border:0;cursor:pointer;">
             <i class="fas fa-bolt"></i> Instant Delivery
           </button>
@@ -475,7 +513,7 @@
         <p>Select how you want to pay for Lifetime Premium.</p>
       </div>
       <div class="payment-choice-grid">
-        <a class="payment-choice-card" href="http://c-pl-1.apexnodes.xyz:10219/payment" id="paddle-payment-link">
+        <a class="payment-choice-card" href="/payment.html" id="paddle-payment-link">
           <span class="payment-choice-icon"><i class="far fa-credit-card"></i></span>
           <strong>Card &amp; Wallets</strong>
           <span class="payment-brand-row">
@@ -559,14 +597,20 @@
     const closePaymentModal = document.getElementById('payment-choice-close');
 
     function openPaymentModal() {
+      if (!paymentModal) return;
       paymentModal.classList.add('is-open');
       paymentModal.setAttribute('aria-hidden', 'false');
+      instantDeliveryButton?.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
+      closePaymentModal?.focus();
     }
     function hidePaymentModal() {
+      if (!paymentModal) return;
       paymentModal.classList.remove('is-open');
       paymentModal.setAttribute('aria-hidden', 'true');
+      instantDeliveryButton?.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
+      instantDeliveryButton?.focus();
     }
     instantDeliveryButton?.addEventListener('click', openPaymentModal);
     closePaymentModal?.addEventListener('click', hidePaymentModal);
