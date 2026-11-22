@@ -1,162 +1,274 @@
----
-permalink: /payment/
----
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#08080d">
-  <title>Secure Checkout | Moondiety</title>
-  <meta name="description" content="Complete your Moondiety Lifetime Premium purchase securely.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090608">
+  <title>Moondiety — Secure Checkout</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://moondiety.com/assets/css/main.css">
+  <link rel="stylesheet" href="https://moondiety.com/assets/css/animations.css">
   <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
   <style>
-    :root{color-scheme:dark;--bg:#08080d;--border:rgba(255,255,255,.085);--muted:#9292a3;--text:#f7f7fb;--rose:#ff2d55;--green:#4ade80}
-    *{box-sizing:border-box}html{min-height:100%;background:var(--bg)}body{margin:0;min-height:100vh;color:var(--text);font-family:"DM Sans",sans-serif;background:radial-gradient(ellipse at 50% -15%,rgba(232,0,58,.19),transparent 48%),radial-gradient(ellipse at 8% 55%,rgba(89,35,100,.10),transparent 35%),var(--bg)}
-    a{color:inherit;text-decoration:none}.topbar{height:76px;border-bottom:1px solid rgba(255,255,255,.055);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,76px);background:rgba(8,8,13,.72);backdrop-filter:blur(18px)}
-    .brand{display:flex;align-items:center;gap:11px;font:700 15px "Space Grotesk",sans-serif;letter-spacing:.12em}.brand-mark{width:36px;height:36px;display:grid;place-items:center;border-radius:12px;color:white;background:linear-gradient(145deg,#ff315b,#a90035);box-shadow:0 5px 24px rgba(232,0,58,.25)}
-    .secure{color:#a9a9b6;font-size:12px;display:flex;align-items:center;gap:8px}.secure i{color:var(--green)}.wrap{width:min(1120px,calc(100% - 36px));margin:0 auto;padding:54px 0 70px}.heading{text-align:center;margin-bottom:32px}
-    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;color:#ff7790;background:rgba(255,45,85,.075);border:1px solid rgba(255,45,85,.22);border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
-    h1{margin:17px 0 9px;font:700 clamp(30px,5vw,43px)/1.1 "Space Grotesk",sans-serif;letter-spacing:-.04em}.subtitle{color:var(--muted);margin:0;font-size:14px;line-height:1.6}
-    .layout{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:20px;align-items:start}.card{border:1px solid var(--border);border-radius:20px;background:linear-gradient(155deg,rgba(255,255,255,.045),rgba(255,255,255,.018));box-shadow:0 24px 80px rgba(0,0,0,.25);overflow:hidden}
-    .summary{padding:25px;position:sticky;top:20px}.product-line{display:flex;align-items:center;gap:14px}.product-icon{width:52px;height:52px;flex:none;border-radius:15px;display:grid;place-items:center;color:#ff6c89;font-size:20px;background:rgba(255,45,85,.12);border:1px solid rgba(255,45,85,.2)}
-    .product-name{font:600 17px "Space Grotesk",sans-serif}.product-type{margin-top:4px;color:var(--muted);font-size:12px}.line{height:1px;background:var(--border);margin:23px 0}
-    .price-row{display:flex;align-items:center;justify-content:space-between;gap:10px}.price-label{color:#b0b0bd;font-size:13px}.price{font:700 32px "Space Grotesk",sans-serif;letter-spacing:-.04em}.once{color:var(--muted);font-size:11px;margin-top:4px}
-    .included{display:grid;gap:13px;margin:22px 0 0;padding:0;list-style:none}.included li{display:flex;gap:10px;align-items:flex-start;color:#c9c9d2;font-size:12px;line-height:1.5}.included i{color:#ff5576;margin-top:2px}
-    .payment-card{padding:22px}.payment-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}.payment-title{font:600 17px "Space Grotesk",sans-serif}
-    .sandbox{color:#f7c76b;background:rgba(247,199,107,.09);border:1px solid rgba(247,199,107,.2);border-radius:999px;padding:5px 9px;font-size:9px;font-weight:700;letter-spacing:.09em}
-    .method-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 17px}.method{height:29px;padding:0 9px;display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.10);border-radius:7px;color:#d4d4dc;background:rgba(255,255,255,.035);font-size:10px;font-weight:700}.method i{font-size:13px}
-    #paddle-checkout{min-height:520px;overflow:hidden;border-radius:12px;background:rgba(255,255,255,.018)}#paddle-checkout iframe{max-width:100%}
-    .loading{min-height:330px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:13px;color:var(--muted);font-size:12px}.spinner{width:27px;height:27px;border:2px solid rgba(255,255,255,.13);border-top-color:var(--rose);border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
-    .error{display:none;margin:14px 0 0;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,85,110,.28);background:rgba(255,45,85,.08);color:#ff9aaa;font-size:12px;line-height:1.55;overflow-wrap:anywhere}
-    .footer-note{text-align:center;margin-top:23px;color:#777786;font-size:11px;line-height:1.7}.footer-note i{color:#5bd18b;margin-right:5px}.back{display:inline-flex;align-items:center;gap:8px;margin-top:24px;color:#a7a7b4;font-size:12px;transition:color .2s}.back:hover{color:white}
-    @media(max-width:800px){.wrap{padding-top:36px}.layout{grid-template-columns:1fr}.summary{position:static}#paddle-checkout{min-height:560px}}
-    @media(max-width:480px){.topbar{height:65px;padding:0 17px}.secure{font-size:10px}.wrap{width:calc(100% - 22px)}.summary,.payment-card{padding:18px;border-radius:16px}.payment-head{align-items:flex-start}}
+    :root {
+      color-scheme: dark;
+      --bg:#090608; --panel:#160b0f; --panel2:#241016;
+      --line:rgba(255,255,255,.09); --muted:#a9959a; --white:#fff4f6;
+      --purple:#ed174c; --pink:#ff315b;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; min-height:100vh; color:var(--white);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(ellipse at 50% -10%,rgba(237,23,76,.20),transparent 48%),
+        radial-gradient(ellipse at 100% 100%,rgba(255,35,91,.10),transparent 36%),
+        #030014;
+    }
+    .navbar { position:fixed; }
+    main { padding-top:80px; }
+    .product-art { background:radial-gradient(circle at 50% 50%,rgba(232,0,58,.22),transparent 48%),linear-gradient(135deg,#24000c,#160b0f 65%,#3b101b); }
+    .moon { font-size:58px;color:#ff315b;text-shadow:0 0 35px rgba(255,45,85,.55); }
+    .payment-page-footer { width:min(1050px,calc(100% - 40px));margin:0 auto 30px;text-align:center;color:#8e777d;font-size:10px;letter-spacing:.06em; }
+    a{color:inherit;text-decoration:none}
+    .secure{display:flex;align-items:center;gap:7px;color:#c2aeb2;font-size:11px}
+    .secure-dot{width:7px;height:7px;border-radius:50%;background:#86efac;box-shadow:0 0 12px #86efac}
+    main{width:min(1050px,calc(100% - 40px));margin:58px auto 70px}
+    .intro{text-align:center;margin-bottom:35px}
+    .eyebrow{color:#ff5277;font-size:10px;font-weight:850;letter-spacing:.2em;text-transform:uppercase}
+    h1{margin:12px 0 10px;font-size:clamp(29px,5vw,43px);letter-spacing:-.055em}
+    .intro p{margin:0;color:var(--muted);font-size:13px;line-height:1.7}
+    .layout{display:grid;grid-template-columns:minmax(0, .82fr) minmax(0,1.18fr);gap:20px;align-items:start}
+    .panel{
+      border:1px solid var(--line);border-radius:22px;overflow:hidden;
+      background:linear-gradient(145deg,rgba(43,17,24,.97),rgba(17,8,12,.98));
+      box-shadow:0 24px 75px rgba(0,0,0,.32),inset 0 1px rgba(255,255,255,.025);
+    }
+    .summary{padding:25px}
+    .product-art{
+      height:150px;border-radius:15px;display:grid;place-items:center;overflow:hidden;
+      background:
+        radial-gradient(circle at 50% 50%,rgba(167,139,250,.27),transparent 48%),
+        linear-gradient(135deg,#321018,#160b0f 65%,#3b101b);
+      border:1px solid rgba(255,49,91,.15);margin-bottom:23px;
+    }
+    .moon{font-size:58px;color:#ff315b;text-shadow:0 0 35px rgba(196,181,253,.55)}
+    .product-name{font-size:18px;font-weight:800;letter-spacing:-.02em}
+    .product-sub{margin-top:6px;color:var(--muted);font-size:12px}
+    .divider{height:1px;background:var(--line);margin:22px 0}
+    .line{display:flex;justify-content:space-between;gap:15px;color:#c5c1d2;font-size:12px;margin:13px 0}
+    .line strong{color:var(--white);font-weight:750}
+    .total{font-size:14px}
+    .total strong{font-size:19px}
+    .benefits{display:grid;gap:12px;margin-top:22px}
+    .benefit{display:flex;align-items:center;gap:10px;color:#c4bfd2;font-size:11px}
+    .check{
+      display:grid;place-items:center;width:19px;height:19px;flex:0 0 19px;
+      border-radius:7px;background:rgba(237,23,76,.15);color:#ff315b;font-size:11px
+    }
+    .payment{padding:25px}
+    .payment-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+    .payment-head h2{margin:0;font-size:17px;letter-spacing:-.025em}
+    .sandbox{
+      padding:6px 9px;border-radius:8px;border:1px solid rgba(250,204,21,.2);
+      background:rgba(250,204,21,.07);color:#facc15;font-size:9px;font-weight:850;letter-spacing:.1em
+    }
+    .hint{margin:0 0 18px;color:var(--muted);font-size:11px;line-height:1.6}
+    #paddle-checkout{min-height:570px;width:100%;border-radius:14px;overflow:hidden}
+    .loading{
+      display:flex;align-items:center;justify-content:center;gap:10px;
+      min-height:170px;color:var(--muted);font-size:12px
+    }
+    .spinner{width:17px;height:17px;border:2px solid rgba(255,49,91,.22);border-top-color:#ff315b;border-radius:50%;animation:spin .8s linear infinite}
+    .error{
+      display:none;margin-top:14px;padding:13px;border-radius:12px;
+      border:1px solid rgba(248,113,113,.22);background:rgba(127,29,29,.16);
+      color:#fca5a5;font-size:11px;line-height:1.6
+    }
+    .fineprint{margin:18px 0 0;text-align:center;color:#8e777d;font-size:10px;line-height:1.7}
+    footer{width:min(1050px,calc(100% - 40px));margin:0 auto 30px;text-align:center;color:#8e777d;font-size:10px;letter-spacing:.06em}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @media(max-width:780px){main{margin-top:38px}.layout{grid-template-columns:1fr}.summary{order:1}.payment{order:0}}
+    @media(max-width:480px){.secure{font-size:0}.secure-dot{width:8px;height:8px}main{width:calc(100% - 24px)}.summary,.payment{padding:19px}.product-art{height:115px}}
   </style>
 </head>
 <body>
-<header class="topbar">
-  <a class="brand" href="https://moondiety.com"><span class="brand-mark"><i class="fas fa-moon"></i></span><span>MOONDIETY</span></a>
-  <div class="secure"><i class="fas fa-lock"></i> Secure checkout</div>
-</header>
-<main class="wrap">
-  <section class="heading">
-    <div class="eyebrow"><i class="fas fa-shield-halved"></i> Encrypted payment</div>
-    <h1>Complete your order.</h1>
-    <p class="subtitle">You're one step away from unlocking Moondiety Lifetime Premium.</p>
-  </section>
-  <div class="layout">
-    <aside class="card summary">
-      <div class="product-line"><div class="product-icon"><i class="fas fa-crown"></i></div><div><div class="product-name">Lifetime Premium</div><div class="product-type">Permanent license · One-time payment</div></div></div>
-      <div class="line"></div>
-      <div class="price-row"><div><div class="price-label">Total due today</div><div class="once">No subscription. No recurring charges.</div></div><div class="price">$10.00</div></div>
-      <div class="line"></div>
-      <ul class="included">
-        <li><i class="fas fa-check-circle"></i><span>All exclusive Premium features</span></li>
-        <li><i class="fas fa-check-circle"></i><span>Permanent access across supported games</span></li>
-        <li><i class="fas fa-check-circle"></i><span>Future updates included</span></li>
-        <li><i class="fas fa-check-circle"></i><span>VIP Premium role in Discord</span></li>
-        <li><i class="fas fa-check-circle"></i><span>Priority support</span></li>
-      </ul>
-    </aside>
-    <section class="card payment-card">
-      <div class="payment-head"><div class="payment-title">Payment details</div><span class="sandbox">SANDBOX TEST</span></div>
-      <div class="method-row">
-        <span class="method"><i class="fab fa-cc-visa"></i> VISA</span>
-        <span class="method"><i class="fab fa-cc-mastercard"></i> Mastercard</span>
-        <span class="method"><i class="fab fa-apple-pay"></i> Apple Pay</span>
-        <span class="method"><i class="fab fa-google-pay"></i> Google Pay</span>
-      </div>
-      <div id="paddle-checkout" class="paddle-checkout"><div class="loading" id="checkout-loading"><span class="spinner"></span><span>Loading secure payment form...</span></div></div>
-      <div class="error" id="checkout-error" role="alert"></div>
-      <div class="footer-note"><i class="fas fa-lock"></i> Payments are securely processed by Paddle.<br>Your card details are never stored on Moondiety servers.</div>
-    </section>
+  <div class="scroll-progress" id="scroll-progress"></div>
+  <nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="/#home" class="nav-logo" aria-label="Moondiety Home">
+      <img src="/media/logo.png" alt="Moondiety Logo" width="36" height="36">
+      <span class="nav-logo-name">MOONDIETY</span>
+    </a>
+    <div class="nav-pill" role="navigation" aria-label="Main navigation">
+      <a href="/#home"      class="nav-link active">Home</a>
+      <a href="/#scripts"   class="nav-link">Scripts</a>
+      <a href="/#games"     class="nav-link">Games</a>
+      <a href="/shop"       class="nav-link">Shop</a>
+      <a href="/#executors" class="nav-link">Executors</a>
+      <a href="/#discord"   class="nav-link">Discord</a>
+    </div>
+    <div class="nav-actions">
+      <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="nav-login">
+        <i class="fab fa-discord"></i> Discord
+      </a>
+      <a href="/shop" class="btn-get-key">
+        <i class="fas fa-crown"></i> Get Premium
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
-  <a class="back" href="https://moondiety.com/shop"><i class="fas fa-arrow-left"></i> Back to shop</a>
-</main>
-<script>
-  // Public Paddle Sandbox client-side token and price ID.
-  const PADDLE_TOKEN = "test_8ca7d6392b26a3dbe5ec99fd8fc";
-  const PADDLE_PRICE_ID = "pri_01m82365p6gpxvj8zd1ymhevbf";
-  // The payment page is hosted on GitHub Pages; verification and license
-  // fulfillment remain on the existing ApexNodes Flask backend.
-  const VERIFY_AND_CHECKOUT_URL = "http://c-pl-1.apexnodes.xyz:10219/checkout";
+</nav>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu-header">
+    <div class="mobile-menu-brand">
+      <img src="/media/logo.png" alt="Moondiety" width="28">
+      <span>Moondiety</span>
+    </div>
+    <button class="mobile-close" id="mobile-close" aria-label="Close menu">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <div class="mobile-menu-body">
+    <a href="/#home" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-home"></i></span>
+      <span>Home</span>
+    </a>
+    <a href="/#scripts" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-code"></i></span>
+      <span>Script Loader</span>
+    </a>
+    <a href="/#games" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-gamepad"></i></span>
+      <span>Games</span>
+    </a>
+    <a href="/shop" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-crown"></i></span>
+      <span>Premium Shop</span>
+    </a>
+    <a href="/#executors" class="mobile-link">
+      <span class="ml-icon"><i class="fas fa-bolt"></i></span>
+      <span>Executors</span>
+    </a>
+    <div class="mobile-menu-separator"></div>
+    <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="mobile-link">
+      <span class="ml-icon"><i class="fab fa-discord"></i></span>
+      <span>Join Discord</span>
+    </a>
+  </div>
+  <div class="mobile-menu-footer">
+    <a href="/shop" class="btn-lg btn-primary">
+      <i class="fas fa-crown"></i> Get Premium
+    </a>
+  </div>
+</div>
+<main>
+    <section class="intro">
+      <div class="eyebrow">Almost yours</div>
+      <h1>Complete your purchase</h1>
+      <p>One final step to unlock your Moondiety experience.</p>
+    </section>
 
-  const errorBox = document.getElementById("checkout-error");
-  const loading = document.getElementById("checkout-loading");
+    <div class="layout">
+      <aside class="panel summary">
+        <div class="product-art"><div class="moon">☾</div></div>
+        <div class="eyebrow">Digital product</div>
+        <div class="product-name">Moondiety Scripts Premium</div>
+        <div class="product-sub">Instant digital delivery after successful payment</div>
+        <div class="divider"></div>
+        <div class="line"><span>Product</span><strong>Scripts Premium</strong></div>
+        <div class="line"><span>Delivery</span><strong>Instant</strong></div>
+        <div class="line total"><span>Total</span><strong>Shown at checkout</strong></div>
+        <div class="divider"></div>
+        <div class="benefits">
+          <div class="benefit"><span class="check">✓</span>Secure payment processing</div>
+          <div class="benefit"><span class="check">✓</span>Automatic license delivery</div>
+          <div class="benefit"><span class="check">✓</span>Order verification</div>
+        </div>
+      </aside>
 
-  function showError(message) {
-    loading.style.display = "none";
-    errorBox.style.display = "block";
-    errorBox.textContent = message || "Paddle could not load checkout. Check the browser console and Paddle Sandbox configuration.";
-    console.error("[Moondiety Paddle]", message);
-  }
+      <section class="panel payment">
+        <div class="payment-head">
+          <h2>Payment details</h2>
+          <span class="sandbox">SANDBOX MODE</span>
+        </div>
+        <p class="hint">Enter your payment details in the secure checkout form below.</p>
+        <div id="paddle-checkout">
+          <div class="loading"><span class="spinner"></span> Preparing secure checkout…</div>
+        </div>
+        <div class="error" id="checkout-error"></div>
+        <p class="fineprint">Your card details are handled securely by Paddle and are never stored on Moondiety servers.</p>
+      </section>
+    </div>
+  </main>
 
-  function onPaddleEvent(event) {
-    console.log("[Paddle event]", event);
-    if (event && event.name === "checkout.loaded") loading.style.display = "none";
+  <div class="payment-page-footer">MOONDIETY © 2026 · DIGITAL DELIVERY</div>
 
-    if (event && event.name === "checkout.error") {
-      const detail = event.error && (event.error.detail || event.error.message);
-      showError(detail || "Paddle returned checkout.error. Open browser console for details.");
+  <script src="https://moondiety.com/assets/js/main.js"></script>
+  <script>
+    const PADDLE_TOKEN = "test_8ca7d6392b26a3dbe5ec99fd8fc";
+    const PADDLE_PRICE_ID = "pri_01m82365p6gpxvj8zd1ymhevbf";
+    const SUCCESS_URL = "http://c-pl-1.apexnodes.xyz:10219/checkout";
+
+    function showCheckoutError(message) {
+      const box = document.getElementById("checkout-error");
+      box.style.display = "block";
+      box.textContent = message;
+      const mount = document.getElementById("paddle-checkout");
+      if (mount) mount.innerHTML = "";
+      console.error("[Moondiety Paddle]", message);
     }
 
-    if (event && event.name === "checkout.completed") {
-      const data = event.data || {};
-      const transactionId =
-        data.transaction_id ||
-        data.id ||
-        (data.transaction && data.transaction.id);
-
-      if (!transactionId || !String(transactionId).startsWith("txn_")) {
-        showError("Payment completed, but Paddle did not provide a transaction ID. Keep your Paddle receipt and contact support.");
-        return;
-      }
-
-      window.location.assign(
-        VERIFY_AND_CHECKOUT_URL + "?transaction_id=" + encodeURIComponent(transactionId)
-      );
-    }
-  }
-
-  window.addEventListener("load", function () {
     if (!window.Paddle) {
-      showError("Paddle.js did not load. Check whether cdn.paddle.com is blocked.");
-      return;
-    }
-    if (!PADDLE_TOKEN.startsWith("test_")) {
-      showError("The Paddle Sandbox client token is missing or invalid.");
-      return;
-    }
-    try {
-      Paddle.Environment.set("sandbox");
-      Paddle.Initialize({
-        token: PADDLE_TOKEN,
-        eventCallback: onPaddleEvent,
-        checkout: {
-          settings: {
-            displayMode: "inline",
-            variant: "one-page",
-            theme: "dark",
-            locale: "en",
-            frameTarget: "paddle-checkout",
-            frameInitialHeight: "560",
-            frameStyle: "width:100%; min-width:312px; background:transparent; border:0;"
+      showCheckoutError("The secure payment service could not be loaded. Please refresh the page.");
+    } else {
+      try {
+        Paddle.Environment.set("sandbox");
+        Paddle.Initialize({
+          token: PADDLE_TOKEN,
+          checkout: {
+            settings: {
+              displayMode: "inline",
+              variant: "one-page",
+              theme: "dark",
+              locale: "en",
+              frameTarget: "paddle-checkout",
+              frameInitialHeight: "570",
+              frameStyle: "width:100%; min-width:312px; background:transparent; border:0;"
+            }
+          },
+          eventCallback: function(event) {
+            console.log("[Moondiety Paddle]", event);
+            if (event && event.name === "checkout.completed") {
+              const transactionId =
+                event.data && (event.data.transaction_id || event.data.id);
+              if (!transactionId) {
+                showCheckoutError("Payment completed, but the transaction ID was not returned. Please contact support.");
+                return;
+              }
+              window.location.href =
+                SUCCESS_URL + "?transaction_id=" + encodeURIComponent(transactionId);
+            } else if (event && event.name === "checkout.error") {
+              showCheckoutError("Paddle could not start the checkout. Please check your Sandbox checkout settings and try again.");
+            }
           }
-        }
-      });
+        });
 
-      Paddle.Checkout.open({
-        items: [{ priceId: PADDLE_PRICE_ID, quantity: 1 }]
-      });
-    } catch (error) {
-      showError(error && error.message ? error.message : String(error));
+        document.getElementById("paddle-checkout").classList.add("paddle-checkout");
+        Paddle.Checkout.open({
+          items: [{ priceId: PADDLE_PRICE_ID, quantity: 1 }]
+        });
+      } catch (error) {
+        showCheckoutError(error && error.message ? error.message : "Unable to initialize secure checkout.");
+      }
     }
-  });
-</script>
+  </script>
 </body>
 </html>
