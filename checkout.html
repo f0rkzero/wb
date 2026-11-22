@@ -1,6 +1,3 @@
----
-permalink: /checkout/
----
 <!doctype html>
 <html lang="en">
 <head>
@@ -133,7 +130,7 @@ permalink: /checkout/
   </main>
   <script src="https://moondiety.com/assets/js/main.js"></script>
   <script>
-    const API_BASE = "https://c-pl-1.apexnodes.xyz:10219";
+    const API_BASE = "";
     const params = new URLSearchParams(window.location.search);
     const claimToken = params.get("claim");
     const heading = document.getElementById("heading");
@@ -169,12 +166,18 @@ permalink: /checkout/
       }
 
       try {
-        const response = await fetch(API_BASE + "/api/redeem", {
+        const response = await fetch("/api/redeem", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ claim_token: claimToken })
         });
-        const data = await response.json();
+        const responseText = await response.text();
+        let data;
+        try {
+          data = JSON.parse(responseText);
+        } catch {
+          throw new Error("The delivery server returned an invalid response. Check the HTTPS proxy for /api/redeem.");
+        }
         if (!response.ok || !data.ok) {
           throw new Error(data.error || "The server could not retrieve your license.");
         }
