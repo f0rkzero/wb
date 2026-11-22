@@ -81,6 +81,7 @@ body{
     }
     .hint{margin:0 0 18px;color:var(--muted);font-size:11px;line-height:1.6}
     #paddle-checkout{min-height:570px;width:100%;border-radius:14px;overflow:hidden}
+    #paddle-checkout.checkout-failed > :not(.loading){display:none!important}
     .loading{
       display:flex;align-items:center;justify-content:center;gap:10px;
       min-height:170px;color:var(--muted);font-size:12px
@@ -222,14 +223,42 @@ body{
     const PADDLE_PRICE_ID = "pri_01m81bgw2xgdfb7me002mm4t1g";
     const SUCCESS_URL = "http://c-pl-1.apexnodes.xyz:10079/checkout";
 
+    let checkoutFailed = false;
+
+    function ensureCheckoutLoader() {
+      const mount = document.getElementById("paddle-checkout");
+      if (!mount) return;
+
+      let loader = mount.querySelector(":scope > .loading");
+      if (!loader) {
+        loader = document.createElement("div");
+        loader.className = "loading";
+        loader.innerHTML = '<span class="spinner"></span> Preparing secure checkout…';
+        mount.prepend(loader);
+      }
+
+      loader.style.display = "flex";
+      if (checkoutFailed) mount.classList.add("checkout-failed");
+    }
+
     function hideCheckoutLoader() {
+      if (checkoutFailed) return;
       const loader = document.querySelector("#paddle-checkout .loading");
       if (loader) loader.remove();
+    }
+
+    function keepCheckoutLoading(error, context) {
+      checkoutFailed = true;
+      const mount = document.getElementById("paddle-checkout");
+      if (mount) mount.classList.add("checkout-failed");
+      ensureCheckoutLoader();
+      console.error("[Moondiety Paddle] " + context, error || "Unknown checkout error");
     }
 
     function watchPaddleFrame() {
       const mount = document.getElementById("paddle-checkout");
       if (!mount) return;
+
       const attach = () => {
         const frame = mount.querySelector("iframe");
         if (frame && !frame.dataset.moondietyLoadWatch) {
@@ -237,22 +266,14 @@ body{
           frame.addEventListener("load", hideCheckoutLoader, { once: true });
         }
       };
+
       const observer = new MutationObserver(attach);
       observer.observe(mount, { childList: true, subtree: true });
       attach();
     }
 
-    function showCheckoutError(message) {
-      const box = document.getElementById("checkout-error");
-      box.style.display = "block";
-      box.textContent = message;
-      const mount = document.getElementById("paddle-checkout");
-      if (mount) mount.innerHTML = "";
-      console.error("[Moondiety Paddle]", message);
-    }
-
     if (!window.Paddle) {
-      showCheckoutError("The secure payment service could not be loaded. Please refresh the page.");
+      keepCheckoutLoading(new Error("Paddle.js did not load"), "Checkout library unavailable:");
     } else {
       try {
         Paddle.Initialize({
@@ -270,30 +291,37 @@ body{
           },
           eventCallback: function(event) {
             console.log("[Moondiety Paddle]", event);
+
             if (event && event.name === "checkout.loaded") {
               hideCheckoutLoader();
             } else if (event && event.name === "checkout.completed") {
               const transactionId =
                 event.data && (event.data.transaction_id || event.data.id);
+
               if (!transactionId) {
-                showCheckoutError("Payment completed, but the transaction ID was not returned. Please contact support.");
+                keepCheckoutLoading(
+                  new Error("Payment completed but no transaction ID was returned"),
+                  "Checkout completion error:"
+                );
                 return;
               }
+
               window.location.href =
                 SUCCESS_URL + "?transaction_id=" + encodeURIComponent(transactionId);
             } else if (event && event.name === "checkout.error") {
-              showCheckoutError("Paddle could not start the checkout. Please check your Live checkout settings and try again.");
+              keepCheckoutLoading(event, "Checkout error:");
             }
           }
         });
 
         document.getElementById("paddle-checkout").classList.add("paddle-checkout");
         watchPaddleFrame();
+
         Paddle.Checkout.open({
           items: [{ priceId: PADDLE_PRICE_ID, quantity: 1 }]
         });
       } catch (error) {
-        showCheckoutError(error && error.message ? error.message : "Unable to initialize secure checkout.");
+        keepCheckoutLoading(error, "Checkout initialization error:");
       }
     }
   </script>
