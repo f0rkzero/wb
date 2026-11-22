@@ -1,3 +1,6 @@
+---
+permalink: /checkout/
+---
 <!doctype html>
 <html lang="en">
 <head>
@@ -130,7 +133,9 @@
   </main>
   <script src="https://moondiety.com/assets/js/main.js"></script>
   <script>
-    const transactionId = {{ transaction_id|tojson }};
+    const API_BASE = "https://c-pl-1.apexnodes.xyz:10219";
+    const params = new URLSearchParams(window.location.search);
+    const claimToken = params.get("claim");
     const heading = document.getElementById("heading");
     const description = document.getElementById("description");
     const statusIcon = document.getElementById("statusIcon");
@@ -142,27 +147,37 @@
 
     function showError(message) {
       heading.textContent = "We couldn't verify your payment";
-      description.textContent = "Your license has not been issued. Please contact support if you believe this is a mistake.";
+      description.textContent = "Your license has not been displayed. Please contact support if you believe this is a mistake.";
       statusIcon.textContent = "!";
       statusTitle.textContent = "Verification unsuccessful";
-      statusSub.textContent = "No license has been delivered";
+      statusSub.textContent = "No license has been displayed";
       errorBox.style.display = "block";
       errorBox.textContent = message;
     }
 
-    async function claimLicense() {
-      if (!transactionId || !/^txn_[a-zA-Z0-9]+$/.test(transactionId)) {
-        showError("The transaction ID is missing or invalid.");
+    async function deliverLicense() {
+      const status = params.get("status");
+      if (status === "error") {
+        showError(params.get("reason") === "delivery"
+          ? "Payment verification succeeded, but license preparation failed. Please contact support."
+          : "The payment could not be verified. If you were charged, please contact support.");
         return;
       }
+      if (!claimToken) {
+        showError("The secure delivery token is missing. Please return to your receipt or contact support.");
+        return;
+      }
+
       try {
-        const response = await fetch("/api/claim", {
+        const response = await fetch(API_BASE + "/api/redeem", {
           method: "POST",
-          headers: {"Content-Type":"application/json"},
-          body: JSON.stringify({transaction_id: transactionId})
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ claim_token: claimToken })
         });
         const data = await response.json();
-        if (!response.ok || !data.ok) throw new Error(data.error || "The server could not verify this transaction.");
+        if (!response.ok || !data.ok) {
+          throw new Error(data.error || "The server could not retrieve your license.");
+        }
 
         heading.textContent = "Purchase successful";
         description.textContent = "Your payment has been confirmed. Your Moondiety access is ready.";
@@ -173,8 +188,10 @@
         statusSub.textContent = "Your license has been issued successfully";
         licenseEl.textContent = data.license;
         licenseWrap.style.display = "block";
+        // Keep the bearer token out of the address bar after successful delivery.
+        window.history.replaceState({}, document.title, window.location.pathname);
       } catch (error) {
-        showError(error.message);
+        showError(error.message || "Unable to retrieve your license. Please contact support.");
       }
     }
 
@@ -192,7 +209,7 @@
       }
     });
 
-    claimLicense();
+    deliverLicense();
   </script>
 </body>
 </html>
