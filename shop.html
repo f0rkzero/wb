@@ -283,10 +283,10 @@
             <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> VIP Premium Role in Discord</li>
             <li class="pricing-feature"><i class="fas fa-check icon-yes"></i> 24/7 Dedicated Priority Support</li>
           </ul>
-          <a href="https://moondiety.mysellauth.com/product/moondiety-scripts-premium" target="_blank" rel="noopener"
-            class="btn-pricing btn-pricing-featured" id="buy-lifetime">
-            <i class="fas fa-bolt"></i> Instant Crypto Checkout
-          </a>
+          <button type="button" class="btn-pricing btn-pricing-featured" id="buy-lifetime">
+            <i class="fas fa-bolt"></i> Buy Lifetime Premium — $10
+          </button>
+          <p id="paddle-error" role="status" style="display:none;color:#ff6b8a;text-align:center;margin-top:.75rem;"></p>
           <a href="https://discord.gg/moondiety" target="_blank" rel="noopener" class="btn-pricing btn-pricing-default"
             style="margin-top:0.75rem;" id="buy-discord">
             <i class="fab fa-discord"></i> Manual Payment (Open Ticket)
@@ -497,6 +497,49 @@
       });
     });
   </script>
+
+  <!-- Paddle Sandbox checkout -->
+  <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+  <script>
+    (() => {
+      const PADDLE_CLIENT_TOKEN = "test_8ca7d6392b26a3dbe5ec99fd8fc";
+      const PRICE_ID = "pri_01m82365p6gpxvj8zd1ymhevbf";
+      const API_CHECKOUT_URL = "http://c-pl-1.apexnodes.xyz:10219/checkout";
+      const errorEl = document.getElementById("paddle-error");
+      const buyButton = document.getElementById("buy-lifetime");
+
+      if (!window.Paddle || !buyButton) {
+        if (errorEl) { errorEl.textContent = "Paddle could not be loaded. Please disable script blockers and refresh."; errorEl.style.display = "block"; }
+        return;
+      }
+
+      Paddle.Environment.set("sandbox");
+      Paddle.Initialize({
+        token: PADDLE_CLIENT_TOKEN,
+        eventCallback: function (event) {
+          if (event && event.name === "checkout.completed" && event.data && event.data.transaction_id) {
+            window.location.href = API_CHECKOUT_URL + "?transaction_id=" + encodeURIComponent(event.data.transaction_id);
+          }
+        }
+      });
+
+      buyButton.addEventListener("click", function () {
+        errorEl.style.display = "none";
+        buyButton.disabled = true;
+        try {
+          Paddle.Checkout.open({
+            items: [{ priceId: PRICE_ID, quantity: 1 }],
+            settings: { displayMode: "overlay", theme: "dark", locale: "en" }
+          });
+        } catch (error) {
+          errorEl.textContent = "Could not open checkout. Please refresh and try again.";
+          errorEl.style.display = "block";
+        }
+        setTimeout(() => { buyButton.disabled = false; }, 1500);
+      });
+    })();
+  </script>
+
 </body>
 
 </html>
