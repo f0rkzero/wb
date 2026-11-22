@@ -217,6 +217,26 @@
     const PADDLE_PRICE_ID = "pri_01m82365p6gpxvj8zd1ymhevbf";
     const SUCCESS_URL = "http://c-pl-1.apexnodes.xyz:10219/checkout";
 
+    function hideCheckoutLoader() {
+      const loader = document.querySelector("#paddle-checkout .loading");
+      if (loader) loader.remove();
+    }
+
+    function watchPaddleFrame() {
+      const mount = document.getElementById("paddle-checkout");
+      if (!mount) return;
+      const attach = () => {
+        const frame = mount.querySelector("iframe");
+        if (frame && !frame.dataset.moondietyLoadWatch) {
+          frame.dataset.moondietyLoadWatch = "1";
+          frame.addEventListener("load", hideCheckoutLoader, { once: true });
+        }
+      };
+      const observer = new MutationObserver(attach);
+      observer.observe(mount, { childList: true, subtree: true });
+      attach();
+    }
+
     function showCheckoutError(message) {
       const box = document.getElementById("checkout-error");
       box.style.display = "block";
@@ -246,7 +266,9 @@
           },
           eventCallback: function(event) {
             console.log("[Moondiety Paddle]", event);
-            if (event && event.name === "checkout.completed") {
+            if (event && event.name === "checkout.loaded") {
+              hideCheckoutLoader();
+            } else if (event && event.name === "checkout.completed") {
               const transactionId =
                 event.data && (event.data.transaction_id || event.data.id);
               if (!transactionId) {
@@ -262,6 +284,7 @@
         });
 
         document.getElementById("paddle-checkout").classList.add("paddle-checkout");
+        watchPaddleFrame();
         Paddle.Checkout.open({
           items: [{ priceId: PADDLE_PRICE_ID, quantity: 1 }]
         });
