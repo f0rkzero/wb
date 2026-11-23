@@ -202,7 +202,7 @@ body{
       <section class="panel payment">
         <div class="payment-head">
           <h2>Payment details</h2>
-          <span class="sandbox">DEMO MODE</span>
+          <span class="sandbox">SECURE PAYPAL</span>
         </div>
         <p class="hint">Pay securely with PayPal. Your payment is processed by PayPal.</p>
         <div id="paypal-checkout">
@@ -218,7 +218,8 @@ body{
 
   <script src="https://moondiety.com/assets/js/main.js"></script>
   <script>
-    const API_BASE = "/api/paypal";
+    const APEX_CAPTURE_URL = "http://c-pl-1.apexnodes.xyz:10079/api/paypal/capture-and-deliver";
+    const PAYPAL_CLIENT_ID = "BAAFnS7cZbqxqvxn4mGQPtGwJAh4DLqZ35jB3mLlMYO8dZlsv6bUkapuF4RdOWb5MM3nLfamMU6t4tyXPo";
     const checkoutMount = document.getElementById("paypal-checkout");
     const errorBox = document.getElementById("checkout-error");
 
@@ -233,34 +234,30 @@ body{
         (message || "Preparing secure checkout…") + '</div>';
     }
 
-    async function loadPayPal() {
-      try {
-        const configResponse = await fetch(API_BASE + "/config", {
-          method: "GET",
-          credentials: "same-origin",
-          cache: "no-store"
-        });
-        const contentType = configResponse.headers.get("content-type") || "";
-        if (!contentType.includes("application/json")) {
-          throw new Error(
-            "API endpoint returned HTML instead of JSON. Configure the HTTPS reverse proxy for /api/paypal/."
-          );
-        }
-        const config = await configResponse.json();
-        if (!configResponse.ok || !config.client_id) {
-          throw new Error(config.error || "PayPal Sandbox is not configured on the server.");
-        }
+    function submitForVerification(orderID) {
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = APEX_CAPTURE_URL;
+      form.style.display = "none";
 
-        const sdk = document.createElement("script");
-        sdk.src = "https://www.paypal.com/sdk/js?client-id=" +
-          encodeURIComponent(config.client_id) +
-          "&currency=USD&intent=capture&components=buttons";
-        sdk.onload = renderPayPalButtons;
-        sdk.onerror = () => showCheckoutError("PayPal could not be loaded. Please refresh the page.");
-        document.head.appendChild(sdk);
-      } catch (error) {
-        showCheckoutError(error.message);
-      }
+      const field = document.createElement("input");
+      field.type = "hidden";
+      field.name = "order_id";
+      field.value = orderID;
+      form.appendChild(field);
+
+      document.body.appendChild(form);
+      form.submit();
+    }
+
+    function loadPayPal() {
+      const sdk = document.createElement("script");
+      sdk.src = "https://www.paypal.com/sdk/js?client-id=" +
+        encodeURIComponent(PAYPAL_CLIENT_ID) +
+        "&currency=USD&intent=capture&components=buttons";
+      sdk.onload = renderPayPalButtons;
+      sdk.onerror = () => showCheckoutError("PayPal could not be loaded. Please refresh the page.");
+      document.head.appendChild(sdk);
     }
 
     function renderPayPalButtons() {
@@ -280,39 +277,31 @@ body{
           tagline: false,
           height: 48
         },
-        createOrder: async function() {
-          const response = await fetch(API_BASE + "/create-order", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            credentials: "same-origin",
-            body: JSON.stringify({})
-          });
-          const data = await response.json();
-          if (!response.ok || !data.id) {
-            throw new Error(data.error || "Could not create PayPal order.");
-          }
-          return data.id;
-        },
-        onApprove: async function(data) {
-          setLoading("Verifying your payment and preparing your Premium Key…");
-          try {
-            const response = await fetch(API_BASE + "/capture-order", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              credentials: "same-origin",
-              body: JSON.stringify({ order_id: data.orderID })
-            });
-            const result = await response.json();
-            if (!response.ok || !result.claim_url) {
-              throw new Error(result.error || "Payment could not be verified.");
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            intent: "CAPTURE",
+            purchase_units: [{
+              reference_id: "moondiety_premium_lifetime",
+              custom_id: "moondiety_premium_lifetime",
+              description: "Moondiety Premium Key — Lifetime",
+              amount: {
+                currency_code: "USD",
+                value: "10.00"
+              }
+            }],
+            application_context: {
+              brand_name: "Moondiety",
+              shipping_preference: "NO_SHIPPING",
+              user_action: "PAY_NOW"
             }
-            window.location.href = result.claim_url;
-          } catch (error) {
-            showCheckoutError(error.message);
-          }
+          });
+        },
+        onApprove: function(data) {
+          setLoading("Payment approved. ApexNodes is verifying the transaction and preparing your key…");
+          submitForVerification(data.orderID);
         },
         onCancel: function() {
-          console.info("[Moondiety PayPal] Buyer cancelled checkout.");
+          showCheckoutError("Payment was cancelled. You can try again whenever you're ready.");
         },
         onError: function(error) {
           console.error("[Moondiety PayPal]", error);
