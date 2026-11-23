@@ -92,8 +92,6 @@ body{
       color:#fca5a5;font-size:11px;line-height:1.6
     }
     .fineprint{margin:18px 0 0;text-align:center;color:#8e777d;font-size:10px;line-height:1.7}
-    .paypal-start{display:flex;align-items:center;justify-content:center;min-height:50px;width:100%;border-radius:8px;background:#ffc439;color:#111827;font-weight:800;font-size:14px;box-shadow:0 5px 18px rgba(0,0,0,.2);transition:transform .15s,filter .15s}
-    .paypal-start:hover{filter:brightness(1.04);transform:translateY(-1px)}
     footer{width:min(1050px,calc(100% - 40px));margin:0 auto 30px;text-align:center;color:#8e777d;font-size:10px;letter-spacing:.06em;background:#030014}
 
     ::-webkit-scrollbar-track{background:#030014}\n    @keyframes spin{to{transform:rotate(360deg)}}
@@ -204,104 +202,117 @@ body{
       <section class="panel payment">
         <div class="payment-head">
           <h2>Payment details</h2>
-          <span class="sandbox">CARD ELIGIBILITY TEST</span>
+          <span class="sandbox">SECURE PAYPAL</span>
         </div>
-        <p class="hint">Checking whether PayPal enables embedded card payments for this Moondiety checkout.</p>
-        <div id="card-eligibility" style="padding:16px;border:1px solid rgba(255,255,255,.09);border-radius:12px;background:rgba(255,255,255,.025);font-size:12px;line-height:1.7">
-          <div id="eligibility-status" style="display:flex;align-items:center;gap:10px;color:#c4bfd2"><span class="spinner"></span> Connecting to PayPal…</div>
-          <div id="eligibility-details" style="margin-top:10px;color:var(--muted)"></div>
+        <p class="hint">Pay securely with PayPal. Your payment is processed by PayPal.</p>
+        <div id="paypal-checkout">
+          <div class="loading"><span class="spinner"></span> Preparing secure checkout…</div>
         </div>
-        <p class="fineprint">Eligibility check only. No payment is created or charged.</p>
-        <p class="fineprint">If eligible, we can add PayPal-hosted secure card fields to this page.</p>
+        <div class="error" id="checkout-error"></div>
+        <p class="fineprint">Payments are processed securely by PayPal. Moondiety never receives or stores your payment details.</p>
       </section>
     </div>
   </main>
 
   <div class="payment-page-footer">MOONDIETY © 2026 · DIGITAL DELIVERY</div>
 
-
+  <script src="https://moondiety.com/assets/js/main.js"></script>
   <script>
-    (function () {
-      const APEX = "http://c-pl-1.apexnodes.xyz:10079";
-      const status = document.getElementById("eligibility-status");
-      const details = document.getElementById("eligibility-details");
+    const APEX_CAPTURE_URL = "http://c-pl-1.apexnodes.xyz:10079/api/paypal/capture-and-deliver";
+    const PAYPAL_CLIENT_ID = "BAAFnS7cZbqxqvxn4mGQPtGwJAh4DLqZ35jB3mLlMYO8dZlsv6bUkapuF4RdOWb5MM3nLfamMU6t4tyXPo";
+    const checkoutMount = document.getElementById("paypal-checkout");
+    const errorBox = document.getElementById("checkout-error");
 
-      function show(title, color, detail) {
-        status.innerHTML = "";
-        const dot = document.createElement("span");
-        dot.style.cssText = "width:9px;height:9px;border-radius:50%;background:" + color + ";box-shadow:0 0 10px " + color;
-        const label = document.createElement("strong");
-        label.textContent = title;
-        label.style.color = color;
-        status.append(dot, label);
-        details.textContent = detail || "";
-      }
+    function showCheckoutError(message) {
+      errorBox.style.display = "block";
+      errorBox.textContent = message || "Unable to start PayPal checkout. Please try again.";
+      checkoutMount.innerHTML = "";
+    }
 
-      const params = new URLSearchParams(location.hash.slice(1));
-      const clientToken = params.get("pp_client_token");
-      const mode = params.get("pp_mode") || "live";
+    function setLoading(message) {
+      checkoutMount.innerHTML = '<div class="loading"><span class="spinner"></span>' +
+        (message || "Preparing secure checkout…") + '</div>';
+    }
 
-      if (!clientToken) {
-        show("CONNECTING TO PAYMENT SERVER", "#facc15", "Obtaining a short-lived PayPal browser token…");
-        location.replace(APEX + "/paypal/card-check");
+    function submitForVerification(orderID) {
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = APEX_CAPTURE_URL;
+      form.style.display = "none";
+
+      const field = document.createElement("input");
+      field.type = "hidden";
+      field.name = "order_id";
+      field.value = orderID;
+      form.appendChild(field);
+
+      document.body.appendChild(form);
+      form.submit();
+    }
+
+    function loadPayPal() {
+      const sdk = document.createElement("script");
+      sdk.src = "https://www.paypal.com/sdk/js?client-id=" +
+        encodeURIComponent(PAYPAL_CLIENT_ID) +
+        "&currency=USD&intent=capture&components=buttons";
+      sdk.onload = renderPayPalButtons;
+      sdk.onerror = () => showCheckoutError("PayPal could not be loaded. Please refresh the page.");
+      document.head.appendChild(sdk);
+    }
+
+    function renderPayPalButtons() {
+      if (!window.paypal || !window.paypal.Buttons) {
+        showCheckoutError("PayPal Checkout is unavailable. Please refresh the page.");
         return;
       }
 
-      history.replaceState(null, "", location.pathname + location.search);
-      const sdkUrl = mode === "sandbox"
-        ? "https://www.sandbox.paypal.com/web-sdk/v6/core"
-        : "https://www.paypal.com/web-sdk/v6/core";
-      const sdkScript = document.createElement("script");
-      sdkScript.src = sdkUrl;
-      sdkScript.async = true;
-      sdkScript.onload = async function () {
-        try {
-          if (!window.paypal || typeof window.paypal.createInstance !== "function") {
-            throw new Error("PayPal SDK v6 did not initialize.");
-          }
-          const sdk = await window.paypal.createInstance({
-            clientToken: clientToken,
-            components: ["card-fields"],
-            pageType: "checkout",
-            locale: "en-US"
-          });
-          const methods = await sdk.findEligibleMethods({
-            currencyCode: "USD",
-            amount: "10.00"
-          });
-          const advancedCards = methods.isEligible("advanced_cards");
-          const basicCard = methods.isEligible("card");
-          const paypalEligible = methods.isEligible("paypal");
+      checkoutMount.innerHTML = "";
 
-          if (advancedCards) {
-            show("ADVANCED CARD FIELDS: ELIGIBLE", "#86efac",
-              "PayPal reports embedded card fields are eligible for this checkout context. This check does not itself authorize a payment or guarantee final account approval.");
-          } else {
-            show("ADVANCED CARD FIELDS: NOT ELIGIBLE", "#fca5a5",
-              "Advanced card fields are not eligible in this context. Basic card: " +
-              (basicCard ? "eligible" : "not eligible") + ". PayPal: " +
-              (paypalEligible ? "eligible" : "not eligible") + ".");
-          }
-          console.log("Moondiety PayPal eligibility", {
-            advanced_cards: advancedCards,
-            card: basicCard,
-            paypal: paypalEligible,
-            mode: mode
+      paypal.Buttons({
+        style: {
+          layout: "vertical",
+          color: "gold",
+          shape: "rect",
+          label: "paypal",
+          tagline: false,
+          height: 48
+        },
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            intent: "CAPTURE",
+            purchase_units: [{
+              reference_id: "moondiety_premium_lifetime",
+              custom_id: "moondiety_premium_lifetime",
+              description: "Moondiety Premium Key — Lifetime",
+              amount: {
+                currency_code: "USD",
+                value: "10.00"
+              }
+            }],
+            application_context: {
+              brand_name: "Moondiety",
+              shipping_preference: "NO_SHIPPING",
+              user_action: "PAY_NOW"
+            }
           });
-        } catch (error) {
-          console.error("PayPal eligibility check failed:", error);
-          show("ELIGIBILITY CHECK FAILED", "#fca5a5",
-            error && error.message ? error.message : "See browser console for details.");
+        },
+        onApprove: function(data) {
+          setLoading("Payment approved. ApexNodes is verifying the transaction and preparing your key…");
+          submitForVerification(data.orderID);
+        },
+        onCancel: function() {
+          showCheckoutError("Payment was cancelled. You can try again whenever you're ready.");
+        },
+        onError: function(error) {
+          console.error("[Moondiety PayPal]", error);
+          showCheckoutError("PayPal checkout encountered an error. Please try again.");
         }
-      };
-      sdkScript.onerror = function () {
-        show("PAYPAL SDK LOAD FAILED", "#fca5a5", "Could not load PayPal JavaScript SDK v6.");
-      };
-      document.head.appendChild(sdkScript);
-    })();
+      }).render("#paypal-checkout").catch(function(error) {
+        showCheckoutError(error && error.message ? error.message : "Unable to render PayPal checkout.");
+      });
+    }
+
+    loadPayPal();
   </script>
-
-  <script src="https://moondiety.com/assets/js/main.js"></script>
-
 </body>
 </html>
