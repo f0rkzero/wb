@@ -202,7 +202,7 @@ body{
       <section class="panel payment">
         <div class="payment-head">
           <h2>Payment details</h2>
-          <span class="sandbox">LIVE MODE</span>
+          <span class="sandbox">DEMO MODE</span>
         </div>
         <p class="hint">Pay securely with PayPal. Your payment is processed by PayPal.</p>
         <div id="paypal-checkout">
@@ -240,9 +240,15 @@ body{
           credentials: "same-origin",
           cache: "no-store"
         });
+        const contentType = configResponse.headers.get("content-type") || "";
+        if (!contentType.includes("application/json")) {
+          throw new Error(
+            "API endpoint returned HTML instead of JSON. Configure the HTTPS reverse proxy for /api/paypal/."
+          );
+        }
         const config = await configResponse.json();
         if (!configResponse.ok || !config.client_id) {
-          throw new Error(config.error || "PayPal is not configured on the server.");
+          throw new Error(config.error || "PayPal Sandbox is not configured on the server.");
         }
 
         const sdk = document.createElement("script");
