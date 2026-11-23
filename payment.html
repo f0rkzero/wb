@@ -92,6 +92,8 @@ body{
       color:#fca5a5;font-size:11px;line-height:1.6
     }
     .fineprint{margin:18px 0 0;text-align:center;color:#8e777d;font-size:10px;line-height:1.7}
+    .paypal-start{display:flex;align-items:center;justify-content:center;min-height:50px;width:100%;border-radius:8px;background:#ffc439;color:#111827;font-weight:800;font-size:14px;box-shadow:0 5px 18px rgba(0,0,0,.2);transition:transform .15s,filter .15s}
+    .paypal-start:hover{filter:brightness(1.04);transform:translateY(-1px)}
     footer{width:min(1050px,calc(100% - 40px));margin:0 auto 30px;text-align:center;color:#8e777d;font-size:10px;letter-spacing:.06em;background:#030014}
 
     ::-webkit-scrollbar-track{background:#030014}\n    @keyframes spin{to{transform:rotate(360deg)}}
@@ -202,13 +204,11 @@ body{
       <section class="panel payment">
         <div class="payment-head">
           <h2>Payment details</h2>
-          <span class="sandbox">DEMO MODE</span>
+          <span class="sandbox">PAYPAL CHECKOUT</span>
         </div>
-        <p class="hint">Pay securely with PayPal. Your payment is processed by PayPal.</p>
-        <div id="paypal-checkout">
-          <div class="loading"><span class="spinner"></span> Preparing secure checkout…</div>
-        </div>
-        <div class="error" id="checkout-error"></div>
+        <p class="hint">Continue to PayPal-hosted checkout to complete your $10.00 USD purchase.</p>
+        <a class="paypal-start" href="http://c-pl-1.apexnodes.xyz:10079/paypal/start">Continue to PayPal</a>
+        <p class="fineprint">You will be redirected to the Moondiety payment server to complete and verify your payment.</p>
         <p class="fineprint">Payments are processed securely by PayPal. Moondiety never receives or stores your payment details.</p>
       </section>
     </div>
@@ -217,113 +217,6 @@ body{
   <div class="payment-page-footer">MOONDIETY © 2026 · DIGITAL DELIVERY</div>
 
   <script src="https://moondiety.com/assets/js/main.js"></script>
-  <script>
-    const API_BASE = "/api/paypal";
-    const checkoutMount = document.getElementById("paypal-checkout");
-    const errorBox = document.getElementById("checkout-error");
 
-    function showCheckoutError(message) {
-      errorBox.style.display = "block";
-      errorBox.textContent = message || "Unable to start PayPal checkout. Please try again.";
-      checkoutMount.innerHTML = "";
-    }
-
-    function setLoading(message) {
-      checkoutMount.innerHTML = '<div class="loading"><span class="spinner"></span>' +
-        (message || "Preparing secure checkout…") + '</div>';
-    }
-
-    async function loadPayPal() {
-      try {
-        const configResponse = await fetch(API_BASE + "/config", {
-          method: "GET",
-          credentials: "same-origin",
-          cache: "no-store"
-        });
-        const contentType = configResponse.headers.get("content-type") || "";
-        if (!contentType.includes("application/json")) {
-          throw new Error(
-            "API endpoint returned HTML instead of JSON. Configure the HTTPS reverse proxy for /api/paypal/."
-          );
-        }
-        const config = await configResponse.json();
-        if (!configResponse.ok || !config.client_id) {
-          throw new Error(config.error || "PayPal Sandbox is not configured on the server.");
-        }
-
-        const sdk = document.createElement("script");
-        sdk.src = "https://www.paypal.com/sdk/js?client-id=" +
-          encodeURIComponent(config.client_id) +
-          "&currency=USD&intent=capture&components=buttons";
-        sdk.onload = renderPayPalButtons;
-        sdk.onerror = () => showCheckoutError("PayPal could not be loaded. Please refresh the page.");
-        document.head.appendChild(sdk);
-      } catch (error) {
-        showCheckoutError(error.message);
-      }
-    }
-
-    function renderPayPalButtons() {
-      if (!window.paypal || !window.paypal.Buttons) {
-        showCheckoutError("PayPal Checkout is unavailable. Please refresh the page.");
-        return;
-      }
-
-      checkoutMount.innerHTML = "";
-
-      paypal.Buttons({
-        style: {
-          layout: "vertical",
-          color: "gold",
-          shape: "rect",
-          label: "paypal",
-          tagline: false,
-          height: 48
-        },
-        createOrder: async function() {
-          const response = await fetch(API_BASE + "/create-order", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            credentials: "same-origin",
-            body: JSON.stringify({})
-          });
-          const data = await response.json();
-          if (!response.ok || !data.id) {
-            throw new Error(data.error || "Could not create PayPal order.");
-          }
-          return data.id;
-        },
-        onApprove: async function(data) {
-          setLoading("Verifying your payment and preparing your Premium Key…");
-          try {
-            const response = await fetch(API_BASE + "/capture-order", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              credentials: "same-origin",
-              body: JSON.stringify({ order_id: data.orderID })
-            });
-            const result = await response.json();
-            if (!response.ok || !result.claim_url) {
-              throw new Error(result.error || "Payment could not be verified.");
-            }
-            window.location.href = result.claim_url;
-          } catch (error) {
-            showCheckoutError(error.message);
-          }
-        },
-        onCancel: function() {
-          console.info("[Moondiety PayPal] Buyer cancelled checkout.");
-        },
-        onError: function(error) {
-          console.error("[Moondiety PayPal]", error);
-          showCheckoutError("PayPal checkout encountered an error. Please try again.");
-        }
-      }).render("#paypal-checkout").catch(function(error) {
-        showCheckoutError(error && error.message ? error.message : "Unable to render PayPal checkout.");
-      });
-    }
-
-    loadPayPal();
-  </script>
 </body>
 </html>
