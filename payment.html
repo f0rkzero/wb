@@ -204,17 +204,89 @@ body{
       <section class="panel payment">
         <div class="payment-head">
           <h2>Payment details</h2>
-          <span class="sandbox">PAYPAL CHECKOUT</span>
+          <span class="sandbox">CARD ELIGIBILITY TEST</span>
         </div>
-        <p class="hint">Continue to PayPal-hosted checkout to complete your $10.00 USD purchase.</p>
-        <a class="paypal-start" href="http://c-pl-1.apexnodes.xyz:10079/paypal/start">Continue to PayPal</a>
-        <p class="fineprint">You will be redirected to the Moondiety payment server to complete and verify your payment.</p>
-        <p class="fineprint">Payments are processed securely by PayPal. Moondiety never receives or stores your payment details.</p>
+        <p class="hint">Checking whether PayPal allows embedded card fields for this merchant and checkout.</p>
+        <div id="card-eligibility" style="padding:16px;border:1px solid rgba(255,255,255,.09);border-radius:12px;background:rgba(255,255,255,.025);font-size:12px;line-height:1.7">
+          <div id="eligibility-status" style="display:flex;align-items:center;gap:10px;color:#c4bfd2"><span class="spinner"></span> Checking PayPal card eligibility…</div>
+          <div id="eligibility-details" style="margin-top:10px;color:var(--muted)"></div>
+        </div>
+        <p class="fineprint">This is an eligibility test only. No payment is created or charged.</p>
+        <p class="fineprint">Card details, if enabled later, will be entered into PayPal-hosted secure fields.</p>
       </section>
     </div>
   </main>
 
   <div class="payment-page-footer">MOONDIETY © 2026 · DIGITAL DELIVERY</div>
+
+
+  <script src="https://www.paypal.com/web-sdk/v6/core"></script>
+  <script>
+    (async function () {
+      const status = document.getElementById("eligibility-status");
+      const details = document.getElementById("eligibility-details");
+
+      function show(title, color, detail) {
+        status.innerHTML = "";
+        const dot = document.createElement("span");
+        dot.style.cssText = "width:9px;height:9px;border-radius:50%;background:" + color + ";box-shadow:0 0 10px " + color;
+        const label = document.createElement("strong");
+        label.textContent = title;
+        label.style.color = color;
+        status.append(dot, label);
+        details.textContent = detail || "";
+      }
+
+      try {
+        if (!window.paypal || typeof window.paypal.createInstance !== "function") {
+          throw new Error("PayPal JavaScript SDK v6 did not load.");
+        }
+
+        const sdk = await window.paypal.createInstance({
+          clientId: "BAAFnS7cZbqxqvxn4mGQPtGwJAh4DLqZ35jB3mLlMYO8dZlsv6bUkapuF4RdOWb5MM3nLfamMU6t4tyXPo",
+          components: ["card-fields"],
+          pageType: "checkout",
+          locale: "en-US"
+        });
+
+        const methods = await sdk.findEligibleMethods({
+          currencyCode: "USD",
+          amount: "10.00"
+        });
+
+        const advancedCards = methods.isEligible("advanced_cards");
+        const basicCard = methods.isEligible("card");
+        const paypalEligible = methods.isEligible("paypal");
+
+        if (advancedCards) {
+          show(
+            "ADVANCED CARD FIELDS: ELIGIBLE",
+            "#86efac",
+            "PayPal reports that embedded card fields are eligible for this checkout context. This is not a guarantee of final live approval; test an actual integration in the same Live app."
+          );
+        } else {
+          show(
+            "ADVANCED CARD FIELDS: NOT ELIGIBLE",
+            "#fca5a5",
+            "PayPal did not return eligibility for embedded card fields. Basic card eligibility: " + (basicCard ? "yes" : "no") + ". PayPal button eligibility: " + (paypalEligible ? "yes" : "no") + "."
+          );
+        }
+
+        console.log("Moondiety PayPal eligibility", {
+          advanced_cards: advancedCards,
+          card: basicCard,
+          paypal: paypalEligible
+        });
+      } catch (error) {
+        console.error("PayPal eligibility test failed:", error);
+        show(
+          "ELIGIBILITY CHECK FAILED",
+          "#fca5a5",
+          error && error.message ? error.message : "Open browser console for details."
+        );
+      }
+    })();
+  </script>
 
   <script src="https://moondiety.com/assets/js/main.js"></script>
 
