@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://moondiety.com/assets/css/main.css">
   <link rel="stylesheet" href="https://moondiety.com/assets/css/animations.css">
-  <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
   <style>
     :root {
       color-scheme: dark;
@@ -85,7 +84,7 @@
       background:rgba(250,204,21,.07);color:#facc15;font-size:9px;font-weight:850;letter-spacing:.1em
     }
     .hint{margin:0 0 18px;color:var(--muted);font-size:11px;line-height:1.6}
-    #paddle-checkout{min-height:570px;width:100%;border-radius:14px;overflow:hidden}
+    #paypal-checkout{min-height:570px;width:100%;border-radius:14px;overflow:hidden}
     .loading{
       display:flex;align-items:center;justify-content:center;gap:10px;
       min-height:170px;color:var(--muted);font-size:12px
@@ -208,7 +207,7 @@
         <div class="divider"></div>
         <div class="line"><span>Item</span><strong>Premium Key</strong></div>
         <div class="line"><span>Activation</span><strong>Automatic</strong></div>
-        <div class="line total"><span>Final price</span><strong>Shown at checkout</strong></div>
+        <div class="line total"><span>Final price</span><strong>$10.00 USD</strong></div>
         <div class="divider"></div>
         <div class="benefits">
           <div class="benefit"><span class="check">✓</span>Secure payment processing</div>
@@ -220,14 +219,14 @@
       <section class="panel payment">
         <div class="payment-head">
           <h2>Payment details</h2>
-          <span class="sandbox">SANDBOX MODE</span>
+          <span class="sandbox">LIVE MODE</span>
         </div>
-        <p class="hint">Enter your payment details in the secure checkout form below.</p>
-        <div id="paddle-checkout">
+        <p class="hint">Pay securely with PayPal. Your payment is processed by PayPal.</p>
+        <div id="paypal-checkout">
           <div class="loading"><span class="spinner"></span> Preparing secure checkout…</div>
         </div>
         <div class="error" id="checkout-error"></div>
-        <p class="fineprint">Your card details are handled securely by Paddle and are never stored on Moondiety servers.</p>
+        <p class="fineprint">Payments are processed securely by PayPal. Moondiety never receives or stores your payment details.</p>
       </section>
     </div>
   </main>
@@ -236,85 +235,106 @@
 
   <script src="https://moondiety.com/assets/js/main.js"></script>
   <script>
-    const PADDLE_TOKEN = "test_8ca7d6392b26a3dbe5ec99fd8fc";
-    const PADDLE_PRICE_ID = "pri_01m82365p6gpxvj8zd1ymhevbf";
-    const SUCCESS_URL = "http://c-pl-1.apexnodes.xyz:10079/checkout";
-
-    function hideCheckoutLoader() {
-      const loader = document.querySelector("#paddle-checkout .loading");
-      if (loader) loader.remove();
-    }
-
-    function watchPaddleFrame() {
-      const mount = document.getElementById("paddle-checkout");
-      if (!mount) return;
-      const attach = () => {
-        const frame = mount.querySelector("iframe");
-        if (frame && !frame.dataset.moondietyLoadWatch) {
-          frame.dataset.moondietyLoadWatch = "1";
-          frame.addEventListener("load", hideCheckoutLoader, { once: true });
-        }
-      };
-      const observer = new MutationObserver(attach);
-      observer.observe(mount, { childList: true, subtree: true });
-      attach();
-    }
+    const API_BASE = "/api/paypal";
+    const checkoutMount = document.getElementById("paypal-checkout");
+    const errorBox = document.getElementById("checkout-error");
 
     function showCheckoutError(message) {
-      const box = document.getElementById("checkout-error");
-      box.style.display = "block";
-      box.textContent = message;
-      const mount = document.getElementById("paddle-checkout");
-      if (mount) mount.innerHTML = "";
-      console.error("[Moondiety Paddle]", message);
+      errorBox.style.display = "block";
+      errorBox.textContent = message || "Unable to start PayPal checkout. Please try again.";
+      checkoutMount.innerHTML = "";
     }
 
-    if (!window.Paddle) {
-      showCheckoutError("The secure payment service could not be loaded. Please refresh the page.");
-    } else {
-      try {
-        Paddle.Environment.set("sandbox");
-        Paddle.Initialize({
-          token: PADDLE_TOKEN,
-          checkout: {
-            settings: {
-              displayMode: "inline",
-              variant: "one-page",
-              theme: "dark",
-              locale: "en",
-              frameTarget: "paddle-checkout",
-              frameInitialHeight: "570",
-              frameStyle: "width:100%; min-width:312px; background:transparent; border:0;"
-            }
-          },
-          eventCallback: function(event) {
-            console.log("[Moondiety Paddle]", event);
-            if (event && event.name === "checkout.loaded") {
-              hideCheckoutLoader();
-            } else if (event && event.name === "checkout.completed") {
-              const transactionId =
-                event.data && (event.data.transaction_id || event.data.id);
-              if (!transactionId) {
-                showCheckoutError("Payment completed, but the transaction ID was not returned. Please contact support.");
-                return;
-              }
-              window.location.href =
-                SUCCESS_URL + "?transaction_id=" + encodeURIComponent(transactionId);
-            } else if (event && event.name === "checkout.error") {
-              showCheckoutError("Paddle could not start the checkout. Please check your Sandbox checkout settings and try again.");
-            }
-          }
-        });
+    function setLoading(message) {
+      checkoutMount.innerHTML = '<div class="loading"><span class="spinner"></span>' +
+        (message || "Preparing secure checkout…") + '</div>';
+    }
 
-        document.getElementById("paddle-checkout").classList.add("paddle-checkout");
-        watchPaddleFrame();
-        Paddle.Checkout.open({
-          items: [{ priceId: PADDLE_PRICE_ID, quantity: 1 }]
+    async function loadPayPal() {
+      try {
+        const configResponse = await fetch(API_BASE + "/config", {
+          method: "GET",
+          credentials: "same-origin",
+          cache: "no-store"
         });
+        const config = await configResponse.json();
+        if (!configResponse.ok || !config.client_id) {
+          throw new Error(config.error || "PayPal is not configured on the server.");
+        }
+
+        const sdk = document.createElement("script");
+        sdk.src = "https://www.paypal.com/sdk/js?client-id=" +
+          encodeURIComponent(config.client_id) +
+          "&currency=USD&intent=capture&components=buttons";
+        sdk.onload = renderPayPalButtons;
+        sdk.onerror = () => showCheckoutError("PayPal could not be loaded. Please refresh the page.");
+        document.head.appendChild(sdk);
       } catch (error) {
-        showCheckoutError(error && error.message ? error.message : "Unable to initialize secure checkout.");
+        showCheckoutError(error.message);
       }
     }
+
+    function renderPayPalButtons() {
+      if (!window.paypal || !window.paypal.Buttons) {
+        showCheckoutError("PayPal Checkout is unavailable. Please refresh the page.");
+        return;
+      }
+
+      checkoutMount.innerHTML = "";
+
+      paypal.Buttons({
+        style: {
+          layout: "vertical",
+          color: "gold",
+          shape: "rect",
+          label: "paypal",
+          tagline: false,
+          height: 48
+        },
+        createOrder: async function() {
+          const response = await fetch(API_BASE + "/create-order", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "same-origin",
+            body: JSON.stringify({})
+          });
+          const data = await response.json();
+          if (!response.ok || !data.id) {
+            throw new Error(data.error || "Could not create PayPal order.");
+          }
+          return data.id;
+        },
+        onApprove: async function(data) {
+          setLoading("Verifying your payment and preparing your Premium Key…");
+          try {
+            const response = await fetch(API_BASE + "/capture-order", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              credentials: "same-origin",
+              body: JSON.stringify({ order_id: data.orderID })
+            });
+            const result = await response.json();
+            if (!response.ok || !result.claim_url) {
+              throw new Error(result.error || "Payment could not be verified.");
+            }
+            window.location.href = result.claim_url;
+          } catch (error) {
+            showCheckoutError(error.message);
+          }
+        },
+        onCancel: function() {
+          console.info("[Moondiety PayPal] Buyer cancelled checkout.");
+        },
+        onError: function(error) {
+          console.error("[Moondiety PayPal]", error);
+          showCheckoutError("PayPal checkout encountered an error. Please try again.");
+        }
+      }).render("#paypal-checkout").catch(function(error) {
+        showCheckoutError(error && error.message ? error.message : "Unable to render PayPal checkout.");
+      });
+    }
+
+    loadPayPal();
   </script>
 </body>
 </html>
